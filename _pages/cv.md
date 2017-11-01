@@ -61,4 +61,4 @@ Service and leadership
 
 
 
-Download full [CV](https://github.com/nesar/nesar.github.io/blob/master/files/CV_NesarRamachandra.pdf)
+Download full [CV](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
