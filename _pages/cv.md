@@ -18,7 +18,7 @@ categories: cv
 permalink: /cv/
 ---
 
-<iframe src="https://drive.google.com/file/d/0B5pEnYcOvWw9VDFlSjBOZzJ4QW8/view?usp=sharing" width="100%" height="100%"></iframe>
+<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="100%" height="100%"></iframe>
 view raw
 
 
