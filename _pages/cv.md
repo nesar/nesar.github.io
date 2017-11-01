@@ -22,4 +22,4 @@ permalink: /cv/
 view raw
 
 
-Download full [CV](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
+[Download full CV](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
