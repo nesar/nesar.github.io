@@ -1,15 +1,4 @@
 ---
-layout: archive
-title: "CV"
-permalink: /cv/
-author_profile: true
-redirect_from:
-  - /resume
----
-
-{% include base_path %}
-
----
 title: "CV"
 description: Download full CV
 date: 2017-11-01
