@@ -57,3 +57,20 @@ Teaching
 Service and leadership
 ======
 * Currently signed in to 43 different slack teams
+
+
+
+
+-------
+title: "CV"
+description: Download full CV
+layout: pdf
+categories: cv
+permalink: /cv/
+---
+
+<iframe src="https://drive.google.com/file/d/0B5pEnYcOvWw9VDFlSjBOZzJ4QW8/view?usp=sharing" width="100%" height="100%"></iframe>
+view raw
+
+---------
+
