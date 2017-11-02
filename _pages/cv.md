@@ -16,6 +16,11 @@ Download links:
 |:-----------:|:-------------:|
 
 
+OR
+
+| ddsdsdsdsd | bsdsdsdsd |
+|:----------:|:---------:|
+
 ---
 title: "CV"
 description: Download full CV
