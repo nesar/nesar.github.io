@@ -11,8 +11,7 @@ redirect_from:
 
 
 Download links:
-[<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
-[<span style="color:blue">resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf)
+| [<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) | [<span style="color:blue">resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf) |
 
 ---
 title: "CV"
@@ -23,19 +22,8 @@ categories: cv
 permalink: /cv/
 ---
 
-<!-- <ul class="buttons"> -->
-	<a href="./files/Resume_NesarRamachandra.pdf" class="button style3"><b>My Resume</b></a>
-    <a href="./files/CV_NesarRamachandra.pdf" class="button style3"><b>My CV</b></a>
-<!-- </ul> -->
 
-<!--
-<iframe src="https://nesar.github.io/files/Resume_NesarRamachandra.pdf" width="80%" height="200%"></iframe>
-
--->
-
-OR This 
-
-<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="1000" height="2000"></iframe>
+<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="1000" height="1000"></iframe>
 
 
 <!---
