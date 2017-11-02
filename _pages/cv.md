@@ -15,11 +15,6 @@ Download links:
 
 
 
-| Entry            | Item   |                                                              |
-| --------         | ------ | ------------------------------------------------------------ |
-
-
-
 ---
 title: "CV"
 description: Download full CV
