@@ -1,7 +1,7 @@
 ---
 title: "Multi-stream portrait of the cosmic web"
 collection: publications
-permalink: /publication/Ramachandra2015
+permalink: /publication/2015Ramachandra
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1412.7768)'
 date: 2015-09-11
 venue: 'Monthly Notices of the Royal Astronomical Society'

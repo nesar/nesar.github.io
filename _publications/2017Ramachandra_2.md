@@ -1,7 +1,7 @@
 ---
 title: "Dark matter haloes: a multistream view"
 collection: publications
-permalink: /publication/Ramachandra2017b
+permalink: /publication/2017Ramachandra_2
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1706.04058)'
 date: 2017-09-21
 venue: 'Monthly Notices of the Royal Astronomical Society'

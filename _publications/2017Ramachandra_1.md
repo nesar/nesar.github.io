@@ -1,7 +1,7 @@
 ---
 title: "Topology and geometry of the dark matter web: a multistream view"
 collection: publications
-permalink: /publication/Ramachandra2017a
+permalink: /publication/2017Ramachandra_1
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1608.05469)'
 date: 2017-05-21
 venue: 'Monthly Notices of the Royal Astronomical Society'

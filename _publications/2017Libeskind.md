@@ -1,7 +1,7 @@
 ---
 title: "Tracing the cosmic web"
 collection: publications
-permalink: /publication/Libeskind2018
+permalink: /publication/2017Libeskind
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1705.03021)
 date: 2018-01-01
 venue: 'Monthly Notices of the Royal Astronomical Society'
