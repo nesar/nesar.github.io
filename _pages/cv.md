@@ -19,16 +19,6 @@ Download links:
 
 
 
----
-title: "CV"
-description: Download full CV
-date: 2017-11-01
-layout: pdf
-categories: cv
-permalink: /cv/
----
-
-
 <iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="1000" height="1000"></iframe>
 
 
