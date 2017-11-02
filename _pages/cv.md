@@ -10,8 +10,7 @@ redirect_from:
 {% include base_path %}
 
 
-[Download full CV](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
-
+Download [<b>CV</b>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) or [<b>resume</b>](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
 ---
 title: "CV"
 description: Download full CV
