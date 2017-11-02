@@ -26,7 +26,7 @@ permalink: /cv/
     <a href="./files/CV_NesarRamachandra.pdf" class="button style3"><b>My CV</b></a>
 <!-- </ul> -->
 
-<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="100%" height="100%"></iframe>
+<iframe src="https://nesar.github.io/files/Resume_NesarRamachandra.pdf" width="100%" height="100%"></iframe>
 
 OR This 
 
