@@ -11,4 +11,4 @@ redirect_from:
 
 Download links: | [<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) | [<span style="color:blue">Resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf) |
 
-<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="1000" height="1000"></iframe>
+<iframe src="https://nesar.github.io/files/CV_NesarRamachandra.pdf" width="500" height="1000"></iframe>
