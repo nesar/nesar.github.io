@@ -1,6 +1,6 @@
 ---
 title: "Structure of the Cosmic Web"
-excerpt: "Figure shows structures in the multi-stream web. 1<br/><img src='/images/fig1.JPG'>" 
+excerpt: "Figure shows structures in the multi-stream web. 1<br/><img src='/images/fig1.png'>" 
 collection: research
 ---
 
