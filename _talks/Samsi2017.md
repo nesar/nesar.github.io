@@ -1,7 +1,7 @@
 ---
 title: "Emulation of the Halo Mass Function"
 collection: talks
-type: "Talk"
+type: "Workshop talk"
 permalink: /talks/Samsi2017
 venue: "Astrophysical Population Emulation and Uncertainty Quantification Workshop"
 date: 2017-04-03
