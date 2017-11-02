@@ -10,7 +10,10 @@ redirect_from:
 {% include base_path %}
 
 
-Download [<b>CV</b>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) or [<b>resume</b>](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
+Download links:
+[<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf)
+[<span style="color:blue">resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf)
+
 ---
 title: "CV"
 description: Download full CV
@@ -25,7 +28,10 @@ permalink: /cv/
     <a href="./files/CV_NesarRamachandra.pdf" class="button style3"><b>My CV</b></a>
 <!-- </ul> -->
 
+<!--
 <iframe src="https://nesar.github.io/files/Resume_NesarRamachandra.pdf" width="80%" height="200%"></iframe>
+
+-->
 
 OR This 
 
