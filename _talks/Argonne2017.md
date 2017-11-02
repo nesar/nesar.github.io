@@ -2,7 +2,7 @@
 title: "Strong Lensing analysis using Deep Neural Networks"
 collection: talks
 type: "Talk"
-permalink: /talks/2012-03-01-talk-1
+permalink: /talks/Argonne2017
 venue: "Young Scientists Symposium"
 date: 2017-07-18
 location: "Argonne National Laboratory, Chicago."
