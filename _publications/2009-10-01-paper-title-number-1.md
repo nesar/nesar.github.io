@@ -6,10 +6,9 @@ excerpt: 'Comparison of 12 cosmic web classification schemes, including our Mult
 date: 2018-01-01
 venue: 'Monthly Notices of the Royal Astronomical Society'
 paperurl: 'https://doi.org/10.1093/mnras/stx1976'
-citation: Noam I. Libeskind, Rien van de Weygaert, Marius Cautun, Bridget Falck, Elmo Tempel, Tom Abel, Mehmet Alpaslan, Miguel A. Aragón-Calvo, Jaime E. Forero-Romero, Roberto Gonzalez, Stefan Gottlöber, Oliver Hahn, Wojciech A. Hellwing, Yehuda Hoffman, Bernard J. T. Jones, Francisco Kitaura, Alexander Knebe, Serena Manti, Mark Neyrinck, Sebastián E. Nuza, Nelson Padilla, Erwin Platen, <b> Nesar Ramachandra </b>, Aaron Robotham, Enn Saar, Sergei Shandarin, Matthias Steinmetz, Radu S. Stoica, Thierry Sousbie, Gustavo Yepes; Tracing the cosmic web, <i> Monthly Notices of the Royal Astronomical Society </i>, Volume 473, Issue 1, 1 January 2018, Pages 1195–1217, <span style="color:blue"> https://doi.org/10.1093/mnras/stx1976 </span>
-
+citation: Noam I. Libeskind, Rien van de Weygaert, Marius Cautun, Bridget Falck, Elmo Tempel, Tom Abel, Mehmet Alpaslan, Miguel A. Aragón-Calvo, Jaime E. Forero-Romero, Roberto Gonzalez, Stefan Gottlöber, Oliver Hahn, Wojciech A. Hellwing, Yehuda Hoffman, Bernard J. T. Jones, Francisco Kitaura, Alexander Knebe, Serena Manti, Mark Neyrinck, Sebastián E. Nuza, Nelson Padilla, Erwin Platen, <b> Nesar Ramachandra </b>, Aaron Robotham, Enn Saar, Sergei Shandarin, Matthias Steinmetz, Radu S. Stoica, Thierry Sousbie, Gustavo Yepes; Tracing the cosmic web, <i> Monthly Notices of the Royal Astronomical Society </i>, Volume 473, Issue 1, 1 January 2018, Pages 1195–1217, <u><a href="{{https://doi.org/10.1093/mnras/stx1976}}">https://doi.org/10.1093/mnras/stx1976</a>.</u>
 ---
 
 [<span style="color:blue"> arXiv link </span>](https://arxiv.org/abs/1705.03021)
 
-
+<u><a href="{{https://arxiv.org/abs/1705.03021}}">PDF on arXiv</a>.</u>
