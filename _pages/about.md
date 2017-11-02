@@ -13,11 +13,3 @@ I'm a graduate student in Physics and Astronomy at the University of Kansas. I w
 Recently I worked at Argonne National Laboratories on Deep Learning algorithms in the context of astrophysics. I use some of the largest supercomputers in the world (like Cori and Edison) to train neural networks on astrophysical data.   
 
 
-<---
-======
-Made using Jekyll-based GitHub Pages templates and academicpages makes you separate the website's content from its form. 
-
-Site-wide configuration
-------
-
--->
