@@ -8,3 +8,5 @@ Black region are single-streaming voids. Bright spots are the haloes - the most 
 Taken from [Topology and geometry of the dark matter web: a multistream view, Ramachandra and Shandarin, 2017](https://arxiv.org/abs/1608.05469)
 
 <br/><img src='/images/fig2.png'>
+
+<br/><img src='/images/fig3.png'>
