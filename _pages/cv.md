@@ -1,14 +1,18 @@
 ---
-permalink: /markdown/
-title: "Markdown"
+layout: archive
+title: "CV"
+permalink: /cv/
 author_profile: true
-redirect_from: 
-  - /md/
-  - /markdown.html
+redirect_from:
+  - /resume
 ---
+
+{% include base_path %}
 
 
 Download links:
+
+
 
 | [<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) | [<span style="color:blue">Resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf) |
 |:-----------:|:-------------:|
