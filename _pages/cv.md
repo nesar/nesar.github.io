@@ -15,7 +15,7 @@ Download links:
 
 
 | [<span style="color:blue">CV</span>](https://nesar.github.io/files/CV_NesarRamachandra.pdf) | [<span style="color:blue">Resume</span>](https://nesar.github.io/files/Resume_NesarRamachandra.pdf) |
-|:-----------:|:-------------:|
+<! -- |:-----------:|:-------------:| -->
 
 
 
