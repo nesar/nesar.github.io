@@ -10,6 +10,4 @@ citation: Noam I. Libeskind, Rien van de Weygaert, Marius Cautun, Bridget Falck,
 [<u><span style="color:blue"> https://doi.org/10.1093/mnras/stx1976 </span></u>](https://doi.org/10.1093/mnras/stx1976)
 ---
 
-[<u> <span style="color:blue"> arXiv link </span> </u>](https://arxiv.org/abs/1705.03021)
-
-<u><a href="{{https://arxiv.org/abs/1705.03021}}">PDF on arXiv</a></u>
+[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1705.03021)
