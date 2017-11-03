@@ -1,6 +1,6 @@
 ---
 title: "Dark matter web components"
-excerpt: "Structures in the multi-stream view of the Universe <br/><img src='/images/w6.png'>"
+excerpt: "Structures in the multi-stream view of the Universe <br/><img src='/images/w6.png' style="width: 200px;>"
 collection: research
 ---
 
