@@ -1,7 +1,6 @@
 ---
 title: "Head Teaching Assistant"
 collection: teaching
-type: "Undergraduate course"
 permalink: /teaching/2015head_gta
 venue: "University of Kansas, Department of Physics and Astronomy"
 date: 2015-08-01
