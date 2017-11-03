@@ -1,20 +1,17 @@
 ---
-title: "Teaching experience 2"
+title: "Graduate Teaching Assistant"
 collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
-date: 2015-01-01
-location: "City, Country"
+type: "Undergraduate course"
+permalink: /teaching/2015-spring-teaching-2
+venue: "University of Kansas, Department of Physics and Astronomy
+date: 2014-08-01
+location: "Lawrence, Kansas"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
+August​ ​2014 ​-​ ​Present
 
-Heading 1
-======
-
-Heading 2
-======
-
-Heading 3
-======
+Classes taught: 
+* PHSX 114 (College Physics I) 
+* PHSX 216 (General Physics I)
+* PHSX 236 (General Physics II) 
+* PHSX 214 (General Physics II Honors)
