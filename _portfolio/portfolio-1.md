@@ -1,7 +1,6 @@
 ---
 title: "Dark matter web components"
-excerpt: "Structures in the multi-stream view of the Universe <br/><img src='/images/w5.png'>" 
-<br/><img src='/images/w6.png'>" 
+excerpt: "Structures in the multi-stream view of the Universe <br/><img src='/images/w5.png'>"
 collection: research
 ---
 
@@ -9,4 +8,6 @@ Black region are single-streaming voids. Bright spots are the haloes - the most 
 
 
 <br/><img src='/images/fig3.png'>
+
+<br/><img src='/images/w6.png'>" 
 
