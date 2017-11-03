@@ -2,8 +2,8 @@
 title: "Head Teaching Assistant"
 collection: teaching
 type: "Undergraduate course"
-permalink: /teaching/2014-spring-teaching-1
-venue: "University of Kansas, Department of Physics and Astronomy
+permalink: /teaching/2015head_gta
+venue: "University of Kansas, Department of Physics and Astronomy"
 date: 2015-08-01
 location: "Lawrence, Kansas"
 ---
