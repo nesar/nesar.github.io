@@ -1,11 +1,12 @@
 ---
 layout: archive
-title: "Reasonably current CV and Resume"
+title: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
+
 
 {% include base_path %}
 
