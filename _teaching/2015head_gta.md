@@ -4,6 +4,7 @@ collection: teaching
 type: "Department of Physics and Astronomy"
 permalink: /teaching/2015head_gta
 venue: "University of Kansas"
+date: 2015-08-01
 location: "Lawrence, Kansas"
 ---
 * Fall​ ​2015​
