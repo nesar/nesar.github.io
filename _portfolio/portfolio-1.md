@@ -12,3 +12,7 @@ As a part of my doctoral dissertation under Professor Sergei Shandarin, I work o
 We have extended our work to topological and geometrical descriptions of the cosmic web. Percolation studies on cosmic fields display a transitions in connectivities of structures, and Hessian analysis delineates structures with different shapes –  tubular, sheet-like, or globular. Our recent paper claims that the over 99 per cent of the voids are connected. Another geometrical analyses has paved the way for detection of haloes in numerical simulations. We have developed a halo-finder algorithm based on the compact geometries of the halo surfaces and the number of gravitational collapses undergone by dark matter particles. This detection of potential halo regions does not require use free-parameters or post-processing tools that are generally used in traditional halo finder algorithms. 
 
 <img align="right" src="/images/fig2.png"> 
+
+Check out this google VR visualization created using blender:
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/Hul8Nrgvo9I" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
