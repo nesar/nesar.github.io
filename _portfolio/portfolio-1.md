@@ -15,4 +15,4 @@ We have extended our work to topological and geometrical descriptions of the cos
 
 Check out this google VR visualization created using blender:
 
-<iframe width="854" height="480" src="https://www.youtube.com/embed/Hul8Nrgvo9I" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
