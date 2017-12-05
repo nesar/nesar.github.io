@@ -13,7 +13,7 @@ We have extended our work to topological and geometrical descriptions of the cos
 
 <img align="right" src="/images/fig2.png"> 
 
-Check out this google VR visualization created using blender:
+Recent Virtual Reality visualization of the cosmic web created using blender (needs a VR headset, like [this](https://vr.google.com/cardboard/get-cardboard/):
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/Hul8Nrgvo9I" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
