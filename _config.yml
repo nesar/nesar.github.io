@@ -89,7 +89,7 @@ author:
   email            : "nesar@ku.edu"
   github           : "nesar"
   linkedin         : "nesar-ramachandra"
-  orcid            : "http://orcid.org/0000-0001-7772-0346"
+  orcid            : #"http://orcid.org/0000-0001-7772-0346"
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   twitter          : "NesNayak"
   wikipedia        :
