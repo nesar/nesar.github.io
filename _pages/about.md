@@ -8,9 +8,8 @@ redirect_from:
   - /about.html
 ---
 
-I'm a Physics and Astronomy PhD candidate at the [*University of Kansas*](http://physics.ku.edu/). I work with [*Professor Sergei Shandarin*](http://people.ku.edu/~sergei/) on computational and physical cosmology, specifically on the largest cosmic structures like the voids, pancakes, filaments and Dark Matter haloes. 
+I'm a Postdoc at [*Argonne National Laboratories, Chicago*](https://www.anl.gov/hep/group/cosmology-astrophysics) working on machine learning and advanced statistics techniques for astrophysical analyses. 
 
-I'm also interested in implementation of statistical and machine learning tools for astrophysical data analysis. Recently I worked at the [*Argonne National Laboratories, Chicago*](https://www.anl.gov/hep/group/cosmology-astrophysics) on Deep Learning algorithms in the context of astrophysics. I use some of the largest supercomputers in the world (like Cori and Edison) to train neural networks on astrophysical data.   
+In 2018, I finished my PhD in Physics and Astronomy under [*Professor Sergei Shandarin*](http://people.ku.edu/~sergei/) at the [*University of Kansas*](http://physics.ku.edu/). I worked on computational and physical cosmology, specifically on the largest dark matter objects in the Universe -- like the haloes, filaments and walls. I also spent the last year of grad school working on Deep Learning algorithms at the Cosmology and Advanced Computing group at Argonne.
 
-Before grad school, I completed my Integrated Masters in Physics from the [*Birla Institute of Technology and Science (BITS) - Pilani, India*](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics) with an honors thesis from the [*Indian Institute of Astrophysics, Bangalore.*](https://www.iiap.res.in/) 
-
+Before grad school, I completed my Integrated Masters in Physics from the [*Birla Institute of Technology and Science (BITS) - Pilani, India*](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics) with an honors thesis from the [*Indian Institute of Astrophysics, Bangalore.*](https://www.iiap.res.in/)
