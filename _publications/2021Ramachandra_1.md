@@ -3,7 +3,7 @@ title: "Machine learning synthetic spectra for probabilistic redshift estimation
 collection: publications
 permalink: /publication/2021Ramachandra_1
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2111.12118)'
-date: 2022
+date: 2022-01-21
 venue: 'Monthly Notices of the Royal Astronomical Society'
 paperurl: '
 https://doi.org/10.1093/mnras/stac1790'
