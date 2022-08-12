@@ -3,7 +3,7 @@ title: "Probabilistic neural networks for fluid flow surrogate modeling and data
 collection: publications
 permalink: /publication/2020Ramachandra_1
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2005.04271)'
-date: 2020
+date: 2020-10-21
 venue: 'Phys. Rev. Fluids 5, 104401 (2020)'
 paperurl: 'https://doi.org/10.1103/PhysRevFluids.5.104401'
 citation: 'Romit Maulik, Kai Fukami, <b> Nesar Ramachandra </b>, Koji Fukagata, Kunihiko Taira; A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling, Phys. Rev. Fluids 5, 104401 (2020)'
