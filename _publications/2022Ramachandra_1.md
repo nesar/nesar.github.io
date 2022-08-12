@@ -3,7 +3,7 @@ title: "Differentiable Predictions for Large Scale Structure with SHAMNet"
 collection: publications
 permalink: /publication/2022Ramachandra_1
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2112.08423)'
-date: 2022
+date: 2022-01-21
 venue: 'The Open Journal of Astrophysics'
 paperurl: 'https://doi.org/10.21105/astro.2112.08423'
 citation: 'Andrew P. Hearin, <b> Nesar Ramachandra </b>, Matthew R. Becker, Joseph DeRose; Differentiable Predictions for Large Scale Structure with SHAMNet, The Open Journal of Astrophysics, Vol. 5, 2022'
