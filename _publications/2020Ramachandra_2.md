@@ -3,7 +3,7 @@ title: "Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies"
 collection: publications
 permalink: /publication/2020Ramachandra_2
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2010.00596)'
-date: 2019
+date: 2020
 venue: 'Phys. Rev. D 103, 123525 (2021)'
 paperurl: 'https://doi.org/10.1103/PhysRevD.103.123525'
 citation: '<b> Nesar Ramachandra </b>, Georgios Valogiannis, Mustapha Ishak, Katrin Heitmann (for the LSST Dark Energy Science Collaboration); Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies, Phys. Rev. D 103, 123525 (2021)'

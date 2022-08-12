@@ -4,9 +4,9 @@ collection: publications
 permalink: /publication/2020Ramachandra_3
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2010.03762)'
 date: 2021
-venue: 'MNRAS (2021)'
+venue: 'Monthly Notices of the Royal Astronomical Society (2021)'
 paperurl: 'https://doi.org/10.1093/mnras/stab1715'
-citation: 'Yuyu Wang, <b> Nesar Ramachandra </b>, Edgar M. Salazar-Canizales, Hume A. Feldman, Richard Watkins, Klaus Dolag; Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks, Phys. Rev. D 103, 123525 (2021)'
+citation: 'Yuyu Wang, <b> Nesar Ramachandra </b>, Edgar M. Salazar-Canizales, Hume A. Feldman, Richard Watkins, Klaus Dolag; Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks, Monthly Notices of the Royal Astronomical Society (2021)'
 ---
 
 
