@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2022Ramachandra_2
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2208.03284)'
 date: 2022-01-21
-venue: 'Submitted to the Proceedings of the US Community Study on the Future of Particle Physics (Snowmass 2021)'
+venue: 'Proceedings of the US Community Study on the Future of Particle Physics (Snowmass 2021, Submitted)'
 paperurl: 'https://doi.org/10.48550/arXiv.2208.03284'
 citation: 'Thomas Y. Chen, Biprateep Dey, Aishik Ghosh, Michael Kagan, Brian Nord, <b> Nesar Ramachandra </b>; Interpretable Uncertainty Quantification in AI for HEP, Submitted to the Proceedings of the US Community Study on the Future of Particle Physics (Snowmass 2021)'
 ---
