@@ -3,7 +3,7 @@ title: "Physical Benchmarking for AI-Generated Cosmic Web"
 collection: publications
 permalink: /publication/2021Ramachandra_2
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/2112.05681)'
-date: 2021
+date: 2021-11-21
 venue: 'Neural Information Processing Systems (NeurIPS) 2021 AI for Science Workshop (2021)'
 paperurl: 'https://arxiv.org/abs/2112.05681'
 citation: 'Xiaofeng Dong, <b> Nesar Ramachandra </b>, Salman Habib, Katrin Heitmann, Michael Buehlmann, Sandeep Madireddy; Physical Benchmarking for AI-Generated Cosmic Web, Neural Information Processing Systems (NeurIPS) 2021 AI for Science Workshop (2021)'
