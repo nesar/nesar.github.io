@@ -3,7 +3,7 @@ title: "A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational L
 collection: publications
 permalink: /publication/2019Ramachandra_1
 excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1911.03867)'
-date: 2020
+date: 2020-07-23
 venue: 'Machine Learning and the Physical Sciences Workshop at the 33rd Conference on
 Neural Information Processing Systems (2019)'
 paperurl: 'https://arxiv.org/abs/1911.03867'
