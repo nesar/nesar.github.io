@@ -5,8 +5,6 @@ permalink: /misc/
 author_profile: true
 ---
 
-{% include base_path %}
-
 ## Teaching Experience
 
 {% for post in site.teaching reversed %}
