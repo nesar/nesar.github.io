@@ -1,0 +1,36 @@
+name: Add Publication Tags
+
+on:
+  workflow_run:
+    workflows: ["Update Publications"]
+    types:
+      - completed
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  add-tags:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml python-frontmatter
+          
+      - name: Add tags to publications
+        run: python scripts/add_publication_tags.py
+        
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _publications/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-add tags to publications"
+          git push

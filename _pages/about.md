@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "About me"
+title: "About Me"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,10 +8,32 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computational Scientist at [*Argonne National Laboratories, Chicago*](https://www.anl.gov/profile/nesar-soorve-ramachandra-0) working on machine learning and advanced statistics techniques for scientific analyses. I work with the [Computational Sciences division](https://www.anl.gov/cps). 
+## Hello! I'm Nesar Ramachandra
 
-Before joining as a research scientist, I was a Postdoc at the High Energy Physics Division at [Argonne](https://www.anl.gov/hep/group/cosmology-astrophysics). I was also a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago. 
+I'm a Computational Scientist at [Argonne National Laboratory](https://www.anl.gov/profile/nesar-soorve-ramachandra-0) in Chicago, where I work on developing cutting-edge machine learning and advanced statistical techniques for scientific analyses in the [Computational Sciences division](https://www.anl.gov/cps).
 
-In 2018, I finished my PhD in Physics and Astronomy under [*Professor Sergei Shandarin*](http://people.ku.edu/~sergei/) at the [*University of Kansas*](http://physics.ku.edu/). I worked on computational and physical cosmology, specifically on the largest dark matter objects in the Universe -- like the haloes, filaments and walls. I also spent the last year of grad school working on Deep Learning algorithms at the Cosmology and Advanced Computing group at Argonne.
+### Research Interests
 
-Before grad school, I completed my Integrated Masters in Physics from the [*Birla Institute of Technology and Science (BITS) - Pilani, India*](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics) with an honors thesis from the [*Indian Institute of Astrophysics, Bangalore.*](https://www.iiap.res.in/)
+My research focuses on the intersection of computational science, machine learning, and physics. I'm particularly interested in:
+
+- **Machine Learning for Science**: Developing AI solutions for complex scientific problems
+- **Cosmology and Astrophysics**: Understanding the structure and evolution of our universe
+- **Uncertainty Quantification**: Building probabilistic models for scientific applications
+- **High-Performance Computing**: Scaling algorithms for supercomputing environments
+
+### Professional Experience
+
+Before my current role as a research scientist, I was a Postdoctoral Researcher in the High Energy Physics Division at [Argonne](https://www.anl.gov/hep/group/cosmology-astrophysics) and a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago.
+
+### Education
+
+- **Ph.D. in Physics and Astronomy** (2018)  
+  University of Kansas  
+  Advisor: [Professor Sergei Shandarin](http://people.ku.edu/~sergei/)  
+  Research: Computational and physical cosmology, focusing on dark matter structures in the Universe
+
+- **Integrated Masters in Physics**  
+  [Birla Institute of Technology and Science (BITS) - Pilani, India](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics)  
+  Honors thesis completed at the [Indian Institute of Astrophysics, Bangalore](https://www.iiap.res.in/)
+
+Feel free to explore my [research](/research/) and [publications](/publications/) to learn more about my work, or check out my [CV](/cv/) for a detailed overview of my professional background.

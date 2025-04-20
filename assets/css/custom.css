@@ -1,0 +1,157 @@
+/* Custom styles for a crisper, more modern look */
+
+/* General Typography */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #2c3e50;
+}
+
+/* Header and Navigation */
+.masthead {
+  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.greedy-nav {
+  background-color: #fff;
+}
+
+.greedy-nav a {
+  color: #2c3e50;
+}
+
+.greedy-nav .visible-links a:before {
+  background: #3498db;
+}
+
+/* Content Areas */
+.page__content {
+  font-size: 1em;
+}
+
+.page__content p {
+  margin-bottom: 1.3em;
+}
+
+.archive__item-title {
+  font-size: 1.25em;
+  margin-top: 0.5em;
+}
+
+.archive__item-excerpt {
+  margin-top: 0.5em;
+}
+
+/* Publication Styling */
+.publication-item {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eee;
+}
+
+.publication-title {
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.publication-authors {
+  font-style: italic;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.publication-venue {
+  font-size: 0.85em;
+  color: #666;
+}
+
+/* Card-like styling for portfolio items */
+.archive__item {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  height: 100%;
+}
+
+.archive__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.archive__item-teaser img {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.archive__item-body {
+  padding: 1.5em;
+}
+
+/* Grid layouts for portfolio and publications */
+.grid__item {
+  margin-bottom: 2em;
+}
+
+@media (min-width: 768px) {
+  .grid__item {
+    margin-bottom: 3em;
+  }
+}
+
+/* Author profile */
+.author__avatar img {
+  border-radius: 50%;
+}
+
+.author__content {
+  margin-bottom: 1em;
+}
+
+.author__urls-wrapper {
+  margin-top: 1em;
+}
+
+/* Footer styling */
+.page__footer {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.page__footer a {
+  color: #fff;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8em;
+}
+
+.btn--primary {
+  background-color: #3498db;
+}
+
+/* Publication summary sections */
+.summary-section {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #3498db;
+}

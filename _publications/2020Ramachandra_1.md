@@ -1,14 +1,13 @@
 ---
-title: "A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling"
-collection: publications
-permalink: /publication/2019Ramachandra_1
-excerpt: '[<u><span style="color:blue"> arXiv link </span></u>](https://arxiv.org/abs/1911.03867)'
-date: 2020-07-23
-venue: 'Machine Learning and the Physical Sciences Workshop at the 33rd Conference on
-Neural Information Processing Systems (2019)'
-paperurl: 'https://arxiv.org/abs/1911.03867'
-citation: 'Sandeep Madireddy, Nan Li, <b> Nesar Ramachandra </b>, James Butler, Prasanna Balaprakash, Salman Habib, Katrin Heitmann; A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling, Machine Learning and the Physical Sciences Workshop at the 33rd Conference on Neural Information Processing Systems (2019)'
+title: "From the inner to outer Milky Way: a photometric sample of 2.6 million red clump stars"
+collection: "publications"
+permalink: "/publication/2020Ramachandra_1"
+excerpt: "[<u><span style="color:blue"> arXiv link </span></u>]()"
+date: "2020-01-01"
+venue: "Monthly Notices of the Royal Astronomical Society"
+paperurl: "https://doi.org/10.1093/mnras/staa1226"
+citation: "Lucey, Madeline, Ting, Yuan-Sen, <b> Ramachandra, Nesar S. </b>, Hawkins, Keith; From the inner to outer Milky Way: a photometric sample of 2.6 million red clump stars, Monthly Notices of the Royal Astronomical Society, Volume 495, Issue 3, 2020"
 ---
 
 
-Summary: Upcoming large astronomical surveys are expected to capture an unprecedented number of strong gravitational lensing systems in the Universe. Deep learning is emerging as a promising practical tool in detection and quantification of these galaxy-scale image distortions. However, absence of large quantities of representative data from current astronomical surveys requires development of robust forward modeling of synthetic lensing images. Using a realistic and unbiased sample of the strong lenses created by using state-of-the-art extragalactic catalogs, we train a modular deep learning pipeline for uncertainty-quantified detection and modeling with intermediate image processing components for denoising and deblending the lensing systems. We demonstrate a higher degree of interpretability and controlled systematics due to domain-specific task modules that are trained with different stages of synthetic image generation. For lens detection and modeling, we obtain semantically meaningful latent spaces that separate classes and provide uncertainty estimates that explain the misclassified images and provide uncertainty bounds on the lens parameters. In addition, we obtain an improved performance---lens detection (classification) improved from 82% with the baseline to 94%, while the lens modeling (regression) accuracy improved by 25% over the baseline model.
+Summary: Large pristine samples of red clump stars are highly sought after given that they are standard candles and give precise distances even at large distances. However, it is difficult to cleanly select red clumps stars because they can have the same T<SUB>eff</SUB> and log g as red giant branch stars. Recently, it was shown that the asteroseismic parameters, ΔP and Δν, which are used to accurately select red clump stars, can be derived from spectra using the change in the surface carbon to nitrogen ...
