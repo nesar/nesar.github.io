@@ -1,0 +1,12 @@
+---
+title: "Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field"
+collection: publications
+permalink: /publication/2023-application-of-probabilistic-modeling-and-automate
+excerpt: '[<u><span style="color:blue">Google Scholar</span></u>](https://scholar.google.com/scholar?q=Application+of+probabilistic+modeling+and+automated+machine+learning+framework+for+high-dimensional+stress+field)'
+date: 2023-01-01
+venue: 'arXiv preprint arXiv:2303.16869'
+paperurl: 'https://arxiv.org/abs/2303.16869'
+citation: 'Lele Luan and Nesar Ramachandra and Sandipp Krishnan Ravi and Anindya Bhaduri and Piyush Pandita and Prasanna Balaprakash and Mihai Anitescu and Changjie Sun and Liping Wang (2023). "Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field". arXiv preprint arXiv:2303.16869.'
+---
+
+Summary: Modern computational methods, involving highly sophisticated mathematical formulations, enable several tasks like modeling complex physical phenomenon, predicting key properties and design optimization. The higher fidelity in these computer models makes it computationally intensive to query them hundreds of times for optimization and one usually relies on a simplified model albeit at the cost of losing predictive accuracy and precision. Towards this, data-driven surrogate modeling methods have shown a lot of promise in emulating the behavior of the expensive computer models. However, a major bottleneck in such methods is the inability to deal with high input dimensionality and the need for relatively large datasets. With such problems, the input and output quantity of interest are tensors of high dimensionality. Commonly used surrogate modeling methods for such problems, suffer from requirements like high number of computational evaluations that precludes one from performing other numerical tasks like uncertainty quantification and statistical analysis. In this work, we propose an end-to-end approach that maps a high-dimensional image like input to an output of high dimensionality or its key statistics. Our approach uses two main framework that perform three steps: a) reduce the input and output from a high-dimensional space to a reduced or low-dimensional space, b) model the input-output relationship in the low-dimensional space, and c) enable the incorporation of domain-specific physical constraints as masks. In order to accomplish the task of reducing input dimensionality we leverage principal component analysis, that is …
