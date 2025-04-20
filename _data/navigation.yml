@@ -1,5 +1,7 @@
 # main links links
 main:
+  - title: "About"
+    url: /
 
   - title: "Research"
     url: /research/
@@ -7,14 +9,8 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Talks"
-    url: /talks/       
-
-  - title: "Teaching"
-    url: /teaching/ 
-    
   - title: "CV"
     url: /cv/
     
-#  - title: "Misc"
-#    url: /markdown/
+  - title: "Miscellaneous"
+    url: /miscellaneous/

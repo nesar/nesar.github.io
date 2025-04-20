@@ -1,0 +1,56 @@
+/* Custom CSS for a cleaner, crisper look */
+
+/* Main content area */
+.page__content {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Headers */
+.page__title {
+  font-weight: 700;
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  border-bottom: 1px solid #f2f3f3;
+  padding-bottom: 0.5em;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #2a76dd;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Publications and research items */
+.archive__item-title {
+  margin-bottom: 0.25em;
+  font-size: 1.2em;
+}
+
+.archive__item-excerpt {
+  margin-top: 0;
+}
+
+/* Profile sidebar */
+.author__avatar img {
+  border-radius: 50%;
+  border: 3px solid #f2f3f3;
+}
+
+/* Navigation */
+.greedy-nav {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.greedy-nav a {
+  font-weight: 600;
+}

@@ -8,10 +8,29 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computational Scientist at [*Argonne National Laboratories, Chicago*](https://www.anl.gov/profile/nesar-soorve-ramachandra-0) working on machine learning and advanced statistics techniques for scientific analyses. I work with the [Computational Sciences division](https://www.anl.gov/cps). 
+# Nesar Ramachandra, PhD
 
-Before joining as a research scientist, I was a Postdoc at the High Energy Physics Division at [Argonne](https://www.anl.gov/hep/group/cosmology-astrophysics). I was also a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago. 
+I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://www.anl.gov/profile/nesar-soorve-ramachandra-0) working at the intersection of **machine learning** and **scientific computing**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
 
-In 2018, I finished my PhD in Physics and Astronomy under [*Professor Sergei Shandarin*](http://people.ku.edu/~sergei/) at the [*University of Kansas*](http://physics.ku.edu/). I worked on computational and physical cosmology, specifically on the largest dark matter objects in the Universe -- like the haloes, filaments and walls. I also spent the last year of grad school working on Deep Learning algorithms at the Cosmology and Advanced Computing group at Argonne.
+## Current Position
 
-Before grad school, I completed my Integrated Masters in Physics from the [*Birla Institute of Technology and Science (BITS) - Pilani, India*](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics) with an honors thesis from the [*Indian Institute of Astrophysics, Bangalore.*](https://www.iiap.res.in/)
+At the [Computational Sciences division](https://www.anl.gov/cps) at Argonne, I develop and apply machine learning techniques to address complex scientific challenges. My work involves:
+
+* Creating deep learning pipelines for gravitational lensing analysis
+* Developing uncertainty quantification methods for scientific models
+* Designing emulators for computationally expensive simulations
+
+## Research Interests
+
+* **Machine Learning for Science**: Developing ML methods that incorporate physical constraints and domain knowledge
+* **Cosmological Structure Formation**: Understanding the formation and evolution of the cosmic web
+* **Uncertainty Quantification**: Creating probabilistic models that provide reliable uncertainty estimates
+* **Dark Matter Physics**: Investigating the properties and distribution of dark matter in the universe
+
+## Background
+
+Before joining Argonne as a research scientist, I was a Postdoctoral Fellow at the High Energy Physics Division and a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago.
+
+I completed my PhD in Physics and Astronomy at the [University of Kansas](http://physics.ku.edu/) under the supervision of [Professor Sergei Shandarin](http://people.ku.edu/~sergei/), focusing on computational and physical cosmology.
+
+My academic journey began at [BITS Pilani, India](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics), where I earned my Integrated Masters in Physics with an honors thesis from the [Indian Institute of Astrophysics, Bangalore](https://www.iiap.res.in/).
