@@ -200,10 +200,10 @@ defaults:
       path: ""
       type: publications
     values:
-      layout: single
+      layout: single-publications
       author_profile: true
       share: true
-      comments: true
+      comments: false
   # _portfolio
   - scope:
       path: ""

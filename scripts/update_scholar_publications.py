@@ -114,7 +114,7 @@ paperurl: '{pub_url if pub_url else scholar_url}'
 citation: '{citation}'
 ---
 
-Summary: {abstract}
+{abstract}
 """
         
         # Write the markdown file

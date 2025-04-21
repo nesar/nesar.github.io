@@ -5,12 +5,15 @@ permalink: /publications/
 author_profile: true
 ---
 
-Up-to-date publication list and citations can be found here: [<u><span style="color:blue"> arXiv </span></u>](https://arxiv.org/search/?query=Ramachandra%2C+N&searchtype=author&abstracts=show&order=-announced_date_first&size=50) and [<u><span style="color:blue"> SAO/NASA Astrophysics Data System (ADS) </span></u>](https://ui.adsabs.harvard.edu/#/public-libraries/y2_59cmZQ2iC2mUPSYSXtQ)
-
-Click on the titles to see summary and other details. 
-
 {% include base_path %}
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
+<p>Up-to-date publication list and citations can be found here: <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank"><u><span style="color:blue">Google Scholar</span></u></a></p>
+
+{% assign publications_by_year = site.publications | group_by_exp:"publication", "publication.date | date: '%Y'" | sort: "name" | reverse %}
+
+{% for year in publications_by_year %}
+  <h2 id="{{ year.name }}">{{ year.name }}</h2>
+  {% for post in year.items %}
+    {% include custom/archive-single-publication.html %}
+  {% endfor %}
 {% endfor %}

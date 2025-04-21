@@ -9,4 +9,4 @@ paperurl: 'https://ntrs.nasa.gov/citations/20230005088'
 citation: 'Jason Rhodes and Agnes Ferte and Nesar Ramachandra and Georgios Valogiannis and Leah Vazsonyi and Eric Huff and Francis Bernardeau and Tom Kitching and Peter Taylor (2021). "Weak Lensing: Optimal Separation of Scales". Preprint.'
 ---
 
-Summary: No abstract available
+No abstract available
