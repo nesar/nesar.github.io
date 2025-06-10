@@ -124,9 +124,34 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
+## Related Publications ({len(publications)} papers):
 
-- **A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling** (11 figures)
-- **Anomaly detection in astronomical images with generative adversarial networks** (7 figures)
-- **Generative networks for emulating synthetic sky images** (3 figures)
-- **Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images** (3 figures)
+- **AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a
+  70B-Parameter Domain-Specialized Reasoning Model** (2025) - Preprint
+- **EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific
+  Research Assistants** (2025) - Preprint
+- **AstroMLab 1: Who wins astronomy jeopardy!?** (2025) - Astronomy and Computing
+- **Snowmass2021-Letter of Interest Scientific AI Approaches in Computational Cosmology** (2025) - Preprint
+- **Deconvolution of Astronomical Images with Deep Neural Networks** (2025) - Preprint
+- **AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a
+  Specialized 8B-Parameter Large Language Model** (2024) - Preprint
+- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing
+  Cluster Mass Estimation** (2024) - Preprint
+- **Efficient mapping between void shapes and stress fields using deep convolutional neural networks with sparse data** (2024) - Journal of Computing and Information Science in Engineering
+- **Enhancing Interpretability in Generative Modeling: Disentangled Latent Spaces in Scientific Datasets** (2024) - Authorea Preprints
+- **Constructing impactful machine learning research for astronomy: Best practices for researchers and reviewers** (2023) - arXiv preprint arXiv:2310.12528
+- **2023 AI Testbed Expeditions Report** (2023) - Preprint
+- **Scalable Probabilistic Modeling and Machine Learning With Dimensionality Reduction for Expensive High-Dimensional Problems** (2023) - Preprint
+- **Neural Network Based Point Spread Function Deconvolution For
+  Astronomical Applications** (2022) - Preprint
+- **Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z** (2022) - Monthly Notices of the Royal Astronomical Society
+- **Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks** (2021) - Monthly Notices of the Royal Astronomical Society (2021)
+- **Weak Lensing: Optimal Separation of Scales** (2021) - Preprint
+- **Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks** (2021) - Monthly Notices of the Royal Astronomical Society
+- **Beyond the hubble sequence–exploring galaxy morphology with unsupervised machine learning** (2021) - Monthly Notices of the Royal Astronomical Society
+- **A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling** (2020)
+- **Anomaly detection in astronomical images with generative adversarial networks** (2020) - arXiv preprint arXiv:2012.08082
+- **Unstructured fluid flow data recovery using machine learning and Voronoi diagrams** (2020) - APS Division of Fluid Dynamics Meeting Abstracts
+- **Generative networks for emulating synthetic sky images** (2019) - Technical report, Kavli Summer Program in Astrophysics
+- **Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images** (2019) - ArXiv
+- **Cosmological analysis pipelines through Neural Networks** (2018) - APS April Meeting Abstracts

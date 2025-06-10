@@ -10,16 +10,8 @@ Developing statistical emulators and surrogate models for cosmological simulatio
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/application_of_probabilistic_modeling_and_automate_page11_fig2_8f87fb28.png" alt="Figure from Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field" onclick="openModal(this)">
-    <p class="figure-caption">From: Application of probabilistic modeling and automated machine learning framework f...</p>
-  </div>
-  <div class="research-figure">
     <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page3_fig1_bb04a767.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
     <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/application_of_probabilistic_modeling_and_automate_page9_fig2_a4ac7ae7.png" alt="Figure from Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field" onclick="openModal(this)">
-    <p class="figure-caption">From: Application of probabilistic modeling and automated machine learning framework f...</p>
   </div>
   <div class="research-figure">
     <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page4_fig1_42cb185f.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
@@ -124,7 +116,16 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
+## Related Publications ({len(publications)} papers):
 
-- **Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field** (11 figures)
-- **Probabilistic neural network-based reduced-order surrogate for fluid flows** (3 figures)
+- **MGemu: An emulator for cosmological models beyond general relativity** (2025) - Zenodo
+- **Constraining Early Dark Energy Models with Power Spectra Emulators** (2025) - Bulletin of the American Physical Society
+- **Data-Efficient Dimensionality Reduction and Surrogate Modeling of High-Dimensional Stress Fields** (2025) - Journal of Mechanical Design
+- **High-dimensional Surrogate Modeling for Image Data with Nonlinear Dimension Reduction** (2024) - Preprint
+- **Application of probabilistic modeling and automated machine learning
+  framework for high-dimensional stress field** (2023) - Preprint
+- **Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation** (2021) - Physica D: Nonlinear Phenomena
+- **Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning** (2021) - Nature Machine Intelligence
+- **Matter power spectrum emulator for  modified gravity cosmologies** (2021) - Physical Review D
+- **Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies** (2020) - Phys. Rev. D 103, 123525 (2020)
+- **Probabilistic neural network-based reduced-order surrogate for fluid flows** (2020) - arXiv preprint arXiv:2012.08719

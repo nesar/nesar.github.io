@@ -116,6 +116,15 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
+## Related Publications ({len(publications)} papers):
 
-- **The Caustic Design of the Dark Matter Web** (4 figures)
+- **Benchmarking AI-evolved cosmological structure formation and expanding dimensions through parallelization frameworks** (2024) - APS April Meeting Abstracts
+- **Diffusion model based emulator for synthetic cosmological structure formation** (2024) - APS April Meeting Abstracts
+- **Physical Benchmarking for AI-Generated Cosmic Web** (2021) - Neural Information Processing Systems (NeurIPS) 2021 AI for Science Workshop (2021)
+- **The Caustic Design of the Dark Matter Web** (2019) - arXiv preprint arXiv:1906.05920
+- **Topology, Geometry and Morphology of the Dark Matter Web** (2018) - Preprint
+- **Tracing the cosmic web** (2018) - Monthly Notices of the Royal Astronomical Society
+- **Dark matter haloes: a multistream view** (2017) - Monthly Notices of the Royal Astronomical Society
+- **Topology and geometry of the dark matter web: a multistream view** (2017) - Monthly Notices of the Royal Astronomical Society
+- **Topology and geometry of the dark matter web** (2017) - APS April Meeting Abstracts
+- **Multi-stream portrait of the cosmic web** (2015) - Monthly Notices of the Royal Astronomical Society

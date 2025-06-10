@@ -116,6 +116,9 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
+## Related Publications ({len(publications)} papers):
 
-- **Probabilistic neural networks for fluid flow model-order reduction and data recovery** (14 figures)
+- **Interpretable Uncertainty Quantification in AI for HEP** (2022) - Preprint
+- **AI for High Energy Physics: Interpretable Uncertainty Quantification** (2022) - Bulletin of the American Physical Society
+- **Probabilistic neural networks for fluid flow surrogate modeling and data recovery** (2020) - Phys. Rev. Fluids 5, 104401 (2020)
+- **Probabilistic neural networks for fluid flow model-order reduction and data recovery** (2020) - arXiv preprint arXiv:2005.04271
