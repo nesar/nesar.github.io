@@ -39,7 +39,7 @@ def main():
     print()
     
     success_count = 0
-    total_tasks = 4
+    total_tasks = 5
     
     # Task 1: Clean publications
     if run_command("python scripts/automated_update.py clean", "Cleaning duplicate publications"):
@@ -49,11 +49,15 @@ def main():
     if run_command("python scripts/automated_update.py update-research", "Updating research portfolio"):
         success_count += 1
     
-    # Task 3: Validate site structure
+    # Task 3: Extract figures from papers
+    if run_command("python scripts/automated_update.py extract-figures", "Extracting figures from papers"):
+        success_count += 1
+    
+    # Task 4: Validate site structure
     if run_command("python scripts/validate_site.py", "Validating site structure"):
         success_count += 1
     
-    # Task 4: List current publications for review
+    # Task 5: List current publications for review
     if run_command("python scripts/automated_update.py list > publication_list.txt", "Generating publication list"):
         success_count += 1
         print("📄 Publication list saved to publication_list.txt")

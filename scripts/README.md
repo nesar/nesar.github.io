@@ -19,6 +19,12 @@ python scripts/automated_update.py clean
 # Update research portfolio based on publications
 python scripts/automated_update.py update-research
 
+# Extract figures from papers and add to research pages
+python scripts/automated_update.py extract-figures
+
+# Run complete update (clean + research + figures)
+python scripts/automated_update.py full-update
+
 # Add a publication manually
 python scripts/automated_update.py add-manual \
   --title "Paper Title" \
@@ -47,7 +53,35 @@ Runs all automation tasks in sequence. Ideal for regular maintenance.
 python scripts/daily_update.py
 ```
 
-### 4. Legacy Scripts
+### 4. `extract_figures.py` - Figure Extraction Tool
+
+Extracts high-quality figures from academic papers and adds them to research pages.
+
+**Usage:**
+```bash
+# Extract figures from a local PDF
+python scripts/extract_figures.py extract-local \
+  --pdf "path/to/paper.pdf" \
+  --title "Paper Title"
+
+# Extract figures from an online PDF/arXiv URL
+python scripts/extract_figures.py extract-url \
+  --url "https://arxiv.org/abs/2303.16869" \
+  --title "Paper Title"
+```
+
+**Features:**
+- Automatically downloads PDFs from arXiv URLs
+- Filters figures by quality (size, complexity, aspect ratio)
+- Categorizes figures by research area
+- Creates interactive galleries with modal popups
+- Avoids extracting low-quality or AI-generated images
+
+### 5. `auto_extract_from_publications.py` - Batch Figure Extraction
+
+Automatically processes existing publications to extract figures.
+
+### 6. Legacy Scripts
 
 - `update_publications.py` - Original arXiv-based updater
 - `update_scholar_publications.py` - Google Scholar-based updater  
@@ -105,12 +139,21 @@ The website aesthetics are controlled by:
 
 ### Research Categories
 
-Publications are automatically categorized into:
+Publications and figures are automatically categorized into:
 - **Machine Learning & AI** - ML, deep learning, neural networks
 - **Dark Matter & Cosmology** - Cosmic web, dark matter, cosmology
 - **Uncertainty Quantification** - Bayesian methods, probabilistic modeling  
 - **Gravitational Lensing** - Strong/weak lensing studies
 - **Other Research** - Everything else
+
+### Figure Quality Criteria
+
+The system automatically selects high-quality figures by:
+- **Size filtering**: Minimum 300x200 pixels, avoiding tiny images
+- **Aspect ratio**: Excludes very wide/thin images (likely headers/footers)
+- **Color complexity**: Ensures sufficient visual complexity
+- **File size**: Between 10KB-2MB to avoid simple graphics or huge images
+- **Content filtering**: Avoids extracting text-only or simple diagrams
 
 ## Troubleshooting
 

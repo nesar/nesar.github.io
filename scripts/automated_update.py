@@ -292,10 +292,26 @@ collection: portfolio
             print(f"    Venue: {pub['venue']}")
             print()
 
+    def extract_figures_from_publications(self, max_papers: int = 3):
+        """Extract figures from recent publications."""
+        try:
+            import subprocess
+            result = subprocess.run(['python', 'scripts/auto_extract_from_publications.py'], 
+                                  capture_output=True, text=True, timeout=300)
+            if result.returncode == 0:
+                print("✅ Figure extraction completed successfully")
+                return True
+            else:
+                print(f"⚠️ Figure extraction completed with warnings:\n{result.stdout}")
+                return True
+        except Exception as e:
+            print(f"❌ Error extracting figures: {e}")
+            return False
+
 def main():
     parser = argparse.ArgumentParser(description='Automated website updater')
     parser.add_argument('action', choices=[
-        'list', 'clean', 'update-research', 'add-manual'
+        'list', 'clean', 'update-research', 'add-manual', 'extract-figures', 'full-update'
     ], help='Action to perform')
     
     parser.add_argument('--title', help='Publication title (for add-manual)')
@@ -332,6 +348,32 @@ def main():
             print("Publication added successfully!")
         else:
             print("Failed to add publication.")
+    
+    elif args.action == 'extract-figures':
+        updater.extract_figures_from_publications()
+    
+    elif args.action == 'full-update':
+        print("🚀 Running full website update...")
+        success_count = 0
+        
+        print("\n1. Cleaning duplicates...")
+        updater.clean_publications()
+        success_count += 1
+        
+        print("\n2. Updating research portfolio...")
+        updater.update_research_from_publications()
+        success_count += 1
+        
+        print("\n3. Extracting figures from papers...")
+        if updater.extract_figures_from_publications():
+            success_count += 1
+        
+        print(f"\n✅ Full update completed! ({success_count}/3 tasks successful)")
+        print("\n💡 Next steps:")
+        print("   1. Review the updated research pages")
+        print("   2. Check extracted figures in images/research/figures/")
+        print("   3. Test locally: bundle exec jekyll serve")
+        print("   4. Commit and push changes")
 
 if __name__ == "__main__":
     main()
