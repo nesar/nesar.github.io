@@ -13,16 +13,16 @@ deployment as effective agents in demanding fields such as ast...
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page3_fig1_bb04a767.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
+    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page2_fig1_08332ab9.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
+    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page4_fig1_42cb185f.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
+    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page8_fig1_83695984.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
+    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page5_fig1_68f5e3f1.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
+    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page8_fig2_7db0c93a.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
+    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
   </div>
 </div>
 

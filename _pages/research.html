@@ -5,12 +5,371 @@ permalink: /research/
 author_profile: true
 ---
 
-Summary of my recent research interests are listed below. Click on the titles for more details and interesting plots. 
+<div class="research-overview">
+  <div class="research-intro">
+    <p>My research focuses on developing and applying computational methods at the intersection of astrophysics, cosmology, and machine learning. Below are my main research areas with representative figures from recent publications.</p>
+  </div>
 
-{% include base_path %}
+  <div class="research-gallery">
 
+    <div class="research-area" style="border-left: 4px solid #3b82f6;">
+      <div class="research-area-header">
+        <h2>
+          <span class="research-icon">🤖</span>
+          <a href="/portfolio/portfolio-1-machine-learning/" class="research-title">Machine Learning & AI</a>
+        </h2>
+        <p class="research-description">Developing specialized AI models for astronomy, including domain-specific LLMs, neural networks for astronomical data analysis, and generative models for synthetic observations.</p>
+      </div>
+      
+      <div class="research-preview-figures">
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+        <div class="preview-figure">
+          <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page2_fig1_08332ab9.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
 
+        <div class="preview-figure">
+          <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page8_fig1_83695984.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="more-figures">
+          <a href="/portfolio/portfolio-1-machine-learning/" class="view-more-btn">
+            +1 more figures →
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="research-area" style="border-left: 4px solid #8b5cf6;">
+      <div class="research-area-header">
+        <h2>
+          <span class="research-icon">🌌</span>
+          <a href="/portfolio/portfolio-2-dark-matter/" class="research-title">Dark Matter & Cosmology</a>
+        </h2>
+        <p class="research-description">Investigating the cosmic web structure, dark matter halos, and large-scale structure formation using N-body simulations and multi-stream analysis.</p>
+      </div>
+      
+      <div class="research-preview-figures">
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/the_caustic_design_of_the_dark_matter_web_page3_fig1_fa373b8f.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/the_caustic_design_of_the_dark_matter_web_page3_fig2_a3b0a1c0.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="more-figures">
+          <a href="/portfolio/portfolio-2-dark-matter/" class="view-more-btn">
+            +1 more figures →
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="research-area" style="border-left: 4px solid #ef4444;">
+      <div class="research-area-header">
+        <h2>
+          <span class="research-icon">📊</span>
+          <a href="/portfolio/portfolio-3-uncertainty-quantification/" class="research-title">Uncertainty Quantification</a>
+        </h2>
+        <p class="research-description">Developing Bayesian and probabilistic methods for robust scientific inference, including uncertainty estimation in machine learning models.</p>
+      </div>
+      
+      <div class="research-preview-figures">
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page3_fig1_5f12f899.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page7_fig1_820b622a.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="more-figures">
+          <a href="/portfolio/portfolio-3-uncertainty-quantification/" class="view-more-btn">
+            +1 more figures →
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="research-area" style="border-left: 4px solid #f59e0b;">
+      <div class="research-area-header">
+        <h2>
+          <span class="research-icon">🔭</span>
+          <a href="/portfolio/portfolio-4-gravitational-lensing/" class="research-title">Gravitational Lensing</a>
+        </h2>
+        <p class="research-description">Studying strong and weak gravitational lensing phenomena, developing automated detection and modeling pipelines for lens systems.</p>
+      </div>
+      
+      <div class="research-preview-figures">
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page4_fig7_0669b477.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="preview-figure">
+          <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page8_fig11_c96c8384.png" alt="Research preview" onclick="openModal(this)" />
+        </div>
+
+        <div class="more-figures">
+          <a href="/portfolio/portfolio-4-gravitational-lensing/" class="view-more-btn">
+            +1 more figures →
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="research-area" style="border-left: 4px solid #10b981;">
+      <div class="research-area-header">
+        <h2>
+          <span class="research-icon">⚗️</span>
+          <a href="/portfolio/portfolio-5-other-research/" class="research-title">Other Research</a>
+        </h2>
+        <p class="research-description">Additional research projects including computational methods, data analysis techniques, and interdisciplinary applications.</p>
+      </div>
+      
+      <div class="research-preview-figures">
+
+        <div class="no-figures">
+          <p>Representative figures coming soon...</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Figure Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<style>
+.research-overview {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.research-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 12px;
+}
+
+.research-intro p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #4a5568;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.research-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.research-area {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-area:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.research-area-header {
+  margin-bottom: 1.5rem;
+}
+
+.research-area h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+.research-icon {
+  font-size: 1.2em;
+}
+
+.research-title {
+  color: #2d3748;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.research-title:hover {
+  color: #3182ce;
+}
+
+.research-description {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0;
+}
+
+.research-preview-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.preview-figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f7fafc;
+}
+
+.preview-figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.preview-figure img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.more-figures {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  border-radius: 8px;
+  border: 2px dashed #cbd5e0;
+}
+
+.view-more-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.view-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
+  color: white;
+}
+
+.no-figures {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  padding-top: 2%;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #bbb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .research-area {
+    padding: 1.5rem;
+  }
+  
+  .research-area h2 {
+    font-size: 1.5em;
+  }
+  
+  .research-preview-figures {
+    grid-template-columns: 1fr;
+  }
+  
+  .preview-figure img {
+    height: 150px;
+  }
+}
+</style>
+
+<script>
+function openModal(img) {
+  var modal = document.getElementById('imageModal');
+  var modalImg = document.getElementById('modalImage');
+  modal.style.display = 'block';
+  modalImg.src = img.src;
+}
+
+function closeModal() {
+  document.getElementById('imageModal').style.display = 'none';
+}
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {
+  var modal = document.getElementById('imageModal');
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+
+<!-- Legacy portfolio items for fallback -->
+<div class="legacy-portfolio" style="margin-top: 4rem;">
+  <h2>Research Areas</h2>
+  {% include base_path %}
+  {% for post in site.portfolio %}
+    {% include archive-single.html %}
+  {% endfor %}
+</div>

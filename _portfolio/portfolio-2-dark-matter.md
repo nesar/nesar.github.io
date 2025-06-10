@@ -127,7 +127,6 @@ window.onclick = function(event) {
 }
 </script>
 
-
 ## Related Publications (11 papers):
 
 - **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing

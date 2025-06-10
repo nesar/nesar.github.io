@@ -204,15 +204,16 @@ class FigureExtractor:
                      paper_info.get('abstract', '') + ' ' + 
                      paper_info.get('venue', '')).lower()
         
-        # Keywords for different categories
+        # Keywords for different categories (order matters - more specific first)
         categories = {
-            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training'],
-            'dark-matter': ['dark matter', 'cosmic web', 'cosmology', 'halo', 'structure formation', 'n-body', 'simulation'],
-            'uncertainty-quantification': ['uncertainty', 'bayesian', 'probabilistic', 'error', 'confidence'],
-            'gravitational-lensing': ['gravitational lens', 'strong lens', 'weak lens', 'lensing', 'shear'],
+            'gravitational-lensing': ['gravitational lens', 'strong lens', 'weak lens', 'lensing', 'shear', 'lens detection', 'lens modeling'],
+            'uncertainty-quantification': ['uncertainty', 'bayesian', 'probabilistic', 'error', 'confidence', 'monte carlo', 'mcmc'],
+            'dark-matter': ['dark matter', 'cosmic web', 'cosmology', 'halo', 'structure formation', 'n-body', 'simulation', 'caustic', 'multistream'],
+            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training', 'generative', 'anomaly detection'],
             'other-research': []
         }
         
+        # Check categories in priority order
         for category, keywords in categories.items():
             if category == 'other-research':
                 continue

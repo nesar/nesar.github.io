@@ -54,18 +54,28 @@ def main():
     
     print(f"Found {len(publications)} publications with URLs")
     
-    # Process a few key papers first
+    # Process papers from different categories
     key_papers = [
         "Multi-stream portrait of the cosmic web",
-        "AstroMLab",
+        "AstroMLab", 
         "machine learning",
         "dark matter",
         "neural network",
-        "uncertainty quantification"
+        "uncertainty quantification",
+        "bayesian",
+        "probabilistic",
+        "gravitational lens",
+        "weak lens", 
+        "strong lens",
+        "lensing",
+        "global field reconstruction",
+        "anomaly detection",
+        "generative",
+        "deconvolution"
     ]
     
     processed_count = 0
-    max_papers = 5  # Limit for testing
+    max_papers = 10  # Increased limit to get more figures
     
     for pub in publications:
         if processed_count >= max_papers:
