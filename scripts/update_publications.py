@@ -16,7 +16,7 @@ def format_date(date_str):
     return date_obj.strftime('%Y-%m-%d')
 
 # Set the author name to search for
-author_name = "Ramachandra, N"
+author_name = "Ramachandra, Nesar"
 
 # Create the arXiv API query URL
 url = f"http://export.arxiv.org/api/query?search_query=au:{author_name}&sortBy=submittedDate&sortOrder=descending&max_results=100"
@@ -49,11 +49,19 @@ for entry in root.findall('.//atom:entry', namespace):
     # Year for the permalink and citation
     year = pub_date[:4]
     
-    # Check if authors element exists
-    authors_elem = entry.find('./atom:author', namespace)
-    authors = "Authors not available"
-    if authors_elem is not None:
-        authors = authors_elem.find('./atom:name', namespace).text
+    # Get all authors and verify this is your paper
+    all_authors = []
+    for author in entry.findall('./atom:author', namespace):
+        author_name_elem = author.find('./atom:name', namespace)
+        if author_name_elem is not None:
+            all_authors.append(author_name_elem.text)
+    
+    authors_text = "; ".join(all_authors)
+    
+    # Skip if your name is not in the author list
+    if not any("Ramachandra" in author and "Nesar" in author for author in all_authors):
+        print(f"Skipping paper not authored by you: {title}")
+        continue
     
     # Get DOI and journal information if available
     journal_ref = "Preprint"
@@ -76,7 +84,7 @@ excerpt: '[<u><span style="color:blue"> arXiv link </span></u>]({arxiv_link})'
 date: {pub_date}
 venue: '{journal_ref}'
 paperurl: '{doi_link if doi_link else arxiv_link}'
-citation: '{authors}; {title}, {journal_ref}'
+citation: '{authors_text}; {title}, {journal_ref}'
 ---
 
 
