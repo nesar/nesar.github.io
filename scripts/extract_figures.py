@@ -206,10 +206,10 @@ class FigureExtractor:
         
         # Keywords for different categories (order matters - more specific first)
         categories = {
-            'gravitational-lensing': ['gravitational lens', 'strong lens', 'weak lens', 'lensing', 'shear', 'lens detection', 'lens modeling'],
+            'statistical-emulation': ['emulator', 'emulation', 'surrogate', 'power spectrum', 'reduced order', 'interpolation', 'approximation', 'synthetic'],
             'uncertainty-quantification': ['uncertainty', 'bayesian', 'probabilistic', 'error', 'confidence', 'monte carlo', 'mcmc'],
             'dark-matter': ['dark matter', 'cosmic web', 'cosmology', 'halo', 'structure formation', 'n-body', 'simulation', 'caustic', 'multistream'],
-            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training', 'generative', 'anomaly detection'],
+            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training', 'generative', 'anomaly detection', 'gravitational lens', 'lensing'],
             'other-research': []
         }
         
@@ -284,7 +284,7 @@ class FigureExtractor:
             'machine-learning': 'portfolio-1-machine-learning.md',
             'dark-matter': 'portfolio-2-dark-matter.md', 
             'uncertainty-quantification': 'portfolio-3-uncertainty-quantification.md',
-            'gravitational-lensing': 'portfolio-4-gravitational-lensing.md',
+            'statistical-emulation': 'portfolio-4-statistical-emulation.md',
             'other-research': 'portfolio-5-other-research.md'
         }
         
@@ -340,14 +340,49 @@ class FigureExtractor:
             except Exception as e:
                 print(f"Error updating {portfolio_file}: {e}")
     
+    def curate_diverse_figures(self, figures: List[Dict], max_figures: int = 4, max_per_paper: int = 2) -> List[Dict]:
+        """Curate figures to show diversity across different papers."""
+        if not figures:
+            return []
+        
+        # Group figures by paper
+        papers = {}
+        for fig in figures:
+            paper_title = fig['paper_title']
+            if paper_title not in papers:
+                papers[paper_title] = []
+            papers[paper_title].append(fig)
+        
+        # Select figures from different papers
+        curated = []
+        paper_names = list(papers.keys())
+        
+        # Round-robin selection to ensure diversity
+        for round_num in range(max_per_paper):
+            for paper_name in paper_names:
+                if len(curated) >= max_figures:
+                    break
+                    
+                paper_figures = papers[paper_name]
+                if round_num < len(paper_figures):
+                    curated.append(paper_figures[round_num])
+            
+            if len(curated) >= max_figures:
+                break
+        
+        return curated[:max_figures]
+
     def create_figures_html(self, figures: List[Dict]) -> str:
         """Create HTML for displaying figures in a grid."""
         if not figures:
             return "No figures available for this research area.\n"
         
+        # Curate figures for diversity
+        curated_figures = self.curate_diverse_figures(figures, max_figures=4, max_per_paper=2)
+        
         html = '<div class="research-figures-grid">\n'
         
-        for fig in figures[:6]:  # Limit to 6 figures per category
+        for fig in curated_figures:
             html += f'''  <div class="research-figure">
     <img src="{fig['relative_path']}" alt="Figure from {fig['paper_title']}" onclick="openModal(this)">
     <p class="figure-caption">From: {fig['paper_title'][:80]}{'...' if len(fig['paper_title']) > 80 else ''}</p>

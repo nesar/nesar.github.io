@@ -4,33 +4,17 @@ excerpt: "Research in uncertainty quantification <br/><img src='/images/research
 collection: portfolio
 ---
 
-Using Subaru Hyper Suprime-Cam (HSC) year 1 data, we perform the first -cut cosmic shear analysis constraining both  and  Hu-Sawicki modified gravity. To generate the  cosmic shear theory vector, we use the matter power spectrum emulator trained on COLA (COmoving Lagrangian Acceleration) simulations...
+Developing Bayesian and probabilistic methods for robust scientific inference, including uncertainty estimation in machine learning models.
 
 ## Research Figures
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page3_fig1_5f12f899.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page7_fig1_820b622a.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page8_fig1_19190f02.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
-  </div>
-  <div class="research-figure">
     <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page9_fig1_ec3efcb7.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
     <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page9_fig2_4779d1b5.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page11_fig1_432a5c8d.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
+    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page15_fig1_d2459df4.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
     <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
   </div>
 </div>
@@ -132,7 +116,6 @@ window.onclick = function(event) {
 }
 </script>
 
+## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
 
-## Related Publications (1 papers):
-
-- **Constraining  gravity with a -cut cosmic shear analysis of the Hyper Suprime-Cam first-year data** (2021) - Physical Review D
+- **Probabilistic neural networks for fluid flow model-order reduction and data recovery** (14 figures)

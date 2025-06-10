@@ -1,29 +1,29 @@
 ---
-title: "Machine Learning & AI"
-excerpt: "Research in machine learning & ai <br/><img src='/images/research_machine-learning.png'>"
+title: "Statistical Emulation & Inference"
+excerpt: "Research in statistical emulation & inference <br/><img src='/images/research_statistical-emulation.png'>"
 collection: portfolio
 ---
 
-Developing specialized AI models for astronomy, including domain-specific LLMs, neural networks for astronomical data analysis, and generative models for synthetic observations.
+Developing statistical emulators and surrogate models for cosmological simulations, including power spectrum emulation and reduced-order modeling techniques.
 
 ## Research Figures
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page9_fig1_007b57c7.png" alt="Figure from A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling" onclick="openModal(this)">
-    <p class="figure-caption">From: A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Dete...</p>
+    <img src="/images/research/figures/application_of_probabilistic_modeling_and_automate_page11_fig2_8f87fb28.png" alt="Figure from Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field" onclick="openModal(this)">
+    <p class="figure-caption">From: Application of probabilistic modeling and automated machine learning framework f...</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig1_6d73bb5b.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
-    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
+    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page3_fig1_bb04a767.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
+    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/generative_networks_for_emulating_synthetic_sky_im_page9_fig1_b69cf4d9.png" alt="Figure from Generative networks for emulating synthetic sky images" onclick="openModal(this)">
-    <p class="figure-caption">From: Generative networks for emulating synthetic sky images</p>
+    <img src="/images/research/figures/application_of_probabilistic_modeling_and_automate_page9_fig2_a4ac7ae7.png" alt="Figure from Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field" onclick="openModal(this)">
+    <p class="figure-caption">From: Application of probabilistic modeling and automated machine learning framework f...</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page8_fig2_7db0c93a.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
-    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
+    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page4_fig1_42cb185f.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
+    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
   </div>
 </div>
 
@@ -126,7 +126,5 @@ window.onclick = function(event) {
 
 ## Related Publications ({sum(len(p['figures']) for p in papers)} figures from {len(papers)} papers):
 
-- **A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling** (11 figures)
-- **Anomaly detection in astronomical images with generative adversarial networks** (7 figures)
-- **Generative networks for emulating synthetic sky images** (3 figures)
-- **Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images** (3 figures)
+- **Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field** (11 figures)
+- **Probabilistic neural network-based reduced-order surrogate for fluid flows** (3 figures)

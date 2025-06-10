@@ -61,11 +61,11 @@ def get_research_areas() -> List[Dict]:
             'color': '#ef4444'
         },
         {
-            'id': 'gravitational-lensing',
-            'title': 'Gravitational Lensing',
-            'description': 'Studying strong and weak gravitational lensing phenomena, developing automated detection and modeling pipelines for lens systems.',
-            'icon': '🔭',
-            'file': 'portfolio-4-gravitational-lensing.md',
+            'id': 'statistical-emulation',
+            'title': 'Statistical Emulation & Inference',
+            'description': 'Developing statistical emulators and surrogate models for cosmological simulations, including power spectrum emulation and reduced-order modeling.',
+            'icon': '📈',
+            'file': 'portfolio-4-statistical-emulation.md',
             'color': '#f59e0b'
         },
         {
