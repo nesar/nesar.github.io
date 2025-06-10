@@ -56,13 +56,7 @@ author_profile: true
             </div>
             
             <!-- Hidden abstract content -->
-            <div id="abstract-{{ post.title | slugify }}" class="abstract-content" style="display: none;">
-              {% if post.content %}
-                {{ post.content | strip_html | strip_newlines }}
-              {% else %}
-                Abstract not available.
-              {% endif %}
-            </div>
+            <div id="abstract-{{ post.title | slugify }}" class="abstract-content" style="display: none;">{{ post.content }}</div>
           </div>
         </div>
       {% endfor %}
@@ -361,10 +355,44 @@ function openAbstract(titleSlug) {
   if (abstractContent) {
     // Get the title from the clicked element
     const titleElement = document.querySelector('[onclick*="' + titleSlug + '"]');
-    const title = titleElement ? titleElement.textContent.replace(/\s*$/, '') : 'Publication Abstract';
+    const title = titleElement ? titleElement.textContent.replace(/\s*$/, '').trim() : 'Publication Abstract';
+    
+    // Get abstract text and clean it up
+    let abstractText = abstractContent.innerHTML || abstractContent.textContent || '';
+    
+    // Clean up HTML tags and formatting
+    abstractText = abstractText
+      .replace(/<[^>]*>/g, '') // Remove HTML tags
+      .replace(/&nbsp;/g, ' ') // Replace non-breaking spaces
+      .replace(/&amp;/g, '&') // Replace HTML entities
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim();
+    
+    // Remove "Summary:" prefix if it exists
+    abstractText = abstractText.replace(/^Summary:\s*/i, '');
+    
+    // If still empty or very short, provide fallback
+    if (!abstractText || abstractText === '' || abstractText.length < 10) {
+      abstractText = 'Full abstract not available in the current format. Please visit the paper link or arXiv link above for complete details including the full abstract and paper content.';
+    }
     
     modalTitle.textContent = title;
-    modalAbstract.innerHTML = abstractContent.innerHTML || 'Abstract not available for this publication.';
+    modalAbstract.textContent = abstractText; // Use textContent to avoid HTML interpretation issues
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  } else {
+    console.log('No abstract content found for:', titleSlug);
+    // Fallback - show modal anyway with error message
+    const modal = document.getElementById('abstractModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalAbstract = document.getElementById('modalAbstract');
+    
+    modalTitle.textContent = 'Abstract Not Available';
+    modalAbstract.textContent = 'Unable to load abstract content. Please visit the paper link or arXiv link for full details.';
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
