@@ -1,56 +1,223 @@
-/* Custom CSS for a cleaner, crisper look */
+/* Custom CSS for a modern, crisp academic website */
 
-/* Main content area */
+/* Typography improvements */
 .page__content {
-  font-size: 1em;
-  line-height: 1.6;
+  font-size: 1.05em;
+  line-height: 1.65;
+  color: #333;
 }
 
-/* Headers */
+/* Enhanced headers */
 .page__title {
   font-weight: 700;
   font-size: 2.5em;
   margin-bottom: 0.5em;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3 {
+  color: #1a1a1a;
 }
 
 h2 {
   font-size: 1.8em;
-  border-bottom: 1px solid #f2f3f3;
+  border-bottom: 2px solid #e8e9ea;
   padding-bottom: 0.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
-/* Links */
+h3 {
+  font-size: 1.4em;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+/* Modern button-like links */
 a {
   text-decoration: none;
-  color: #2a76dd;
+  color: #2563eb;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+/* Special styling for publication/research links */
+a[style*="color:blue"], 
+a span[style*="color:blue"] {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: white !important;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+a[style*="color:blue"]:hover,
+a:hover span[style*="color:blue"] {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
 }
 
 /* Publications and research items */
+.archive__item {
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.archive__item:last-child {
+  border-bottom: none;
+}
+
 .archive__item-title {
-  margin-bottom: 0.25em;
-  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.archive__item-title a {
+  color: #1f2937;
+}
+
+.archive__item-title a:hover {
+  color: #2563eb;
 }
 
 .archive__item-excerpt {
-  margin-top: 0;
+  margin-top: 0.5em;
+  color: #6b7280;
+  line-height: 1.6;
 }
 
-/* Profile sidebar */
+/* Enhanced profile sidebar */
+.sidebar {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1.5em;
+  margin-bottom: 2em;
+}
+
+.author__avatar {
+  margin-bottom: 1em;
+}
+
 .author__avatar img {
   border-radius: 50%;
-  border: 3px solid #f2f3f3;
+  border: 4px solid #e5e7eb;
+  transition: transform 0.3s ease;
 }
 
-/* Navigation */
+.author__avatar img:hover {
+  transform: scale(1.02);
+}
+
+.author__name {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.author__bio {
+  font-size: 0.95em;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Modern navigation */
 .greedy-nav {
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .greedy-nav a {
   font-weight: 600;
+  color: #374151;
+  transition: color 0.2s ease;
+}
+
+.greedy-nav a:hover {
+  color: #2563eb;
+}
+
+.greedy-nav .visible-links a::before {
+  background: #2563eb;
+}
+
+/* Content spacing and layout */
+.page__inner-wrap {
+  max-width: 1200px;
+}
+
+.page__content {
+  margin-top: 1em;
+}
+
+/* Footer improvements */
+.page__footer {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2em;
+  margin-top: 3em;
+  background: #f9fafb;
+}
+
+/* Table improvements */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+/* Code and pre styling */
+code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5em;
+  overflow-x: auto;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .page__title {
+    font-size: 2em;
+  }
+  
+  .sidebar {
+    margin-bottom: 1em;
+    padding: 1em;
+  }
+  
+  .archive__item {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
 }

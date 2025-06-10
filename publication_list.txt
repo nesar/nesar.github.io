@@ -1,0 +1,189 @@
+
+Current Publications (60 total):
+============================================================
+ 1. [2025] AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a
+  70B-Parameter Domain-Specialized Reasoning Model
+    Venue: Preprint
+
+ 2. [2025] EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific
+  Research Assistants
+    Venue: Preprint
+
+ 3. [2025] MGemu: An emulator for cosmological models beyond general relativity
+    Venue: Zenodo
+
+ 4. [2025] Constraining Early Dark Energy Models with Power Spectra Emulators
+    Venue: Bulletin of the American Physical Society
+
+ 5. [2025] AstroMLab 1: Who wins astronomy jeopardy!?
+    Venue: Astronomy and Computing
+
+ 6. [2025] Snowmass2021-Letter of Interest Scientific AI Approaches in Computational Cosmology
+    Venue: Preprint
+
+ 7. [2025] GAN-based Event-level Inverse Mapper (GEIM)-An Application on Quantum Chromodynamics Global Analysis
+    Venue: Preprint
+
+ 8. [2025] Deconvolution of Astronomical Images with Deep Neural Networks
+    Venue: Preprint
+
+ 9. [2025] Data-Efficient Dimensionality Reduction and Surrogate Modeling of High-Dimensional Stress Fields
+    Venue: Journal of Mechanical Design
+
+10. [2024] AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a
+  Specialized 8B-Parameter Large Language Model
+    Venue: Preprint
+
+11. [2024] Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing
+  Cluster Mass Estimation
+    Venue: Preprint
+
+12. [2024] Benchmarking AI-evolved cosmological structure formation and expanding dimensions through parallelization frameworks
+    Venue: APS April Meeting Abstracts
+
+13. [2024] Diffusion model based emulator for synthetic cosmological structure formation
+    Venue: APS April Meeting Abstracts
+
+14. [2024] High-dimensional Surrogate Modeling for Image Data with Nonlinear Dimension Reduction
+    Venue: Preprint
+
+15. [2024] Efficient mapping between void shapes and stress fields using deep convolutional neural networks with sparse data
+    Venue: Journal of Computing and Information Science in Engineering
+
+16. [2024] Learning Relationships Between Disparate Representations of Objects with Transformers and Contrastive Losses
+    Venue: Authorea Preprints
+
+17. [2024] Enhancing Interpretability in Generative Modeling: Disentangled Latent Spaces in Scientific Datasets
+    Venue: Authorea Preprints
+
+18. [2023] Application of probabilistic modeling and automated machine learning
+  framework for high-dimensional stress field
+    Venue: Preprint
+
+19. [2023] Constructing impactful machine learning research for astronomy: Best practices for researchers and reviewers
+    Venue: arXiv preprint arXiv:2310.12528
+
+20. [2023] 2023 AI Testbed Expeditions Report
+    Venue: Preprint
+
+21. [2023] VizieR Online Data Catalog: CEMP in Gaia DR3 (Lucey+, 2023)
+    Venue: VizieR Online Data Catalog
+
+22. [2023] Carbon-enhanced metal-poor star candidates from BP/RP spectra in Gaia DR3
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+23. [2023] Scalable Probabilistic Modeling and Machine Learning With Dimensionality Reduction for Expensive High-Dimensional Problems
+    Venue: Preprint
+
+24. [2022] Neural Network Based Point Spread Function Deconvolution For
+  Astronomical Applications
+    Venue: Preprint
+
+25. [2022] Interpretable Uncertainty Quantification in AI for HEP
+    Venue: Preprint
+
+26. [2022] Differentiable Predictions for Large Scale Structure with SHAMNet
+    Venue: The Open Journal of Astrophysics
+
+27. [2022] Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+28. [2022] AI for High Energy Physics: Interpretable Uncertainty Quantification
+    Venue: Bulletin of the American Physical Society
+
+29. [2022] Over 2.7 Million Carbon-Enhanced Metal-Poor stars from BP/RP Spectra in $ Gaia $ DR3
+    Venue: arXiv e-prints
+
+30. [2021] Physical Benchmarking for AI-Generated Cosmic Web
+    Venue: Neural Information Processing Systems (NeurIPS) 2021 AI for Science Workshop (2021)
+
+31. [2021] Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks
+    Venue: Monthly Notices of the Royal Astronomical Society (2021)
+
+32. [2021] Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation
+    Venue: Physica D: Nonlinear Phenomena
+
+33. [2021] Weak Lensing: Optimal Separation of Scales
+    Venue: Preprint
+
+34. [2021] Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+35. [2021] Constraining  gravity with a -cut cosmic shear analysis of the Hyper Suprime-Cam first-year data
+    Venue: Physical Review D
+
+36. [2021] Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning
+    Venue: Nature Machine Intelligence
+
+37. [2021] Beyond the hubble sequence–exploring galaxy morphology with unsupervised machine learning
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+38. [2021] Matter power spectrum emulator for  modified gravity cosmologies
+    Venue: Physical Review D
+
+39. [2020] Probabilistic neural networks for fluid flow surrogate modeling and data recovery
+    Venue: Phys. Rev. Fluids 5, 104401 (2020)
+
+40. [2020] A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling
+    Venue: 
+
+41. [2020] Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies
+    Venue: Phys. Rev. D 103, 123525 (2020)
+
+42. [2020] Anomaly detection in astronomical images with generative adversarial networks
+    Venue: arXiv preprint arXiv:2012.08082
+
+43. [2020] VizieR Online Data Catalog: The SPTpol Extended Cluster Survey (Bleem+, 2020)
+    Venue: VizieR Online Data Catalog
+
+44. [2020] The SPTPoL extended cluster survey
+    Venue: The Astrophysical Journal Supplement Series
+
+45. [2020] From the Inner to Outer Milky Way: A Pristine Sample of 4.3 Million Red Clump Stars
+    Venue: arXiv
+
+46. [2020] VizieR Online Data Catalog: Photometric sample of 2.6 million red clump stars (Lucey+, 2020)
+    Venue: VizieR Online Data Catalog
+
+47. [2020] Probabilistic neural network-based reduced-order surrogate for fluid flows
+    Venue: arXiv preprint arXiv:2012.08719
+
+48. [2020] Unstructured fluid flow data recovery using machine learning and Voronoi diagrams
+    Venue: APS Division of Fluid Dynamics Meeting Abstracts
+
+49. [2020] Probabilistic neural networks for fluid flow model-order reduction and data recovery
+    Venue: arXiv preprint arXiv:2005.04271
+
+50. [2020] From the inner to outer Milky Way: a photometric sample of 2.6 million red clump stars
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+51. [2019] The Caustic Design of the Dark Matter Web
+    Venue: arXiv preprint arXiv:1906.05920
+
+52. [2019] Generative networks for emulating synthetic sky images
+    Venue: Technical report, Kavli Summer Program in Astrophysics
+
+53. [2019] Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images
+    Venue: ArXiv
+
+54. [2018] Cosmological analysis pipelines through Neural Networks
+    Venue: APS April Meeting Abstracts
+
+55. [2018] Topology, Geometry and Morphology of the Dark Matter Web
+    Venue: Preprint
+
+56. [2018] Tracing the cosmic web
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+57. [2017] Dark matter haloes: a multistream view
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+58. [2017] Topology and geometry of the dark matter web: a multistream view
+    Venue: Monthly Notices of the Royal Astronomical Society
+
+59. [2017] Topology and geometry of the dark matter web
+    Venue: APS April Meeting Abstracts
+
+60. [2015] Multi-stream portrait of the cosmic web
+    Venue: Monthly Notices of the Royal Astronomical Society
+
