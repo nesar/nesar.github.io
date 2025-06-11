@@ -40,14 +40,12 @@ author_profile: true
                 <a href="{{ post.paperurl }}" target="_blank" class="pub-link paper-link">
                   <i class="fas fa-file-pdf"></i> Paper
                 </a>
-              {% endif %}
-              
-              {% if post.excerpt and post.excerpt contains 'arXiv' %}
+              {% elsif post.excerpt and post.excerpt contains 'arXiv' %}
                 {% assign arxiv_match = post.excerpt | split: '](http://arxiv.org/abs/' %}
                 {% if arxiv_match.size > 1 %}
                   {% assign arxiv_id = arxiv_match[1] | split: ')' | first %}
-                  <a href="http://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="pub-link arxiv-link">
-                    <i class="fas fa-external-link-alt"></i> arXiv
+                  <a href="http://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="pub-link paper-link">
+                    <i class="fas fa-file-pdf"></i> Paper
                   </a>
                 {% endif %}
               {% endif %}
@@ -160,16 +158,6 @@ author_profile: true
 
 .paper-link:hover {
   background: #c53030;
-  color: white;
-}
-
-.arxiv-link {
-  background: #48bb78;
-  color: white;
-}
-
-.arxiv-link:hover {
-  background: #38a169;
   color: white;
 }
 
