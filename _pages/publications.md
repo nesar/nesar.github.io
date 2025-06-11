@@ -10,7 +10,7 @@ author_profile: true
 <div class="publications-header">
   <p class="publications-note">
     Up-to-date publication list and citations can be found on my 
-    <a href="https://scholar.google.com/citations?user=gI4dQOgAAAAJ&hl=en" target="_blank" class="scholar-link">
+    <a href="https://scholar.google.com/citations?hl=en&user=dCe3MK0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="scholar-link">
       <i class="fas fa-graduation-cap"></i> Google Scholar profile
     </a>
   </p>
