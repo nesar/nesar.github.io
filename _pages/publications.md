@@ -14,65 +14,73 @@ author_profile: true
       <i class="fas fa-graduation-cap"></i> Google Scholar profile
     </a>
   </p>
-  <p class="publications-instruction">Click on any paper title to view the full abstract</p>
+  <p class="publications-instruction">Click on any paper title to view the full abstract on the right</p>
 </div>
 
-{% assign publications_by_year = site.publications | group_by_exp:"publication", "publication.date | date: '%Y'" | sort: "name" | reverse %}
-
-{% for year in publications_by_year %}
-  <div class="year-section">
-    <h2 class="year-header" id="{{ year.name }}">{{ year.name }}</h2>
-    <div class="publications-grid">
-      {% for post in year.items %}
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title" onclick="openAbstract('{{ post.title | slugify }}')">
-              {{ post.title }}
-              <i class="fas fa-expand-alt expand-icon"></i>
-            </h3>
-            
-            {% if post.venue %}
-              <p class="publication-venue">
-                <i class="fas fa-journal-whills"></i> {{ post.venue }}, {{ post.date | date: "%Y" }}
-              </p>
-            {% endif %}
-            
-            <div class="publication-links">
-              {% if post.paperurl %}
-                <a href="{{ post.paperurl }}" target="_blank" class="pub-link paper-link">
-                  <i class="fas fa-file-pdf"></i> Paper
-                </a>
-              {% endif %}
-              
-              {% if post.excerpt and post.excerpt contains 'arXiv' %}
-                {% assign arxiv_match = post.excerpt | split: '](http://arxiv.org/abs/' %}
-                {% if arxiv_match.size > 1 %}
-                  {% assign arxiv_id = arxiv_match[1] | split: ')' | first %}
-                  <a href="http://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="pub-link arxiv-link">
-                    <i class="fas fa-external-link-alt"></i> arXiv
-                  </a>
+<div class="publications-layout">
+  <div class="publications-list">
+    {% assign publications_by_year = site.publications | group_by_exp:"publication", "publication.date | date: '%Y'" | sort: "name" | reverse %}
+    
+    {% for year in publications_by_year %}
+      <div class="year-section">
+        <h2 class="year-header" id="{{ year.name }}">{{ year.name }}</h2>
+        <div class="publications-grid">
+          {% for post in year.items %}
+            <div class="publication-item" data-abstract="{{ post.title | slugify }}">
+              <div class="publication-content">
+                <h3 class="publication-title" onclick="showAbstract('{{ post.title | slugify }}', this)">
+                  {{ post.title }}
+                  <i class="fas fa-chevron-right expand-icon"></i>
+                </h3>
+                
+                {% if post.venue %}
+                  <p class="publication-venue">
+                    <i class="fas fa-journal-whills"></i> {{ post.venue }}, {{ post.date | date: "%Y" }}
+                  </p>
                 {% endif %}
-              {% endif %}
+                
+                <div class="publication-links">
+                  {% if post.paperurl %}
+                    <a href="{{ post.paperurl }}" target="_blank" class="pub-link paper-link">
+                      <i class="fas fa-file-pdf"></i> Paper
+                    </a>
+                  {% endif %}
+                  
+                  {% if post.excerpt and post.excerpt contains 'arXiv' %}
+                    {% assign arxiv_match = post.excerpt | split: '](http://arxiv.org/abs/' %}
+                    {% if arxiv_match.size > 1 %}
+                      {% assign arxiv_id = arxiv_match[1] | split: ')' | first %}
+                      <a href="http://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="pub-link arxiv-link">
+                        <i class="fas fa-external-link-alt"></i> arXiv
+                      </a>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                
+                <!-- Hidden abstract content -->
+                <div id="abstract-{{ post.title | slugify }}" class="abstract-data" style="display: none;">
+                  <div class="abstract-title">{{ post.title }}</div>
+                  <div class="abstract-text">{{ post.content | strip_html | strip_newlines }}</div>
+                </div>
+              </div>
             </div>
-            
-            <!-- Hidden abstract content -->
-            <div id="abstract-{{ post.title | slugify }}" class="abstract-content" style="display: none;">{{ post.content }}</div>
-          </div>
+          {% endfor %}
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
   </div>
-{% endfor %}
-
-<!-- Abstract Modal -->
-<div id="abstractModal" class="abstract-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3 id="modalTitle" class="modal-title"></h3>
-      <span class="close-modal" onclick="closeAbstract()">&times;</span>
+  
+  <div class="abstract-panel">
+    <div class="abstract-panel-header">
+      <h3><i class="fas fa-file-alt"></i> Abstract</h3>
     </div>
-    <div class="modal-body">
-      <div id="modalAbstract" class="modal-abstract"></div>
+    <div class="abstract-panel-content">
+      <div id="abstract-display" class="abstract-display">
+        <div class="abstract-placeholder">
+          <i class="fas fa-mouse-pointer"></i>
+          <p>Click on any paper title to view its abstract here</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -111,12 +119,23 @@ author_profile: true
   margin: 0;
 }
 
+.publications-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+  min-height: 70vh;
+}
+
+.publications-list {
+  overflow-y: auto;
+}
+
 .year-section {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .year-header {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 700;
   color: #2d3748;
   border-bottom: 3px solid #4299e1;
@@ -126,33 +145,41 @@ author_profile: true
 
 .publications-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .publication-item {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 8px;
+  padding: 1.2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-left: 4px solid #4299e1;
+  transition: all 0.2s ease;
+  border-left: 4px solid #e2e8f0;
+  cursor: pointer;
 }
 
 .publication-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-left-color: #4299e1;
+}
+
+.publication-item.selected {
+  border-left-color: #4299e1;
+  background: #f7fafc;
 }
 
 .publication-title {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   color: #2d3748;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.8rem 0;
   cursor: pointer;
   transition: color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  line-height: 1.3;
 }
 
 .publication-title:hover {
@@ -160,19 +187,20 @@ author_profile: true
 }
 
 .expand-icon {
-  font-size: 0.8em;
+  font-size: 0.7em;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .publication-title:hover .expand-icon {
   opacity: 1;
+  transform: translateX(2px);
 }
 
 .publication-venue {
   color: #718096;
-  font-size: 0.95em;
-  margin: 0 0 1rem 0;
+  font-size: 0.85em;
+  margin: 0 0 0.8rem 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,18 +208,18 @@ author_profile: true
 
 .publication-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
 }
 
 .pub-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -216,100 +244,107 @@ author_profile: true
   color: white;
 }
 
-/* Modal Styles */
-.abstract-modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  animation: fadeIn 0.3s ease;
-}
-
-.modal-content {
+/* Abstract Panel Styles */
+.abstract-panel {
   background: white;
-  margin: 5% auto;
-  width: 90%;
-  max-width: 800px;
   border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease;
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  max-height: 80vh;
 }
 
-.modal-header {
+.abstract-panel-header {
   background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  padding: 1.2rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.modal-title {
+.abstract-panel-header h3 {
   margin: 0;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 600;
-  line-height: 1.4;
-  flex: 1;
-  padding-right: 1rem;
-}
-
-.close-modal {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2em;
-  cursor: pointer;
-  padding: 0;
-  width: 2rem;
-  height: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-  flex-shrink: 0;
+  gap: 0.5rem;
 }
 
-.close-modal:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.abstract-panel-content {
+  height: 100%;
 }
 
-.modal-body {
-  padding: 2rem;
-  max-height: 60vh;
+.abstract-display {
+  padding: 1.5rem;
+  max-height: 70vh;
   overflow-y: auto;
 }
 
-.modal-abstract {
-  font-size: 1.05em;
+.abstract-placeholder {
+  text-align: center;
+  color: #a0aec0;
+  padding: 3rem 1rem;
+}
+
+.abstract-placeholder i {
+  font-size: 3em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.abstract-placeholder p {
+  font-size: 1.1em;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.abstract-content-display {
+  animation: fadeIn 0.3s ease;
+}
+
+.abstract-title-display {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.8rem;
+}
+
+.abstract-text-display {
+  font-size: 1em;
   line-height: 1.7;
   color: #4a5568;
   text-align: justify;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { 
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+  .publications-layout {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+@media (max-width: 968px) {
+  .publications-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .abstract-panel {
+    position: relative;
+    top: 0;
+    max-height: 400px;
+  }
+  
   .publications-header {
     padding: 1.5rem;
   }
@@ -323,52 +358,47 @@ author_profile: true
   }
   
   .publication-title {
-    font-size: 1.1em;
+    font-size: 1em;
   }
   
-  .modal-content {
-    width: 95%;
-    margin: 10% auto;
+  .abstract-display {
+    max-height: 300px;
   }
-  
-  .modal-header {
-    padding: 1rem;
-  }
-  
-  .modal-title {
-    font-size: 1.1em;
-  }
-  
-  .modal-body {
-    padding: 1.5rem;
-  }
+}
+
+/* Hide abstract data - this is just for storing content */
+.abstract-data {
+  display: none !important;
 }
 </style>
 
 <script>
-function openAbstract(titleSlug) {
-  const abstractContent = document.getElementById('abstract-' + titleSlug);
-  const modal = document.getElementById('abstractModal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalAbstract = document.getElementById('modalAbstract');
+function showAbstract(titleSlug, element) {
+  // Remove selected class from all items
+  document.querySelectorAll('.publication-item').forEach(item => {
+    item.classList.remove('selected');
+  });
   
-  if (abstractContent) {
-    // Get the title from the clicked element
-    const titleElement = document.querySelector('[onclick*="' + titleSlug + '"]');
-    const title = titleElement ? titleElement.textContent.replace(/\s*$/, '').trim() : 'Publication Abstract';
+  // Add selected class to clicked item
+  const publicationItem = element.closest('.publication-item');
+  if (publicationItem) {
+    publicationItem.classList.add('selected');
+  }
+  
+  // Get the abstract data
+  const abstractData = document.getElementById('abstract-' + titleSlug);
+  const abstractDisplay = document.getElementById('abstract-display');
+  
+  if (abstractData) {
+    // Get title and text from the hidden data
+    const titleElement = abstractData.querySelector('.abstract-title');
+    const textElement = abstractData.querySelector('.abstract-text');
     
-    // Get abstract text and clean it up
-    let abstractText = abstractContent.innerHTML || abstractContent.textContent || '';
+    const title = titleElement ? titleElement.textContent : 'Publication Abstract';
+    let abstractText = textElement ? textElement.textContent : '';
     
-    // Clean up HTML tags and formatting
+    // Clean up the text
     abstractText = abstractText
-      .replace(/<[^>]*>/g, '') // Remove HTML tags
-      .replace(/&nbsp;/g, ' ') // Replace non-breaking spaces
-      .replace(/&amp;/g, '&') // Replace HTML entities
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
       .replace(/\s+/g, ' ') // Replace multiple spaces with single space
       .trim();
     
@@ -376,46 +406,38 @@ function openAbstract(titleSlug) {
     abstractText = abstractText.replace(/^Summary:\s*/i, '');
     
     // If still empty or very short, provide fallback
-    if (!abstractText || abstractText === '' || abstractText.length < 10) {
-      abstractText = 'Full abstract not available in the current format. Please visit the paper link or arXiv link above for complete details including the full abstract and paper content.';
+    if (!abstractText || abstractText.length < 10) {
+      abstractText = 'Full abstract not available in the current format. Please visit the paper link or arXiv link for complete details including the full abstract and paper content.';
     }
     
-    modalTitle.textContent = title;
-    modalAbstract.textContent = abstractText; // Use textContent to avoid HTML interpretation issues
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  } else {
-    console.log('No abstract content found for:', titleSlug);
-    // Fallback - show modal anyway with error message
-    const modal = document.getElementById('abstractModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalAbstract = document.getElementById('modalAbstract');
+    // Update the abstract panel
+    abstractDisplay.innerHTML = `
+      <div class="abstract-content-display">
+        <div class="abstract-title-display">${title}</div>
+        <div class="abstract-text-display">${abstractText}</div>
+      </div>
+    `;
     
-    modalTitle.textContent = 'Abstract Not Available';
-    modalAbstract.textContent = 'Unable to load abstract content. Please visit the paper link or arXiv link for full details.';
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    // Scroll abstract panel to top
+    abstractDisplay.scrollTop = 0;
+    
+  } else {
+    // Fallback display
+    abstractDisplay.innerHTML = `
+      <div class="abstract-content-display">
+        <div class="abstract-title-display">Abstract Not Available</div>
+        <div class="abstract-text-display">Unable to load abstract content. Please visit the paper link or arXiv link for full details.</div>
+      </div>
+    `;
   }
 }
 
-function closeAbstract() {
-  const modal = document.getElementById('abstractModal');
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-  const modal = document.getElementById('abstractModal');
-  if (event.target === modal) {
-    closeAbstract();
-  }
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    closeAbstract();
-  }
+// Optional: Auto-select first publication on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // You can uncomment this if you want the first paper to be auto-selected
+  // const firstPublication = document.querySelector('.publication-title');
+  // if (firstPublication) {
+  //   firstPublication.click();
+  // }
 });
 </script>
