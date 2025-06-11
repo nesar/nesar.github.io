@@ -1,6 +1,8 @@
 # Website Update Commands
 
-This guide contains all the commands you need to update your automated academic website.
+This guide contains all the commands you need to update your clean, optimized academic website.
+
+> **Note**: The codebase has been cleaned up - removed 20+ unnecessary template files, unused layouts, demo content, and duplicate files. See `STRUCTURE.md` for full details.
 
 ## Quick Update (Recommended)
 
