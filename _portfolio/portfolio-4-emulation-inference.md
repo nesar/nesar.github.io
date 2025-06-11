@@ -1,20 +1,20 @@
 ---
-title: "Uncertainty Quantification"
-excerpt: "Research in uncertainty quantification <br/><img src='/images/research_uncertainty-quantification.png'>"
+title: "Emulation & Inference"
+excerpt: "Research in emulation & inference <br/><img src='/images/research_emulation-inference.png'>"
 collection: portfolio
 ---
 
-Developing Bayesian and probabilistic methods for robust scientific inference, including uncertainty estimation in machine learning models.
+Developing statistical emulators, surrogate models, and uncertainty quantification methods for cosmological simulations and scientific inference.
 
 ## Research Figures
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page9_fig1_ec3efcb7.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
+    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page3_fig1_bb04a767.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
+    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page15_fig1_d2459df4.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
+    <img src="/images/research/figures/probabilistic_neural_networks_for_fluid_flow_model_page9_fig1_ec3efcb7.png" alt="Figure from Probabilistic neural networks for fluid flow model-order reduction and data recovery" onclick="openModal(this)">
     <p class="figure-caption">From: Probabilistic neural networks for fluid flow model-order reduction and data reco...</p>
   </div>
 </div>
@@ -116,9 +116,19 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({len(publications)} papers):
+## Related Publications:
 
+- **Data Efficient Dimensionality Reduction and Surrogate Modeling of High-Dimensional Stress Fields** (2025) - Preprint
+- **Constraining Early Dark Energy Models with Power Spectrum Emulation** (2025) - Preprint 
+- **MGEmu: An Emulator for Cosmological Models Beyond General Relativity** (2025) - Preprint
+- **High-dimensional surrogate modeling for image data using multi-fidelity Gaussian processes** (2024) - Preprint
+- **Learning relationships between disparate representations of materials for emulating high-fidelity simulations** (2024) - Preprint
+- **Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field** (2023) - Preprint
 - **Interpretable Uncertainty Quantification in AI for HEP** (2022) - Preprint
 - **AI for High Energy Physics: Interpretable Uncertainty Quantification** (2022) - Bulletin of the American Physical Society
+- **Differentiable Predictions for Large-scale Structure** (2021) - Preprint
+- **Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning** (2021) - Nature Machine Intelligence
+- **Latent space time evolution of non-intrusive reduced-order models using Gaussian process emulation** (2021) - Physica D: Nonlinear Phenomena
+- **Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies** (2021) - Physical Review D
 - **Probabilistic neural networks for fluid flow surrogate modeling and data recovery** (2020) - Phys. Rev. Fluids 5, 104401 (2020)
 - **Probabilistic neural networks for fluid flow model-order reduction and data recovery** (2020) - arXiv preprint arXiv:2005.04271

@@ -1,22 +1,14 @@
 ---
-title: "Machine Learning & AI"
-excerpt: "Research in machine learning & ai <br/><img src='/images/research_machine-learning.png'>"
+title: "Machine Learning for Science"
+excerpt: "Research in machine learning for science <br/><img src='/images/research_machine-learning.png'>"
 collection: portfolio
 ---
 
-Developing specialized AI models for astronomy, including domain-specific LLMs, neural networks for astronomical data analysis, and generative models for synthetic observations.
+Applying machine learning techniques to astronomical problems, including neural networks for data analysis, generative models, and anomaly detection in scientific datasets.
 
 ## Research Figures
 
 <div class="research-figures-grid">
-  <div class="research-figure">
-    <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page9_fig1_007b57c7.png" alt="Figure from A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling" onclick="openModal(this)">
-    <p class="figure-caption">From: A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Dete...</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig1_6d73bb5b.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
-    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
-  </div>
   <div class="research-figure">
     <img src="/images/research/figures/generative_networks_for_emulating_synthetic_sky_im_page9_fig1_b69cf4d9.png" alt="Figure from Generative networks for emulating synthetic sky images" onclick="openModal(this)">
     <p class="figure-caption">From: Generative networks for emulating synthetic sky images</p>
@@ -124,26 +116,14 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({len(publications)} papers):
+## Related Publications:
 
-- **AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a
-  70B-Parameter Domain-Specialized Reasoning Model** (2025) - Preprint
-- **EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific
-  Research Assistants** (2025) - Preprint
-- **AstroMLab 1: Who wins astronomy jeopardy!?** (2025) - Astronomy and Computing
-- **Snowmass2021-Letter of Interest Scientific AI Approaches in Computational Cosmology** (2025) - Preprint
 - **Deconvolution of Astronomical Images with Deep Neural Networks** (2025) - Preprint
-- **AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a
-  Specialized 8B-Parameter Large Language Model** (2024) - Preprint
-- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing
-  Cluster Mass Estimation** (2024) - Preprint
+- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation** (2024) - Preprint
 - **Efficient mapping between void shapes and stress fields using deep convolutional neural networks with sparse data** (2024) - Journal of Computing and Information Science in Engineering
 - **Enhancing Interpretability in Generative Modeling: Disentangled Latent Spaces in Scientific Datasets** (2024) - Authorea Preprints
-- **Constructing impactful machine learning research for astronomy: Best practices for researchers and reviewers** (2023) - arXiv preprint arXiv:2310.12528
-- **2023 AI Testbed Expeditions Report** (2023) - Preprint
 - **Scalable Probabilistic Modeling and Machine Learning With Dimensionality Reduction for Expensive High-Dimensional Problems** (2023) - Preprint
-- **Neural Network Based Point Spread Function Deconvolution For
-  Astronomical Applications** (2022) - Preprint
+- **Neural Network Based Point Spread Function Deconvolution For Astronomical Applications** (2022) - Preprint
 - **Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z** (2022) - Monthly Notices of the Royal Astronomical Society
 - **Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks** (2021) - Monthly Notices of the Royal Astronomical Society (2021)
 - **Weak Lensing: Optimal Separation of Scales** (2021) - Preprint

@@ -116,7 +116,7 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({len(publications)} papers):
+## Related Publications:
 
 - **Benchmarking AI-evolved cosmological structure formation and expanding dimensions through parallelization frameworks** (2024) - APS April Meeting Abstracts
 - **Diffusion model based emulator for synthetic cosmological structure formation** (2024) - APS April Meeting Abstracts
