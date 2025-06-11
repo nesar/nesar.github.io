@@ -8,6 +8,7 @@ import os
 import re
 import json
 import subprocess
+import sys
 from collections import defaultdict
 from typing import List, Dict, Set
 
@@ -197,35 +198,43 @@ class ResearchOrganizer:
         return dict(figures_by_paper)
     
     def create_diverse_figure_selection(self, category: str, publications: List[Dict], figures_by_paper: Dict) -> List[Dict]:
-        """Select diverse figures from different papers for a category."""
+        """Select diverse figures from different papers for a category with randomization."""
+        import random
+        
         selected_figures = []
         used_papers = set()
         
+        # Get all papers with figures for this category
+        papers_with_figures = [(paper['title'], figures_by_paper[paper['title']]) 
+                              for paper in publications 
+                              if paper['title'] in figures_by_paper and figures_by_paper[paper['title']]]
+        
+        # Randomize the order to get variety across runs
+        random.shuffle(papers_with_figures)
+        
+        # Also randomize figures within each paper
+        for paper_title, figures in papers_with_figures:
+            random.shuffle(figures)
+        
         # First pass: one figure from each paper that has figures
-        for paper in publications:
+        for paper_title, figures in papers_with_figures:
             if len(selected_figures) >= 2:  # Limit to 2 figures per category
                 break
                 
-            paper_title = paper['title']
-            if paper_title in figures_by_paper and paper_title not in used_papers:
-                figures = figures_by_paper[paper_title]
-                if figures:
-                    selected_figures.append(figures[0])  # Take first figure
-                    used_papers.add(paper_title)
+            if paper_title not in used_papers and figures:
+                selected_figures.append(figures[0])  # Take first (now randomized) figure
+                used_papers.add(paper_title)
         
         # Second pass: add more figures from different papers if needed
         if len(selected_figures) < 2:
-            for paper in publications:
+            for paper_title, figures in papers_with_figures:
                 if len(selected_figures) >= 2:
                     break
                     
-                paper_title = paper['title']
-                if paper_title in figures_by_paper:
-                    figures = figures_by_paper[paper_title]
-                    # Take second figure if we have space and from different paper
-                    if len(figures) > 1 and len(selected_figures) < 2 and paper_title not in used_papers:
-                        selected_figures.append(figures[1])
-                        used_papers.add(paper_title)
+                # Take second figure if we have space and from different paper
+                if len(figures) > 1 and len(selected_figures) < 2 and paper_title not in used_papers:
+                    selected_figures.append(figures[1])
+                    used_papers.add(paper_title)
         
         return selected_figures[:2]  # Maximum 2 figures per category
     
@@ -840,6 +849,26 @@ window.onclick = function(event) {
             if publications:
                 # Get diverse figures for this category
                 figures = self.create_diverse_figure_selection(category, publications, figures_by_paper)
+                
+                # Special handling for Foundation Models - create custom figures if no extractable ones
+                if category == 'foundation-models' and len(figures) == 0:
+                    print("🎨 Foundation Models has no extractable figures, creating custom figures...")
+                    try:
+                        import subprocess
+                        result = subprocess.run(
+                            [sys.executable, os.path.join(self.base_dir, "scripts", "create_foundation_models_figures.py")],
+                            capture_output=True, text=True, cwd=self.base_dir
+                        )
+                        if result.returncode == 0:
+                            print("✅ Custom Foundation Models figures created successfully")
+                            # Re-scan for figures after creation
+                            figures_by_paper = self.get_figures_by_paper()
+                            figures = self.create_diverse_figure_selection(category, publications, figures_by_paper)
+                        else:
+                            print(f"⚠️ Custom figure creation had issues: {result.stderr}")
+                    except Exception as e:
+                        print(f"⚠️ Could not create custom Foundation Models figures: {e}")
+                
                 categories_with_figures[category] = figures
                 
                 # Create portfolio content

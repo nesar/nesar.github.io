@@ -206,10 +206,10 @@ class FigureExtractor:
         
         # Keywords for different categories (order matters - more specific first)
         categories = {
-            'statistical-emulation': ['emulator', 'emulation', 'surrogate', 'power spectrum', 'reduced order', 'interpolation', 'approximation', 'synthetic'],
-            'uncertainty-quantification': ['uncertainty', 'bayesian', 'probabilistic', 'error', 'confidence', 'monte carlo', 'mcmc'],
+            'foundation-models': ['astromlab', 'llm', 'large language model', 'foundation model', 'gpt', 'language model', 'eaira', 'ai model', 'transformer', 'bert', 'chatgpt'],
+            'emulation-inference': ['emulator', 'emulation', 'surrogate', 'power spectrum', 'reduced order', 'interpolation', 'approximation', 'synthetic', 'uncertainty', 'bayesian', 'probabilistic', 'inference', 'mcmc', 'monte carlo'],
             'dark-matter': ['dark matter', 'cosmic web', 'cosmology', 'halo', 'structure formation', 'n-body', 'simulation', 'caustic', 'multistream'],
-            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training', 'generative', 'anomaly detection', 'gravitational lens', 'lensing'],
+            'machine-learning': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'model', 'training', 'generative', 'anomaly detection', 'gravitational lens', 'lensing', 'deconvolution'],
             'other-research': []
         }
         
@@ -281,10 +281,10 @@ class FigureExtractor:
         portfolio_dir = os.path.join(self.base_dir, "_portfolio")
         
         category_files = {
-            'machine-learning': 'portfolio-1-machine-learning.md',
-            'dark-matter': 'portfolio-2-dark-matter.md', 
-            'uncertainty-quantification': 'portfolio-3-uncertainty-quantification.md',
-            'statistical-emulation': 'portfolio-4-statistical-emulation.md',
+            'foundation-models': 'portfolio-1-foundation-models.md',
+            'machine-learning': 'portfolio-2-machine-learning.md',
+            'dark-matter': 'portfolio-3-dark-matter.md', 
+            'emulation-inference': 'portfolio-4-emulation-inference.md',
             'other-research': 'portfolio-5-other-research.md'
         }
         
@@ -341,7 +341,9 @@ class FigureExtractor:
                 print(f"Error updating {portfolio_file}: {e}")
     
     def curate_diverse_figures(self, figures: List[Dict], max_figures: int = 4, max_per_paper: int = 2) -> List[Dict]:
-        """Curate figures to show diversity across different papers."""
+        """Curate figures to show diversity across different papers with randomization."""
+        import random
+        
         if not figures:
             return []
         
@@ -353,12 +355,26 @@ class FigureExtractor:
                 papers[paper_title] = []
             papers[paper_title].append(fig)
         
-        # Select figures from different papers
-        curated = []
+        # Randomize the order of papers and figures within each paper
         paper_names = list(papers.keys())
+        random.shuffle(paper_names)
         
-        # Round-robin selection to ensure diversity
-        for round_num in range(max_per_paper):
+        for paper_name in paper_names:
+            random.shuffle(papers[paper_name])
+        
+        # Select figures from different papers using round-robin
+        curated = []
+        
+        # First, try to get one figure from each paper
+        for paper_name in paper_names:
+            if len(curated) >= max_figures:
+                break
+            paper_figures = papers[paper_name]
+            if paper_figures:
+                curated.append(paper_figures[0])
+        
+        # Then add more figures if needed and allowed
+        for round_num in range(1, max_per_paper):
             for paper_name in paper_names:
                 if len(curated) >= max_figures:
                     break

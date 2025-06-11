@@ -53,11 +53,14 @@ def main():
     publications = get_publications_with_urls()
     
     print(f"Found {len(publications)} publications with URLs")
+    print("Note: Figure selection is randomized for variety across different runs.")
     
-    # Process papers from different categories
+    # Process papers from different categories with better Foundation Models coverage
     key_papers = [
-        "Multi-stream portrait of the cosmic web",
-        "AstroMLab", 
+        "AstroMLab",
+        "EAIRA", 
+        "foundation model",
+        "language model",
         "machine learning",
         "dark matter",
         "neural network",
@@ -65,17 +68,23 @@ def main():
         "bayesian",
         "probabilistic",
         "gravitational lens",
-        "weak lens", 
-        "strong lens",
         "lensing",
-        "global field reconstruction",
         "anomaly detection",
         "generative",
-        "deconvolution"
+        "deconvolution",
+        "emulator",
+        "surrogate",
+        "cosmic web",
+        "caustic",
+        "multistream"
     ]
     
     processed_count = 0
-    max_papers = 10  # Increased limit to get more figures
+    max_papers = 12  # Increased limit to get more figures
+    
+    # Randomize the order of publications for variety
+    import random
+    random.shuffle(publications)
     
     for pub in publications:
         if processed_count >= max_papers:
@@ -84,8 +93,11 @@ def main():
         title = pub['title']
         url = pub['url']
         
-        # Check if it's a key paper
+        # Check if it's a key paper with more comprehensive matching
         is_key_paper = any(keyword.lower() in title.lower() for keyword in key_papers)
+        
+        # Special handling for Foundation Models papers that might not have extractable figures
+        is_foundation_model = any(keyword in title.lower() for keyword in ['astromlab', 'eaira', 'llm', 'language model', 'foundation model'])
         
         if not is_key_paper:
             continue
@@ -123,6 +135,9 @@ def main():
                     processed_count += 1
                 else:
                     print("⚠️  No figures extracted")
+                    # For Foundation Models papers, this is expected as they may not have traditional scientific figures
+                    if is_foundation_model:
+                        print("   (This is normal for Foundation Models papers - they typically contain text/performance tables rather than extractable figures)")
                 
                 # Clean up
                 try:
@@ -142,6 +157,13 @@ def main():
         print("1. Check the updated research portfolio pages")
         print("2. Review extracted figures in images/research/figures/")
         print("3. Test the website locally to see the results")
+        print("4. Run this script again for different figure selections (randomized)")
+    
+    # Print summary of categories that might need attention
+    print("\n📝 Note about Foundation Models:")
+    print("   Foundation Models papers (AstroMLab, EAIRA) typically don't contain")
+    print("   extractable scientific figures but rather text, tables, and performance metrics.")
+    print("   Consider adding custom figures or logos for this research area.")
 
 if __name__ == "__main__":
     main()
