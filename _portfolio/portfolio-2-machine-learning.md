@@ -10,12 +10,12 @@ Applying machine learning techniques to astronomical problems, including neural 
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/generative_networks_for_emulating_synthetic_sky_im_page9_fig1_b69cf4d9.png" alt="Figure from Generative networks for emulating synthetic sky images" onclick="openModal(this)">
-    <p class="figure-caption">From: Generative networks for emulating synthetic sky images</p>
+    <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page9_fig1_007b57c7.png" alt="Figure from A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling" onclick="openModal(this)">
+    <p class="figure-caption">From: A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Dete...</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page8_fig2_7db0c93a.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
-    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
+    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig1_6d73bb5b.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
+    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
   </div>
 </div>
 
@@ -119,11 +119,13 @@ window.onclick = function(event) {
 ## Related Publications:
 
 - **Deconvolution of Astronomical Images with Deep Neural Networks** (2025) - Preprint
-- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation** (2024) - Preprint
+- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing
+  Cluster Mass Estimation** (2024) - Preprint
 - **Efficient mapping between void shapes and stress fields using deep convolutional neural networks with sparse data** (2024) - Journal of Computing and Information Science in Engineering
 - **Enhancing Interpretability in Generative Modeling: Disentangled Latent Spaces in Scientific Datasets** (2024) - Authorea Preprints
 - **Scalable Probabilistic Modeling and Machine Learning With Dimensionality Reduction for Expensive High-Dimensional Problems** (2023) - Preprint
-- **Neural Network Based Point Spread Function Deconvolution For Astronomical Applications** (2022) - Preprint
+- **Neural Network Based Point Spread Function Deconvolution For
+  Astronomical Applications** (2022) - Preprint
 - **Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z** (2022) - Monthly Notices of the Royal Astronomical Society
 - **Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks** (2021) - Monthly Notices of the Royal Astronomical Society (2021)
 - **Weak Lensing: Optimal Separation of Scales** (2021) - Preprint

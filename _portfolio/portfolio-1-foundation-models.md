@@ -9,14 +9,6 @@ Developing large language models and foundation models specialized for astronomy
 ## Research Figures
 
 <div class="research-figures-grid">
-  <div class="research-figure">
-    <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page9_fig1_007b57c7.png" alt="Figure from A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling" onclick="openModal(this)">
-    <p class="figure-caption">From: A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Dete...</p>
-  </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig1_6d73bb5b.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
-    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
-  </div>
 </div>
 
 <style>
@@ -118,8 +110,12 @@ window.onclick = function(event) {
 
 ## Related Publications:
 
-- **AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model** (2025) - Preprint
-- **EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants** (2025) - Preprint  
+- **AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a
+  70B-Parameter Domain-Specialized Reasoning Model** (2025) - Preprint
+- **EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific
+  Research Assistants** (2025) - Preprint
 - **AstroMLab 1: Who wins astronomy jeopardy!?** (2025) - Astronomy and Computing
-- **AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model** (2024) - Preprint
+- **Snowmass2021-Letter of Interest Scientific AI Approaches in Computational Cosmology** (2025) - Preprint
+- **AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a
+  Specialized 8B-Parameter Large Language Model** (2024) - Preprint
 - **Constructing impactful machine learning research for astronomy: Best practices for researchers and reviewers** (2023) - arXiv preprint arXiv:2310.12528

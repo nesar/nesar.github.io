@@ -7,6 +7,7 @@ Fixes duplicates, ensures figure diversity, and creates comprehensive publicatio
 import os
 import re
 import json
+import subprocess
 from collections import defaultdict
 from typing import List, Dict, Set
 
@@ -22,20 +23,20 @@ class ResearchOrganizer:
         print("📚 Analyzing all publications...")
         
         categories = {
+            'foundation-models': {
+                'keywords': ['astromlab', 'llm', 'large language model', 'foundation model', 'gpt', 'ai model', 'language model', 'eaira'],
+                'papers': []
+            },
             'machine-learning': {
-                'keywords': ['machine learning', 'deep learning', 'neural network', 'ai ', 'artificial intelligence', 'generative', 'anomaly detection', 'lensing', 'gravitational lens', 'astromlab'],
+                'keywords': ['machine learning', 'deep learning', 'neural network', 'generative', 'anomaly detection', 'lensing', 'gravitational lens'],
                 'papers': []
             },
             'dark-matter': {
                 'keywords': ['dark matter', 'cosmic web', 'cosmology', 'caustic', 'multistream', 'halo', 'structure formation'],
                 'papers': []
             },
-            'uncertainty-quantification': {
-                'keywords': ['uncertainty', 'bayesian', 'probabilistic neural', 'error', 'confidence'],
-                'papers': []
-            },
-            'statistical-emulation': {
-                'keywords': ['emulator', 'emulation', 'surrogate', 'reduced order', 'approximation', 'power spectrum', 'synthetic'],
+            'emulation-inference': {
+                'keywords': ['emulator', 'emulation', 'surrogate', 'reduced order', 'approximation', 'power spectrum', 'uncertainty', 'bayesian', 'probabilistic neural', 'inference'],
                 'papers': []
             },
             'other-research': {
@@ -46,25 +47,41 @@ class ResearchOrganizer:
         
         # Manual classification for accuracy
         manual_classifications = {
-            'Multi-stream portrait of the cosmic web': 'dark-matter',
-            'Dark matter haloes: a multistream view': 'dark-matter',
-            'Topology and geometry of the dark matter web': 'dark-matter',
-            'The Caustic Design of the Dark Matter Web': 'dark-matter',
-            'Tracing the cosmic web': 'dark-matter',
-            'Matter Power Spectrum Emulator': 'statistical-emulation',
-            'Matter power spectrum emulator': 'statistical-emulation',
-            'Probabilistic neural networks for fluid flow': 'uncertainty-quantification',
-            'Probabilistic neural network-based reduced-order': 'statistical-emulation',
-            'Application of probabilistic modeling': 'statistical-emulation',
-            'Global field reconstruction': 'statistical-emulation',
-            'Interpretable Uncertainty Quantification': 'uncertainty-quantification',
-            'AstroMLab': 'machine-learning',
+            # Foundation Models (LLM work)
+            'AstroMLab': 'foundation-models',
+            'EAIRA': 'foundation-models',
+            'Constructing impactful machine learning': 'foundation-models',
+            'Scientific AI': 'foundation-models',
+            
+            # Machine Learning for Science (non-LLM ML)
             'Anomaly detection': 'machine-learning',
             'Generative networks': 'machine-learning',
             'Machine learning synthetic spectra': 'machine-learning',
             'Neural Network Based Point Spread Function': 'machine-learning',
             'Modular Deep Learning Pipeline': 'machine-learning',
-            'Constructing impactful machine learning': 'machine-learning'
+            'Deconvolution of Astronomical Images': 'machine-learning',
+            'Beyond the hubble sequence': 'machine-learning',
+            
+            # Dark Matter & Cosmology
+            'Multi-stream portrait of the cosmic web': 'dark-matter',
+            'Dark matter haloes: a multistream view': 'dark-matter',
+            'Topology and geometry of the dark matter web': 'dark-matter',
+            'The Caustic Design of the Dark Matter Web': 'dark-matter',
+            'Tracing the cosmic web': 'dark-matter',
+            'Benchmarking AI-evolved cosmological structure': 'dark-matter',
+            'Physical Benchmarking for AI-Generated Cosmic Web': 'dark-matter',
+            
+            # Emulation & Inference (combined UQ + emulation)
+            'Matter Power Spectrum Emulator': 'emulation-inference',
+            'Matter power spectrum emulator': 'emulation-inference',
+            'Probabilistic neural networks for fluid flow': 'emulation-inference',
+            'Probabilistic neural network-based reduced-order': 'emulation-inference',
+            'Application of probabilistic modeling': 'emulation-inference',
+            'Global field reconstruction': 'emulation-inference',
+            'Interpretable Uncertainty Quantification': 'emulation-inference',
+            'MGEmu': 'emulation-inference',
+            'Constraining Early Dark Energy': 'emulation-inference',
+            'Data Efficient Dimensionality Reduction': 'emulation-inference'
         }
         
         # Process all publication files
@@ -186,7 +203,7 @@ class ResearchOrganizer:
         
         # First pass: one figure from each paper that has figures
         for paper in publications:
-            if len(selected_figures) >= 4:
+            if len(selected_figures) >= 2:  # Limit to 2 figures per category
                 break
                 
             paper_title = paper['title']
@@ -197,19 +214,20 @@ class ResearchOrganizer:
                     used_papers.add(paper_title)
         
         # Second pass: add more figures from different papers if needed
-        if len(selected_figures) < 4:
+        if len(selected_figures) < 2:
             for paper in publications:
-                if len(selected_figures) >= 4:
+                if len(selected_figures) >= 2:
                     break
                     
                 paper_title = paper['title']
                 if paper_title in figures_by_paper:
                     figures = figures_by_paper[paper_title]
-                    # Take second figure if we have space
-                    if len(figures) > 1 and len(selected_figures) < 4:
+                    # Take second figure if we have space and from different paper
+                    if len(figures) > 1 and len(selected_figures) < 2 and paper_title not in used_papers:
                         selected_figures.append(figures[1])
+                        used_papers.add(paper_title)
         
-        return selected_figures[:4]  # Maximum 4 figures
+        return selected_figures[:2]  # Maximum 2 figures per category
     
     def create_portfolio_content(self, category: str, title: str, description: str, publications: List[Dict], figures: List[Dict]) -> str:
         """Create clean portfolio content."""
@@ -333,7 +351,7 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({len(publications)} papers):
+## Related Publications:
 
 """
         
@@ -365,9 +383,16 @@ author_profile: true
 
         research_configs = [
             {
+                'category': 'foundation-models',
+                'title': 'Foundation Models',
+                'description': 'Developing large language models and foundation models specialized for astronomy, including domain-specific LLMs for scientific research and education.',
+                'icon': '🧠',
+                'color': '#6366f1'
+            },
+            {
                 'category': 'machine-learning',
-                'title': 'Machine Learning & AI',
-                'description': 'Developing specialized AI models for astronomy, including domain-specific LLMs, neural networks for astronomical data analysis, and generative models for synthetic observations.',
+                'title': 'Machine Learning for Science',
+                'description': 'Applying machine learning techniques to astronomical problems, including neural networks for data analysis, generative models, and anomaly detection in scientific datasets.',
                 'icon': '🤖',
                 'color': '#3b82f6'
             },
@@ -379,16 +404,9 @@ author_profile: true
                 'color': '#8b5cf6'
             },
             {
-                'category': 'uncertainty-quantification',
-                'title': 'Uncertainty Quantification',
-                'description': 'Developing Bayesian and probabilistic methods for robust scientific inference, including uncertainty estimation in machine learning models.',
-                'icon': '📊',
-                'color': '#ef4444'
-            },
-            {
-                'category': 'statistical-emulation',
-                'title': 'Statistical Emulation & Inference',
-                'description': 'Developing statistical emulators and surrogate models for cosmological simulations, including power spectrum emulation and reduced-order modeling.',
+                'category': 'emulation-inference',
+                'title': 'Emulation & Inference',
+                'description': 'Developing statistical emulators, surrogate models, and uncertainty quantification methods for cosmological simulations and scientific inference.',
                 'icon': '📈',
                 'color': '#f59e0b'
             }
@@ -667,9 +685,115 @@ window.onclick = function(event) {
         
         return content
     
+    def refresh_research_images(self):
+        """Refresh research images by extracting figures from recent papers."""
+        print("🖼️  Refreshing research images...")
+        
+        try:
+            # Run the figure extraction script for automatic processing
+            extract_script = os.path.join(self.base_dir, "scripts", "auto_extract_from_publications.py")
+            
+            if os.path.exists(extract_script):
+                print("   📸 Running automatic figure extraction...")
+                # Try to run with the current Python executable to ensure same environment
+                import sys
+                result = subprocess.run(
+                    [sys.executable, extract_script], 
+                    cwd=self.base_dir,
+                    capture_output=True, 
+                    text=True,
+                    timeout=300  # 5 minute timeout
+                )
+                
+                if result.returncode == 0:
+                    print("   ✅ Figure extraction completed successfully")
+                    if result.stdout:
+                        print(f"   Output: {result.stdout.strip()}")
+                else:
+                    print(f"   ⚠️  Figure extraction had issues: {result.stderr}")
+            else:
+                print("   📁 Auto extraction script not found, checking existing figures...")
+                
+            # Check if we have figures available
+            if os.path.exists(self.figures_dir):
+                figure_count = len([f for f in os.listdir(self.figures_dir) if f.endswith('.png')])
+                print(f"   📊 Found {figure_count} research figures available")
+            else:
+                print("   📁 Creating figures directory...")
+                os.makedirs(self.figures_dir, exist_ok=True)
+                
+        except subprocess.TimeoutExpired:
+            print("   ⏰ Figure extraction timed out - continuing with existing figures")
+        except Exception as e:
+            print(f"   ❌ Error during figure extraction: {e}")
+            print("   📄 Continuing with existing figures...")
+
+    def update_publications_page(self):
+        """Update publications page with single Paper link logic."""
+        print("📄 Updating publications page...")
+        
+        pub_page_path = os.path.join(self.base_dir, "_pages", "publications.md")
+        
+        try:
+            with open(pub_page_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Update link logic to use single Paper button
+            old_pattern = r'''<div class="publication-links">
+              \{% if post\.paperurl %\}
+                <a href="\{\{ post\.paperurl \}\}" target="_blank" class="pub-link paper-link">
+                  <i class="fas fa-file-pdf"></i> Paper
+                </a>
+              \{% endif %\}
+              
+              \{% if post\.excerpt and post\.excerpt contains 'arXiv' %\}
+                \{% assign arxiv_match = post\.excerpt \| split: '\]\(http://arxiv\.org/abs/' %\}
+                \{% if arxiv_match\.size > 1 %\}
+                  \{% assign arxiv_id = arxiv_match\[1\] \| split: '\)' \| first %\}
+                  <a href="http://arxiv\.org/abs/\{\{ arxiv_id \}\}" target="_blank" class="pub-link arxiv-link">
+                    <i class="fas fa-external-link-alt"></i> arXiv
+                  </a>
+                \{% endif %\}
+              \{% endif %\}
+            </div>'''
+            
+            new_pattern = '''<div class="publication-links">
+              {% if post.paperurl %}
+                <a href="{{ post.paperurl }}" target="_blank" class="pub-link paper-link">
+                  <i class="fas fa-file-pdf"></i> Paper
+                </a>
+              {% elsif post.excerpt and post.excerpt contains 'arXiv' %}
+                {% assign arxiv_match = post.excerpt | split: '](http://arxiv.org/abs/' %}
+                {% if arxiv_match.size > 1 %}
+                  {% assign arxiv_id = arxiv_match[1] | split: ')' | first %}
+                  <a href="http://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="pub-link paper-link">
+                    <i class="fas fa-file-pdf"></i> Paper
+                  </a>
+                {% endif %}
+              {% endif %}
+            </div>'''
+            
+            # Also remove arxiv-link CSS styles
+            content = re.sub(r'\.arxiv-link \{[^}]+\}', '', content, flags=re.MULTILINE | re.DOTALL)
+            content = re.sub(r'\.arxiv-link:hover \{[^}]+\}', '', content, flags=re.MULTILINE | re.DOTALL)
+            
+            with open(pub_page_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+                
+            print("✅ Updated publications page with single Paper link")
+            
+        except Exception as e:
+            print(f"❌ Error updating publications page: {e}")
+
     def cleanup_and_organize(self):
         """Main cleanup and organization function."""
         print("🧹 Starting complete cleanup and organization...")
+        
+        # Refresh research images first
+        self.refresh_research_images()
+        
+        # Update publications page
+        self.update_publications_page()
         
         # Get all publications by category
         publications_by_category = self.get_all_publications_by_category()
@@ -679,25 +803,25 @@ window.onclick = function(event) {
         
         # Portfolio configurations
         portfolio_configs = {
+            'foundation-models': {
+                'title': 'Foundation Models',
+                'description': 'Developing large language models and foundation models specialized for astronomy, including domain-specific LLMs for scientific research and education.',
+                'file': 'portfolio-1-foundation-models.md'
+            },
             'machine-learning': {
-                'title': 'Machine Learning & AI',
-                'description': 'Developing specialized AI models for astronomy, including domain-specific LLMs, neural networks for astronomical data analysis, and generative models for synthetic observations.',
-                'file': 'portfolio-1-machine-learning.md'
+                'title': 'Machine Learning for Science',
+                'description': 'Applying machine learning techniques to astronomical problems, including neural networks for data analysis, generative models, and anomaly detection in scientific datasets.',
+                'file': 'portfolio-2-machine-learning.md'
             },
             'dark-matter': {
                 'title': 'Dark Matter & Cosmology',
                 'description': 'Investigating the cosmic web structure, dark matter halos, and large-scale structure formation using N-body simulations and multi-stream analysis.',
-                'file': 'portfolio-2-dark-matter.md'
+                'file': 'portfolio-3-dark-matter.md'
             },
-            'uncertainty-quantification': {
-                'title': 'Uncertainty Quantification',
-                'description': 'Developing Bayesian and probabilistic methods for robust scientific inference, including uncertainty estimation in machine learning models.',
-                'file': 'portfolio-3-uncertainty-quantification.md'
-            },
-            'statistical-emulation': {
-                'title': 'Statistical Emulation & Inference',
-                'description': 'Developing statistical emulators and surrogate models for cosmological simulations, including power spectrum emulation and reduced-order modeling techniques.',
-                'file': 'portfolio-4-statistical-emulation.md'
+            'emulation-inference': {
+                'title': 'Emulation & Inference',
+                'description': 'Developing statistical emulators, surrogate models, and uncertainty quantification methods for cosmological simulations and scientific inference.',
+                'file': 'portfolio-4-emulation-inference.md'
             },
             'other-research': {
                 'title': 'Other Research',

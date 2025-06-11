@@ -14,25 +14,27 @@ python3 scripts/cleanup_and_organize.py
 ```
 
 This single command will:
+- ✅ Refresh research images by extracting figures from papers
+- ✅ Update publications page with single Paper link logic
 - ✅ Analyze all 60+ publications and categorize them correctly
 - ✅ Ensure exhaustive publication lists for each research area
-- ✅ Select diverse figures from different papers (max 4 per category)
+- ✅ Select diverse figures from different papers (max 2 per category)
 - ✅ Create clean portfolio pages without duplicates
 - ✅ Generate a clean research overview page
 - ✅ Fix any content issues automatically
 
 ## Individual Update Commands
 
-### 1. Extract Figures from New Papers
+### 1. Refresh Research Images Only
 
-If you've added new papers and want to extract figures:
+If you just want to update the research figures:
 
 ```bash
+# Auto-extract figures from all publications
+python3 scripts/auto_extract_from_publications.py
+
 # Extract figures from a specific PDF
 python3 scripts/extract_figures.py /path/to/new_paper.pdf
-
-# Auto-extract from all publications
-python3 scripts/auto_extract_from_publications.py
 ```
 
 ### 2. Update Publications Data
@@ -156,13 +158,13 @@ crontab -e
 ## Current Status
 
 After running `cleanup_and_organize.py`, your website has:
-- ✅ **Machine Learning & AI**: 24 papers, 4 diverse figures
-- ✅ **Dark Matter & Cosmology**: 10 papers, 2 diverse figures  
-- ✅ **Uncertainty Quantification**: 4 papers, 2 diverse figures
-- ✅ **Statistical Emulation**: 10 papers, 2 diverse figures
+- ✅ **Foundation Models**: LLM and foundation model research, 2 figures
+- ✅ **Machine Learning for Science**: Non-LLM ML applications, 2 figures
+- ✅ **Dark Matter & Cosmology**: Cosmological simulations, 2 figures  
+- ✅ **Emulation & Inference**: Combined UQ and emulation methods, 2 figures
 - ✅ Clean research overview with no duplicates
-- ✅ Exhaustive publication lists for each category
-- ✅ Figures from different papers (no duplicates from same paper)
+- ✅ Single "Paper" links (published version or arXiv fallback)
+- ✅ Publications properly categorized by research area
 
 ## Support
 

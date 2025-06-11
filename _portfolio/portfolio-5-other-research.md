@@ -108,10 +108,11 @@ window.onclick = function(event) {
 }
 </script>
 
-## Related Publications ({len(publications)} papers):
+## Related Publications:
 
 - **GAN-based Event-level Inverse Mapper (GEIM)-An Application on Quantum Chromodynamics Global Analysis** (2025) - Preprint
 - **Learning Relationships Between Disparate Representations of Objects with Transformers and Contrastive Losses** (2024) - Authorea Preprints
+- **2023 AI Testbed Expeditions Report** (2023) - Preprint
 - **VizieR Online Data Catalog: CEMP in Gaia DR3 (Lucey+, 2023)** (2023) - VizieR Online Data Catalog
 - **Carbon-enhanced metal-poor star candidates from BP/RP spectra in Gaia DR3** (2023) - Monthly Notices of the Royal Astronomical Society
 - **Differentiable Predictions for Large Scale Structure with SHAMNet** (2022) - The Open Journal of Astrophysics
