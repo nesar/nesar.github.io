@@ -253,19 +253,15 @@ collection: portfolio
 
 """
         
-        # Special handling for Foundation Models
-        if category == 'foundation-models' and len(figures) == 0:
-            content += self.create_foundation_models_highlights()
-        else:
-            content += """<div class="research-figures-grid">
+        content += """<div class="research-figures-grid">
 """
-            for fig in figures:
-                content += f"""  <div class="research-figure">
+        for fig in figures:
+            content += f"""  <div class="research-figure">
     <img src="{fig['relative_path']}" alt="Figure from {fig['paper_title']}" onclick="openModal(this)">
     <p class="figure-caption">From: {fig['paper_title'][:80]}{'...' if len(fig['paper_title']) > 80 else ''}</p>
   </div>
 """
-            content += """</div>
+        content += """</div>
 
 <style>
 .research-figures-grid {
@@ -380,7 +376,7 @@ window.onclick = function(event) {
         """Create special highlights for Foundation Models since they don't have extractable figures."""
         return '''<div class="research-figures-grid">
   <div class="foundation-model-highlight">
-    <h4>🧠 AstroMLab Foundation Models</h4>
+    <h4>AstroMLab Foundation Models</h4>
     <p>Specialized 8B & 70B parameter models achieving GPT-4o level performance in astronomy Q&A tasks.</p>
     <ul>
       <li>Domain-specific reasoning architecture</li>
@@ -389,7 +385,7 @@ window.onclick = function(event) {
     </ul>
   </div>
   <div class="foundation-model-highlight">
-    <h4>🔬 EAIRA Evaluation Framework</h4>
+    <h4>EAIRA Evaluation Framework</h4>
     <p>Comprehensive methodology for evaluating AI models as scientific research assistants.</p>
     <ul>
       <li>Standardized evaluation metrics</li>
@@ -454,28 +450,28 @@ author_profile: true
                 'category': 'foundation-models',
                 'title': 'Foundation Models',
                 'description': 'Developing large language models and foundation models specialized for astronomy, including domain-specific LLMs for scientific research and education.',
-                'icon': '🧠',
+                'icon': '',
                 'color': '#6366f1'
             },
             {
                 'category': 'machine-learning',
                 'title': 'Machine Learning for Science',
                 'description': 'Applying machine learning techniques to astronomical problems, including neural networks for data analysis, generative models, and anomaly detection in scientific datasets.',
-                'icon': '🤖',
+                'icon': '',
                 'color': '#3b82f6'
             },
             {
                 'category': 'dark-matter',
                 'title': 'Dark Matter & Cosmology',
                 'description': 'Investigating the cosmic web structure, dark matter halos, and large-scale structure formation using N-body simulations and multi-stream analysis.',
-                'icon': '🌌',
+                'icon': '',
                 'color': '#8b5cf6'
             },
             {
                 'category': 'emulation-inference',
                 'title': 'Emulation & Inference',
                 'description': 'Developing statistical emulators, surrogate models, and uncertainty quantification methods for cosmological simulations and scientific inference.',
-                'icon': '📈',
+                'icon': '',
                 'color': '#f59e0b'
             }
         ]
@@ -512,20 +508,6 @@ author_profile: true
           <a href="/portfolio/portfolio-{research_configs.index(config)+1}-{category}/" class="view-more-btn">
             +{len(figures) - 2} more figures →
           </a>
-        </div>
-"""
-            elif category == 'foundation-models':
-                # Special preview for Foundation Models
-                content += """
-        <div class="foundation-preview">
-          <div class="foundation-highlight-small">
-            <h5>🧠 AstroMLab Models</h5>
-            <p>8B & 70B parameter astronomy-specialized LLMs</p>
-          </div>
-          <div class="foundation-highlight-small">
-            <h5>🔬 EAIRA Framework</h5>
-            <p>AI research assistant evaluation methodology</p>
-          </div>
         </div>
 """
             else:
@@ -688,34 +670,6 @@ author_profile: true
   font-style: italic;
 }
 
-.foundation-preview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  grid-column: 1 / -1;
-}
-
-.foundation-highlight-small {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 8px;
-  padding: 1rem;
-  border-left: 3px solid #6366f1;
-  text-align: left;
-}
-
-.foundation-highlight-small h5 {
-  color: #4338ca;
-  margin: 0 0 0.5rem 0;
-  font-size: 0.9em;
-  font-weight: 600;
-}
-
-.foundation-highlight-small p {
-  color: #4a5568;
-  margin: 0;
-  font-size: 0.8em;
-  line-height: 1.3;
-}
 
 /* Modal styles */
 .modal {
@@ -952,24 +906,6 @@ window.onclick = function(event) {
                 # Get diverse figures for this category
                 figures = self.create_diverse_figure_selection(category, publications, figures_by_paper)
                 
-                # Special handling for Foundation Models - create custom figures if no extractable ones
-                if category == 'foundation-models' and len(figures) == 0:
-                    print("🎨 Foundation Models has no extractable figures, creating custom figures...")
-                    try:
-                        import subprocess
-                        result = subprocess.run(
-                            [sys.executable, os.path.join(self.base_dir, "scripts", "create_foundation_models_figures.py")],
-                            capture_output=True, text=True, cwd=self.base_dir
-                        )
-                        if result.returncode == 0:
-                            print("✅ Custom Foundation Models figures created successfully")
-                            # Re-scan for figures after creation
-                            figures_by_paper = self.get_figures_by_paper()
-                            figures = self.create_diverse_figure_selection(category, publications, figures_by_paper)
-                        else:
-                            print(f"⚠️ Custom figure creation had issues: {result.stderr}")
-                    except Exception as e:
-                        print(f"⚠️ Could not create custom Foundation Models figures: {e}")
                 
                 categories_with_figures[category] = figures
                 
