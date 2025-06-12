@@ -251,17 +251,21 @@ collection: portfolio
 
 ## Research Figures
 
-<div class="research-figures-grid">
 """
         
-        for fig in figures:
-            content += f"""  <div class="research-figure">
+        # Special handling for Foundation Models
+        if category == 'foundation-models' and len(figures) == 0:
+            content += self.create_foundation_models_highlights()
+        else:
+            content += """<div class="research-figures-grid">
+"""
+            for fig in figures:
+                content += f"""  <div class="research-figure">
     <img src="{fig['relative_path']}" alt="Figure from {fig['paper_title']}" onclick="openModal(this)">
     <p class="figure-caption">From: {fig['paper_title'][:80]}{'...' if len(fig['paper_title']) > 80 else ''}</p>
   </div>
 """
-        
-        content += """</div>
+            content += """</div>
 
 <style>
 .research-figures-grid {
@@ -372,6 +376,61 @@ window.onclick = function(event) {
         
         return content
     
+    def create_foundation_models_highlights(self) -> str:
+        """Create special highlights for Foundation Models since they don't have extractable figures."""
+        return '''<div class="research-figures-grid">
+  <div class="foundation-model-highlight">
+    <h4>🧠 AstroMLab Foundation Models</h4>
+    <p>Specialized 8B & 70B parameter models achieving GPT-4o level performance in astronomy Q&A tasks.</p>
+    <ul>
+      <li>Domain-specific reasoning architecture</li>
+      <li>Benchmark-topping performance</li>
+      <li>Scientific research applications</li>
+    </ul>
+  </div>
+  <div class="foundation-model-highlight">
+    <h4>🔬 EAIRA Evaluation Framework</h4>
+    <p>Comprehensive methodology for evaluating AI models as scientific research assistants.</p>
+    <ul>
+      <li>Standardized evaluation metrics</li>
+      <li>Research task assessment</li>
+      <li>AI assistant benchmarking</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.foundation-model-highlight {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid #6366f1;
+}
+
+.foundation-model-highlight h4 {
+  color: #4338ca;
+  margin-bottom: 0.5rem;
+  font-size: 1.1em;
+}
+
+.foundation-model-highlight p {
+  color: #4a5568;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.foundation-model-highlight ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.foundation-model-highlight li {
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+  font-size: 0.9em;
+}
+</style>'''
+    
     def create_clean_research_overview(self, categories_with_figures: Dict):
         """Create a clean research overview page without duplicates."""
         
@@ -453,6 +512,20 @@ author_profile: true
           <a href="/portfolio/portfolio-{research_configs.index(config)+1}-{category}/" class="view-more-btn">
             +{len(figures) - 2} more figures →
           </a>
+        </div>
+"""
+            elif category == 'foundation-models':
+                # Special preview for Foundation Models
+                content += """
+        <div class="foundation-preview">
+          <div class="foundation-highlight-small">
+            <h5>🧠 AstroMLab Models</h5>
+            <p>8B & 70B parameter astronomy-specialized LLMs</p>
+          </div>
+          <div class="foundation-highlight-small">
+            <h5>🔬 EAIRA Framework</h5>
+            <p>AI research assistant evaluation methodology</p>
+          </div>
         </div>
 """
             else:
@@ -613,6 +686,35 @@ author_profile: true
   padding: 2rem;
   color: #718096;
   font-style: italic;
+}
+
+.foundation-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+.foundation-highlight-small {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 8px;
+  padding: 1rem;
+  border-left: 3px solid #6366f1;
+  text-align: left;
+}
+
+.foundation-highlight-small h5 {
+  color: #4338ca;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.foundation-highlight-small p {
+  color: #4a5568;
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.3;
 }
 
 /* Modal styles */
