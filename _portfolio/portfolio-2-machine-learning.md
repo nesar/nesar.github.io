@@ -10,11 +10,11 @@ Applying machine learning techniques to astronomical problems, including neural 
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page1_fig2_bf9df594.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
+    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig2_e107cc7c.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
     <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page9_fig2_c3a26812.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
+    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page6_fig4_f1906216.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
     <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
   </div>
 </div>

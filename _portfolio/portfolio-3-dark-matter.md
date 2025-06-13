@@ -10,7 +10,7 @@ Investigating the cosmic web structure, dark matter halos, and large-scale struc
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/the_caustic_design_of_the_dark_matter_web_page10_fig1_b7ed97f2.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)">
+    <img src="/images/research/figures/the_caustic_design_of_the_dark_matter_web_page1_fig4_af8b975c.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)">
     <p class="figure-caption">From: The Caustic Design of the Dark Matter Web</p>
   </div>
 </div>

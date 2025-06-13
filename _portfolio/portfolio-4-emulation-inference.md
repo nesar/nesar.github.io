@@ -9,10 +9,6 @@ Developing statistical emulators, surrogate models, and uncertainty quantificati
 ## Research Figures
 
 <div class="research-figures-grid">
-  <div class="research-figure">
-    <img src="/images/research/figures/probabilistic_neural_network-based_reduced-order_s_page2_fig3_f78e7a09.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)">
-    <p class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</p>
-  </div>
 </div>
 
 <style>
