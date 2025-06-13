@@ -10,7 +10,7 @@ redirect_from:
 
 # Nesar Ramachandra, PhD
 
-I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://www.anl.gov/profile/nesar-soorve-ramachandra-0) working at the intersection of **machine learning** and **scientific computing**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
+I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://anl.gov) working at the intersection of **machine learning** and **scientific computing**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
 
 ## Current Position
 
@@ -29,8 +29,8 @@ At the [Computational Sciences division](https://www.anl.gov/cps) at Argonne, I 
 
 ## Background
 
-Before joining Argonne as a research scientist, I was a Postdoctoral Fellow at the High Energy Physics Division and a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago.
+Before joining Argonne as a research scientist, I was a Postdoctoral Fellow at the [High Energy Physics Division](https://cpac.hep.anl.gov/) at Argonne and a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago.
 
-I completed my PhD in Physics and Astronomy at the [University of Kansas](http://physics.ku.edu/) under the supervision of [Professor Sergei Shandarin](http://people.ku.edu/~sergei/), focusing on computational and physical cosmology.
+I completed my PhD in Physics and Astronomy at the [University of Kansas](http://physics.ku.edu/) under the supervision of [Professor Sergei Shandarin](https://scholar.google.com/citations?user=RYZe8AsAAAAJ&hl=en), focusing on computational and physical cosmology.
 
 My academic journey began at [BITS Pilani, India](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics), where I earned my Integrated Masters in Physics with an honors thesis from the [Indian Institute of Astrophysics, Bangalore](https://www.iiap.res.in/).

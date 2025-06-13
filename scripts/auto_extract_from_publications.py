@@ -6,7 +6,19 @@ Automatically extract figures from existing publications in the _publications di
 import os
 import re
 import sys
-from extract_figures import FigureExtractor
+
+# Try multiple extraction methods
+try:
+    from extract_figures import FigureExtractor
+    PYMUPDF_AVAILABLE = True
+except ImportError:
+    PYMUPDF_AVAILABLE = False
+
+try:
+    from extract_figures_pdf2image import ImprovedFigureExtractor
+    PDF2IMAGE_AVAILABLE = True
+except ImportError:
+    PDF2IMAGE_AVAILABLE = False
 
 def get_publications_with_urls():
     """Get all publications with PDF URLs."""
@@ -49,7 +61,18 @@ def get_publications_with_urls():
     return publications
 
 def main():
-    extractor = FigureExtractor()
+    # Choose the best available extractor
+    if PDF2IMAGE_AVAILABLE:
+        extractor = ImprovedFigureExtractor()
+        print("🔄 Using pdf2image extraction method (more robust)")
+    elif PYMUPDF_AVAILABLE:
+        extractor = FigureExtractor() 
+        print("🔄 Using PyMuPDF extraction method")
+    else:
+        print("❌ No PDF extraction method available. Install either:")
+        print("   pip install PyMuPDF  OR  brew install poppler")
+        return
+    
     publications = get_publications_with_urls()
     
     print(f"Found {len(publications)} publications with URLs")
@@ -111,8 +134,11 @@ def main():
             pdf_path = extractor.download_pdf_from_url(url, title)
             
             if pdf_path and os.path.exists(pdf_path):
-                # Extract figures
-                figures = extractor.extract_from_pdf(pdf_path, title)
+                # Extract figures using appropriate method
+                if PDF2IMAGE_AVAILABLE and isinstance(extractor, ImprovedFigureExtractor):
+                    figures = extractor.extract_from_pdf_alternative(pdf_path, title)
+                else:
+                    figures = extractor.extract_from_pdf(pdf_path, title)
                 
                 if figures:
                     # Categorize and update portfolio

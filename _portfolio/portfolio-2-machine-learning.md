@@ -10,12 +10,12 @@ Applying machine learning techniques to astronomical problems, including neural 
 
 <div class="research-figures-grid">
   <div class="research-figure">
-    <img src="/images/research/figures/generative_networks_for_emulating_synthetic_sky_im_page9_fig1_b69cf4d9.png" alt="Figure from Generative networks for emulating synthetic sky images" onclick="openModal(this)">
-    <p class="figure-caption">From: Generative networks for emulating synthetic sky images</p>
+    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page3_fig4_70e460ed.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
+    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
   </div>
   <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig1_6d73bb5b.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
-    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
+    <img src="/images/research/figures/a_modular_deep_learning_pipeline_for_galaxy-scale__page8_fig35_6e682b45.png" alt="Figure from A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling" onclick="openModal(this)">
+    <p class="figure-caption">From: A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Dete...</p>
   </div>
 </div>
 
