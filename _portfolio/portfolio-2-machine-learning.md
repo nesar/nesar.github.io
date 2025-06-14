@@ -1,62 +1,75 @@
 ---
 title: "Machine Learning for Science"
-excerpt: "Research in machine learning for science <br/><img src='/images/research_machine-learning.png'>"
+excerpt: "Research in machine learning for science"
 collection: portfolio
 ---
 
-Applying machine learning techniques to astronomical problems, including neural networks for data analysis, generative models, and anomaly detection in scientific datasets.
+Machine learning applications in scientific research have revolutionized data analysis across multiple domains, particularly in astronomy, cosmology, and fluid dynamics. This research encompasses diverse methodologies including generative adversarial networks for anomaly detection in astronomical surveys, deep neural networks for point spread function deconvolution, and probabilistic approaches for surrogate modeling in complex physical systems. The work spans from fundamental image processing challenges to sophisticated pattern recognition tasks in large-scale scientific datasets.
 
-## Research Figures
+Advanced techniques in this area include modular deep learning pipelines for gravitational lensing analysis, neural network-based approaches for synthetic sky image generation, and novel architectures for handling high-dimensional scientific data. The research emphasizes both computational efficiency and scientific accuracy, developing methods that can handle the scale and complexity of modern astronomical surveys while maintaining rigorous uncertainty quantification.
 
-<div class="research-figures-grid">
-  <div class="research-figure">
-    <img src="/images/research/figures/anomaly_detection_in_astronomical_images_with_gene_page3_fig2_e107cc7c.png" alt="Figure from Anomaly detection in astronomical images with generative adversarial networks" onclick="openModal(this)">
-    <p class="figure-caption">From: Anomaly detection in astronomical images with generative adversarial networks</p>
+My contributions to this field focus on developing interpretable and efficient machine learning methods for astronomical applications. I have worked extensively on creating modular pipelines that can be adapted across different scientific problems, with particular emphasis on maintaining scientific rigor while leveraging the power of modern deep learning architectures. This work has enabled more accurate and efficient analysis of complex astronomical phenomena, from galaxy morphology classification to cosmological parameter estimation.
+
+## Representative Research Figures
+
+<div class="research-figures">
+  <div class="figure-item">
+    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_1_96427c88.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
   </div>
-  <div class="research-figure">
-    <img src="/images/research/figures/modular_deep_learning_analysis_of_galaxy-scale_str_page6_fig4_f1906216.png" alt="Figure from Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images" onclick="openModal(this)">
-    <p class="figure-caption">From: Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images</p>
+  <div class="figure-item">
+    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_2_ad6f7fae.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_3_4f111230.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
   </div>
 </div>
 
+
 <style>
-.research-figures-grid {
+.research-figures {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
-.research-figure {
+.figure-item {
   text-align: center;
   background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1rem;
-  transition: transform 0.2s ease;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.research-figure:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.figure-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.research-figure img {
+.figure-item img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
-.research-figure img:hover {
+.figure-item img:hover {
   opacity: 0.9;
 }
 
 .figure-caption {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: #6c757d;
-  margin-top: 0.5rem;
-  line-height: 1.3;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 /* Modal styles */
@@ -74,9 +87,11 @@ Applying machine learning techniques to astronomical problems, including neural 
 .modal-content {
   margin: auto;
   display: block;
-  width: 80%;
-  max-width: 700px;
-  padding-top: 5%;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  object-fit: contain;
+  margin-top: 2%;
 }
 
 .close {
@@ -87,9 +102,26 @@ Applying machine learning techniques to astronomical problems, including neural 
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #bbb;
+}
+
+@media (max-width: 768px) {
+  .research-figures {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .figure-item {
+    padding: 1rem;
+  }
 }
 </style>
 
+<!-- Figure Modal -->
 <div id="imageModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
   <img class="modal-content" id="modalImage">
@@ -114,26 +146,11 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 }
+
+// Close modal with escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});
 </script>
-
-## Related Publications:
-
-- **Deconvolution of Astronomical Images with Deep Neural Networks** (2025) - Preprint
-- **Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing
-  Cluster Mass Estimation** (2024) - Preprint
-- **Efficient mapping between void shapes and stress fields using deep convolutional neural networks with sparse data** (2024) - Journal of Computing and Information Science in Engineering
-- **Enhancing Interpretability in Generative Modeling: Disentangled Latent Spaces in Scientific Datasets** (2024) - Authorea Preprints
-- **Scalable Probabilistic Modeling and Machine Learning With Dimensionality Reduction for Expensive High-Dimensional Problems** (2023) - Preprint
-- **Neural Network Based Point Spread Function Deconvolution For
-  Astronomical Applications** (2022) - Preprint
-- **Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z** (2022) - Monthly Notices of the Royal Astronomical Society
-- **Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks** (2021) - Monthly Notices of the Royal Astronomical Society (2021)
-- **Weak Lensing: Optimal Separation of Scales** (2021) - Preprint
-- **Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks** (2021) - Monthly Notices of the Royal Astronomical Society
-- **Beyond the hubble sequence–exploring galaxy morphology with unsupervised machine learning** (2021) - Monthly Notices of the Royal Astronomical Society
-- **A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling** (2020)
-- **Anomaly detection in astronomical images with generative adversarial networks** (2020) - arXiv preprint arXiv:2012.08082
-- **Unstructured fluid flow data recovery using machine learning and Voronoi diagrams** (2020) - APS Division of Fluid Dynamics Meeting Abstracts
-- **Generative networks for emulating synthetic sky images** (2019) - Technical report, Kavli Summer Program in Astrophysics
-- **Modular Deep Learning Analysis of Galaxy-Scale Strong Lensing Images** (2019) - ArXiv
-- **Cosmological analysis pipelines through Neural Networks** (2018) - APS April Meeting Abstracts

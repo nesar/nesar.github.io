@@ -1,54 +1,75 @@
 ---
 title: "Foundation Models"
-excerpt: "Research in foundation models <br/><img src='/images/research_foundation-models.png'>"
+excerpt: "Research in foundation models"
 collection: portfolio
 ---
 
-Developing large language models and foundation models specialized for astronomy, including domain-specific LLMs for scientific research and education.
+Foundation models represent a transformative approach to artificial intelligence in scientific applications, particularly in astronomy and astrophysics. This research area focuses on developing specialized large language models (LLMs) that can understand and reason about domain-specific scientific content. The work encompasses comprehensive evaluation methodologies for AI models in scientific contexts, benchmark development for astronomical question-answering, and the creation of robust frameworks for assessing AI performance in research assistance tasks.
 
-## Research Figures
+The research demonstrates significant advances in model specialization, showing that domain-focused models can achieve performance comparable to much larger general-purpose systems. The evaluation frameworks developed provide crucial infrastructure for responsible AI deployment in scientific workflows, establishing standards for reliability and accuracy assessment.
 
-<div class="research-figures-grid">
+My work in this area has centered on developing the AstroMLab series of models, which showcase the effectiveness of domain specialization in achieving superior performance on astronomy-related tasks. I have also contributed to establishing rigorous evaluation methodologies through the EAIRA project, providing frameworks that enable systematic assessment of AI capabilities as research assistants. These contributions help bridge the gap between general AI capabilities and the specific needs of scientific research communities.
+
+## Representative Research Figures
+
+<div class="research-figures">
+  <div class="figure-item">
+    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_1_adce1f78.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_2_205db31f.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_3_1c174bef.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
+  </div>
 </div>
 
+
 <style>
-.research-figures-grid {
+.research-figures {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
-.research-figure {
+.figure-item {
   text-align: center;
   background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1rem;
-  transition: transform 0.2s ease;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.research-figure:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.figure-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.research-figure img {
+.figure-item img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
-.research-figure img:hover {
+.figure-item img:hover {
   opacity: 0.9;
 }
 
 .figure-caption {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: #6c757d;
-  margin-top: 0.5rem;
-  line-height: 1.3;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 /* Modal styles */
@@ -66,9 +87,11 @@ Developing large language models and foundation models specialized for astronomy
 .modal-content {
   margin: auto;
   display: block;
-  width: 80%;
-  max-width: 700px;
-  padding-top: 5%;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  object-fit: contain;
+  margin-top: 2%;
 }
 
 .close {
@@ -79,9 +102,26 @@ Developing large language models and foundation models specialized for astronomy
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #bbb;
+}
+
+@media (max-width: 768px) {
+  .research-figures {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .figure-item {
+    padding: 1rem;
+  }
 }
 </style>
 
+<!-- Figure Modal -->
 <div id="imageModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
   <img class="modal-content" id="modalImage">
@@ -106,16 +146,11 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 }
+
+// Close modal with escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});
 </script>
-
-## Related Publications:
-
-- **AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a
-  70B-Parameter Domain-Specialized Reasoning Model** (2025) - Preprint
-- **EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific
-  Research Assistants** (2025) - Preprint
-- **AstroMLab 1: Who wins astronomy jeopardy!?** (2025) - Astronomy and Computing
-- **Snowmass2021-Letter of Interest Scientific AI Approaches in Computational Cosmology** (2025) - Preprint
-- **AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a
-  Specialized 8B-Parameter Large Language Model** (2024) - Preprint
-- **Constructing impactful machine learning research for astronomy: Best practices for researchers and reviewers** (2023) - arXiv preprint arXiv:2310.12528
