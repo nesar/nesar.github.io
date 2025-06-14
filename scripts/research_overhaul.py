@@ -100,7 +100,7 @@ class ResearchOverhaul:
         else:
             try:
                 genai.configure(api_key=api_key)
-                self.model = genai.GenerativeModel('gemini-pro')
+                self.model = genai.GenerativeModel('gemini-1.5-flash')
                 self.use_gemini = True
                 print("✅ Gemini API configured successfully")
             except Exception as e:
@@ -153,24 +153,26 @@ class ResearchOverhaul:
         """Extract downloadable PDF URL from paper content."""
         # Check for arXiv URLs in different fields
         patterns = [
-            r'paperurl:\s*["\']?([^"\'\\s]+arxiv[^"\'\\s]*)["\']?',
-            r'arxiv\.org/abs/([^)\\s]+)',
-            r'arxiv\.org/pdf/([^)\\s]+)'
+            r'paperurl:\s*["\']?(https?://[^"\'\\s]*arxiv[^"\'\\s]*)["\']?',
+            r'(https?://arxiv\.org/abs/[0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)',
+            r'(https?://arxiv\.org/pdf/[0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?\.pdf)',
+            r'arxiv:([0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)'
         ]
         
         for pattern in patterns:
             matches = re.findall(pattern, content, re.IGNORECASE)
             for match in matches:
                 if 'arxiv.org' in match:
-                    # Convert to PDF URL
+                    # Already full URL, convert to PDF if needed
                     if '/abs/' in match:
                         return match.replace('/abs/', '/pdf/') + '.pdf'
-                    elif '/pdf/' in match and not match.endswith('.pdf'):
-                        return match + '.pdf'
                     elif '/pdf/' in match and match.endswith('.pdf'):
                         return match
-                    else:
-                        return f"https://arxiv.org/pdf/{match}.pdf"
+                    elif '/pdf/' in match and not match.endswith('.pdf'):
+                        return match + '.pdf'
+                else:
+                    # Just arxiv ID, construct full URL
+                    return f"https://arxiv.org/pdf/{match}.pdf"
         
         return None
     
