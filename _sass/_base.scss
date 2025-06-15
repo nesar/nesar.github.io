@@ -6,8 +6,12 @@ body {
   margin: 0;
   padding: 0;
   color: $text-color;
+  background-color: $background-color;
   font-family: $global-font-family;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
@@ -17,9 +21,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 2em 0 0.5em;
-  line-height: 1.2;
+  line-height: 1.3;
   font-family: $header-font-family;
-  font-weight: bold;
+  font-weight: 400;
+  color: $text-color;
+  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -106,13 +112,22 @@ blockquote {
 /* links */
 
 a {
+  color: $link-color;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
   &:focus {
     @extend %tab-focus;
   }
 
   &:hover,
   &:active {
+    color: $link-color-hover;
     outline: 0;
+  }
+
+  &:visited {
+    color: $link-color-visited;
   }
 }
 

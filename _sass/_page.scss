@@ -5,11 +5,12 @@
 #main {
   @include container;
   @include clearfix;
-  margin-top: 2em;
+  margin-top: 3em;
   padding-left: 1em;
   padding-right: 1em;
   animation: intro 0.3s both;
   animation-delay: 0.35s;
+  background-color: $background-color;
 
   @include breakpoint($x-large) {
     max-width: $x-large;
@@ -36,7 +37,10 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  line-height: 1.2;
+  color: $text-color;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -53,6 +57,8 @@
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
+    color: $text-color;
+    font-weight: 400;
   }
 
   p, li, dl {
@@ -73,13 +79,17 @@
   }
 
   a {
+    color: $link-color;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
-      text-decoration: underline;
+      color: $link-color-hover;
+      border-bottom-color: $link-color-hover;
 
       img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
+        box-shadow: 0 0 20px rgba(#fff, 0.1);
       }
     }
   }
