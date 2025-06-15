@@ -216,6 +216,57 @@ pre {
   color: #e8e8e8;
 }
 
+/* Additional dark theme styles */
+.archive {
+  background-color: #000000;
+  color: #e8e8e8;
+}
+
+.archive__item {
+  background-color: #1a1c1e;
+  border: 1px solid #2a2d30;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  transition: all 0.2s ease;
+}
+
+.archive__item:hover {
+  background-color: #2a2d30;
+  transform: translateY(-2px);
+}
+
+.archive__item-title a {
+  color: #ffffff !important;
+}
+
+.archive__item-title a:hover {
+  color: #cccccc !important;
+}
+
+.archive__item-excerpt {
+  color: #aaaaaa !important;
+}
+
+/* Ensure all text elements are properly styled */
+.page__content p,
+.page__content li,
+.page__content td,
+.page__content th {
+  color: #e8e8e8;
+}
+
+/* Style any remaining white backgrounds */
+.feature__item,
+.grid__item,
+.list__item {
+  background-color: #1a1c1e;
+  border: 1px solid #2a2d30;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
 /* Responsive improvements */
 @media (max-width: 768px) {
   .page__title {

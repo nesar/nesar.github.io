@@ -59,28 +59,29 @@ author_profile: true
 
 <style>
 .publications-header {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, #1a1c1e 0%, #2a2d30 100%);
   padding: 2rem;
   border-radius: 12px;
   margin-bottom: 2rem;
   text-align: center;
+  border: 1px solid #2a2d30;
 }
 
 .publications-note {
   font-size: 1.1em;
   margin: 0;
-  color: #4a5568;
+  color: #e8e8e8;
 }
 
 .scholar-link {
-  color: #4285f4;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
 .scholar-link:hover {
-  color: #1a73e8;
+  color: #cccccc;
   text-decoration: underline;
 }
 
@@ -90,9 +91,9 @@ author_profile: true
 
 .year-header {
   font-size: 2em;
-  font-weight: 700;
-  color: #2d3748;
-  border-bottom: 3px solid #4299e1;
+  font-weight: 400;
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -103,29 +104,30 @@ author_profile: true
 }
 
 .publication-item {
-  background: white;
+  background: #1a1c1e;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-left: 4px solid #4299e1;
+  border: 1px solid #2a2d30;
+  border-left: 4px solid #ffffff;
 }
 
 .publication-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
 }
 
 .publication-title {
   font-size: 1.2em;
-  font-weight: 600;
-  color: #2d3748;
+  font-weight: 400;
+  color: #ffffff;
   margin: 0 0 1rem 0;
   line-height: 1.4;
 }
 
 .publication-venue {
-  color: #718096;
+  color: #aaaaaa;
   font-size: 0.95em;
   margin: 0 0 1rem 0;
   display: flex;
@@ -152,13 +154,13 @@ author_profile: true
 }
 
 .paper-link {
-  background: #e53e3e;
-  color: white;
+  background: #ffffff;
+  color: #000000;
 }
 
 .paper-link:hover {
-  background: #c53030;
-  color: white;
+  background: #cccccc;
+  color: #000000;
 }
 
 /* Responsive Design */
