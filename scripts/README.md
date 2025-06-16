@@ -1,90 +1,55 @@
-# Research Website Scripts
+# Website Content Management
 
-This directory contains the essential scripts for maintaining the research website.
+Clean, unified script system for maintaining the research website.
 
-## Core Scripts
+## Files
 
-### `research_overhaul.py`
-**Main research page generator**
-- Classifies papers into 4 research categories
-- Generates research summaries (with optional Gemini LLM integration)
-- Creates a professional research page with clean UI
-- Run this to completely rebuild the research page
+- `website_content_manager.py` - **Main script** (does everything)
+- `requirements.txt` - Python dependencies
+- `README.md` - This documentation
 
-**Usage:**
-```bash
-python scripts/research_overhaul.py
-```
-
-### `extract_plots_direct.py`
-**Scientific figure extractor**
-- Extracts high-quality scientific figures from PDF papers
-- Selects the best/last plots from each paper (usually the best results)
-- Updates the research page with real scientific figures
-- Run this after having PDFs in temp_papers/ directory
-
-**Usage:**
-```bash
-python scripts/extract_plots_direct.py
-```
-
-### `update_publications_improved.py`
-**Publication page updater**
-- Maintains the publications page
-- Updates citation counts and metadata
-- Keeps publication listings current
-
-**Usage:**
-```bash
-python scripts/update_publications_improved.py
-```
-
-## Setup Scripts
-
-### `setup_gemini.py`
-**Optional LLM integration setup**
-- Configures Gemini API for better research summaries
-- Optional - the main script works with fallback summaries
-- Only needed if you want LLM-generated category descriptions
-
-**Usage:**
-```bash
-python scripts/setup_gemini.py
-```
-
-### `requirements.txt`
-**Package dependencies**
-- Lists all required Python packages
-- Install with: `pip install -r scripts/requirements.txt`
-
-## Quick Start
+## Setup
 
 1. **Install dependencies:**
    ```bash
    pip install -r scripts/requirements.txt
    ```
 
-2. **Complete research page overhaul:**
-   ```bash
-   python scripts/research_overhaul.py
-   python scripts/extract_plots_direct.py
-   ```
+2. **Get Gemini API key:**
+   - Visit: https://makersuite.google.com/app/apikey
+   - Set environment variable: `export GEMINI_API_KEY='your-key-here'`
 
-3. **Update publications:**
-   ```bash
-   python scripts/update_publications_improved.py
-   ```
+## Usage
 
-## Files Structure
+```bash
+# Update entire website (recommended)
+python scripts/website_content_manager.py
 
-- `temp_papers/` - Place PDF files here for figure extraction
-- `images/research/figures/` - Extracted scientific figures stored here
-- `_pages/research.html` - Generated research page
-- `_publications/` - Publication metadata files
+# Or update specific components
+python scripts/website_content_manager.py --update-publications
+python scripts/website_content_manager.py --update-research  
+python scripts/website_content_manager.py --update-portfolio
+```
 
-## Notes
+## What It Does
 
-- The research overhaul script automatically classifies 56+ papers into 4 categories
-- Figure extraction works best with PDFs that have embedded images
-- Research page features responsive design and modal image viewing
-- All figures extracted are high-quality scientific visualizations from actual papers
+1. **Fetches publications** from arXiv automatically
+2. **Classifies papers** into research categories using LLM
+3. **Downloads papers** and extracts best scientific figures
+4. **Generates summaries** and content using LLM
+5. **Creates pages** with clean, responsive HTML
+
+## Key Features
+
+✅ **Fully automated** - No manual paper categorization  
+✅ **LLM-powered** - Intelligent content generation  
+✅ **Clean output** - Consistent formatting  
+✅ **Single script** - Replaces multiple legacy scripts
+
+## Output Files
+
+- `_publications/` - Publication markdown files
+- `_pages/research.html` - Research overview page  
+- `_portfolio/` - Research area portfolio pages
+- `images/research/figures/` - Extracted scientific figures
+- `temp_papers/` - Downloaded PDF files

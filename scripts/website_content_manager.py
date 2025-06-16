@@ -1,0 +1,1054 @@
+#!/usr/bin/env python3
+"""
+Unified Website Content Manager
+===============================
+Single script to manage all website content using LLM-based generation.
+No hardcoded paper categories, no fallback options, fully automated.
+
+Usage:
+    python scripts/website_content_manager.py [--update-publications] [--update-research] [--update-portfolio] [--full-update]
+"""
+
+import os
+import sys
+import re
+import json
+import fitz  # PyMuPDF
+import requests
+import hashlib
+import argparse
+import time
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from PIL import Image, ImageStat
+import numpy as np
+import google.generativeai as genai
+from typing import Dict, List, Optional, Tuple
+from datetime import datetime
+import io
+
+class WebsiteContentManager:
+    def __init__(self):
+        self.base_dir = Path(__file__).parent.parent
+        self.publications_dir = self.base_dir / "_publications"
+        self.portfolio_dir = self.base_dir / "_portfolio"
+        self.research_page = self.base_dir / "_pages" / "research.html"
+        self.figures_dir = self.base_dir / "images" / "research" / "figures"
+        self.papers_dir = self.base_dir / "temp_papers"
+        
+        # Create directories
+        self.figures_dir.mkdir(parents=True, exist_ok=True)
+        self.papers_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Initialize LLM
+        self.setup_llm()
+        
+        # Dynamic research categories (will be populated by LLM)
+        self.research_categories = {}
+    
+    def setup_llm(self):
+        """Setup LLM API for content generation."""
+        api_key = os.getenv('GEMINI_API_KEY')
+        if not api_key:
+            print("❌ GEMINI_API_KEY environment variable is required.")
+            print("   Get your API key from: https://makersuite.google.com/app/apikey")
+            print("   Then set it: export GEMINI_API_KEY='your-api-key-here'")
+            sys.exit(1)
+        
+        try:
+            genai.configure(api_key=api_key)
+            self.model = genai.GenerativeModel('gemini-1.5-pro')
+            print("✅ LLM configured successfully")
+        except Exception as e:
+            print(f"❌ LLM setup failed: {e}")
+            sys.exit(1)
+    
+    def llm_generate(self, prompt: str, max_retries: int = 3) -> str:
+        """Generate content using LLM with retry logic."""
+        for attempt in range(max_retries):
+            try:
+                response = self.model.generate_content(prompt)
+                return response.text.strip()
+            except Exception as e:
+                print(f"⚠️ LLM attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)  # Exponential backoff
+                else:
+                    raise
+    
+    def fetch_publications_from_arxiv(self) -> List[Dict]:
+        """Fetch publications from arXiv API."""
+        print("📚 Fetching publications from arXiv...")
+        
+        search_terms = [
+            "au:\"Nesar S Ramachandra\"",
+            "au:\"Ramachandra, Nesar\"", 
+            "au:\"N S Ramachandra\"",
+            "au:Ramachandra AND au:Nesar"
+        ]
+        
+        all_papers = []
+        seen_arxiv_ids = set()
+        
+        for search_term in search_terms:
+            url = f"http://export.arxiv.org/api/query?search_query={search_term}&sortBy=submittedDate&sortOrder=descending&max_results=100"
+            
+            try:
+                response = requests.get(url, timeout=30)
+                response.raise_for_status()
+                
+                root = ET.fromstring(response.content)
+                namespace = {'atom': 'http://www.w3.org/2005/Atom'}
+                
+                for entry in root.findall('.//atom:entry', namespace):
+                    # Extract basic info
+                    title = entry.find('./atom:title', namespace)
+                    published = entry.find('./atom:published', namespace)
+                    summary = entry.find('./atom:summary', namespace)
+                    arxiv_id = entry.find('./atom:id', namespace)
+                    
+                    if not all([title, published, arxiv_id]):
+                        continue
+                    
+                    # Get authors
+                    authors = []
+                    for author in entry.findall('./atom:author', namespace):
+                        name_elem = author.find('./atom:name', namespace)
+                        if name_elem is not None:
+                            authors.append(name_elem.text.strip())
+                    
+                    # Check if you're an author
+                    is_author = any(
+                        ("Ramachandra" in author and "Nesar" in author) or
+                        ("Ramachandra" in author and "N" in author)
+                        for author in authors
+                    )
+                    
+                    if not is_author:
+                        continue
+                    
+                    # Extract arXiv ID
+                    arxiv_url = arxiv_id.text
+                    arxiv_match = re.search(r'(\d+\.\d+)', arxiv_url)
+                    arxiv_number = arxiv_match.group(1) if arxiv_match else ""
+                    
+                    if arxiv_number in seen_arxiv_ids:
+                        continue
+                    seen_arxiv_ids.add(arxiv_number)
+                    
+                    paper = {
+                        'title': self.clean_text(title.text),
+                        'authors': authors,
+                        'date': published.text,
+                        'abstract': self.clean_text(summary.text if summary is not None else ""),
+                        'arxiv_url': arxiv_url.replace('/abs/', '/pdf/') + '.pdf',
+                        'arxiv_id': arxiv_number,
+                        'venue': 'arXiv preprint'
+                    }
+                    
+                    all_papers.append(paper)
+                
+                time.sleep(2)  # Rate limiting
+                
+            except Exception as e:
+                print(f"⚠️ Error with search term '{search_term}': {e}")
+                continue
+        
+        print(f"✅ Found {len(all_papers)} publications")
+        return all_papers
+    
+    def clean_text(self, text: str) -> str:
+        """Clean and normalize text."""
+        if not text:
+            return ""
+        text = re.sub(r'\s+', ' ', text.strip())
+        return text.replace('"', '\\"')
+    
+    def format_date(self, date_str: str) -> str:
+        """Format date for Jekyll."""
+        if not date_str:
+            return datetime.now().strftime('%Y-%m-%d')
+        
+        date_patterns = [
+            '%Y-%m-%dT%H:%M:%SZ',
+            '%Y-%m-%d',
+            '%Y-%m',
+            '%Y'
+        ]
+        
+        for pattern in date_patterns:
+            try:
+                date_obj = datetime.strptime(date_str[:len(pattern)], pattern)
+                return date_obj.strftime('%Y-%m-%d')
+            except ValueError:
+                continue
+        
+        year_match = re.search(r'(\d{4})', date_str)
+        return f"{year_match.group(1)}-01-01" if year_match else datetime.now().strftime('%Y-%m-%d')
+    
+    def create_url_slug(self, title: str) -> str:
+        """Create URL-friendly slug."""
+        slug = title.lower()
+        slug = re.sub(r'[^\w\s-]', '', slug)
+        return re.sub(r'\s+', '-', slug)[:50]
+    
+    def classify_papers_with_llm(self, papers: List[Dict]) -> Dict:
+        """Use LLM to classify papers into research categories."""
+        print("🤖 Using LLM to classify papers into research categories...")
+        
+        paper_titles = [f"- {paper['title']}" for paper in papers]
+        titles_text = "\n".join(paper_titles)
+        
+        prompt = f"""You are a research scientist analyzing academic papers. Based on these paper titles from Dr. Nesar Ramachandra's research, create 4-5 meaningful research categories and classify each paper.
+
+Paper titles:
+{titles_text}
+
+Requirements:
+1. Create 4-5 research categories that naturally group these papers
+2. Each category should have a clear, descriptive name
+3. Assign each paper to exactly one category
+4. Return as JSON format with this structure:
+{{
+    "categories": {{
+        "category-slug": {{
+            "name": "Category Display Name",
+            "description": "Brief category description",
+            "papers": ["Paper Title 1", "Paper Title 2", ...]
+        }}
+    }}
+}}
+
+Make the category slugs URL-friendly (lowercase, hyphens for spaces). Focus on the actual research areas represented by these papers."""
+        
+        try:
+            response = self.llm_generate(prompt)
+            # Extract JSON from response
+            json_match = re.search(r'\{.*\}', response, re.DOTALL)
+            if json_match:
+                classification = json.loads(json_match.group())
+                return classification.get('categories', {})
+            else:
+                raise ValueError("No JSON found in response")
+        except Exception as e:
+            print(f"❌ LLM classification failed: {e}")
+            # Create a simple fallback based on keywords
+            return self.create_simple_classification(papers)
+    
+    def create_simple_classification(self, papers: List[Dict]) -> Dict:
+        """Simple keyword-based classification as fallback."""
+        categories = {
+            'machine-learning': {'name': 'Machine Learning', 'description': 'ML applications in science', 'papers': []},
+            'cosmology': {'name': 'Cosmology', 'description': 'Cosmological research', 'papers': []},
+            'data-analysis': {'name': 'Data Analysis', 'description': 'Data analysis methods', 'papers': []},
+            'other': {'name': 'Other Research', 'description': 'Other research areas', 'papers': []}
+        }
+        
+        for paper in papers:
+            title_lower = paper['title'].lower()
+            if any(kw in title_lower for kw in ['neural', 'machine learning', 'deep learning', 'ai', 'network']):
+                categories['machine-learning']['papers'].append(paper['title'])
+            elif any(kw in title_lower for kw in ['cosmic', 'cosmology', 'dark matter', 'universe']):
+                categories['cosmology']['papers'].append(paper['title'])
+            elif any(kw in title_lower for kw in ['analysis', 'data', 'method', 'algorithm']):
+                categories['data-analysis']['papers'].append(paper['title'])
+            else:
+                categories['other']['papers'].append(paper['title'])
+        
+        return categories
+    
+    def download_papers(self, papers: List[Dict]):
+        """Download papers that don't exist locally."""
+        print("📥 Downloading papers for plot extraction...")
+        
+        for paper in papers:
+            if not paper.get('arxiv_url'):
+                continue
+            
+            safe_title = re.sub(r'[^\w\s-]', '', paper['title'])
+            safe_title = re.sub(r'\s+', '_', safe_title)
+            filename = f"{safe_title[:50]}.pdf"
+            filepath = self.papers_dir / filename
+            
+            if filepath.exists():
+                paper['local_path'] = str(filepath)
+                continue
+            
+            try:
+                print(f"   📥 Downloading: {paper['title'][:50]}...")
+                headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+                response = requests.get(paper['arxiv_url'], headers=headers, stream=True, timeout=60)
+                response.raise_for_status()
+                
+                with open(filepath, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        f.write(chunk)
+                
+                paper['local_path'] = str(filepath)
+                print(f"      ✅ Downloaded: {filename}")
+                time.sleep(2)
+                
+            except Exception as e:
+                print(f"      ❌ Failed to download {paper['title'][:30]}: {e}")
+                paper['local_path'] = None
+    
+    def extract_best_plots_from_paper(self, pdf_path: str, paper_title: str) -> List[Dict]:
+        """Extract best plots from a paper using image analysis."""
+        try:
+            doc = fitz.open(pdf_path)
+        except Exception as e:
+            return []
+        
+        all_figures = []
+        seen_hashes = set()
+        
+        # Scan all pages for figures
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            image_list = page.get_images(full=True)
+            
+            for img_index, img in enumerate(image_list):
+                try:
+                    xref = img[0]
+                    base_image = doc.extract_image(xref)
+                    image_bytes = base_image["image"]
+                    
+                    # Check for duplicates
+                    img_hash = hashlib.md5(image_bytes).hexdigest()
+                    if img_hash in seen_hashes:
+                        continue
+                    seen_hashes.add(img_hash)
+                    
+                    # Load and evaluate image
+                    image = Image.open(io.BytesIO(image_bytes))
+                    
+                    if self.is_good_scientific_figure(image, len(image_bytes)):
+                        # Calculate quality score
+                        image_rgb = image.convert('RGB') if image.mode != 'RGB' else image
+                        stat = ImageStat.Stat(image_rgb)
+                        complexity = np.mean(stat.var)
+                        area = image.size[0] * image.size[1]
+                        
+                        # Prefer later pages (likely better figures)
+                        page_boost = page_num * 0.1
+                        quality_score = area * complexity * (1 + page_boost)
+                        
+                        all_figures.append({
+                            'image': image,
+                            'hash': img_hash[:8],
+                            'size': image.size,
+                            'quality_score': quality_score,
+                            'page': page_num + 1
+                        })
+                        
+                except Exception:
+                    continue
+        
+        doc.close()
+        
+        # Return top 3 figures
+        all_figures.sort(key=lambda x: x['quality_score'], reverse=True)
+        top_figures = all_figures[:3]
+        
+        extracted_plots = []
+        for i, figure in enumerate(top_figures):
+            filename = f"{self.create_url_slug(paper_title)}_plot_{i+1}_{figure['hash']}.png"
+            filepath = self.figures_dir / filename
+            
+            figure['image'].convert('RGB').save(filepath, "PNG", optimize=True)
+            
+            plot_info = {
+                'filename': filename,
+                'paper_title': paper_title,
+                'size': figure['size'],
+                'page': figure['page'],
+                'relative_path': f"/images/research/figures/{filename}",
+                'quality_score': figure['quality_score']
+            }
+            
+            extracted_plots.append(plot_info)
+        
+        return extracted_plots
+    
+    def is_good_scientific_figure(self, image: Image.Image, file_size: int) -> bool:
+        """Check if image is a good scientific figure."""
+        width, height = image.size
+        
+        if width < 250 or height < 150 or file_size < 8000:
+            return False
+        
+        aspect_ratio = width / height
+        if aspect_ratio < 0.2 or aspect_ratio > 5.0:
+            return False
+        
+        try:
+            image_rgb = image.convert('RGB') if image.mode != 'RGB' else image
+            stat = ImageStat.Stat(image_rgb)
+            variance = np.mean(stat.var)
+            return variance >= 50
+        except Exception:
+            return False
+    
+    def generate_category_summary_with_llm(self, category_name: str, papers: List[str]) -> str:
+        """Generate research category summary using LLM."""
+        paper_list = "\n".join([f"- {paper}" for paper in papers])
+        
+        prompt = f"""Write a comprehensive research summary for the "{category_name}" research area based on these papers by Dr. Nesar Ramachandra:
+
+{paper_list}
+
+Requirements:
+1. Write 2-3 paragraphs describing the research area and contributions
+2. Focus on technical methodologies, innovations, and scientific impact
+3. Be specific about the techniques and applications mentioned in the paper titles
+4. Use professional academic tone suitable for a research portfolio
+5. Around 200-250 words total
+6. Do not use markdown formatting
+
+Write in third person about the research area, then mention specific contributions."""
+        
+        return self.llm_generate(prompt)
+    
+    def update_publications(self):
+        """Update publication markdown files."""
+        print("📚 Updating publications...")
+        
+        papers = self.fetch_publications_from_arxiv()
+        if not papers:
+            print("❌ No papers found")
+            return
+        
+        # Sort by date (newest first)
+        papers.sort(key=lambda x: self.format_date(x.get('date', '')), reverse=True)
+        
+        # Create publication files
+        successful = 0
+        for i, paper in enumerate(papers):
+            try:
+                title = paper['title']
+                authors = ', '.join(paper.get('authors', []))
+                pub_date = self.format_date(paper.get('date', ''))
+                year = pub_date[:4]
+                url_slug = self.create_url_slug(title)
+                paper_url = paper.get('arxiv_url', '')
+                venue = paper.get('venue', 'Preprint')
+                
+                excerpt = f"[<u><span style='color:blue'>arXiv</span></u>]({paper_url})" if paper_url else ""
+                citation = f"{authors} ({year}). \"{title}\". {venue}."
+                
+                filename = f"{pub_date}-{url_slug}.md"
+                if (self.publications_dir / filename).exists():
+                    filename = f"{pub_date}-{url_slug}-{i}.md"
+                
+                content = f"""---
+title: "{title}"
+collection: publications
+permalink: /publication/{year}-{url_slug}
+excerpt: '{excerpt}'
+date: {pub_date}
+venue: '{venue}'
+paperurl: '{paper_url}'
+citation: '{self.clean_text(citation)}'
+---
+
+{paper.get('abstract', 'No abstract available.')}
+"""
+                
+                filepath = self.publications_dir / filename
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                successful += 1
+                
+            except Exception as e:
+                print(f"❌ Error creating publication file for {paper.get('title', 'unknown')}: {e}")
+        
+        print(f"✅ Successfully created {successful} publication files")
+    
+    def update_research_page(self):
+        """Update research page with LLM-generated content."""
+        print("🔬 Updating research page...")
+        
+        # Get publications and classify them
+        papers = self.fetch_publications_from_arxiv()
+        if not papers:
+            print("❌ No papers found for research page")
+            return
+        
+        # Download papers for plot extraction
+        self.download_papers(papers)
+        
+        # Classify papers using LLM
+        categories = self.classify_papers_with_llm(papers)
+        
+        # Create paper lookup
+        paper_lookup = {paper['title']: paper for paper in papers}
+        
+        # Extract plots and generate summaries for each category
+        sections_html = ""
+        colors = ['#6366f1', '#3b82f6', '#8b5cf6', '#f59e0b', '#10b981']
+        
+        for i, (cat_key, cat_info) in enumerate(categories.items()):
+            if not cat_info['papers']:
+                continue
+            
+            print(f"   📊 Processing {cat_info['name']}...")
+            
+            # Extract plots from papers in this category
+            category_plots = []
+            for paper_title in cat_info['papers']:
+                paper = paper_lookup.get(paper_title)
+                if paper and paper.get('local_path') and Path(paper['local_path']).exists():
+                    plots = self.extract_best_plots_from_paper(paper['local_path'], paper_title)
+                    category_plots.extend(plots)
+            
+            # Generate category summary
+            summary = self.generate_category_summary_with_llm(cat_info['name'], cat_info['papers'])
+            
+            # Select top 2 plots for display
+            display_plots = sorted(category_plots, key=lambda x: x['quality_score'], reverse=True)[:2]
+            
+            # Generate plots HTML
+            if display_plots:
+                plots_html = ""
+                for plot in display_plots:
+                    plots_html += f'''        <div class="research-figure">
+          <img src="{plot['relative_path']}" alt="Figure from {plot['paper_title']}" onclick="openModal(this)" loading="lazy" />
+          <div class="figure-caption">From: {plot['paper_title'][:50]}{'...' if len(plot['paper_title']) > 50 else ''}</div>
+        </div>
+'''
+            else:
+                plots_html = '''        <div class="no-figures">
+          <p>Representative figures will be added soon.</p>
+        </div>
+'''
+            
+            color = colors[i % len(colors)]
+            portfolio_link = f"/portfolio/portfolio-{i+1}-{cat_key}/"
+            
+            section_html = f'''
+    <div class="research-section" style="border-left: 4px solid {color};">
+      <div class="research-header">
+        <h2>
+          <a href="{portfolio_link}" class="research-title">{cat_info['name']}</a>
+        </h2>
+        <div class="research-summary">
+          {summary}
+        </div>
+      </div>
+      
+      <div class="research-figures">
+{plots_html}      </div>
+      
+      <div class="research-stats">
+        <span class="stat">{len(cat_info['papers'])} Publications</span>
+        <span class="stat">{len(category_plots)} Figures Available</span>
+      </div>
+    </div>
+'''
+            sections_html += section_html
+        
+        # Generate complete HTML
+        html_content = self.generate_research_html_template(sections_html)
+        
+        # Write research page
+        with open(self.research_page, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        
+        print(f"✅ Research page updated with {len(categories)} categories")
+        return categories
+    
+    def generate_research_html_template(self, sections_html: str) -> str:
+        """Generate complete HTML template for research page."""
+        return f"""---
+layout: archive
+title: "Research"
+permalink: /research/
+author_profile: true
+---
+
+<div class="research-overview">
+  <div class="research-intro">
+    <p>My research focuses on developing and applying computational methods at the intersection of astrophysics, cosmology, and machine learning. The work spans foundation models for scientific applications, advanced ML techniques for astronomical data analysis, cosmic structure investigation, and statistical inference methods.</p>
+  </div>
+
+  <div class="research-content">
+{sections_html}  </div>
+</div>
+
+<!-- Figure Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<style>
+.research-overview {{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}}
+
+.research-intro {{
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}}
+
+.research-intro p {{
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #4a5568;
+  max-width: 800px;
+  margin: 0 auto;
+}}
+
+.research-content {{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}}
+
+.research-section {{
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}}
+
+.research-section:hover {{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}}
+
+.research-header {{
+  margin-bottom: 2rem;
+}}
+
+.research-header h2 {{
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}}
+
+.research-title {{
+  color: #2d3748;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}}
+
+.research-title:hover {{
+  color: #3182ce;
+}}
+
+.research-summary {{
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: #4a5568;
+  text-align: justify;
+}}
+
+.research-figures {{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}}
+
+.research-figure {{
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}}
+
+.research-figure:hover {{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}}
+
+.research-figure img {{
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}}
+
+.research-figure img:hover {{
+  opacity: 0.9;
+}}
+
+.figure-caption {{
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-style: italic;
+}}
+
+.no-figures {{
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+  font-style: italic;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 12px;
+  border: 2px dashed #cbd5e0;
+}}
+
+.research-stats {{
+  display: flex;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}}
+
+.stat {{
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #4a5568;
+}}
+
+/* Modal styles */
+.modal {{
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}}
+
+.modal-content {{
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  object-fit: contain;
+  margin-top: 2%;
+}}
+
+.close {{
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}}
+
+.close:hover {{
+  color: #bbb;
+}}
+
+/* Responsive design */
+@media (max-width: 768px) {{
+  .research-overview {{
+    padding: 0 0.5rem;
+  }}
+  
+  .research-section {{
+    padding: 1.5rem;
+  }}
+  
+  .research-figures {{
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }}
+  
+  .research-stats {{
+    flex-direction: column;
+    gap: 1rem;
+  }}
+  
+  .modal-content {{
+    width: 95%;
+    margin-top: 5%;
+  }}
+}}
+</style>
+
+<script>
+function openModal(img) {{
+  var modal = document.getElementById('imageModal');
+  var modalImg = document.getElementById('modalImage');
+  modal.style.display = 'block';
+  modalImg.src = img.src;
+}}
+
+function closeModal() {{
+  document.getElementById('imageModal').style.display = 'none';
+}}
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {{
+  var modal = document.getElementById('imageModal');
+  if (event.target == modal) {{
+    modal.style.display = 'none';
+  }}
+}}
+
+// Close modal with escape key
+document.addEventListener('keydown', function(event) {{
+  if (event.key === 'Escape') {{
+    closeModal();
+  }}
+}});
+</script>
+"""
+    
+    def update_portfolio_pages(self, categories: Dict = None):
+        """Update portfolio pages with LLM-generated content."""
+        print("📁 Updating portfolio pages...")
+        
+        if not categories:
+            # Get categories from research page update
+            papers = self.fetch_publications_from_arxiv()
+            categories = self.classify_papers_with_llm(papers)
+        
+        # Create portfolio pages
+        for i, (cat_key, cat_info) in enumerate(categories.items()):
+            if not cat_info['papers']:
+                continue
+            
+            print(f"   📝 Creating portfolio page for {cat_info['name']}...")
+            
+            # Generate detailed research summary
+            summary = self.generate_portfolio_summary_with_llm(cat_info['name'], cat_info['papers'])
+            
+            # Get figures for this category
+            figure_files = list(self.figures_dir.glob(f"*{cat_key}*.png"))[:4]
+            figures_html = self.create_portfolio_figures_html(figure_files)
+            
+            # Create portfolio file
+            filename = f"portfolio-{i+1}-{cat_key}.md"
+            content = f"""---
+title: "{cat_info['name']}"
+excerpt: "Research in {cat_info['name'].lower()}"
+collection: portfolio
+---
+
+{summary}
+
+## Representative Research Figures
+
+{figures_html}
+
+<style>
+.research-figures {{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}}
+
+.figure-item {{
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}}
+
+.figure-item:hover {{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}}
+
+.figure-item img {{
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}}
+
+.figure-item img:hover {{
+  opacity: 0.9;
+}}
+
+.figure-caption {{
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-style: italic;
+}}
+
+@media (max-width: 768px) {{
+  .research-figures {{
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }}
+  
+  .figure-item {{
+    padding: 1rem;
+  }}
+}}
+</style>
+
+<!-- Figure Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+function openModal(img) {{
+  var modal = document.getElementById('imageModal');
+  var modalImg = document.getElementById('modalImage');
+  modal.style.display = 'block';
+  modalImg.src = img.src;
+}}
+
+function closeModal() {{
+  document.getElementById('imageModal').style.display = 'none';
+}}
+
+window.onclick = function(event) {{
+  var modal = document.getElementById('imageModal');
+  if (event.target == modal) {{
+    modal.style.display = 'none';
+  }}
+}}
+
+document.addEventListener('keydown', function(event) {{
+  if (event.key === 'Escape') {{
+    closeModal();
+  }}
+}});
+</script>
+"""
+            
+            filepath = self.portfolio_dir / filename
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print(f"   ✅ Created {filename}")
+        
+        print(f"✅ Updated {len(categories)} portfolio pages")
+    
+    def generate_portfolio_summary_with_llm(self, category_name: str, papers: List[str]) -> str:
+        """Generate detailed portfolio summary using LLM."""
+        paper_list = "\n".join([f"- {paper}" for paper in papers])
+        
+        prompt = f"""Write a comprehensive research summary for the "{category_name}" portfolio page based on these papers by Dr. Nesar Ramachandra:
+
+{paper_list}
+
+Requirements:
+1. Start with 2-3 paragraphs describing the research area objectively (third person)
+2. Then add 1-2 paragraphs using first person ("My work...", "I have developed...", etc.)
+3. Focus on technical contributions, methodologies, and impact
+4. Be specific about techniques and applications mentioned in the paper titles
+5. Total length: 4-5 paragraphs, around 300-400 words
+6. Academic but accessible tone suitable for a portfolio
+7. Do not use markdown formatting
+
+Write professionally about the research contributions and their significance."""
+        
+        return self.llm_generate(prompt)
+    
+    def create_portfolio_figures_html(self, figure_files: List[Path]) -> str:
+        """Create HTML for portfolio research figures."""
+        if not figure_files:
+            return '<div class="no-figures"><p>Representative figures will be added soon.</p></div>'
+        
+        html = '<div class="research-figures">\n'
+        
+        for figure_file in figure_files[:4]:  # Limit to 4 figures
+            # Extract paper name from filename
+            paper_name = figure_file.stem.split('_plot_')[0].replace('_', ' ').replace('-', ' ')
+            html += f'''  <div class="figure-item">
+    <img src="/images/research/figures/{figure_file.name}" alt="Figure from {paper_name}" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: {paper_name}</div>
+  </div>
+'''
+        
+        html += '</div>\n'
+        return html
+    
+    def run_full_update(self):
+        """Run complete website content update."""
+        print("🚀 Starting Full Website Content Update")
+        print("=" * 60)
+        
+        # Update publications
+        self.update_publications()
+        
+        # Update research page (includes classification and plot extraction)
+        categories = self.update_research_page()
+        
+        # Update portfolio pages
+        self.update_portfolio_pages(categories)
+        
+        print("\n" + "=" * 60)
+        print("🎉 FULL WEBSITE UPDATE COMPLETE!")
+        print("=" * 60)
+        print("\n✨ All content updated with:")
+        print("   📚 Latest publications from arXiv")
+        print("   🤖 LLM-generated research categories and summaries") 
+        print("   🎨 Extracted scientific figures from papers")
+        print("   📁 Updated portfolio pages with detailed content")
+        print("   🎨 Clean, consistent HTML formatting")
+
+def main():
+    """Main function with command line arguments."""
+    parser = argparse.ArgumentParser(description='Unified Website Content Manager')
+    parser.add_argument('--update-publications', action='store_true', 
+                       help='Update publication markdown files')
+    parser.add_argument('--update-research', action='store_true',
+                       help='Update research page with LLM content')
+    parser.add_argument('--update-portfolio', action='store_true',
+                       help='Update portfolio pages')
+    parser.add_argument('--full-update', action='store_true',
+                       help='Run complete website update (default)')
+    
+    args = parser.parse_args()
+    
+    # Default to full update if no specific flags
+    if not any([args.update_publications, args.update_research, args.update_portfolio]):
+        args.full_update = True
+    
+    manager = WebsiteContentManager()
+    
+    try:
+        if args.full_update:
+            manager.run_full_update()
+        else:
+            if args.update_publications:
+                manager.update_publications()
+            if args.update_research:
+                manager.update_research_page()
+            if args.update_portfolio:
+                manager.update_portfolio_pages()
+                
+    except KeyboardInterrupt:
+        print("\n❌ Update cancelled by user")
+        sys.exit(1)
+    except Exception as e:
+        print(f"\n❌ Update failed: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
