@@ -14,6 +14,7 @@ author_profile: true
       Google Scholar profile
     </a>
   </p>
+  <p class="disclaimer"><strong>Disclaimer:</strong> This section is automatically updated by Reasoning Language Models. Google Gemini is utilized to periodically go over my recent publications, talks and activities to update the content. While the information is monitored, at times incorrect information may appear.</p>
 </div>
 
 {% assign publications_by_year = site.publications | group_by_exp:"publication", "publication.date | date: '%Y'" | sort: "name" | reverse %}
@@ -83,6 +84,15 @@ author_profile: true
 .scholar-link:hover {
   color: #cccccc;
   text-decoration: underline;
+}
+
+.disclaimer {
+  font-size: 0.9em;
+  color: #aaaaaa;
+  font-style: italic;
+  margin-top: 1.5rem;
+  border-top: 1px solid #2a2d30;
+  padding-top: 1rem;
 }
 
 .year-section {
