@@ -494,27 +494,29 @@ citation: '{self.clean_text(citation)}'
             
             print(f"   📊 Processing {cat_info['name']}...")
             
-            # Extract plots from papers in this category
+            # Extract plots from papers in this category (max 1 plot per paper)
             category_plots = []
             for paper_title in cat_info['papers']:
                 paper = paper_lookup.get(paper_title)
                 if paper and paper.get('local_path') and Path(paper['local_path']).exists():
                     plots = self.extract_best_plots_from_paper(paper['local_path'], paper_title)
-                    category_plots.extend(plots)
+                    # Take only the best plot from each paper
+                    if plots:
+                        category_plots.append(plots[0])  # Best plot from this paper
             
             # Generate category summary
             summary = self.generate_category_summary_with_llm(cat_info['name'], cat_info['papers'])
             
-            # Select top 2 plots for display
-            display_plots = sorted(category_plots, key=lambda x: x['quality_score'], reverse=True)[:2]
+            # Select up to 3 plots for display (from different papers)
+            display_plots = sorted(category_plots, key=lambda x: x['quality_score'], reverse=True)[:3]
             
             # Generate plots HTML
             if display_plots:
                 plots_html = ""
                 for plot in display_plots:
                     plots_html += f'''        <div class="research-figure">
-          <img src="{plot['relative_path']}" alt="Figure from {plot['paper_title']}" onclick="openModal(this)" loading="lazy" />
-          <div class="figure-caption">From: {plot['paper_title'][:50]}{'...' if len(plot['paper_title']) > 50 else ''}</div>
+          <img src="{plot['relative_path']}" alt="Figure from {plot['paper_title']}" onclick="window.location.href='{portfolio_link}'" loading="lazy" />
+          <div class="figure-caption">From: {plot['paper_title']}</div>
         </div>
 '''
             else:
@@ -846,8 +848,6 @@ collection: portfolio
 ---
 
 {summary}
-
-## Representative Research Figures
 
 {figures_html}
 
