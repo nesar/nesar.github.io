@@ -10,7 +10,7 @@ Key research directions include the development of emulators for cosmological mo
 
 My research in this area has focused on developing innovative computational tools for cosmological analysis, including advanced emulators that enable efficient exploration of parameter spaces in modified gravity models. I have contributed to understanding the complex topology of the cosmic web through novel analytical approaches and have worked on improving weak lensing analysis techniques for more accurate mass estimation. These efforts have advanced our ability to constrain cosmological models and understand the fundamental physics governing structure formation in the universe.
 
-## Representative Research Figures
+
 
 <div class="research-figures">
   <div class="figure-item">

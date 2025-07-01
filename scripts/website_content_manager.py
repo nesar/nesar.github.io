@@ -235,6 +235,30 @@ Make the category slugs URL-friendly (lowercase, hyphens for spaces). Focus on t
             # Create a simple fallback based on keywords
             return self.create_simple_classification(papers)
     
+    def create_papers_from_local_files(self) -> List[Dict]:
+        """Create paper list from existing local PDF files."""
+        papers = []
+        pdf_files = list(self.papers_dir.glob("*.pdf"))
+        
+        for pdf_file in pdf_files:
+            # Extract title from filename
+            title = pdf_file.stem.replace('_', ' ')
+            
+            paper = {
+                'title': title,
+                'authors': ['Nesar S Ramachandra'],  # Simplified for testing
+                'date': '2024-01-01',
+                'abstract': f'Research paper: {title}',
+                'arxiv_url': '',
+                'arxiv_id': '',
+                'venue': 'Research Publication',
+                'local_path': str(pdf_file)
+            }
+            papers.append(paper)
+        
+        print(f"✅ Created {len(papers)} papers from local files")
+        return papers
+
     def create_simple_classification(self, papers: List[Dict]) -> Dict:
         """Simple keyword-based classification as fallback."""
         categories = {
@@ -472,8 +496,8 @@ citation: '{self.clean_text(citation)}'
         # Get publications and classify them
         papers = self.fetch_publications_from_arxiv()
         if not papers:
-            print("❌ No papers found for research page")
-            return
+            print("⚠️ No papers found from arXiv, using local papers for testing...")
+            papers = self.create_papers_from_local_files()
         
         # Download papers for plot extraction
         self.download_papers(papers)
@@ -536,6 +560,8 @@ citation: '{self.clean_text(citation)}'
         </h2>
         <div class="research-summary">
           {summary}
+          <br><br>
+          <a href="{portfolio_link}" class="learn-more">Learn more about this research →</a>
         </div>
       </div>
       
@@ -572,16 +598,11 @@ author_profile: true
 <div class="research-overview">
   <div class="research-intro">
     <p>My research focuses on developing and applying computational methods at the intersection of astrophysics, cosmology, and machine learning. The work spans foundation models for scientific applications, advanced ML techniques for astronomical data analysis, cosmic structure investigation, and statistical inference methods.</p>
+    <p class="disclaimer"><strong>Disclaimer:</strong> This section is automatically updated by Reasoning Language Models. Google Gemini is utilized to periodically go over my recent publications, talks and activities to update the content. While the information is monitored, at times incorrect information may appear.</p>
   </div>
 
   <div class="research-content">
 {sections_html}  </div>
-</div>
-
-<!-- Figure Modal -->
-<div id="imageModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="modalImage">
 </div>
 
 <style>
@@ -595,17 +616,27 @@ author_profile: true
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, #1a1c1e 0%, #2a2d30 100%);
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+  border: 1px solid #2a2d30;
 }}
 
 .research-intro p {{
   font-size: 1.1em;
   line-height: 1.7;
-  color: #4a5568;
+  color: #e8e8e8;
   max-width: 800px;
   margin: 0 auto;
+}}
+
+.research-intro .disclaimer {{
+  font-size: 0.9em;
+  color: #aaaaaa;
+  font-style: italic;
+  margin-top: 1.5rem;
+  border-top: 1px solid #2a2d30;
+  padding-top: 1rem;
 }}
 
 .research-content {{
@@ -615,16 +646,17 @@ author_profile: true
 }}
 
 .research-section {{
-  background: white;
+  background: #1a1c1e;
+  border: 1px solid #2a2d30;
   border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.07);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }}
 
 .research-section:hover {{
   transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 25px rgba(255, 255, 255, 0.15);
 }}
 
 .research-header {{
@@ -633,25 +665,37 @@ author_profile: true
 
 .research-header h2 {{
   font-size: 1.8em;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 1rem;
 }}
 
 .research-title {{
-  color: #2d3748;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease;
 }}
 
 .research-title:hover {{
-  color: #3182ce;
+  color: #cccccc;
 }}
 
 .research-summary {{
   font-size: 1.05em;
   line-height: 1.7;
-  color: #4a5568;
+  color: #e8e8e8;
   text-align: justify;
+}}
+
+.learn-more {{
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}}
+
+.learn-more:hover {{
+  color: #cccccc;
+  text-decoration: underline;
 }}
 
 .research-figures {{
@@ -663,15 +707,16 @@ author_profile: true
 
 .research-figure {{
   text-align: center;
-  background: #f8f9fa;
+  background: #2a2d30;
   border-radius: 12px;
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #3a3f45;
 }}
 
 .research-figure:hover {{
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.15);
 }}
 
 .research-figure img {{
@@ -690,7 +735,7 @@ author_profile: true
 
 .figure-caption {{
   font-size: 0.9em;
-  color: #6c757d;
+  color: #aaaaaa;
   margin-top: 1rem;
   line-height: 1.4;
   font-style: italic;
@@ -700,64 +745,27 @@ author_profile: true
   grid-column: 1 / -1;
   text-align: center;
   padding: 3rem;
-  color: #718096;
+  color: #aaaaaa;
   font-style: italic;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: linear-gradient(135deg, #1a1c1e 0%, #2a2d30 100%);
   border-radius: 12px;
-  border: 2px dashed #cbd5e0;
+  border: 2px dashed #3a3f45;
 }}
 
 .research-stats {{
   display: flex;
   gap: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #2a2d30;
 }}
 
 .stat {{
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, #2a2d30 0%, #3a3f45 100%);
   border-radius: 20px;
   font-size: 0.9em;
   font-weight: 600;
-  color: #4a5568;
-}}
-
-/* Modal styles */
-.modal {{
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}}
-
-.modal-content {{
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  object-fit: contain;
-  margin-top: 2%;
-}}
-
-.close {{
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}}
-
-.close:hover {{
-  color: #bbb;
+  color: #e8e8e8;
 }}
 
 /* Responsive design */
@@ -779,41 +787,8 @@ author_profile: true
     flex-direction: column;
     gap: 1rem;
   }}
-  
-  .modal-content {{
-    width: 95%;
-    margin-top: 5%;
-  }}
 }}
 </style>
-
-<script>
-function openModal(img) {{
-  var modal = document.getElementById('imageModal');
-  var modalImg = document.getElementById('modalImage');
-  modal.style.display = 'block';
-  modalImg.src = img.src;
-}}
-
-function closeModal() {{
-  document.getElementById('imageModal').style.display = 'none';
-}}
-
-// Close modal when clicking outside the image
-window.onclick = function(event) {{
-  var modal = document.getElementById('imageModal');
-  if (event.target == modal) {{
-    modal.style.display = 'none';
-  }}
-}}
-
-// Close modal with escape key
-document.addEventListener('keydown', function(event) {{
-  if (event.key === 'Escape') {{
-    closeModal();
-  }}
-}});
-</script>
 """
     
     def update_portfolio_pages(self, categories: Dict = None):

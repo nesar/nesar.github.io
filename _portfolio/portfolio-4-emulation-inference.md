@@ -10,7 +10,7 @@ The research encompasses sophisticated approaches including Gaussian process-bas
 
 My work in this area has centered on developing probabilistic modeling frameworks that can handle the computational challenges of modern scientific research. I have contributed to creating automated machine learning pipelines that maintain scientific rigor while providing computational efficiency gains. Through this research, I have helped enable more sophisticated analyses of complex models and provided tools that allow researchers to extract reliable inferences from increasingly large and complex scientific datasets.
 
-## Representative Research Figures
+
 
 <div class="research-figures">
   <div class="figure-item">

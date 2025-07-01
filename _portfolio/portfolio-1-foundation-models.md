@@ -10,7 +10,6 @@ The research demonstrates significant advances in model specialization, showing 
 
 My work in this area has centered on developing the AstroMLab series of models, which showcase the effectiveness of domain specialization in achieving superior performance on astronomy-related tasks. I have also contributed to establishing rigorous evaluation methodologies through the EAIRA project, providing frameworks that enable systematic assessment of AI capabilities as research assistants. These contributions help bridge the gap between general AI capabilities and the specific needs of scientific research communities.
 
-## Representative Research Figures
 
 <div class="research-figures">
   <div class="figure-item">

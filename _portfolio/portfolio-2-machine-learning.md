@@ -10,7 +10,7 @@ Advanced techniques in this area include modular deep learning pipelines for gra
 
 My contributions to this field focus on developing interpretable and efficient machine learning methods for astronomical applications. I have worked extensively on creating modular pipelines that can be adapted across different scientific problems, with particular emphasis on maintaining scientific rigor while leveraging the power of modern deep learning architectures. This work has enabled more accurate and efficient analysis of complex astronomical phenomena, from galaxy morphology classification to cosmological parameter estimation.
 
-## Representative Research Figures
+
 
 <div class="research-figures">
   <div class="figure-item">
