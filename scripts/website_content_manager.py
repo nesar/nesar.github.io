@@ -57,7 +57,8 @@ class WebsiteContentManager:
         
         try:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-pro')
+            #self.model = genai.GenerativeModel('gemini-1.5-pro')
+            self.model = genai.GenerativeModel('gemini-2.5-flash')
             print("✅ LLM configured successfully")
         except Exception as e:
             print(f"❌ LLM setup failed: {e}")
@@ -534,6 +535,10 @@ citation: '{self.clean_text(citation)}'
             # Select up to 3 plots for display (from different papers)
             display_plots = sorted(category_plots, key=lambda x: x['quality_score'], reverse=True)[:3]
             
+            # Define portfolio link and color first
+            color = colors[i % len(colors)]
+            portfolio_link = f"/portfolio/portfolio-{i+1}-{cat_key}/"
+            
             # Generate plots HTML
             if display_plots:
                 plots_html = ""
@@ -548,9 +553,6 @@ citation: '{self.clean_text(citation)}'
           <p>Representative figures will be added soon.</p>
         </div>
 '''
-            
-            color = colors[i % len(colors)]
-            portfolio_link = f"/portfolio/portfolio-{i+1}-{cat_key}/"
             
             section_html = f'''
     <div class="research-section" style="border-left: 4px solid {color};">
