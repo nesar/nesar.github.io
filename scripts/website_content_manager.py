@@ -92,7 +92,10 @@ class WebsiteContentManager:
         seen_arxiv_ids = set()
         
         for search_term in search_terms:
-            url = f"http://export.arxiv.org/api/query?search_query={search_term}&sortBy=submittedDate&sortOrder=descending&max_results=100"
+            # URL encode the search term properly
+            from urllib.parse import quote
+            encoded_search = quote(search_term)
+            url = f"http://export.arxiv.org/api/query?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results=100"
             
             try:
                 response = requests.get(url, timeout=30)
@@ -108,7 +111,9 @@ class WebsiteContentManager:
                     summary = entry.find('./atom:summary', namespace)
                     arxiv_id = entry.find('./atom:id', namespace)
                     
-                    if not all([title, published, arxiv_id]):
+                    if not all([title is not None and title.text, 
+                               published is not None and published.text, 
+                               arxiv_id is not None and arxiv_id.text]):
                         continue
                     
                     # Get authors
@@ -156,6 +161,8 @@ class WebsiteContentManager:
                 continue
         
         print(f"✅ Found {len(all_papers)} publications")
+        for i, paper in enumerate(all_papers):
+            print(f"   📄 {i+1}. {paper['title'][:60]}...")
         return all_papers
     
     def clean_text(self, text: str) -> str:
@@ -200,46 +207,18 @@ class WebsiteContentManager:
         paper_titles = [f"- {paper['title']}" for paper in papers]
         titles_text = "\n".join(paper_titles)
         
-        prompt = f"""You are a research scientist analyzing academic papers. Based on these paper titles from Dr. Nesar Ramachandra's research, classify them into these EXACT 4 categories:
+        prompt = f"""Classify these {len(papers)} papers into 4 categories. Return only JSON:
 
-Paper titles:
-{titles_text}
+Papers: {titles_text}
 
-Requirements:
-1. Use EXACTLY these 4 category names and slugs:
-   - foundation-models: "Foundation Models"
-   - machine-learning: "Machine Learning for Science" 
-   - dark-matter: "Dark Matter & Cosmology"
-   - emulation-inference: "Emulation & Inference"
+Categories:
+- foundation-models: "Foundation Models" (AI, LLMs, evaluation)
+- machine-learning: "Machine Learning for Science" (neural networks, deep learning)  
+- dark-matter: "Dark Matter & Cosmology" (cosmic web, structure)
+- emulation-inference: "Emulation & Inference" (statistical models, surrogates)
 
-2. Assign each paper to exactly one category based on content
-3. Return as JSON format with this structure:
-{{
-    "categories": {{
-        "foundation-models": {{
-            "name": "Foundation Models",
-            "description": "AI foundation models for scientific applications",
-            "papers": ["Paper Title 1", "Paper Title 2", ...]
-        }},
-        "machine-learning": {{
-            "name": "Machine Learning for Science", 
-            "description": "ML techniques for scientific problems",
-            "papers": ["Paper Title 1", "Paper Title 2", ...]
-        }},
-        "dark-matter": {{
-            "name": "Dark Matter & Cosmology",
-            "description": "Cosmological structure and dark matter research", 
-            "papers": ["Paper Title 1", "Paper Title 2", ...]
-        }},
-        "emulation-inference": {{
-            "name": "Emulation & Inference",
-            "description": "Statistical emulators and inference methods",
-            "papers": ["Paper Title 1", "Paper Title 2", ...]
-        }}
-    }}
-}}
-
-Classify based on paper content - foundation models (LLMs, AI evaluation), machine learning (neural networks, deep learning applications), dark matter (cosmic web, structure formation), emulation (statistical modeling, surrogates)."""
+JSON format:
+{{"categories": {{"foundation-models": {{"name": "Foundation Models", "papers": [...]}}, "machine-learning": {{"name": "Machine Learning for Science", "papers": [...]}}, "dark-matter": {{"name": "Dark Matter & Cosmology", "papers": [...]}}, "emulation-inference": {{"name": "Emulation & Inference", "papers": [...]}}}}}}"""
         
         try:
             response = self.llm_generate(prompt)
@@ -255,29 +234,6 @@ Classify based on paper content - foundation models (LLMs, AI evaluation), machi
             # Create a simple fallback based on keywords
             return self.create_simple_classification(papers)
     
-    def create_papers_from_local_files(self) -> List[Dict]:
-        """Create paper list from existing local PDF files."""
-        papers = []
-        pdf_files = list(self.papers_dir.glob("*.pdf"))
-        
-        for pdf_file in pdf_files:
-            # Extract title from filename
-            title = pdf_file.stem.replace('_', ' ')
-            
-            paper = {
-                'title': title,
-                'authors': ['Nesar S Ramachandra'],  # Simplified for testing
-                'date': '2024-01-01',
-                'abstract': f'Research paper: {title}',
-                'arxiv_url': '',
-                'arxiv_id': '',
-                'venue': 'Research Publication',
-                'local_path': str(pdf_file)
-            }
-            papers.append(paper)
-        
-        print(f"✅ Created {len(papers)} papers from local files")
-        return papers
 
     def create_simple_classification(self, papers: List[Dict]) -> Dict:
         """Simple keyword-based classification as fallback."""
@@ -440,19 +396,11 @@ Classify based on paper content - foundation models (LLMs, AI evaluation), machi
         """Generate research category summary using LLM."""
         paper_list = "\n".join([f"- {paper}" for paper in papers])
         
-        prompt = f"""Write a comprehensive research summary for the "{category_name}" research area based on these papers by Dr. Nesar Ramachandra:
+        prompt = f"""Write a 100-word summary for {category_name} research based on these papers:
 
 {paper_list}
 
-Requirements:
-1. Write 2-3 paragraphs describing the research area and contributions
-2. Focus on technical methodologies, innovations, and scientific impact
-3. Be specific about the techniques and applications mentioned in the paper titles
-4. Use professional academic tone suitable for a research portfolio
-5. Around 200-250 words total
-6. Do not use markdown formatting
-
-Write in third person about the research area, then mention specific contributions."""
+Focus on key methods and impact. Academic tone, no markdown."""
         
         return self.llm_generate(prompt)
     
@@ -519,11 +467,11 @@ citation: '{self.clean_text(citation)}'
         # Get publications and classify them
         papers = self.fetch_publications_from_arxiv()
         if not papers:
-            print("⚠️ No papers found from arXiv, using local papers for testing...")
-            papers = self.create_papers_from_local_files()
+            print("❌ No papers found from arXiv")
+            return
         
-        # Download papers for plot extraction
-        self.download_papers(papers)
+        # Download papers for plot extraction (skip for now to speed up)
+        # self.download_papers(papers)
         
         # Classify papers using LLM
         categories = self.classify_papers_with_llm(papers)
@@ -543,15 +491,17 @@ citation: '{self.clean_text(citation)}'
             
             # Extract plots from papers in this category (max 1 plot per paper)
             category_plots = []
-            for paper_title in cat_info['papers']:
-                paper = paper_lookup.get(paper_title)
-                if paper and paper.get('local_path') and Path(paper['local_path']).exists():
-                    plots = self.extract_best_plots_from_paper(paper['local_path'], paper_title)
-                    # Take only the best plot from each paper
-                    if plots:
-                        category_plots.append(plots[0])  # Best plot from this paper
+            # Skip plot extraction for now since we're not downloading PDFs
+            # for paper_title in cat_info['papers']:
+            #     paper = paper_lookup.get(paper_title)
+            #     if paper and paper.get('local_path') and Path(paper['local_path']).exists():
+            #         plots = self.extract_best_plots_from_paper(paper['local_path'], paper_title)
+            #         # Take only the best plot from each paper
+            #         if plots:
+            #             category_plots.append(plots[0])  # Best plot from this paper
             
             # Generate category summary
+            print(f"   🤖 Generating summary for {cat_info['name']}...")
             summary = self.generate_category_summary_with_llm(cat_info['name'], cat_info['papers'])
             
             # Select up to 3 plots for display (from different papers)

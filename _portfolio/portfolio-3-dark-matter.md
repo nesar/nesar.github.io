@@ -4,26 +4,30 @@ excerpt: "Research in dark matter & cosmology"
 collection: portfolio
 ---
 
-Dark matter and cosmological structure formation represent fundamental challenges in understanding the universe's evolution and composition. This research area encompasses computational approaches to modeling large-scale structure, advanced statistical methods for cosmological parameter estimation, and novel techniques for analyzing the cosmic web's topology and geometry. The work integrates theoretical modeling with observational data analysis, employing both traditional statistical methods and cutting-edge machine learning approaches to extract insights from cosmological simulations and survey data.
+The field of Dark Matter and Cosmology stands at the forefront of modern astrophysics, seeking to unravel the fundamental constituents and evolutionary history of our universe. While the Lambda-CDM model successfully describes a vast array of cosmological observations, it posits that most of the universe's matter content is in an unknown form, dubbed "dark matter," and its accelerated expansion is driven by "dark energy." Understanding the nature of these enigmatic components, along with exploring potential deviations from General Relativity on cosmic scales, remains a paramount challenge.
 
-Key research directions include the development of emulators for cosmological models beyond general relativity, AI-driven approaches for evolving cosmological structures, and sophisticated analyses of weak lensing signals for cluster mass estimation. The research also encompasses detailed studies of cosmic web morphology, multi-stream analysis of dark matter halos, and the application of topological methods to understand large-scale structure formation.
+To address these profound questions, researchers employ diverse observational techniques and theoretical frameworks. These include precision measurements of the large-scale structure of the universe, analysis of galaxy clusters, mapping the distribution and kinematics of stellar populations within galaxies, and identifying the earliest generations of stars. Such studies are crucial for testing alternative theories of gravity, charting the fine-grained structure of dark matter halos, and characterizing the intricate cosmic web that permeates the universe.
 
-My research in this area has focused on developing innovative computational tools for cosmological analysis, including advanced emulators that enable efficient exploration of parameter spaces in modified gravity models. I have contributed to understanding the complex topology of the cosmic web through novel analytical approaches and have worked on improving weak lensing analysis techniques for more accurate mass estimation. These efforts have advanced our ability to constrain cosmological models and understand the fundamental physics governing structure formation in the universe.
+My research contributes significantly to these endeavors through a multi-faceted approach. I have developed and applied sophisticated techniques to probe the nature of dark matter and cosmological models. For instance, I utilized a k-cut cosmic shear analysis of Hyper Suprime-Cam (HSC) first-year data to place stringent constraints on modified gravity theories, specifically f(R) gravity, by examining distortions in the shapes of distant galaxies. Concurrently, my work extends to mapping the Milky Way's structure; I constructed a photometric sample of 2.6 million Red Clump stars to trace the distribution of stars from the inner to the outer galaxy, providing insights into our galaxy's assembly history.
 
-
+Furthermore, I have made significant advancements in characterizing the fine-grained structure of the cosmic web and dark matter halos. I pioneered the application of a "multistream view" and "caustic design" formalism to understand the topology and geometry of the dark matter web, revealing the complex internal structure of halos and the surrounding cosmic filaments. This method offers a novel way to visualize and analyze the multi-stream nature of collisionless dark matter flows. My research also encompasses identifying new cosmological probes, such as the SPTpol Extended Cluster Survey, which helps identify galaxy clusters as massive structures for cosmological studies, and searching for Carbon-Enhanced Metal-Poor star candidates using BP/RP spectra from Gaia DR3, which serve as relics from the early universe, shedding light on the first stars and chemical enrichment. Through these diverse projects, my work provides crucial observational constraints and theoretical insights necessary to refine our understanding of cosmic evolution and fundamental physics.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/The_Caustic_Design_of_the_Dark_Matter_Web_plot_1_1a1bb482.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: The Caustic Design of the Dark Matter Web</div>
+    <img src="/images/research/figures/topology-and-geometry-of-the-dark-matter-web-a-mul_plot_1_b9734473.png" alt="Figure from topology and geometry of the dark matter web a mul" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: topology and geometry of the dark matter web a mul</div>
   </div>
   <div class="figure-item">
-    <img src="/images/research/figures/The_Caustic_Design_of_the_Dark_Matter_Web_plot_2_fa373b8f.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: The Caustic Design of the Dark Matter Web</div>
+    <img src="/images/research/figures/the-caustic-design-of-the-dark-matter-web_plot_1_1a1bb482.png" alt="Figure from the caustic design of the dark matter web" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: the caustic design of the dark matter web</div>
   </div>
   <div class="figure-item">
-    <img src="/images/research/figures/The_Caustic_Design_of_the_Dark_Matter_Web_plot_3_a3b0a1c0.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: The Caustic Design of the Dark Matter Web</div>
+    <img src="/images/research/figures/topology-and-geometry-of-the-dark-matter-web-a-mul_plot_2_ec781175.png" alt="Figure from topology and geometry of the dark matter web a mul" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: topology and geometry of the dark matter web a mul</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/the-caustic-design-of-the-dark-matter-web_plot_3_a3b0a1c0.png" alt="Figure from the caustic design of the dark matter web" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: the caustic design of the dark matter web</div>
   </div>
 </div>
 
@@ -72,43 +76,6 @@ My research in this area has focused on developing innovative computational tool
   font-style: italic;
 }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  object-fit: contain;
-  margin-top: 2%;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close:hover {
-  color: #bbb;
-}
-
 @media (max-width: 768px) {
   .research-figures {
     grid-template-columns: 1fr;
@@ -139,7 +106,6 @@ function closeModal() {
   document.getElementById('imageModal').style.display = 'none';
 }
 
-// Close modal when clicking outside the image
 window.onclick = function(event) {
   var modal = document.getElementById('imageModal');
   if (event.target == modal) {
@@ -147,7 +113,6 @@ window.onclick = function(event) {
   }
 }
 
-// Close modal with escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeModal();

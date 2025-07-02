@@ -4,33 +4,15 @@ excerpt: "Research in emulation & inference"
 collection: portfolio
 ---
 
-Emulation and statistical inference represent critical methodologies for enabling efficient analysis of complex scientific models and extracting reliable information from high-dimensional datasets. This research area focuses on developing surrogate models that can approximate computationally expensive simulations, advanced uncertainty quantification techniques, and probabilistic frameworks for parameter estimation in scientific applications. The work spans multiple domains including cosmology, high-energy physics, and engineering applications, emphasizing the development of robust, scalable methods for scientific inference.
+Emulation and inference represent a critical frontier in modern computational science, addressing the inherent challenges of simulating complex physical systems and extracting meaningful insights from observational data. High-fidelity simulations, ranging from cosmological structure formation to turbulent fluid dynamics, are often computationally prohibitive, making extensive parameter space exploration or real-time analysis impractical. Emulators, also known as surrogate models, leverage advanced machine learning and statistical techniques to construct fast, accurate approximations of these expensive simulations. These surrogates enable rapid predictions, facilitating the robust inference of underlying physical parameters from noisy, sparse, or incomplete observational data, while critically quantifying the associated uncertainties.
 
-The research encompasses sophisticated approaches including Gaussian process-based emulation, neural network surrogate modeling, and automated machine learning frameworks for handling high-dimensional problems. Key contributions include developing methods for nonlinear dimensionality reduction in scientific datasets, creating efficient emulators for power spectrum analysis in cosmological models, and establishing frameworks for interpretable uncertainty quantification in AI applications for scientific research.
+The core objective within this domain is to develop computationally efficient and reliable tools that bridge the gap between theoretical models and real-world observations. This involves mastering techniques such as reduced-order modeling, which compresses high-dimensional system dynamics into lower-dimensional representations, and integrating probabilistic approaches to quantify the uncertainty inherent in both the models and the data. Successful emulation and inference strategies are transformative, allowing scientists and engineers to accelerate design cycles, explore novel physics, and make data-driven decisions with greater confidence across diverse fields.
 
-My work in this area has centered on developing probabilistic modeling frameworks that can handle the computational challenges of modern scientific research. I have contributed to creating automated machine learning pipelines that maintain scientific rigor while providing computational efficiency gains. Through this research, I have helped enable more sophisticated analyses of complex models and provided tools that allow researchers to extract reliable inferences from increasingly large and complex scientific datasets.
+My research focuses on developing and applying cutting-edge emulation and inference methodologies to tackle grand challenges in scientific computing, particularly in cosmology and fluid dynamics. I have developed probabilistic neural network-based reduced-order surrogates for fluid flows, enabling efficient and uncertainty-aware prediction of complex flow dynamics and facilitating data recovery from sparse sensor measurements. These models provide not only accurate predictions but also robust quantification of the predictive uncertainty, which is crucial for real-world applications.
 
+Furthermore, I have contributed to the field of cosmology by developing a Matter Power Spectrum Emulator for f(R) modified gravity cosmologies. This emulator significantly accelerates the exploration of alternative gravity theories, allowing for rapid comparison with cosmological observations and robust inference of model parameters. My work also includes enhancing weak lensing cluster mass estimation through optimized galaxy selection, a key inference problem that reduces model error and improves the precision of cosmological parameter constraints. Additionally, I have advanced non-intrusive reduced-order models by utilizing Gaussian process emulation for latent-space time evolution, a technique that efficiently captures the temporal dynamics of complex systems with rigorous uncertainty quantification, further strengthening the capabilities of robust emulation and inference.
 
-
-<div class="research-figures">
-  <div class="figure-item">
-    <img src="/images/research/figures/Application_of_probabilistic_modeling_and_automate_plot_1_8f87fb28.png" alt="Figure from Application of probabilistic modeling and automate" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Application of probabilistic modeling and automate</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/Application_of_probabilistic_modeling_and_automate_plot_2_23b6d91f.png" alt="Figure from Application of probabilistic modeling and automate" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Application of probabilistic modeling and automate</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/Application_of_probabilistic_modeling_and_automate_plot_3_f865475d.png" alt="Figure from Application of probabilistic modeling and automate" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Application of probabilistic modeling and automate</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/Probabilistic_neural_network_reduced_order_plot_1_0ea468f8.png" alt="Figure from Probabilistic neural network reduced order" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Probabilistic neural network reduced order</div>
-  </div>
-</div>
-
+<div class="no-figures"><p>Representative figures will be added soon.</p></div>
 
 <style>
 .research-figures {
@@ -76,43 +58,6 @@ My work in this area has centered on developing probabilistic modeling framework
   font-style: italic;
 }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  object-fit: contain;
-  margin-top: 2%;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close:hover {
-  color: #bbb;
-}
-
 @media (max-width: 768px) {
   .research-figures {
     grid-template-columns: 1fr;
@@ -143,7 +88,6 @@ function closeModal() {
   document.getElementById('imageModal').style.display = 'none';
 }
 
-// Close modal when clicking outside the image
 window.onclick = function(event) {
   var modal = document.getElementById('imageModal');
   if (event.target == modal) {
@@ -151,7 +95,6 @@ window.onclick = function(event) {
   }
 }
 
-// Close modal with escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeModal();

@@ -4,28 +4,15 @@ excerpt: "Research in foundation models"
 collection: portfolio
 ---
 
-Foundation models represent a transformative approach to artificial intelligence in scientific applications, particularly in astronomy and astrophysics. This research area focuses on developing specialized large language models (LLMs) that can understand and reason about domain-specific scientific content. The work encompasses comprehensive evaluation methodologies for AI models in scientific contexts, benchmark development for astronomical question-answering, and the creation of robust frameworks for assessing AI performance in research assistance tasks.
+The burgeoning field of foundation models, particularly large language models (LLMs), has demonstrated remarkable general-purpose capabilities across diverse tasks. However, their direct application to complex scientific domains often faces limitations due to a lack of specialized knowledge, nuanced reasoning abilities, and the precision required for scientific inquiry. While general models can synthesize information, their capacity for deep scientific reasoning, hypothesis generation, and accurate interpretation of domain-specific data remains a significant challenge. Bridging this gap requires developing models that not only possess extensive factual knowledge but also exhibit advanced reasoning and problem-solving skills tailored to the unique demands of scientific research.
 
-The research demonstrates significant advances in model specialization, showing that domain-focused models can achieve performance comparable to much larger general-purpose systems. The evaluation frameworks developed provide crucial infrastructure for responsible AI deployment in scientific workflows, establishing standards for reliability and accuracy assessment.
+Specialized scientific disciplines, such as astronomy, present a unique testbed for advancing foundation model capabilities. These fields demand an understanding of complex theoretical frameworks, observational data, and intricate interconnections between vast datasets. Moreover, the utility of AI in scientific discovery hinges not just on raw performance, but on a robust and systematic methodology for evaluating their efficacy as genuine research assistants. This includes assessing their ability to answer complex questions, synthesize information, and contribute meaningfully to the scientific process, moving beyond simple knowledge recall towards true scientific reasoning and insight generation.
 
-My work in this area has centered on developing the AstroMLab series of models, which showcase the effectiveness of domain specialization in achieving superior performance on astronomy-related tasks. I have also contributed to establishing rigorous evaluation methodologies through the EAIRA project, providing frameworks that enable systematic assessment of AI capabilities as research assistants. These contributions help bridge the gap between general AI capabilities and the specific needs of scientific research communities.
+My research endeavors have focused on addressing these challenges by developing and rigorously evaluating domain-specialized large language models within the field of astronomy. Through the AstroMLab series, I have pioneered the creation of models specifically engineered for scientific question-answering and reasoning. This includes AstroMLab 3, an 8-billion-parameter model that achieved performance comparable to highly advanced general models like GPT-4o in astronomy-specific tasks, demonstrating the significant gains achievable through domain specialization. Building on this, I further developed AstroMLab 4, a 70-billion-parameter domain-specialized reasoning model that exhibited benchmark-topping performance in complex astronomy Q&A, proving that targeted architectural and training approaches can push the boundaries of AI capabilities in scientific contexts.
 
+Beyond model development, a critical contribution of my work lies in establishing methodologies for effectively evaluating these AI systems as genuine scientific research assistants. My research, specifically highlighted in EAIRA, introduces a systematic framework for assessing AI models not just on factual recall, but on their reasoning depth, capacity for information synthesis, and overall utility in accelerating scientific discovery. Early work, such as "AstroMLab 1: Who Wins Astronomy Jeopardy!?", laid the groundwork for robust, game-theoretic evaluation of domain knowledge. This comprehensive approach ensures that the developed foundation models are not merely performant, but are truly capable of serving as valuable tools for researchers, enabling more efficient and insightful scientific exploration.
 
-<div class="research-figures">
-  <div class="figure-item">
-    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_1_adce1f78.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_2_205db31f.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/EAIRA_Establishing_a_Methodology_for_Evaluating_AI_plot_3_1c174bef.png" alt="Figure from EAIRA Establishing a Methodology for Evaluating AI" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: EAIRA Establishing a Methodology for Evaluating AI</div>
-  </div>
-</div>
-
+<div class="no-figures"><p>Representative figures will be added soon.</p></div>
 
 <style>
 .research-figures {
@@ -71,43 +58,6 @@ My work in this area has centered on developing the AstroMLab series of models, 
   font-style: italic;
 }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  object-fit: contain;
-  margin-top: 2%;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close:hover {
-  color: #bbb;
-}
-
 @media (max-width: 768px) {
   .research-figures {
     grid-template-columns: 1fr;
@@ -138,7 +88,6 @@ function closeModal() {
   document.getElementById('imageModal').style.display = 'none';
 }
 
-// Close modal when clicking outside the image
 window.onclick = function(event) {
   var modal = document.getElementById('imageModal');
   if (event.target == modal) {
@@ -146,7 +95,6 @@ window.onclick = function(event) {
   }
 }
 
-// Close modal with escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeModal();

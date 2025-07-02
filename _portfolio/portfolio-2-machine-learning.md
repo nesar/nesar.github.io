@@ -4,26 +4,18 @@ excerpt: "Research in machine learning for science"
 collection: portfolio
 ---
 
-Machine learning applications in scientific research have revolutionized data analysis across multiple domains, particularly in astronomy, cosmology, and fluid dynamics. This research encompasses diverse methodologies including generative adversarial networks for anomaly detection in astronomical surveys, deep neural networks for point spread function deconvolution, and probabilistic approaches for surrogate modeling in complex physical systems. The work spans from fundamental image processing challenges to sophisticated pattern recognition tasks in large-scale scientific datasets.
+Machine learning has emerged as a transformative paradigm across numerous scientific disciplines, offering powerful tools to extract knowledge from increasingly vast and complex datasets. In fields such as astrophysics, cosmology, and high-energy physics, researchers grapple with challenges like high-dimensional data, noisy measurements, and the need for sophisticated models to interpret fundamental phenomena. The application of machine learning techniques facilitates advancements in areas ranging from accelerated data analysis and anomaly detection to the precise characterization of physical systems and the discovery of novel patterns.
 
-Advanced techniques in this area include modular deep learning pipelines for gravitational lensing analysis, neural network-based approaches for synthetic sky image generation, and novel architectures for handling high-dimensional scientific data. The research emphasizes both computational efficiency and scientific accuracy, developing methods that can handle the scale and complexity of modern astronomical surveys while maintaining rigorous uncertainty quantification.
+Specifically, in astronomical and cosmological research, machine learning is pivotal for addressing a diverse array of inverse problems and data interpretation tasks. This includes the deconvolution of astronomical images to enhance resolution, the automated detection of rare or anomalous events, and the classification and characterization of celestial objects like galaxies and cosmic structures. Furthermore, machine learning models are being developed to reconstruct global physical fields from sparse measurements, quantify uncertainties in complex simulations, and derive cosmological parameters from observational data, thereby pushing the boundaries of our understanding of the universe.
 
-My contributions to this field focus on developing interpretable and efficient machine learning methods for astronomical applications. I have worked extensively on creating modular pipelines that can be adapted across different scientific problems, with particular emphasis on maintaining scientific rigor while leveraging the power of modern deep learning architectures. This work has enabled more accurate and efficient analysis of complex astronomical phenomena, from galaxy morphology classification to cosmological parameter estimation.
+My research centers on developing and applying advanced machine learning methodologies to tackle these critical challenges in science, particularly within astrophysics and cosmology. I have pioneered the use of neural network-based techniques for point spread function deconvolution, significantly enhancing image resolution in astronomical applications. For galaxy analysis, I have developed a modular deep learning pipeline for strong gravitational lens detection and modeling, alongside utilizing unsupervised machine learning to explore galaxy morphology beyond traditional classification schemes. Furthermore, my work extensively involves anomaly detection in large astronomical surveys, employing generative adversarial networks (GANs) to identify novel or unusual objects in Hyper Suprime-Cam galaxy images.
 
-
+Beyond image processing, I have contributed to developing differentiable prediction frameworks like SHAMNet for large-scale structure, alongside physical benchmarking for AI-generated cosmic webs, improving our ability to simulate and interpret cosmological data. My work also includes probabilistic redshift estimation using machine learning-generated synthetic spectra (SYTH-Z) and peculiar velocity estimation from the kinetic Sunyaev-Zel'dovich effect using deep neural networks, providing crucial insights into cosmic flows. A core theme of my research is robust data handling and uncertainty quantification; I have developed an automated machine learning framework for high-dimensional stress fields and explored interpretable uncertainty quantification in AI for high-energy physics, ensuring the reliability and transparency of AI-driven scientific discoveries. Additionally, I have developed novel approaches for global field reconstruction from sparse sensors using Voronoi tessellation-assisted deep learning, showcasing the adaptability of these techniques across diverse scientific domains. These contributions collectively advance our capacity for scientific discovery by enabling more precise measurements, accelerating data analysis, and uncovering previously hidden patterns in complex scientific datasets.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_1_96427c88.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_2_ad6f7fae.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/Neural_Network_Based_Point_Spread_Function_Deconvo_plot_3_4f111230.png" alt="Figure from Neural Network Based Point Spread Function Deconvo" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Neural Network Based Point Spread Function Deconvo</div>
+    <img src="/images/research/figures/machine-learning-synthetic-spectra-for-probabilist_plot_1_e2025c80.png" alt="Figure from machine learning synthetic spectra for probabilist" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: machine learning synthetic spectra for probabilist</div>
   </div>
 </div>
 
@@ -72,43 +64,6 @@ My contributions to this field focus on developing interpretable and efficient m
   font-style: italic;
 }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  object-fit: contain;
-  margin-top: 2%;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close:hover {
-  color: #bbb;
-}
-
 @media (max-width: 768px) {
   .research-figures {
     grid-template-columns: 1fr;
@@ -139,7 +94,6 @@ function closeModal() {
   document.getElementById('imageModal').style.display = 'none';
 }
 
-// Close modal when clicking outside the image
 window.onclick = function(event) {
   var modal = document.getElementById('imageModal');
   if (event.target == modal) {
@@ -147,7 +101,6 @@ window.onclick = function(event) {
   }
 }
 
-// Close modal with escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeModal();
