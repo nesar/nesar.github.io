@@ -200,27 +200,46 @@ class WebsiteContentManager:
         paper_titles = [f"- {paper['title']}" for paper in papers]
         titles_text = "\n".join(paper_titles)
         
-        prompt = f"""You are a research scientist analyzing academic papers. Based on these paper titles from Dr. Nesar Ramachandra's research, create 4-5 meaningful research categories and classify each paper.
+        prompt = f"""You are a research scientist analyzing academic papers. Based on these paper titles from Dr. Nesar Ramachandra's research, classify them into these EXACT 4 categories:
 
 Paper titles:
 {titles_text}
 
 Requirements:
-1. Create 4-5 research categories that naturally group these papers
-2. Each category should have a clear, descriptive name
-3. Assign each paper to exactly one category
-4. Return as JSON format with this structure:
+1. Use EXACTLY these 4 category names and slugs:
+   - foundation-models: "Foundation Models"
+   - machine-learning: "Machine Learning for Science" 
+   - dark-matter: "Dark Matter & Cosmology"
+   - emulation-inference: "Emulation & Inference"
+
+2. Assign each paper to exactly one category based on content
+3. Return as JSON format with this structure:
 {{
     "categories": {{
-        "category-slug": {{
-            "name": "Category Display Name",
-            "description": "Brief category description",
+        "foundation-models": {{
+            "name": "Foundation Models",
+            "description": "AI foundation models for scientific applications",
+            "papers": ["Paper Title 1", "Paper Title 2", ...]
+        }},
+        "machine-learning": {{
+            "name": "Machine Learning for Science", 
+            "description": "ML techniques for scientific problems",
+            "papers": ["Paper Title 1", "Paper Title 2", ...]
+        }},
+        "dark-matter": {{
+            "name": "Dark Matter & Cosmology",
+            "description": "Cosmological structure and dark matter research", 
+            "papers": ["Paper Title 1", "Paper Title 2", ...]
+        }},
+        "emulation-inference": {{
+            "name": "Emulation & Inference",
+            "description": "Statistical emulators and inference methods",
             "papers": ["Paper Title 1", "Paper Title 2", ...]
         }}
     }}
 }}
 
-Make the category slugs URL-friendly (lowercase, hyphens for spaces). Focus on the actual research areas represented by these papers."""
+Classify based on paper content - foundation models (LLMs, AI evaluation), machine learning (neural networks, deep learning applications), dark matter (cosmic web, structure formation), emulation (statistical modeling, surrogates)."""
         
         try:
             response = self.llm_generate(prompt)
@@ -263,22 +282,25 @@ Make the category slugs URL-friendly (lowercase, hyphens for spaces). Focus on t
     def create_simple_classification(self, papers: List[Dict]) -> Dict:
         """Simple keyword-based classification as fallback."""
         categories = {
-            'machine-learning': {'name': 'Machine Learning', 'description': 'ML applications in science', 'papers': []},
-            'cosmology': {'name': 'Cosmology', 'description': 'Cosmological research', 'papers': []},
-            'data-analysis': {'name': 'Data Analysis', 'description': 'Data analysis methods', 'papers': []},
-            'other': {'name': 'Other Research', 'description': 'Other research areas', 'papers': []}
+            'foundation-models': {'name': 'Foundation Models', 'description': 'AI foundation models for scientific applications', 'papers': []},
+            'machine-learning': {'name': 'Machine Learning for Science', 'description': 'ML techniques for scientific problems', 'papers': []},
+            'dark-matter': {'name': 'Dark Matter & Cosmology', 'description': 'Cosmological structure and dark matter research', 'papers': []},
+            'emulation-inference': {'name': 'Emulation & Inference', 'description': 'Statistical emulators and inference methods', 'papers': []}
         }
         
         for paper in papers:
             title_lower = paper['title'].lower()
-            if any(kw in title_lower for kw in ['neural', 'machine learning', 'deep learning', 'ai', 'network']):
+            if any(kw in title_lower for kw in ['eaira', 'astromllab', 'gpt', 'llm', 'foundation', 'evaluation', 'ai']):
+                categories['foundation-models']['papers'].append(paper['title'])
+            elif any(kw in title_lower for kw in ['neural', 'machine learning', 'deep learning', 'network', 'probabilistic']):
                 categories['machine-learning']['papers'].append(paper['title'])
-            elif any(kw in title_lower for kw in ['cosmic', 'cosmology', 'dark matter', 'universe']):
-                categories['cosmology']['papers'].append(paper['title'])
-            elif any(kw in title_lower for kw in ['analysis', 'data', 'method', 'algorithm']):
-                categories['data-analysis']['papers'].append(paper['title'])
+            elif any(kw in title_lower for kw in ['cosmic', 'cosmology', 'dark matter', 'caustic', 'universe', 'multi-stream']):
+                categories['dark-matter']['papers'].append(paper['title'])
+            elif any(kw in title_lower for kw in ['emulator', 'inference', 'modeling', 'surrogate', 'reduced']):
+                categories['emulation-inference']['papers'].append(paper['title'])
             else:
-                categories['other']['papers'].append(paper['title'])
+                # Default to machine learning if no clear match
+                categories['machine-learning']['papers'].append(paper['title'])
         
         return categories
     
