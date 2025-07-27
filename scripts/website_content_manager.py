@@ -154,7 +154,7 @@ class WebsiteContentManager:
                         'authors': authors,
                         'date': published.text,
                         'abstract': self.clean_text(summary.text if summary is not None else ""),
-                        'arxiv_url': arxiv_url.replace('/abs/', '/pdf/') + '.pdf',
+                        'arxiv_url': arxiv_url,
                         'arxiv_id': arxiv_number,
                         'venue': 'arXiv preprint'
                     }

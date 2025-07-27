@@ -1,11 +1,11 @@
 ---
 title: "Enhancing Interpretability in Generative Modeling: Statistically Disentangled Latent Spaces Guided by Generative Factors in Scientific Datasets"
 collection: publications
-permalink: /publication/2025-enhancing-interpretability-in-generative-modeling-
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2507.00298v1.pdf)'
+permalink: /publication/2025enhancing-interpretability-in-generative-modeling
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2507.00298v1)'
 date: 2025-06-30
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2507.00298v1.pdf'
+paperurl: 'http://arxiv.org/abs/2507.00298v1'
 citation: 'Arkaprabha Ganguli, Nesar Ramachandra, Julie Bessac, Emil Constantinescu (2025). \"Enhancing Interpretability in Generative Modeling: Statistically Disentangled Latent Spaces Guided by Generative Factors in Scientific Datasets\". arXiv preprint.'
 ---
 
