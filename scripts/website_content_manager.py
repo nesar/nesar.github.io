@@ -85,7 +85,11 @@ class WebsiteContentManager:
             "au:\"Nesar S Ramachandra\"",
             "au:\"Ramachandra, Nesar\"", 
             "au:\"N S Ramachandra\"",
-            "au:Ramachandra AND au:Nesar"
+            "au:Ramachandra AND au:Nesar",
+            "au:\"Ramachandra, N S\"",
+            "au:\"Ramachandra, N.S.\"",
+            "au:\"N.S. Ramachandra\"",
+            "au:\"Nesar Ramachandra\""
         ]
         
         all_papers = []
@@ -95,7 +99,7 @@ class WebsiteContentManager:
             # URL encode the search term properly
             from urllib.parse import quote
             encoded_search = quote(search_term)
-            url = f"http://export.arxiv.org/api/query?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results=100"
+            url = f"http://export.arxiv.org/api/query?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results=200"
             
             try:
                 response = requests.get(url, timeout=30)
@@ -123,10 +127,13 @@ class WebsiteContentManager:
                         if name_elem is not None:
                             authors.append(name_elem.text.strip())
                     
-                    # Check if you're an author
+                    # Check if you're an author (more flexible matching)
                     is_author = any(
                         ("Ramachandra" in author and "Nesar" in author) or
-                        ("Ramachandra" in author and "N" in author)
+                        ("Ramachandra" in author and "N" in author) or
+                        ("Ramachandra" in author and author.count("N.") > 0) or
+                        ("N. S. Ramachandra" in author) or
+                        ("N.S. Ramachandra" in author)
                         for author in authors
                     )
                     
