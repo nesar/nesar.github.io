@@ -2,10 +2,10 @@
 title: "Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks"
 collection: publications
 permalink: /publication/2020-peculiar-velocity-estimation-from-kinetic-sz-effec
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2010.03762v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2010.03762v1)'
 date: 2020-10-08
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2010.03762v1.pdf'
+paperurl: 'http://arxiv.org/abs/2010.03762v1'
 citation: 'Yuyu Wang, Nesar Ramachandra, Edgar M. Salazar-Canizales, Hume A. Feldman, Richard Watkins, Klaus Dolag (2020). \"Peculiar Velocity Estimation from Kinetic SZ Effect using Deep Neural Networks\". arXiv preprint.'
 ---
 

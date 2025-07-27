@@ -2,10 +2,10 @@
 title: "Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks"
 collection: publications
 permalink: /publication/2021-anomaly-detection-in-hyper-suprime-cam-galaxy-imag
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2105.02434v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2105.02434v2)'
 date: 2021-05-06
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2105.02434v2.pdf'
+paperurl: 'http://arxiv.org/abs/2105.02434v2'
 citation: 'Kate Storey-Fisher, Marc Huertas-Company, Nesar Ramachandra, Francois Lanusse, Alexie Leauthaud, Yifei Luo, Song Huang, J. Xavier Prochaska (2021). \"Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks\". arXiv preprint.'
 ---
 

@@ -2,10 +2,10 @@
 title: "The Caustic Design of the Dark Matter Web"
 collection: publications
 permalink: /publication/2019-the-caustic-design-of-the-dark-matter-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/1906.05920v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1906.05920v1)'
 date: 2019-06-13
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/1906.05920v1.pdf'
+paperurl: 'http://arxiv.org/abs/1906.05920v1'
 citation: 'Sergei F. Shandarin, Nesar S. Ramachandra (2019). \"The Caustic Design of the Dark Matter Web\". arXiv preprint.'
 ---
 

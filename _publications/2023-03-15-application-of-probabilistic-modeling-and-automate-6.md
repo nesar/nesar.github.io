@@ -2,10 +2,10 @@
 title: "Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field"
 collection: publications
 permalink: /publication/2023-application-of-probabilistic-modeling-and-automate
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2303.16869v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2303.16869v2)'
 date: 2023-03-15
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2303.16869v2.pdf'
+paperurl: 'http://arxiv.org/abs/2303.16869v2'
 citation: 'Lele Luan, Nesar Ramachandra, Sandipp Krishnan Ravi, Anindya Bhaduri, Piyush Pandita, Prasanna Balaprakash, Mihai Anitescu, Changjie Sun, Liping Wang (2023). \"Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field\". arXiv preprint.'
 ---
 

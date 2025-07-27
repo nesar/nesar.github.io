@@ -2,10 +2,10 @@
 title: "Differentiable Predictions for Large Scale Structure with SHAMNet"
 collection: publications
 permalink: /publication/2021-differentiable-predictions-for-large-scale-structu
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2112.08423v3.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2112.08423v3)'
 date: 2021-12-15
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2112.08423v3.pdf'
+paperurl: 'http://arxiv.org/abs/2112.08423v3'
 citation: 'Andrew P. Hearin, Nesar Ramachandra, Matthew R. Becker, Joseph DeRose (2021). \"Differentiable Predictions for Large Scale Structure with SHAMNet\". arXiv preprint.'
 ---
 

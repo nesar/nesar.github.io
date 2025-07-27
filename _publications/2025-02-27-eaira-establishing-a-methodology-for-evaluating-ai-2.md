@@ -2,10 +2,10 @@
 title: "EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants"
 collection: publications
 permalink: /publication/2025-eaira-establishing-a-methodology-for-evaluating-ai
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2502.20309v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2502.20309v1)'
 date: 2025-02-27
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2502.20309v1.pdf'
+paperurl: 'http://arxiv.org/abs/2502.20309v1'
 citation: 'Franck Cappello, Sandeep Madireddy, Robert Underwood, Neil Getty, Nicholas Lee-Ping Chia, Nesar Ramachandra, Josh Nguyen, Murat Keceli, Tanwi Mallick, Zilinghan Li, Marieme Ngom, Chenhui Zhang, Angel Yanguas-Gil, Evan Antoniuk, Bhavya Kailkhura, Minyang Tian, Yufeng Du, Yuan-Sen Ting, Azton Wells, Bogdan Nicolae, Avinash Maurya, M. Mustafa Rafique, Eliu Huerta, Bo Li, Ian Foster, Rick Stevens (2025). \"EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants\". arXiv preprint.'
 ---
 

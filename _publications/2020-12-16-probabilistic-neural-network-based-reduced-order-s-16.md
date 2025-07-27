@@ -2,10 +2,10 @@
 title: "Probabilistic neural network-based reduced-order surrogate for fluid flows"
 collection: publications
 permalink: /publication/2020-probabilistic-neural-network-based-reduced-order-s
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2012.08719v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2012.08719v1)'
 date: 2020-12-16
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2012.08719v1.pdf'
+paperurl: 'http://arxiv.org/abs/2012.08719v1'
 citation: 'Kai Fukami, Romit Maulik, Nesar Ramachandra, Koji Fukagata, Kunihiko Taira (2020). \"Probabilistic neural network-based reduced-order surrogate for fluid flows\". arXiv preprint.'
 ---
 

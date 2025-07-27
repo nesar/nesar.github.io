@@ -2,10 +2,10 @@
 title: "Beyond the Hubble Sequence -- Exploring Galaxy Morphology with Unsupervised Machine Learning"
 collection: publications
 permalink: /publication/2020-beyond-the-hubble-sequence----exploring-galaxy-mor
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2009.11932v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2009.11932v2)'
 date: 2020-09-24
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2009.11932v2.pdf'
+paperurl: 'http://arxiv.org/abs/2009.11932v2'
 citation: 'Ting-Yun Cheng, Marc Huertas-Company, Christopher J. Conselice, Alfonso Aragón-Salamanca, Brant E. Robertson, Nesar Ramachandra (2020). \"Beyond the Hubble Sequence -- Exploring Galaxy Morphology with Unsupervised Machine Learning\". arXiv preprint.'
 ---
 

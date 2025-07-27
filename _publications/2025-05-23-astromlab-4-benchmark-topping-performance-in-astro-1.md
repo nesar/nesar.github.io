@@ -2,10 +2,10 @@
 title: "AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model"
 collection: publications
 permalink: /publication/2025-astromlab-4-benchmark-topping-performance-in-astro
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2505.17592v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2505.17592v1)'
 date: 2025-05-23
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2505.17592v1.pdf'
+paperurl: 'http://arxiv.org/abs/2505.17592v1'
 citation: 'Tijmen de Haan, Yuan-Sen Ting, Tirthankar Ghosal, Tuan Dung Nguyen, Alberto Accomazzi, Emily Herron, Vanessa Lama, Rui Pan, Azton Wells, Nesar Ramachandra (2025). \"AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model\". arXiv preprint.'
 ---
 

@@ -2,10 +2,10 @@
 title: "Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies"
 collection: publications
 permalink: /publication/2020-matter-power-spectrum-emulator-for-fr-modified-gra
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2010.00596v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2010.00596v1)'
 date: 2020-10-01
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2010.00596v1.pdf'
+paperurl: 'http://arxiv.org/abs/2010.00596v1'
 citation: 'Nesar Ramachandra, Georgios Valogiannis, Mustapha Ishak, Katrin Heitmann (2020). \"Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies\". arXiv preprint.'
 ---
 

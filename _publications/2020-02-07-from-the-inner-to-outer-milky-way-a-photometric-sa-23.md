@@ -2,10 +2,10 @@
 title: "From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars"
 collection: publications
 permalink: /publication/2020-from-the-inner-to-outer-milky-way-a-photometric-sa
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2002.02961v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2002.02961v2)'
 date: 2020-02-07
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2002.02961v2.pdf'
+paperurl: 'http://arxiv.org/abs/2002.02961v2'
 citation: 'Madeline Lucey, Yuan-Sen Ting, Nesar S. Ramachandra, Keith Hawkins (2020). \"From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars\". arXiv preprint.'
 ---
 

@@ -2,10 +2,10 @@
 title: "A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling"
 collection: publications
 permalink: /publication/2019-a-modular-deep-learning-pipeline-for-galaxy-scale-
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/1911.03867v3.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1911.03867v3)'
 date: 2019-11-10
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/1911.03867v3.pdf'
+paperurl: 'http://arxiv.org/abs/1911.03867v3'
 citation: 'Sandeep Madireddy, Nesar Ramachandra, Nan Li, James Butler, Prasanna Balaprakash, Salman Habib, Katrin Heitmann, The LSST Dark Energy Science Collaboration (2019). \"A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling\". arXiv preprint.'
 ---
 
