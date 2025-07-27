@@ -193,7 +193,13 @@ class WebsiteContentManager:
         
         for pattern in date_patterns:
             try:
-                date_obj = datetime.strptime(date_str[:len(pattern)], pattern)
+                # Extract the appropriate substring for the pattern
+                if pattern == '%Y-%m-%dT%H:%M:%SZ':
+                    test_str = date_str[:19] + 'Z' if len(date_str) >= 19 else date_str
+                else:
+                    test_str = date_str[:len(pattern)]
+                
+                date_obj = datetime.strptime(test_str, pattern)
                 return date_obj.strftime('%Y-%m-%d')
             except ValueError:
                 continue
