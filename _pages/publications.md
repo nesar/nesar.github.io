@@ -23,7 +23,8 @@ author_profile: true
   <div class="year-section">
     <h2 class="year-header" id="{{ year.name }}">{{ year.name }}</h2>
     <div class="publications-grid">
-      {% for post in year.items %}
+      {% assign sorted_posts = year.items | sort: "date" | reverse %}
+      {% for post in sorted_posts %}
         <div class="publication-item">
           <div class="publication-content">
             <h3 class="publication-title">
