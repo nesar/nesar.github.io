@@ -1,0 +1,28 @@
+# Core dependencies for Agentic Website Manager
+langchain>=0.1.0
+langchain-google-genai>=1.0.0
+langgraph>=0.1.0
+
+# LLM and AI
+google-generativeai>=0.4.0
+
+# PDF and image processing
+PyMuPDF>=1.23.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Web scraping and requests
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Data processing
+pandas>=2.0.0
+
+# Utilities
+python-dateutil>=2.8.0
+pydantic>=2.0.0
+typing-extensions>=4.7.0
+
+# Optional: For enhanced functionality
+matplotlib>=3.7.0  # For figure analysis
+scikit-learn>=1.3.0  # For text analysis
