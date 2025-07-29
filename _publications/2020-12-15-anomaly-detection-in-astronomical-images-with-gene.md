@@ -2,10 +2,10 @@
 title: "Anomaly Detection in Astronomical Images with Generative Adversarial Networks"
 collection: publications
 permalink: /publication/2020-anomaly-detection-in-astronomical-images-with-gene
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2012.08082v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2012.08082v1)'
 date: 2020-12-15
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2012.08082v1.pdf'
+paperurl: 'http://arxiv.org/abs/2012.08082v1'
 citation: 'Kate Storey-Fisher, Marc Huertas-Company, Nesar Ramachandra, Francois Lanusse, Alexie Leauthaud, Yifei Luo, Song Huang (2020). \"Anomaly Detection in Astronomical Images with Generative Adversarial Networks\". arXiv preprint.'
 ---
 

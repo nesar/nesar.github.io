@@ -283,23 +283,60 @@ class WebsiteContentManager:
         }
 
     def classify_papers_with_llm(self, papers: List[Dict]) -> Dict:
-        """Use predefined classification with existing figure mapping."""
-        print("🎯 Using predefined figure mapping for research categories...")
+        """Classify papers using LLM with dynamic figure extraction."""
+        print("🎯 Classifying papers using LLM...")
         
-        # Use our comprehensive analysis-based mapping
-        predefined_mapping = self.get_predefined_figure_mapping()
+        # Create prompt for LLM classification
+        paper_titles = [paper['title'] for paper in papers]
+        paper_list = "\n".join([f"{i+1}. {title}" for i, title in enumerate(paper_titles)])
         
-        # Convert to expected format
-        categories = {}
-        for cat_key, cat_info in predefined_mapping.items():
-            categories[cat_key] = {
-                'name': cat_info['name'],
-                'description': cat_info['description'],
-                'papers': cat_info['papers'],
-                'figures': cat_info['figures']
-            }
+        prompt = f"""Analyze these research papers and classify them into 4 research categories. Provide a JSON response with category keys, names, descriptions, and paper assignments:
+
+{paper_list}
+
+Return JSON in this exact format:
+{{
+  "foundation-models": {{
+    "name": "Foundation Models",
+    "description": "Brief description",
+    "papers": ["paper title 1", "paper title 2"]
+  }},
+  "machine-learning": {{
+    "name": "Machine Learning for Science", 
+    "description": "Brief description",
+    "papers": ["paper title 3"]
+  }},
+  "dark-matter": {{
+    "name": "Dark Matter & Cosmology",
+    "description": "Brief description", 
+    "papers": ["paper title 4"]
+  }},
+  "emulation-inference": {{
+    "name": "Emulation & Inference",
+    "description": "Brief description",
+    "papers": ["paper title 5"]
+  }}
+}}
+
+Assign each paper to the most appropriate category. Each paper should appear exactly once."""
         
-        return categories
+        try:
+            response = self.llm_generate(prompt)
+            # Extract JSON from response
+            import json
+            json_start = response.find('{')
+            json_end = response.rfind('}') + 1
+            if json_start != -1 and json_end != -1:
+                json_str = response[json_start:json_end]
+                categories = json.loads(json_str)
+                print(f"✅ LLM classified papers into {len(categories)} categories")
+                return categories
+            else:
+                print("⚠️ Could not parse LLM response, using fallback classification")
+                return self.create_simple_classification(papers)
+        except Exception as e:
+            print(f"⚠️ LLM classification failed: {e}, using fallback")
+            return self.create_simple_classification(papers)
     
 
     def create_simple_classification(self, papers: List[Dict]) -> Dict:
@@ -347,7 +384,15 @@ class WebsiteContentManager:
             try:
                 print(f"   📥 Downloading: {paper['title'][:50]}...")
                 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-                response = requests.get(paper['arxiv_url'], headers=headers, stream=True, timeout=60)
+                
+                # Convert arXiv URL to PDF download URL
+                pdf_url = paper['arxiv_url']
+                if 'arxiv.org/abs/' in pdf_url:
+                    pdf_url = pdf_url.replace('arxiv.org/abs/', 'arxiv.org/pdf/') + '.pdf'
+                elif not pdf_url.endswith('.pdf'):
+                    pdf_url = pdf_url + '.pdf'
+                
+                response = requests.get(pdf_url, headers=headers, stream=True, timeout=60)
                 response.raise_for_status()
                 
                 with open(filepath, 'wb') as f:
@@ -471,6 +516,42 @@ Focus on key methods and impact. Academic tone, no markdown."""
         
         return self.llm_generate(prompt)
     
+    def cleanup_existing_files(self):
+        """Clean up existing files to prevent duplications."""
+        print("🧹 Cleaning up existing files...")
+        
+        # Clean up publications
+        if self.publications_dir.exists():
+            for file in self.publications_dir.glob("*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Clean up portfolio pages
+        if self.portfolio_dir.exists():
+            for file in self.portfolio_dir.glob("portfolio-*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Clean up old figures (keep a backup of last 10 figures)
+        if self.figures_dir.exists():
+            figure_files = sorted(self.figures_dir.glob("*.png"), key=lambda x: x.stat().st_mtime, reverse=True)
+            files_to_keep = figure_files[:10]  # Keep 10 most recent
+            
+            for file in figure_files[10:]:
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed old figure: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        print("✅ Cleanup completed")
+
     def update_publications(self):
         """Update publication markdown files."""
         print("📚 Updating publications...")
@@ -537,8 +618,8 @@ citation: '{self.clean_text(citation)}'
             print("❌ No papers found from arXiv")
             return
         
-        # Download papers for plot extraction (skip for now to speed up)
-        # self.download_papers(papers)
+        # Download papers for plot extraction
+        self.download_papers(papers)
         
         # Classify papers using LLM
         categories = self.classify_papers_with_llm(papers)
@@ -556,26 +637,20 @@ citation: '{self.clean_text(citation)}'
             
             print(f"   📊 Processing {cat_info['name']}...")
             
-            # Use predefined figures for this category
+            # Extract plots dynamically from papers in this category
             category_plots = []
-            if 'figures' in cat_info:
-                for i, figure_filename in enumerate(cat_info['figures']):
-                    fig_path = self.figures_dir / figure_filename
-                    if fig_path.exists():
-                        # Get corresponding paper title if available
-                        paper_title = cat_info['papers'][i] if i < len(cat_info['papers']) else "Research figure"
-                        
-                        plot_info = {
-                            'filename': figure_filename,
-                            'paper_title': paper_title,
-                            'relative_path': f"/images/research/figures/{figure_filename}",
-                            'quality_score': 100 - i  # Higher score for first figures
-                        }
-                        category_plots.append(plot_info)
-                    else:
-                        print(f"   ⚠️ Figure not found: {figure_filename}")
-            else:
-                # Fallback to old method if no predefined figures
+            for paper_title in cat_info['papers']:
+                # Find corresponding paper object
+                paper_obj = paper_lookup.get(paper_title)
+                if not paper_obj or not paper_obj.get('local_path'):
+                    continue
+                
+                # Extract plots from this paper
+                plots = self.extract_best_plots_from_paper(paper_obj['local_path'], paper_title)
+                category_plots.extend(plots)
+            
+            # If no plots extracted, try to find existing plots by name matching
+            if not category_plots:
                 for paper_title in cat_info['papers']:
                     paper_slug = self.create_url_slug(paper_title)
                     matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
@@ -883,37 +958,26 @@ author_profile: true
             # Generate detailed research summary
             summary = self.generate_portfolio_summary_with_llm(cat_info['name'], cat_info['papers'])
             
-            # Get predefined figures for this category
+            # Get figures for this category by finding them dynamically
             figure_files = []
             figure_papers = []
-            if 'figures' in cat_info:
-                for i, figure_filename in enumerate(cat_info['figures'][:4]):  # Limit to 4 figures
-                    fig_path = self.figures_dir / figure_filename
-                    if fig_path.exists():
-                        figure_files.append(fig_path)
-                        # Get corresponding paper title
-                        if i < len(cat_info['papers']):
-                            figure_papers.append(cat_info['papers'][i])
-                        else:
-                            figure_papers.append("Research figure")
-            else:
-                # Fallback method
-                for paper_title in cat_info['papers'][:4]:
-                    paper_slug = self.create_url_slug(paper_title)
-                    matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
-                    
-                    if not matching_figures:
-                        title_words = paper_title.lower().split()[:3]
-                        for word in title_words:
-                            if len(word) > 3:
-                                word_figures = list(self.figures_dir.glob(f"*{word}*_plot_*.png"))
-                                if word_figures:
-                                    matching_figures = [word_figures[0]]
-                                    break
-                    
-                    if matching_figures:
-                        figure_files.append(matching_figures[0])
-                        figure_papers.append(paper_title)
+            
+            for paper_title in cat_info['papers'][:4]:  # Limit to 4 papers
+                paper_slug = self.create_url_slug(paper_title)
+                matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
+                
+                if not matching_figures:
+                    title_words = paper_title.lower().split()[:3]
+                    for word in title_words:
+                        if len(word) > 3:
+                            word_figures = list(self.figures_dir.glob(f"*{word}*_plot_*.png"))
+                            if word_figures:
+                                matching_figures = [word_figures[0]]
+                                break
+                
+                if matching_figures:
+                    figure_files.append(matching_figures[0])
+                    figure_papers.append(paper_title)
             
             figures_html = self.create_portfolio_figures_html(figure_files, figure_papers)
             
@@ -1074,6 +1138,9 @@ Write professionally about the research contributions and their significance."""
         """Run complete website content update."""
         print("🚀 Starting Full Website Content Update")
         print("=" * 60)
+        
+        # Clean up existing files first
+        self.cleanup_existing_files()
         
         # Update publications
         self.update_publications()

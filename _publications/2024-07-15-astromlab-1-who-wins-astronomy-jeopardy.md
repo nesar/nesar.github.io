@@ -2,10 +2,10 @@
 title: "AstroMLab 1: Who Wins Astronomy Jeopardy!?"
 collection: publications
 permalink: /publication/2024-astromlab-1-who-wins-astronomy-jeopardy
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2407.11194v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2407.11194v2)'
 date: 2024-07-15
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2407.11194v2.pdf'
+paperurl: 'http://arxiv.org/abs/2407.11194v2'
 citation: 'Yuan-Sen Ting, Tuan Dung Nguyen, Tirthankar Ghosal, Rui Pan, Hardik Arora, Zechang Sun, Tijmen de Haan, Nesar Ramachandra, Azton Wells, Sandeep Madireddy, Alberto Accomazzi (2024). \"AstroMLab 1: Who Wins Astronomy Jeopardy!?\". arXiv preprint.'
 ---
 

@@ -2,10 +2,10 @@
 title: "Tracing the cosmic web"
 collection: publications
 permalink: /publication/2017-tracing-the-cosmic-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/1705.03021v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1705.03021v1)'
 date: 2017-05-08
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/1705.03021v1.pdf'
+paperurl: 'http://arxiv.org/abs/1705.03021v1'
 citation: 'Noam I Libeskind, Rien van de Weygaert, Marius Cautun, Bridget Falck, Elmo Tempel, Tom Abel, Mehmet Alpaslan, Miguel A. Aragoon-Calvo, Jaime E. Forero-Romero, Roberto Gonzalez, Stefan Gottloober, Oliver Hahn, Wojciech A. Hellwing, Yehuda Hoffman, Bernard J. T. Jones, Francisco Kitaura, Alexander Knebe, Serena Manti, Mark Neyrinck, Sebastiaan E. Nuza, Nelson Padilla, Erwin Platen, Nesar Ramachandra, Aaron Robotham, Enn Saar, Sergei Shandarin, Matthias Steinmetz, Radu S. Stoica, Thierry Sousbie, Gustavo Yepes (2017). \"Tracing the cosmic web\". arXiv preprint.'
 ---
 

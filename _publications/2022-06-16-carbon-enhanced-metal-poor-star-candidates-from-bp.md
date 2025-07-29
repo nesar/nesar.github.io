@@ -2,10 +2,10 @@
 title: "Carbon-Enhanced Metal-Poor star candidates from BP/RP Spectra in $Gaia$ DR3"
 collection: publications
 permalink: /publication/2022-carbon-enhanced-metal-poor-star-candidates-from-bp
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2206.08299v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2206.08299v2)'
 date: 2022-06-16
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2206.08299v2.pdf'
+paperurl: 'http://arxiv.org/abs/2206.08299v2'
 citation: 'Madeline Lucey, Nariman Al Kharusi, Keith Hawkins, Yuan-Sen Ting, Nesar Ramachandra, Adrian M. Price-Whelan, Timothy C. Beers, Young Sun Lee, Jinmi Yoon (2022). \"Carbon-Enhanced Metal-Poor star candidates from BP/RP Spectra in $Gaia$ DR3\". arXiv preprint.'
 ---
 

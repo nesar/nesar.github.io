@@ -2,10 +2,10 @@
 title: "Physical Benchmarking for AI-Generated Cosmic Web"
 collection: publications
 permalink: /publication/2021-physical-benchmarking-for-ai-generated-cosmic-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2112.05681v1.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2112.05681v1)'
 date: 2021-12-10
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2112.05681v1.pdf'
+paperurl: 'http://arxiv.org/abs/2112.05681v1'
 citation: 'Xiaofeng Dong, Nesar Ramachandra, Salman Habib, Katrin Heitmann, Michael Buehlmann, Sandeep Madireddy (2021). \"Physical Benchmarking for AI-Generated Cosmic Web\". arXiv preprint.'
 ---
 

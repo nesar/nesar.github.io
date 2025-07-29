@@ -2,10 +2,10 @@
 title: "Topology and geometry of the dark matter web: a multistream view"
 collection: publications
 permalink: /publication/2016-topology-and-geometry-of-the-dark-matter-web-a-mul
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/1608.05469v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1608.05469v2)'
 date: 2016-08-19
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/1608.05469v2.pdf'
+paperurl: 'http://arxiv.org/abs/1608.05469v2'
 citation: 'Nesar S. Ramachandra, Sergei F. Shandarin (2016). \"Topology and geometry of the dark matter web: a multistream view\". arXiv preprint.'
 ---
 

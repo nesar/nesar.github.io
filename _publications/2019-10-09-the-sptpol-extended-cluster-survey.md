@@ -2,10 +2,10 @@
 title: "The SPTpol Extended Cluster Survey"
 collection: publications
 permalink: /publication/2019-the-sptpol-extended-cluster-survey
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/1910.04121v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1910.04121v2)'
 date: 2019-10-09
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/1910.04121v2.pdf'
+paperurl: 'http://arxiv.org/abs/1910.04121v2'
 citation: 'L. E. Bleem, S. Bocquet, B. Stalder, M. D. Gladders, P. A. R. Ade, S. W. Allen, A. J. Anderson, J. Annis, M. L. N. Ashby, J. E. Austermann, S. Avila, J. S. Avva, M. Bayliss, J. A. Beall, K. Bechtol, A. N. Bender, B. A. Benson, E. Bertin, F. Bianchini, C. Blake, M. Brodwin, D. Brooks, E. Buckley-Geer, D. L. Burke, J. E. Carlstrom, A. Carnero Rosell, M. Carrasco Kind, J. Carretero, C. L. Chang, H. C. Chiang, R. Citron, C. Corbett Moran, M. Costanzi, T. M. Crawford, A. T. Crites, L. N. da Costa, T. de Haan, J. De Vicente, S. Desai, H. T. Diehl, J. P. Dietrich, M. A. Dobbs, T. F. Eifler, W. Everett, B. Flaugher, B. Floyd, J. Frieman, J. Gallicchio, J. García-Bellido, E. M. George, D. W. Gerdes, A. Gilbert, D. Gruen, R. A. Gruendl, J. Gschwend, N. Gupta, G. Gutierrez, N. W. Halverson, N. Harrington, J. W. Henning, C. Heymans, G. P. Holder, D. L. Hollowood, W. L. Holzapfel, K. Honscheid, J. D. Hrubes, N. Huang, J. Hubmayr, K. D. Irwin, D. J. James, T. Jeltema, S. Joudaki, G. Khullar, M. Klein, L. Knox, N. Kuropatkin, A. T. Lee, D. Li, C. Lidman, A. Lowitz, N. MacCrann, G. Mahler, M. A. G. Maia, J. L. Marshall, M. McDonald, J. J. McMahon, P. Melchior, F. Menanteau, S. S. Meyer, R. Miquel, L. M. Mocanu, J. J. Mohr, J. Montgomery, A. Nadolski, T. Natoli, J. P. Nibarger, G. Noble, V. Novosad, S. Padin, A. Palmese, D. Parkinson, S. Patil, F. Paz-Chinchón, A. A. Plazas, C. Pryke, N. S. Ramachandra, C. L. Reichardt, J. D. Remolina González, A. K. Romer, A. Roodman, J. E. Ruhl, E. S. Rykoff, B. R. Saliwanchik, E. Sanchez, A. Saro, J. T. Sayre, K. K. Schaffer, T. Schrabback, S. Serrano, K. Sharon, C. Sievers, G. Smecher, M. Smith, M. Soares-Santos, A. A. Stark, K. T. Story, E. Suchyta, G. Tarle, C. Tucker, K. Vanderlinde, T. Veach, J. D. Vieira, G. Wang, J. Weller, N. Whitehorn, W. L. K. Wu, V. Yefremenko, Y. Zhang (2019). \"The SPTpol Extended Cluster Survey\". arXiv preprint.'
 ---
 

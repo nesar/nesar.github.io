@@ -2,10 +2,10 @@
 title: "Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation"
 collection: publications
 permalink: /publication/2020-latent-space-time-evolution-of-non-intrusive-reduc
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2007.12167v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2007.12167v2)'
 date: 2020-07-23
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2007.12167v2.pdf'
+paperurl: 'http://arxiv.org/abs/2007.12167v2'
 citation: 'Romit Maulik, Themistoklis Botsas, Nesar Ramachandra, Lachlan Robert Mason, Indranil Pan (2020). \"Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation\". arXiv preprint.'
 ---
 

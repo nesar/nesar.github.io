@@ -2,10 +2,10 @@
 title: "Interpretable Uncertainty Quantification in AI for HEP"
 collection: publications
 permalink: /publication/2022-interpretable-uncertainty-quantification-in-ai-for
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2208.03284v3.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2208.03284v3)'
 date: 2022-08-05
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2208.03284v3.pdf'
+paperurl: 'http://arxiv.org/abs/2208.03284v3'
 citation: 'Thomas Y. Chen, Biprateep Dey, Aishik Ghosh, Michael Kagan, Brian Nord, Nesar Ramachandra (2022). \"Interpretable Uncertainty Quantification in AI for HEP\". arXiv preprint.'
 ---
 

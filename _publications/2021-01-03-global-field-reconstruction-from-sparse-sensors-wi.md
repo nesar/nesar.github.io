@@ -2,10 +2,10 @@
 title: "Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning"
 collection: publications
 permalink: /publication/2021-global-field-reconstruction-from-sparse-sensors-wi
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2101.00554v2.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2101.00554v2)'
 date: 2021-01-03
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2101.00554v2.pdf'
+paperurl: 'http://arxiv.org/abs/2101.00554v2'
 citation: 'Kai Fukami, Romit Maulik, Nesar Ramachandra, Koji Fukagata, Kunihiko Taira (2021). \"Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning\". arXiv preprint.'
 ---
 

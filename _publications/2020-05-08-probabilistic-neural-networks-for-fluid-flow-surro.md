@@ -2,10 +2,10 @@
 title: "Probabilistic neural networks for fluid flow surrogate modeling and data recovery"
 collection: publications
 permalink: /publication/2020-probabilistic-neural-networks-for-fluid-flow-surro
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/pdf/2005.04271v3.pdf)'
+excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2005.04271v3)'
 date: 2020-05-08
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/pdf/2005.04271v3.pdf'
+paperurl: 'http://arxiv.org/abs/2005.04271v3'
 citation: 'Romit Maulik, Kai Fukami, Nesar Ramachandra, Koji Fukagata, Kunihiko Taira (2020). \"Probabilistic neural networks for fluid flow surrogate modeling and data recovery\". arXiv preprint.'
 ---
 
