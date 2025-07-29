@@ -2,7 +2,7 @@
 title: "Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation"
 collection: publications
 permalink: /publication/2020-latent-space-time-evolution-of-non-intrusive-reduc
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2007.12167v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2007.12167v2)'
 date: 2020-07-23
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2007.12167v2'

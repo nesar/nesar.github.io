@@ -2,7 +2,7 @@
 title: "The SPTpol Extended Cluster Survey"
 collection: publications
 permalink: /publication/2019-the-sptpol-extended-cluster-survey
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1910.04121v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1910.04121v2)'
 date: 2019-10-09
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1910.04121v2'

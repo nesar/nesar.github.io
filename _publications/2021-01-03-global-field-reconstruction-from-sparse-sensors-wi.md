@@ -2,7 +2,7 @@
 title: "Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning"
 collection: publications
 permalink: /publication/2021-global-field-reconstruction-from-sparse-sensors-wi
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2101.00554v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2101.00554v2)'
 date: 2021-01-03
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2101.00554v2'

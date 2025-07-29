@@ -2,7 +2,7 @@
 title: "Constraining $f(R)$ Gravity with a $k$-cut Cosmic Shear Analysis of the Hyper Suprime-Cam First-Year Data"
 collection: publications
 permalink: /publication/2021-constraining-fr-gravity-with-a-k-cut-cosmic-shear-
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2107.10277v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2107.10277v2)'
 date: 2021-07-21
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2107.10277v2'

@@ -2,7 +2,7 @@
 title: "Neural Network Based Point Spread Function Deconvolution For Astronomical Applications"
 collection: publications
 permalink: /publication/2022-neural-network-based-point-spread-function-deconvo
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2210.01666v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2210.01666v2)'
 date: 2022-10-04
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2210.01666v2'

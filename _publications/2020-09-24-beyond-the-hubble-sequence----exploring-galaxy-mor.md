@@ -2,7 +2,7 @@
 title: "Beyond the Hubble Sequence -- Exploring Galaxy Morphology with Unsupervised Machine Learning"
 collection: publications
 permalink: /publication/2020-beyond-the-hubble-sequence----exploring-galaxy-mor
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2009.11932v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2009.11932v2)'
 date: 2020-09-24
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2009.11932v2'

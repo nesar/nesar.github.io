@@ -2,7 +2,7 @@
 title: "Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field"
 collection: publications
 permalink: /publication/2023-application-of-probabilistic-modeling-and-automate
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2303.16869v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2303.16869v2)'
 date: 2023-03-15
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2303.16869v2'

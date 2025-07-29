@@ -2,7 +2,7 @@
 title: "AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model"
 collection: publications
 permalink: /publication/2025-astromlab-4-benchmark-topping-performance-in-astro
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2505.17592v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2505.17592v1)'
 date: 2025-05-23
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2505.17592v1'

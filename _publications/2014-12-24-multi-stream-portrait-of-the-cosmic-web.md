@@ -2,7 +2,7 @@
 title: "Multi-stream portrait of the Cosmic web"
 collection: publications
 permalink: /publication/2014-multi-stream-portrait-of-the-cosmic-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1412.7768v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1412.7768v3)'
 date: 2014-12-24
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1412.7768v3'

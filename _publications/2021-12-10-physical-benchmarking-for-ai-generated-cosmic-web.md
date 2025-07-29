@@ -2,7 +2,7 @@
 title: "Physical Benchmarking for AI-Generated Cosmic Web"
 collection: publications
 permalink: /publication/2021-physical-benchmarking-for-ai-generated-cosmic-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2112.05681v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2112.05681v1)'
 date: 2021-12-10
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2112.05681v1'

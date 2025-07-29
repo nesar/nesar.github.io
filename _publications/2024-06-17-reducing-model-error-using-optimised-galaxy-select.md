@@ -2,7 +2,7 @@
 title: "Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation"
 collection: publications
 permalink: /publication/2024-reducing-model-error-using-optimised-galaxy-select
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2406.11950v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2406.11950v1)'
 date: 2024-06-17
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2406.11950v1'

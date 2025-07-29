@@ -2,7 +2,7 @@
 title: "A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection and Modeling"
 collection: publications
 permalink: /publication/2019-a-modular-deep-learning-pipeline-for-galaxy-scale-
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1911.03867v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1911.03867v3)'
 date: 2019-11-10
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1911.03867v3'

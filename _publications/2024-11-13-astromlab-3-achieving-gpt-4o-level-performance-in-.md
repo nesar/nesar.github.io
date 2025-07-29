@@ -2,7 +2,7 @@
 title: "AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model"
 collection: publications
 permalink: /publication/2024-astromlab-3-achieving-gpt-4o-level-performance-in-
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2411.09012v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2411.09012v3)'
 date: 2024-11-13
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2411.09012v3'

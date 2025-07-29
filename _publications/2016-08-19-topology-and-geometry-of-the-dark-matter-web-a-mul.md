@@ -2,7 +2,7 @@
 title: "Topology and geometry of the dark matter web: a multistream view"
 collection: publications
 permalink: /publication/2016-topology-and-geometry-of-the-dark-matter-web-a-mul
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1608.05469v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1608.05469v2)'
 date: 2016-08-19
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1608.05469v2'

@@ -2,7 +2,7 @@
 title: "AstroMLab 1: Who Wins Astronomy Jeopardy!?"
 collection: publications
 permalink: /publication/2024-astromlab-1-who-wins-astronomy-jeopardy
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2407.11194v2)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2407.11194v2)'
 date: 2024-07-15
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2407.11194v2'

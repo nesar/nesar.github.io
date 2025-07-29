@@ -2,7 +2,7 @@
 title: "Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z"
 collection: publications
 permalink: /publication/2021-machine-learning-synthetic-spectra-for-probabilist
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2111.12118v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2111.12118v1)'
 date: 2021-11-23
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2111.12118v1'

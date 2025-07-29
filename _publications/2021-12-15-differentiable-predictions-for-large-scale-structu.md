@@ -2,7 +2,7 @@
 title: "Differentiable Predictions for Large Scale Structure with SHAMNet"
 collection: publications
 permalink: /publication/2021-differentiable-predictions-for-large-scale-structu
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2112.08423v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2112.08423v3)'
 date: 2021-12-15
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2112.08423v3'

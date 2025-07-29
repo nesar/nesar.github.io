@@ -2,7 +2,7 @@
 title: "Tracing the cosmic web"
 collection: publications
 permalink: /publication/2017-tracing-the-cosmic-web
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1705.03021v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1705.03021v1)'
 date: 2017-05-08
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1705.03021v1'

@@ -409,9 +409,11 @@ Assign each paper to the most appropriate category. Each paper should appear exa
     
     def extract_best_plots_from_paper(self, pdf_path: str, paper_title: str) -> List[Dict]:
         """Extract best plots from a paper using image analysis."""
+        print(f"   🖼️ Extracting plot from: {paper_title[:50]}...")
         try:
             doc = fitz.open(pdf_path)
         except Exception as e:
+            print(f"   ❌ Could not open PDF: {e}")
             return []
         
         all_figures = []
@@ -467,8 +469,14 @@ Assign each paper to the most appropriate category. Each paper should appear exa
         
         extracted_plots = []
         for i, figure in enumerate(top_figures):
-            filename = f"{self.create_url_slug(paper_title)}_plot_{i+1}_{figure['hash']}.png"
+            # Since we only extract 1 plot per paper, always use _plot_1
+            filename = f"{self.create_url_slug(paper_title)}_plot_1_{figure['hash']}.png"
             filepath = self.figures_dir / filename
+            
+            # Skip if this exact file already exists
+            if filepath.exists():
+                print(f"   ⚠️ Plot already exists: {filename}")
+                continue
             
             figure['image'].convert('RGB').save(filepath, "PNG", optimize=True)
             
@@ -557,6 +565,33 @@ Focus on key methods and impact. Academic tone, no markdown."""
                     print(f"   ⚠️ Could not remove {file.name}: {e}")
         
         print("✅ Cleanup completed")
+    
+    def safe_cleanup_for_research_only(self):
+        """Safe cleanup that only removes portfolio and old figures."""
+        print("🧹 Safe cleanup for research update...")
+        
+        # Clean up portfolio pages only
+        if self.portfolio_dir.exists():
+            for file in self.portfolio_dir.glob("portfolio-*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Clean up old figures (keep a backup of last 20 figures)
+        if self.figures_dir.exists():
+            figure_files = sorted(self.figures_dir.glob("*.png"), key=lambda x: x.stat().st_mtime, reverse=True)
+            files_to_keep = figure_files[:20]  # Keep 20 most recent
+            
+            for file in figure_files[20:]:
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed old figure: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        print("✅ Safe cleanup completed")
 
     def update_publications(self):
         """Update publication markdown files."""
@@ -582,7 +617,7 @@ Focus on key methods and impact. Academic tone, no markdown."""
                 paper_url = paper.get('arxiv_url', '')
                 venue = paper.get('venue', 'Preprint')
                 
-                excerpt = f"[<u><span style='color:blue'>arXiv</span></u>]({paper_url})" if paper_url else ""
+                excerpt = f'[<u><span style="color:blue">arXiv</span></u>]({paper_url})' if paper_url else ""
                 citation = f"{authors} ({year}). \"{title}\". {venue}."
                 
                 filename = f"{pub_date}-{url_slug}.md"
@@ -1156,14 +1191,8 @@ Write professionally about the research contributions and their significance."""
         print("🚀 Starting Research & Portfolio Update")
         print("=" * 50)
         
-        # Clean up only portfolio files and old figures
-        if self.portfolio_dir.exists():
-            for file in self.portfolio_dir.glob("portfolio-*.md"):
-                try:
-                    file.unlink()
-                    print(f"   🗑️ Removed: {file.name}")
-                except Exception as e:
-                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        # Use safe cleanup for research-only updates
+        self.safe_cleanup_for_research_only()
         
         # Update research page (includes classification and plot extraction)
         categories = self.update_research_page()
@@ -1180,8 +1209,8 @@ Write professionally about the research contributions and their significance."""
         print("🚀 Starting Full Website Content Update")
         print("=" * 60)
         
-        # Clean up existing files first (but preserve manually created publications)
-        self.cleanup_existing_files()
+        # Note: Cleanup is skipped to preserve existing publications
+        # Use --research-only if you want to clean portfolio/figures only
         
         # Update publications
         self.update_publications()

@@ -2,7 +2,7 @@
 title: "EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants"
 collection: publications
 permalink: /publication/2025-eaira-establishing-a-methodology-for-evaluating-ai
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2502.20309v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2502.20309v1)'
 date: 2025-02-27
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2502.20309v1'

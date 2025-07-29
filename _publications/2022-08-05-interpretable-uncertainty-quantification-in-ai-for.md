@@ -2,7 +2,7 @@
 title: "Interpretable Uncertainty Quantification in AI for HEP"
 collection: publications
 permalink: /publication/2022-interpretable-uncertainty-quantification-in-ai-for
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2208.03284v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2208.03284v3)'
 date: 2022-08-05
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2208.03284v3'

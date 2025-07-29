@@ -2,7 +2,7 @@
 title: "Dark matter haloes: a multistream view"
 collection: publications
 permalink: /publication/2017-dark-matter-haloes-a-multistream-view
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/1706.04058v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/1706.04058v1)'
 date: 2017-06-09
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/1706.04058v1'

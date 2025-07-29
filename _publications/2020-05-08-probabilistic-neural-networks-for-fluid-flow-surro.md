@@ -2,7 +2,7 @@
 title: "Probabilistic neural networks for fluid flow surrogate modeling and data recovery"
 collection: publications
 permalink: /publication/2020-probabilistic-neural-networks-for-fluid-flow-surro
-excerpt: '[<u><span style='color:blue'>arXiv</span></u>](http://arxiv.org/abs/2005.04271v3)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2005.04271v3)'
 date: 2020-05-08
 venue: 'arXiv preprint'
 paperurl: 'http://arxiv.org/abs/2005.04271v3'
