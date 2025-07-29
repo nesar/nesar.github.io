@@ -461,9 +461,9 @@ Assign each paper to the most appropriate category. Each paper should appear exa
         
         doc.close()
         
-        # Return top 3 figures
+        # Return only the best figure (limit to 1 per paper)
         all_figures.sort(key=lambda x: x['quality_score'], reverse=True)
-        top_figures = all_figures[:3]
+        top_figures = all_figures[:1]  # Only take the best figure
         
         extracted_plots = []
         for i, figure in enumerate(top_figures):
@@ -520,14 +520,20 @@ Focus on key methods and impact. Academic tone, no markdown."""
         """Clean up existing files to prevent duplications."""
         print("🧹 Cleaning up existing files...")
         
-        # Clean up publications
+        # Only clean up auto-generated publications (keep manually created ones)
         if self.publications_dir.exists():
-            for file in self.publications_dir.glob("*.md"):
-                try:
-                    file.unlink()
-                    print(f"   🗑️ Removed: {file.name}")
-                except Exception as e:
-                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+            auto_generated_patterns = [
+                "*-01-01-*.md",  # Generic date patterns
+                "*arxiv*.md",    # arXiv generated files
+            ]
+            
+            for pattern in auto_generated_patterns:
+                for file in self.publications_dir.glob(pattern):
+                    try:
+                        file.unlink()
+                        print(f"   🗑️ Removed auto-generated: {file.name}")
+                    except Exception as e:
+                        print(f"   ⚠️ Could not remove {file.name}: {e}")
         
         # Clean up portfolio pages
         if self.portfolio_dir.exists():
@@ -538,12 +544,12 @@ Focus on key methods and impact. Academic tone, no markdown."""
                 except Exception as e:
                     print(f"   ⚠️ Could not remove {file.name}: {e}")
         
-        # Clean up old figures (keep a backup of last 10 figures)
+        # Clean up old figures (keep a backup of last 20 figures)
         if self.figures_dir.exists():
             figure_files = sorted(self.figures_dir.glob("*.png"), key=lambda x: x.stat().st_mtime, reverse=True)
-            files_to_keep = figure_files[:10]  # Keep 10 most recent
+            files_to_keep = figure_files[:20]  # Keep 20 most recent
             
-            for file in figure_files[10:]:
+            for file in figure_files[20:]:
                 try:
                     file.unlink()
                     print(f"   🗑️ Removed old figure: {file.name}")
@@ -564,7 +570,7 @@ Focus on key methods and impact. Academic tone, no markdown."""
         # Sort by date (newest first)
         papers.sort(key=lambda x: self.format_date(x.get('date', '')), reverse=True)
         
-        # Create publication files
+        # Create publication files (skip if already exists)
         successful = 0
         for i, paper in enumerate(papers):
             try:
@@ -580,8 +586,18 @@ Focus on key methods and impact. Academic tone, no markdown."""
                 citation = f"{authors} ({year}). \"{title}\". {venue}."
                 
                 filename = f"{pub_date}-{url_slug}.md"
-                if (self.publications_dir / filename).exists():
+                filepath = self.publications_dir / filename
+                
+                # Skip if file already exists (preserve existing publications)
+                if filepath.exists():
+                    print(f"   ℹ️ Skipping existing: {filename}")
+                    successful += 1
+                    continue
+                
+                # Check for alternative filename if needed
+                if filepath.exists():
                     filename = f"{pub_date}-{url_slug}-{i}.md"
+                    filepath = self.publications_dir / filename
                 
                 content = f"""---
 title: "{title}"
@@ -597,10 +613,10 @@ citation: '{self.clean_text(citation)}'
 {paper.get('abstract', 'No abstract available.')}
 """
                 
-                filepath = self.publications_dir / filename
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(content)
                 
+                print(f"   ✅ Created: {filename}")
                 successful += 1
                 
             except Exception as e:
@@ -637,7 +653,7 @@ citation: '{self.clean_text(citation)}'
             
             print(f"   📊 Processing {cat_info['name']}...")
             
-            # Extract plots dynamically from papers in this category
+            # Extract plots dynamically from papers in this category (max 1 per paper)
             category_plots = []
             for paper_title in cat_info['papers']:
                 # Find corresponding paper object
@@ -645,9 +661,10 @@ citation: '{self.clean_text(citation)}'
                 if not paper_obj or not paper_obj.get('local_path'):
                     continue
                 
-                # Extract plots from this paper
+                # Extract only the best plot from this paper (limit enforced in extract_best_plots_from_paper)
                 plots = self.extract_best_plots_from_paper(paper_obj['local_path'], paper_title)
-                category_plots.extend(plots)
+                if plots:  # Only add if we found plots
+                    category_plots.extend(plots)  # Will be max 1 plot per paper
             
             # If no plots extracted, try to find existing plots by name matching
             if not category_plots:
@@ -1134,12 +1151,36 @@ Write professionally about the research contributions and their significance."""
         html += '</div>\n'
         return html
     
+    def run_research_update(self):
+        """Update only research and portfolio pages (preserve publications)."""
+        print("🚀 Starting Research & Portfolio Update")
+        print("=" * 50)
+        
+        # Clean up only portfolio files and old figures
+        if self.portfolio_dir.exists():
+            for file in self.portfolio_dir.glob("portfolio-*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Update research page (includes classification and plot extraction)
+        categories = self.update_research_page()
+        
+        # Update portfolio pages
+        self.update_portfolio_pages(categories)
+        
+        print("\n" + "=" * 50)
+        print("🎉 RESEARCH & PORTFOLIO UPDATE COMPLETE!")
+        print("=" * 50)
+
     def run_full_update(self):
         """Run complete website content update."""
         print("🚀 Starting Full Website Content Update")
         print("=" * 60)
         
-        # Clean up existing files first
+        # Clean up existing files first (but preserve manually created publications)
         self.cleanup_existing_files()
         
         # Update publications
@@ -1172,11 +1213,13 @@ def main():
                        help='Update portfolio pages')
     parser.add_argument('--full-update', action='store_true',
                        help='Run complete website update (default)')
+    parser.add_argument('--research-only', action='store_true',
+                       help='Update only research and portfolio pages (preserve publications)')
     
     args = parser.parse_args()
     
     # Default to full update if no specific flags
-    if not any([args.update_publications, args.update_research, args.update_portfolio]):
+    if not any([args.update_publications, args.update_research, args.update_portfolio, args.research_only]):
         args.full_update = True
     
     manager = WebsiteContentManager()
@@ -1184,6 +1227,8 @@ def main():
     try:
         if args.full_update:
             manager.run_full_update()
+        elif args.research_only:
+            manager.run_research_update()
         else:
             if args.update_publications:
                 manager.update_publications()
