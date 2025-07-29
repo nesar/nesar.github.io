@@ -213,39 +213,93 @@ class WebsiteContentManager:
         slug = re.sub(r'[^\w\s-]', '', slug)
         return re.sub(r'\s+', '-', slug)[:50]
     
+    def get_predefined_figure_mapping(self) -> Dict:
+        """Get predefined figure mapping based on comprehensive analysis."""
+        return {
+            'foundation-models': {
+                'name': 'Foundation Models',
+                'description': 'AI foundation models for scientific applications',
+                'figures': [
+                    'astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png',
+                    'eaira-establishing-a-methodology-for-evaluating-ai_plot_1_adce1f78.png',
+                    'astromlab-1-who-wins-astronomy-jeopardy_plot_2_0a77f6ec.png',
+                    'eaira-establishing-a-methodology-for-evaluating-ai_plot_2_205db31f.png'
+                ],
+                'papers': [
+                    'AstroMLab 1: Who Wins Astronomy Jeopardy!?',
+                    'AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model',
+                    'AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model',
+                    'EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants'
+                ]
+            },
+            'machine-learning': {
+                'name': 'Machine Learning for Science',
+                'description': 'ML techniques for scientific problems',
+                'figures': [
+                    'anomaly-detection-in-astronomical-images-with-gene_plot_1_6d84e8fe.png',
+                    'neural-network-based-point-spread-function-deconvo_plot_1_96427c88.png',
+                    'physical-benchmarking-for-ai-generated-cosmic-web_plot_1_11f44910.png',
+                    'a-modular-deep-learning-pipeline-for-galaxy-scale-_plot_1_a983de9a.png'
+                ],
+                'papers': [
+                    'Anomaly Detection in Astronomical Images with Generative Adversarial Networks',
+                    'Neural Network Based Point Spread Function Deconvolution For Astronomical Applications',
+                    'Physical Benchmarking for AI-Generated Cosmic Web',
+                    'A Modular Deep Learning Pipeline for Galaxy-Scale Strong Gravitational Lens Detection'
+                ]
+            },
+            'dark-matter': {
+                'name': 'Dark Matter & Cosmology',
+                'description': 'Cosmological structure and dark matter research',
+                'figures': [
+                    'the-caustic-design-of-the-dark-matter-web_plot_1_1a1bb482.png',
+                    'multi-stream-portrait-of-the-cosmic-web_plot_1_6096c149.png',
+                    'topology-and-geometry-of-the-dark-matter-web-a-mul_plot_1_b9734473.png',
+                    'dark-matter-haloes-a-multistream-view_plot_1_bb77684a.png'
+                ],
+                'papers': [
+                    'The Caustic Design of the Dark Matter Web',
+                    'Multi-stream portrait of the Cosmic web',
+                    'Topology and geometry of the dark matter web: a multistream view',
+                    'Dark matter haloes: a multistream view'
+                ]
+            },
+            'emulation-inference': {
+                'name': 'Emulation & Inference',
+                'description': 'Statistical emulators and inference methods',
+                'figures': [
+                    'matter-power-spectrum-emulator-for-fr-modified-gra_plot_1_d6154d54.png',
+                    'probabilistic-neural-network-based-reduced-order-s_plot_1_0ea468f8.png',
+                    'global-field-reconstruction-from-sparse-sensors-wi_plot_1_93ef286c.png',
+                    'application-of-probabilistic-modeling-and-automate_plot_1_8f87fb28.png'
+                ],
+                'papers': [
+                    'Matter Power Spectrum Emulator for f(R) Modified Gravity Cosmologies',
+                    'Probabilistic neural network-based reduced-order surrogate for fluid flows',
+                    'Global field reconstruction from sparse sensors with Voronoi tessellation',
+                    'Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field'
+                ]
+            }
+        }
+
     def classify_papers_with_llm(self, papers: List[Dict]) -> Dict:
-        """Use LLM to classify papers into research categories."""
-        print("🤖 Using LLM to classify papers into research categories...")
+        """Use predefined classification with existing figure mapping."""
+        print("🎯 Using predefined figure mapping for research categories...")
         
-        paper_titles = [f"- {paper['title']}" for paper in papers]
-        titles_text = "\n".join(paper_titles)
+        # Use our comprehensive analysis-based mapping
+        predefined_mapping = self.get_predefined_figure_mapping()
         
-        prompt = f"""Classify these {len(papers)} papers into 4 categories. Return only JSON:
-
-Papers: {titles_text}
-
-Categories:
-- foundation-models: "Foundation Models" (AI, LLMs, evaluation)
-- machine-learning: "Machine Learning for Science" (neural networks, deep learning)  
-- dark-matter: "Dark Matter & Cosmology" (cosmic web, structure)
-- emulation-inference: "Emulation & Inference" (statistical models, surrogates)
-
-JSON format:
-{{"categories": {{"foundation-models": {{"name": "Foundation Models", "papers": [...]}}, "machine-learning": {{"name": "Machine Learning for Science", "papers": [...]}}, "dark-matter": {{"name": "Dark Matter & Cosmology", "papers": [...]}}, "emulation-inference": {{"name": "Emulation & Inference", "papers": [...]}}}}}}"""
+        # Convert to expected format
+        categories = {}
+        for cat_key, cat_info in predefined_mapping.items():
+            categories[cat_key] = {
+                'name': cat_info['name'],
+                'description': cat_info['description'],
+                'papers': cat_info['papers'],
+                'figures': cat_info['figures']
+            }
         
-        try:
-            response = self.llm_generate(prompt)
-            # Extract JSON from response
-            json_match = re.search(r'\{.*\}', response, re.DOTALL)
-            if json_match:
-                classification = json.loads(json_match.group())
-                return classification.get('categories', {})
-            else:
-                raise ValueError("No JSON found in response")
-        except Exception as e:
-            print(f"❌ LLM classification failed: {e}")
-            # Create a simple fallback based on keywords
-            return self.create_simple_classification(papers)
+        return categories
     
 
     def create_simple_classification(self, papers: List[Dict]) -> Dict:
@@ -502,16 +556,48 @@ citation: '{self.clean_text(citation)}'
             
             print(f"   📊 Processing {cat_info['name']}...")
             
-            # Extract plots from papers in this category (max 1 plot per paper)
+            # Use predefined figures for this category
             category_plots = []
-            # Skip plot extraction for now since we're not downloading PDFs
-            # for paper_title in cat_info['papers']:
-            #     paper = paper_lookup.get(paper_title)
-            #     if paper and paper.get('local_path') and Path(paper['local_path']).exists():
-            #         plots = self.extract_best_plots_from_paper(paper['local_path'], paper_title)
-            #         # Take only the best plot from each paper
-            #         if plots:
-            #             category_plots.append(plots[0])  # Best plot from this paper
+            if 'figures' in cat_info:
+                for i, figure_filename in enumerate(cat_info['figures']):
+                    fig_path = self.figures_dir / figure_filename
+                    if fig_path.exists():
+                        # Get corresponding paper title if available
+                        paper_title = cat_info['papers'][i] if i < len(cat_info['papers']) else "Research figure"
+                        
+                        plot_info = {
+                            'filename': figure_filename,
+                            'paper_title': paper_title,
+                            'relative_path': f"/images/research/figures/{figure_filename}",
+                            'quality_score': 100 - i  # Higher score for first figures
+                        }
+                        category_plots.append(plot_info)
+                    else:
+                        print(f"   ⚠️ Figure not found: {figure_filename}")
+            else:
+                # Fallback to old method if no predefined figures
+                for paper_title in cat_info['papers']:
+                    paper_slug = self.create_url_slug(paper_title)
+                    matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
+                    
+                    if not matching_figures:
+                        title_words = paper_title.lower().split()[:3]
+                        for word in title_words:
+                            if len(word) > 3:
+                                word_figures = list(self.figures_dir.glob(f"*{word}*_plot_*.png"))
+                                if word_figures:
+                                    matching_figures.extend(word_figures)
+                                    break
+                    
+                    if matching_figures:
+                        fig_path = matching_figures[0]
+                        plot_info = {
+                            'filename': fig_path.name,
+                            'paper_title': paper_title,
+                            'relative_path': f"/images/research/figures/{fig_path.name}",
+                            'quality_score': 100
+                        }
+                        category_plots.append(plot_info)
             
             # Generate category summary
             print(f"   🤖 Generating summary for {cat_info['name']}...")
@@ -797,9 +883,39 @@ author_profile: true
             # Generate detailed research summary
             summary = self.generate_portfolio_summary_with_llm(cat_info['name'], cat_info['papers'])
             
-            # Get figures for this category
-            figure_files = list(self.figures_dir.glob(f"*{cat_key}*.png"))[:4]
-            figures_html = self.create_portfolio_figures_html(figure_files)
+            # Get predefined figures for this category
+            figure_files = []
+            figure_papers = []
+            if 'figures' in cat_info:
+                for i, figure_filename in enumerate(cat_info['figures'][:4]):  # Limit to 4 figures
+                    fig_path = self.figures_dir / figure_filename
+                    if fig_path.exists():
+                        figure_files.append(fig_path)
+                        # Get corresponding paper title
+                        if i < len(cat_info['papers']):
+                            figure_papers.append(cat_info['papers'][i])
+                        else:
+                            figure_papers.append("Research figure")
+            else:
+                # Fallback method
+                for paper_title in cat_info['papers'][:4]:
+                    paper_slug = self.create_url_slug(paper_title)
+                    matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
+                    
+                    if not matching_figures:
+                        title_words = paper_title.lower().split()[:3]
+                        for word in title_words:
+                            if len(word) > 3:
+                                word_figures = list(self.figures_dir.glob(f"*{word}*_plot_*.png"))
+                                if word_figures:
+                                    matching_figures = [word_figures[0]]
+                                    break
+                    
+                    if matching_figures:
+                        figure_files.append(matching_figures[0])
+                        figure_papers.append(paper_title)
+            
+            figures_html = self.create_portfolio_figures_html(figure_files, figure_papers)
             
             # Create portfolio file
             filename = f"portfolio-{i+1}-{cat_key}.md"
@@ -931,16 +1047,20 @@ Write professionally about the research contributions and their significance."""
         
         return self.llm_generate(prompt)
     
-    def create_portfolio_figures_html(self, figure_files: List[Path]) -> str:
+    def create_portfolio_figures_html(self, figure_files: List[Path], papers: List[str] = None) -> str:
         """Create HTML for portfolio research figures."""
         if not figure_files:
-            return '<div class="no-figures"><p>Representative figures will be added soon.</p></div>'
+            return '<div class="research-figures"><div class="no-figures"><p>Representative figures will be added soon.</p></div></div>'
         
         html = '<div class="research-figures">\n'
         
-        for figure_file in figure_files[:4]:  # Limit to 4 figures
-            # Extract paper name from filename
-            paper_name = figure_file.stem.split('_plot_')[0].replace('_', ' ').replace('-', ' ')
+        for i, figure_file in enumerate(figure_files[:4]):  # Limit to 4 figures
+            # Use the corresponding paper title if available, otherwise extract from filename
+            if papers and i < len(papers):
+                paper_name = papers[i]
+            else:
+                paper_name = figure_file.stem.split('_plot_')[0].replace('_', ' ').replace('-', ' ')
+            
             html += f'''  <div class="figure-item">
     <img src="/images/research/figures/{figure_file.name}" alt="Figure from {paper_name}" onclick="openModal(this)" loading="lazy" />
     <div class="figure-caption">From: {paper_name}</div>
