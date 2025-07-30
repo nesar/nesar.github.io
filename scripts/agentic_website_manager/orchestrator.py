@@ -13,7 +13,7 @@ import argparse
 # Add the current directory to Python path for imports
 sys.path.append(str(Path(__file__).parent))
 
-from config import config
+import config
 from web_agent import WebAgent
 from parse_agent import ParseAgent
 from content_agent import ContentAgent

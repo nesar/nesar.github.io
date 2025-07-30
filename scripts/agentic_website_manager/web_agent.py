@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 from urllib.parse import quote
 from langchain.tools import BaseTool, tool
-from langchain.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
-from .base_agent import BaseAgent
-from .config import config
+from base_agent import BaseAgent
+import config
 
 class ArxivSearchInput(BaseModel):
     search_terms: List[str] = Field(description="List of search terms to query arXiv")
