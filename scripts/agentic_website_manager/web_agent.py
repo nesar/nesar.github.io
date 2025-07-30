@@ -33,9 +33,9 @@ def search_arxiv_papers(search_terms: List[str], max_results: int = 200) -> List
     for search_term in search_terms:
         try:
             encoded_search = quote(search_term)
-            url = f"{config.search_config['arxiv_base_url']}?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}"
+            url = f"{config.config.search_config['arxiv_base_url']}?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}"
             
-            response = requests.get(url, timeout=config.search_config['timeout'])
+            response = requests.get(url, timeout=config.config.search_config['timeout'])
             response.raise_for_status()
             
             root = ET.fromstring(response.content)
@@ -62,7 +62,7 @@ def search_arxiv_papers(search_terms: List[str], max_results: int = 200) -> List
                 
                 # Check if target author (more flexible matching)
                 is_author = any(
-                    pattern(author) for pattern in config.search_config['author_patterns']
+                    pattern(author) for pattern in config.config.search_config['author_patterns']
                     for author in authors
                 )
                 
@@ -90,7 +90,7 @@ def search_arxiv_papers(search_terms: List[str], max_results: int = 200) -> List
                 
                 all_papers.append(paper)
             
-            time.sleep(config.search_config['rate_limit_delay'])
+            time.sleep(config.config.search_config['rate_limit_delay'])
             
         except Exception as e:
             print(f"⚠️ Error with search term '{search_term}': {e}")
@@ -108,7 +108,7 @@ def download_papers(papers: List[Dict]) -> List[Dict]:
         safe_title = re.sub(r'[^\w\s-]', '', paper['title'])
         safe_title = re.sub(r'\s+', '_', safe_title)
         filename = f"{safe_title[:50]}.pdf"
-        filepath = config.papers_dir / filename
+        filepath = config.config.papers_dir / filename
         
         if filepath.exists():
             paper['local_path'] = str(filepath)
@@ -116,7 +116,7 @@ def download_papers(papers: List[Dict]) -> List[Dict]:
         
         try:
             print(f"   📥 Downloading: {paper['title'][:50]}...")
-            headers = {'User-Agent': config.search_config['user_agent']}
+            headers = {'User-Agent': config.config.search_config['user_agent']}
             
             # Convert arXiv URL to PDF download URL
             pdf_url = paper['arxiv_url']
@@ -126,7 +126,7 @@ def download_papers(papers: List[Dict]) -> List[Dict]:
                 pdf_url = pdf_url + '.pdf'
             
             response = requests.get(pdf_url, headers=headers, stream=True, 
-                                  timeout=config.search_config['timeout'])
+                                  timeout=config.config.search_config['timeout'])
             response.raise_for_status()
             
             with open(filepath, 'wb') as f:
@@ -135,7 +135,7 @@ def download_papers(papers: List[Dict]) -> List[Dict]:
             
             paper['local_path'] = str(filepath)
             print(f"      ✅ Downloaded: {filename}")
-            time.sleep(config.search_config['rate_limit_delay'])
+            time.sleep(config.config.search_config['rate_limit_delay'])
             
         except Exception as e:
             print(f"      ❌ Failed to download {paper['title'][:30]}: {e}")
@@ -234,7 +234,7 @@ Question: {input}
         self.log_start("arXiv paper search")
         
         try:
-            papers = search_arxiv_papers(config.search_config['search_terms'])
+            papers = search_arxiv_papers(config.config.search_config['search_terms'])
             
             self.log_success("arXiv search", f"Found {len(papers)} papers")
             for i, paper in enumerate(papers):

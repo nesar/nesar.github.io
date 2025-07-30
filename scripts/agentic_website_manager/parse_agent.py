@@ -11,10 +11,10 @@ from typing import Dict, List, Any, Optional, Tuple
 from PIL import Image, ImageStat
 import fitz  # PyMuPDF
 from langchain.tools import BaseTool, tool
-from langchain.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
-from .base_agent import BaseAgent
-from .config import config
+from base_agent import BaseAgent
+import config
 
 class FigureExtractionInput(BaseModel):
     pdf_path: str = Field(description="Path to PDF file")
@@ -89,7 +89,7 @@ def extract_figures_from_pdf(pdf_path: str, paper_title: str) -> List[Dict]:
     for i, figure in enumerate(top_figures):
         # Since we only extract 1 plot per paper, always use _plot_1
         filename = f"{_create_url_slug(paper_title)}_plot_1_{figure['hash']}.png"
-        filepath = config.figures_dir / filename
+        filepath = config.config.figures_dir / filename
         
         # Skip if this exact file already exists
         if filepath.exists():

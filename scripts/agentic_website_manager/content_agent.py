@@ -7,10 +7,10 @@ import json
 import re
 from typing import Dict, List, Any, Optional
 from langchain.tools import BaseTool, tool
-from langchain.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
-from .base_agent import BaseAgent
-from .config import config
+from base_agent import BaseAgent
+import config
 
 class PaperClassificationInput(BaseModel):
     papers: List[Dict] = Field(description="List of paper dictionaries with titles")
@@ -26,7 +26,7 @@ def classify_papers(papers: List[Dict]) -> Dict:
     paper_titles = [paper['title'] for paper in papers]
     paper_list = "\n".join([f"{i+1}. {title}" for i, title in enumerate(paper_titles)])
     
-    prompt = config.prompts['paper_classification'].format(paper_list=paper_list)
+    prompt = config.config.prompts['paper_classification'].format(paper_list=paper_list)
     
     # This would normally use the LLM through the agent
     # For now, we'll use the fallback classification
@@ -38,12 +38,12 @@ def generate_category_summary(category_name: str, papers: List[str], summary_typ
     paper_list = "\n".join([f"- {paper}" for paper in papers])
     
     if summary_type == "brief":
-        prompt = config.prompts['category_summary'].format(
+        prompt = config.config.prompts['category_summary'].format(
             category_name=category_name,
             paper_list=paper_list
         )
     else:  # detailed
-        prompt = config.prompts['portfolio_summary'].format(
+        prompt = config.config.prompts['portfolio_summary'].format(
             category_name=category_name,
             paper_list=paper_list
         )
@@ -255,7 +255,7 @@ def _create_simple_classification(papers: List[Dict]) -> Dict:
         
         # Check each category's keywords
         assigned = False
-        for cat_key, cat_config in config.classification_config['categories'].items():
+        for cat_key, cat_config in config.config.classification_config['categories'].items():
             if any(kw in title_lower for kw in cat_config['keywords']):
                 categories[cat_key]['papers'].append(paper['title'])
                 assigned = True
@@ -605,7 +605,7 @@ Question: {input}
             paper_titles = [paper['title'] for paper in papers]
             paper_list = "\n".join([f"{i+1}. {title}" for i, title in enumerate(paper_titles)])
             
-            prompt = config.prompts['paper_classification'].format(paper_list=paper_list)
+            prompt = config.config.prompts['paper_classification'].format(paper_list=paper_list)
             
             try:
                 response = self.llm_generate(prompt)

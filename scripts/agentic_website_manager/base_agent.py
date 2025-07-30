@@ -15,7 +15,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain.schema import AgentAction, AgentFinish
 
-from .config import config
+import config
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -36,7 +36,7 @@ class BaseAgent(ABC):
         
     def setup_llm(self):
         """Setup LLM with error handling."""
-        api_key = config.llm_config['api_key_env']
+        api_key = config.config.llm_config['api_key_env']
         api_key_value = os.getenv(api_key)
         
         if not api_key_value:
@@ -48,11 +48,11 @@ class BaseAgent(ABC):
         try:
             # Setup direct Gemini client for simple calls
             genai.configure(api_key=api_key_value)
-            self.direct_model = genai.GenerativeModel(config.llm_config['model_name'])
+            self.direct_model = genai.GenerativeModel(config.config.llm_config['model_name'])
             
             # Setup LangChain LLM for agent orchestration
             self.llm = ChatGoogleGenerativeAI(
-                model=config.llm_config['model_name'],
+                model=config.config.llm_config['model_name'],
                 google_api_key=api_key_value,
                 temperature=0.1
             )
@@ -65,7 +65,7 @@ class BaseAgent(ABC):
     
     def llm_generate(self, prompt: str, max_retries: int = None) -> str:
         """Generate content using direct LLM with retry logic."""
-        max_retries = max_retries or config.llm_config['max_retries']
+        max_retries = max_retries or config.config.llm_config['max_retries']
         
         for attempt in range(max_retries):
             try:
@@ -74,7 +74,7 @@ class BaseAgent(ABC):
             except Exception as e:
                 logger.warning(f"⚠️ LLM attempt {attempt + 1} failed for {self.name}: {e}")
                 if attempt < max_retries - 1:
-                    time.sleep(config.llm_config['retry_backoff'] ** attempt)
+                    time.sleep(config.config.llm_config['retry_backoff'] ** attempt)
                 else:
                     raise
     

@@ -254,7 +254,7 @@ class WebsiteOrchestrator:
             # Write research.html
             if content_results.get('research_html'):
                 try:
-                    with open(config.research_page, 'w', encoding='utf-8') as f:
+                    with open(config.config.research_page, 'w', encoding='utf-8') as f:
                         f.write(content_results['research_html'])
                     file_results['files_written'] += 1
                     print("   ✅ Research page updated")
@@ -265,7 +265,7 @@ class WebsiteOrchestrator:
             if content_results.get('portfolio_pages'):
                 for filename, content in content_results['portfolio_pages'].items():
                     try:
-                        filepath = config.portfolio_dir / filename
+                        filepath = config.config.portfolio_dir / filename
                         with open(filepath, 'w', encoding='utf-8') as f:
                             f.write(content)
                         file_results['files_written'] += 1
@@ -305,14 +305,14 @@ class WebsiteOrchestrator:
             
             # Write research.html
             if content_results.get('research_html'):
-                with open(config.research_page, 'w', encoding='utf-8') as f:
+                with open(config.config.research_page, 'w', encoding='utf-8') as f:
                     f.write(content_results['research_html'])
                 file_results['files_written'] += 1
             
             # Write portfolio pages
             if content_results.get('portfolio_pages'):
                 for filename, content in content_results['portfolio_pages'].items():
-                    filepath = config.portfolio_dir / filename
+                    filepath = config.config.portfolio_dir / filename
                     with open(filepath, 'w', encoding='utf-8') as f:
                         f.write(content)
                     file_results['files_written'] += 1
@@ -345,7 +345,7 @@ class WebsiteOrchestrator:
                 citation = f"{authors} ({year}). \"{title}\". {venue}."
                 
                 filename = f"{pub_date}-{url_slug}.md"
-                filepath = config.publications_dir / filename
+                filepath = config.config.publications_dir / filename
                 
                 # Skip if file already exists
                 if filepath.exists():
@@ -377,8 +377,8 @@ citation: '{self._clean_text(citation)}'
     
     def _cleanup_portfolio_files(self):
         """Clean up existing portfolio files."""
-        if config.portfolio_dir.exists():
-            for file in config.portfolio_dir.glob("portfolio-*.md"):
+        if config.config.portfolio_dir.exists():
+            for file in config.config.portfolio_dir.glob("portfolio-*.md"):
                 try:
                     file.unlink()
                 except Exception:
