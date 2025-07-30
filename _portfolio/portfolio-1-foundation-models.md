@@ -4,35 +4,15 @@ excerpt: "Research in foundation models"
 collection: portfolio
 ---
 
-Foundation models represent a paradigm shift in artificial intelligence, characterized by their immense scale and pre-training on vast and diverse datasets. These models, often large language models (LLMs), exhibit remarkable emergent capabilities across a wide range of tasks, from natural language understanding and generation to complex reasoning and problem-solving. While powerful in general applications, their utility in highly specialized, knowledge-intensive domains often benefits from further adaptation and refinement.
+Foundation models represent a transformative paradigm in artificial intelligence, demonstrating remarkable capabilities across a wide array of general-purpose tasks. However, their direct application to highly specialized scientific domains, such as astrophysics, often encounters limitations. These general models may struggle with the nuanced terminology, complex reasoning patterns, and vast, evolving knowledge bases inherent to scientific research, necessitating domain-specific adaptations and rigorous evaluation.
 
-Applying foundation models to scientific disciplines presents both unique opportunities and challenges. Scientific research, particularly in fields like astronomy, involves complex concepts, specialized terminology, and the synthesis of information from extensive, constantly evolving data archives. General-purpose models, despite their breadth, often struggle with the nuanced precision and deep domain-specific reasoning required for advanced scientific inquiry, necessitating tailored approaches and robust evaluation methodologies.
+The effective integration of AI into scientific workflows demands not only models with deep domain understanding but also robust methodologies to assess their reliability, accuracy, and utility as genuine research tools. The challenge lies in moving beyond simple fact retrieval to enable AI systems to perform complex scientific reasoning, synthesize novel insights, and function as collaborative assistants in the discovery process.
 
-Establishing the efficacy of AI models as tools for scientific research demands rigorous evaluation frameworks. These frameworks must go beyond simple accuracy metrics, assessing qualities like factual consistency, reasoning ability, and the capacity to function as reliable research assistants. The development of specialized benchmarks and methodologies is thus paramount to ensure these advanced AI systems genuinely augment human scientific endeavors, providing accurate and trustworthy insights within their specific domains.
+My research directly addresses these challenges by developing and rigorously evaluating specialized large language models tailored for the field of astronomy. In "AstroMLab 3," I demonstrated that a specialized 8B-parameter language model could achieve performance levels comparable to significantly larger, general-purpose models like GPT-4o on complex astronomy tasks, highlighting the efficiency and power of domain adaptation. Building on this foundation, "AstroMLab 4" introduced a 70B-parameter domain-specialized reasoning model that set new benchmarks for astronomy Q&A, showcasing advanced reasoning capabilities crucial for scientific inquiry. My earlier work in "AstroMLab 1" explored initial benchmarks for AI performance in astronomy knowledge.
 
-My research addresses these challenges by developing and evaluating highly specialized foundation models for the field of astronomy. I initiated this work by exploring baseline performance with AstroMLab 1, a foundational step in understanding how AI could tackle astronomy-specific queries. Building upon this, I have developed the AstroMLab series of large language models, specifically engineered to excel in astronomy-related question answering and scientific reasoning. AstroMLab 3, for instance, demonstrated the remarkable capability of achieving performance levels comparable to general-purpose models like GPT-4o, but with significantly fewer parameters (8 billion), highlighting the efficiency and power of domain-specialized training and fine-tuning.
+A core contribution of my work extends beyond model development to the establishment of comprehensive evaluation frameworks. In "EAIRA," I developed a novel methodology for systematically evaluating AI models as scientific research assistants. This framework goes beyond traditional accuracy metrics, assessing an AI's capacity for complex scientific reasoning, information synthesis, and overall utility in accelerating research. This rigorous, multi-faceted approach ensures that the foundation models I develop are not only powerful and efficient but also reliable and trustworthy collaborators in the advancement of scientific discovery.
 
-Further advancing this work, AstroMLab 4 pushed the boundaries by developing a 70-billion-parameter model that achieved benchmark-topping performance in complex astronomy Q&A tasks, showcasing enhanced reasoning capabilities critical for scientific discovery. Alongside model development, I have also established a rigorous framework for evaluating AI models as scientific research assistants through the EAIRA methodology. This systematic approach provides a robust means to assess the utility and reliability of these AI systems. My work therefore significantly contributes to bridging the gap between general AI capabilities and the specific demands of cutting-edge scientific research, demonstrating the transformative potential of domain-specialized foundation models.
-
-<div class="research-figures">
-  <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/eaira-establishing-a-methodology-for-evaluating-ai_plot_1_adce1f78.png" alt="Figure from EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: EAIRA: Establishing a Methodology for Evaluating AI Models as Scientific Research Assistants</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 1: Who Wins Astronomy Jeopardy!?" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 1: Who Wins Astronomy Jeopardy!?</div>
-  </div>
-</div>
-
+<div class="research-figures"><div class="no-figures"><p>Representative figures will be added soon.</p></div></div>
 
 <style>
 .research-figures {

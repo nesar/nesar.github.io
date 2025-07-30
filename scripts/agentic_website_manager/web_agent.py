@@ -234,7 +234,8 @@ Question: {input}
         self.log_start("arXiv paper search")
         
         try:
-            papers = search_arxiv_papers(config.config.search_config['search_terms'])
+            # Call the function directly instead of through LangChain tool
+            papers = self._search_arxiv_papers_direct(config.config.search_config['search_terms'])
             
             self.log_success("arXiv search", f"Found {len(papers)} papers")
             for i, paper in enumerate(papers):
@@ -246,12 +247,85 @@ Question: {input}
             self.log_error("arXiv search", e)
             return []
     
+    def _search_arxiv_papers_direct(self, search_terms: List[str], max_results: int = 200) -> List[Dict]:
+        """Direct implementation of arXiv search without LangChain tool wrapper."""
+        all_papers = []
+        seen_arxiv_ids = set()
+        
+        for search_term in search_terms:
+            try:
+                encoded_search = quote(search_term)
+                url = f"{config.config.search_config['arxiv_base_url']}?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}"
+                
+                response = requests.get(url, timeout=config.config.search_config['timeout'])
+                response.raise_for_status()
+                
+                root = ET.fromstring(response.content)
+                namespace = {'atom': 'http://www.w3.org/2005/Atom'}
+                
+                for entry in root.findall('.//atom:entry', namespace):
+                    # Extract basic info
+                    title = entry.find('./atom:title', namespace)
+                    published = entry.find('./atom:published', namespace)
+                    summary = entry.find('./atom:summary', namespace)
+                    arxiv_id = entry.find('./atom:id', namespace)
+                    
+                    if not all([title is not None and title.text, 
+                               published is not None and published.text, 
+                               arxiv_id is not None and arxiv_id.text]):
+                        continue
+                    
+                    # Get authors
+                    authors = []
+                    for author in entry.findall('./atom:author', namespace):
+                        name_elem = author.find('./atom:name', namespace)
+                        if name_elem is not None:
+                            authors.append(name_elem.text.strip())
+                    
+                    # Check if target author (more flexible matching)
+                    is_author = any(
+                        pattern(author) for pattern in config.config.search_config['author_patterns']
+                        for author in authors
+                    )
+                    
+                    if not is_author:
+                        continue
+                    
+                    # Extract arXiv ID
+                    arxiv_url = arxiv_id.text
+                    arxiv_match = re.search(r'(\d+\.\d+)', arxiv_url)
+                    arxiv_number = arxiv_match.group(1) if arxiv_match else ""
+                    
+                    if arxiv_number in seen_arxiv_ids:
+                        continue
+                    seen_arxiv_ids.add(arxiv_number)
+                    
+                    paper = {
+                        'title': _clean_text(title.text),
+                        'authors': authors,
+                        'date': published.text,
+                        'abstract': _clean_text(summary.text if summary is not None else ""),
+                        'arxiv_url': arxiv_url,
+                        'arxiv_id': arxiv_number,
+                        'venue': 'arXiv preprint'
+                    }
+                    
+                    all_papers.append(paper)
+                
+                time.sleep(config.config.search_config['rate_limit_delay'])
+                
+            except Exception as e:
+                print(f"⚠️ Error with search term '{search_term}': {e}")
+                continue
+        
+        return all_papers
+    
     def download_papers(self, papers: List[Dict]) -> List[Dict]:
         """Download papers to local storage."""
         self.log_start("paper download")
         
         try:
-            papers_with_paths = download_papers(papers)
+            papers_with_paths = self._download_papers_direct(papers)
             downloaded_count = sum(1 for p in papers_with_paths if p.get('local_path'))
             
             self.log_success("paper download", f"Downloaded {downloaded_count} papers")
@@ -260,3 +334,47 @@ Question: {input}
         except Exception as e:
             self.log_error("paper download", e)
             return papers
+    
+    def _download_papers_direct(self, papers: List[Dict]) -> List[Dict]:
+        """Direct implementation of paper download without LangChain tool wrapper."""
+        for paper in papers:
+            if not paper.get('arxiv_url'):
+                continue
+            
+            safe_title = re.sub(r'[^\w\s-]', '', paper['title'])
+            safe_title = re.sub(r'\s+', '_', safe_title)
+            filename = f"{safe_title[:50]}.pdf"
+            filepath = config.config.papers_dir / filename
+            
+            if filepath.exists():
+                paper['local_path'] = str(filepath)
+                continue
+            
+            try:
+                print(f"   📥 Downloading: {paper['title'][:50]}...")
+                headers = {'User-Agent': config.config.search_config['user_agent']}
+                
+                # Convert arXiv URL to PDF download URL
+                pdf_url = paper['arxiv_url']
+                if 'arxiv.org/abs/' in pdf_url:
+                    pdf_url = pdf_url.replace('arxiv.org/abs/', 'arxiv.org/pdf/') + '.pdf'
+                elif not pdf_url.endswith('.pdf'):
+                    pdf_url = pdf_url + '.pdf'
+                
+                response = requests.get(pdf_url, headers=headers, stream=True, 
+                                      timeout=config.config.search_config['timeout'])
+                response.raise_for_status()
+                
+                with open(filepath, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        f.write(chunk)
+                
+                paper['local_path'] = str(filepath)
+                print(f"      ✅ Downloaded: {filename}")
+                time.sleep(config.config.search_config['rate_limit_delay'])
+                
+            except Exception as e:
+                print(f"      ❌ Failed to download {paper['title'][:30]}: {e}")
+                paper['local_path'] = None
+        
+        return papers

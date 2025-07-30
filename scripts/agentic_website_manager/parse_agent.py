@@ -339,18 +339,146 @@ Question: {input}
             
             if task in ["extract_figures", "full_parse"]:
                 print(f"   🖼️ Extracting figures from: {paper_title[:50]}...")
-                figures = extract_figures_from_pdf(pdf_path, paper_title)
+                figures = self._extract_figures_from_pdf_direct(pdf_path, paper_title)
                 results['figures'] = figures
             
             if task in ["extract_text", "full_parse"]:
                 print(f"   📄 Extracting text from: {paper_title[:50]}...")
-                text = extract_text_from_pdf(pdf_path)
+                text = self._extract_text_from_pdf_direct(pdf_path)
                 results['text'] = text
             
             return results
             
         except Exception as e:
             return {'error': str(e)}
+    
+    def _extract_figures_from_pdf_direct(self, pdf_path: str, paper_title: str) -> List[Dict]:
+        """Direct implementation of figure extraction without LangChain tool wrapper."""
+        try:
+            doc = fitz.open(pdf_path)
+        except Exception as e:
+            print(f"   ❌ Could not open PDF: {e}")
+            return []
+        
+        all_figures = []
+        seen_hashes = set()
+        
+        # Scan all pages for figures
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            image_list = page.get_images(full=True)
+            
+            for img_index, img in enumerate(image_list):
+                try:
+                    xref = img[0]
+                    base_image = doc.extract_image(xref)
+                    image_bytes = base_image["image"]
+                    
+                    # Check for duplicates
+                    img_hash = hashlib.md5(image_bytes).hexdigest()
+                    if img_hash in seen_hashes:
+                        continue
+                    seen_hashes.add(img_hash)
+                    
+                    # Load and evaluate image
+                    image = Image.open(io.BytesIO(image_bytes))
+                    
+                    if _is_good_scientific_figure(image, len(image_bytes)):
+                        # Calculate quality score
+                        image_rgb = image.convert('RGB') if image.mode != 'RGB' else image
+                        stat = ImageStat.Stat(image_rgb)
+                        complexity = np.mean(stat.var)
+                        area = image.size[0] * image.size[1]
+                        
+                        # Prefer later pages (likely better figures)
+                        page_boost = page_num * 0.1
+                        quality_score = area * complexity * (1 + page_boost)
+                        
+                        all_figures.append({
+                            'image': image,
+                            'hash': img_hash[:8],
+                            'size': image.size,
+                            'quality_score': quality_score,
+                            'page': page_num + 1,
+                            'image_bytes': image_bytes
+                        })
+                        
+                except Exception:
+                    continue
+        
+        doc.close()
+        
+        # Return only the best figure (limit to 1 per paper)
+        all_figures.sort(key=lambda x: x['quality_score'], reverse=True)
+        top_figures = all_figures[:1]  # Only take the best figure
+        
+        extracted_plots = []
+        for i, figure in enumerate(top_figures):
+            # Since we only extract 1 plot per paper, always use _plot_1
+            filename = f"{_create_url_slug(paper_title)}_plot_1_{figure['hash']}.png"
+            filepath = config.config.figures_dir / filename
+            
+            # Skip if this exact file already exists
+            if filepath.exists():
+                print(f"   ⚠️ Plot already exists: {filename}")
+                continue
+            
+            figure['image'].convert('RGB').save(filepath, "PNG", optimize=True)
+            
+            plot_info = {
+                'filename': filename,
+                'paper_title': paper_title,
+                'size': figure['size'],
+                'page': figure['page'],
+                'relative_path': f"/images/research/figures/{filename}",
+                'quality_score': figure['quality_score'],
+                'local_path': str(filepath)
+            }
+            
+            extracted_plots.append(plot_info)
+        
+        return extracted_plots
+    
+    def _extract_text_from_pdf_direct(self, pdf_path: str) -> Dict:
+        """Direct implementation of text extraction without LangChain tool wrapper."""
+        try:
+            doc = fitz.open(pdf_path)
+            
+            text_content = {
+                'full_text': '',
+                'abstract': '',
+                'conclusions': '',
+                'page_count': len(doc)
+            }
+            
+            for page_num in range(len(doc)):
+                page = doc.load_page(page_num)
+                page_text = page.get_text()
+                text_content['full_text'] += page_text + '\n'
+                
+                # Try to extract abstract (usually on first page)
+                if page_num == 0 and not text_content['abstract']:
+                    abstract_match = _extract_section(page_text, 'abstract')
+                    if abstract_match:
+                        text_content['abstract'] = abstract_match
+                
+                # Try to extract conclusions (usually on last pages)
+                if page_num >= len(doc) - 3 and not text_content['conclusions']:
+                    conclusions_match = _extract_section(page_text, 'conclusion')
+                    if conclusions_match:
+                        text_content['conclusions'] = conclusions_match
+            
+            doc.close()
+            return text_content
+            
+        except Exception as e:
+            return {
+                'full_text': '',
+                'abstract': '',
+                'conclusions': '',
+                'page_count': 0,
+                'error': str(e)
+            }
     
     def extract_figures_batch(self, papers: List[Dict]) -> List[Dict]:
         """Extract figures from a batch of papers."""
