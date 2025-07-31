@@ -652,16 +652,68 @@ Question: {input}
         """Organize figures by research category."""
         category_plots = {cat_key: [] for cat_key in categories.keys()}
         
-        for figure in figures:
-            paper_title = figure.get('paper_title', '')
-            
-            # Find which category this paper belongs to
-            for cat_key, cat_info in categories.items():
-                if paper_title in cat_info['papers']:
-                    category_plots[cat_key].append(figure)
-                    break
+        # If we have extracted figures from this run, use them
+        if figures:
+            for figure in figures:
+                paper_title = figure.get('paper_title', '')
+                
+                # Find which category this paper belongs to
+                for cat_key, cat_info in categories.items():
+                    if paper_title in cat_info['papers']:
+                        category_plots[cat_key].append(figure)
+                        break
+        else:
+            # If no figures were extracted in this run, use existing figures by finding them
+            category_plots = self._find_existing_figures_for_categories(categories)
         
         return category_plots
+    
+    def _find_existing_figures_for_categories(self, categories: Dict) -> Dict:
+        """Find existing figures for each category by matching paper titles to figure filenames."""
+        category_plots = {cat_key: [] for cat_key in categories.keys()}
+        
+        # Get all existing figure files
+        figures_dir = config.config.figures_dir
+        if not figures_dir.exists():
+            return category_plots
+        
+        for cat_key, cat_info in categories.items():
+            for paper_title in cat_info['papers']:
+                # Create URL slug from paper title (same as used in extraction)
+                paper_slug = self._create_url_slug(paper_title)
+                
+                # Look for figures matching this paper
+                matching_figures = list(figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
+                
+                # If no exact match, try partial matching with title words
+                if not matching_figures:
+                    title_words = paper_title.lower().split()[:3]
+                    for word in title_words:
+                        if len(word) > 3:  # Skip short words
+                            word_figures = list(figures_dir.glob(f"*{word}*_plot_*.png"))
+                            if word_figures:
+                                matching_figures = word_figures[:1]  # Take just one
+                                break
+                
+                # Add found figures to category
+                for fig_path in matching_figures[:3]:  # Max 3 per paper
+                    plot_info = {
+                        'filename': fig_path.name,
+                        'paper_title': paper_title,
+                        'relative_path': f"/images/research/figures/{fig_path.name}",
+                        'quality_score': 100,  # Default score
+                        'local_path': str(fig_path)
+                    }
+                    category_plots[cat_key].append(plot_info)
+        
+        return category_plots
+    
+    def _create_url_slug(self, title: str) -> str:
+        """Create URL-friendly slug."""
+        import re
+        slug = title.lower()
+        slug = re.sub(r'[^\w\s-]', '', slug)
+        return re.sub(r'\s+', '-', slug)[:50]
     
     def _generate_portfolio_pages(self, categories: Dict, category_plots: Dict) -> Dict:
         """Generate portfolio page content for each category."""
