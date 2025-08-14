@@ -1,0 +1,34 @@
+{
+  "researcher": {
+    "name": "Nesar S Ramachandra",
+    "title": "Dr.",
+    "search_terms": [
+      "au:\"Nesar S Ramachandra\"",
+      "au:\"Ramachandra, Nesar\"", 
+      "au:\"N S Ramachandra\"",
+      "au:Ramachandra AND au:Nesar",
+      "au:\"Ramachandra, N S\"",
+      "au:\"Ramachandra, N.S.\"",
+      "au:\"N.S. Ramachandra\"",
+      "au:\"Nesar Ramachandra\""
+    ],
+    "author_patterns": [
+      "(Ramachandra.*Nesar)",
+      "(Ramachandra.*N[\\s\\.])",
+      "(N\\.?\\s*S\\.?\\s*Ramachandra)"
+    ]
+  },
+  "website": {
+    "base_dir": ".",
+    "publications_dir": "_publications",
+    "portfolio_dir": "_portfolio", 
+    "research_page": "_pages/research.html",
+    "figures_dir": "images/research/figures",
+    "papers_dir": "temp_papers"
+  },
+  "research_intro": "My research focuses on developing and applying computational methods at the intersection of astrophysics, cosmology, and machine learning. The work spans foundation models for scientific applications, advanced ML techniques for astronomical data analysis, cosmic structure investigation, and statistical inference methods.",
+  "llm": {
+    "api_key_env": "GEMINI_API_KEY",
+    "model": "gemini-2.5-flash"
+  }
+}
