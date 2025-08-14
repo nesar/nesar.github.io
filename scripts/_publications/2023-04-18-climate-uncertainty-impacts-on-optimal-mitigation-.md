@@ -1,0 +1,12 @@
+---
+title: "Climate uncertainty impacts on optimal mitigation pathways and social cost of carbon"
+collection: publications
+permalink: /publication/2023-climate-uncertainty-impacts-on-optimal-mitigation-
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2304.08957v3)'
+date: 2023-04-18
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2304.08957v3'
+citation: 'Christopher J. Smith, Alaa Al Khourdajie, Pu Yang, Doris Folini (2023). \"Climate uncertainty impacts on optimal mitigation pathways and social cost of carbon\". arXiv preprint.'
+---
+
+Emissions pathways used in climate policy analysis are often derived from integrated assessment models. However, such emissions pathways do not typically include climate feedbacks on socioeconomic systems and by extension do not consider climate uncertainty in their construction. We use a well-known cost-benefit integrated assessment model, the Dynamic Integrated Climate-Economy (DICE) model, with its climate component replaced by the Finite-amplitude Impulse Response (FaIR) model (v2.1). The climate uncertainty in FaIR is sampled with an ensemble that is consistent with historically observed climate and Intergovernmental Panel on Climate Change (IPCC) assessed ranges of key climate variables such as equilibrium climate sensitivity. Three scenarios are produced: a pathway similar to the \"optimal welfare\" scenario of DICE that has similar warming outcomes to current policies, and pathways that limit warming to \"well-below\" 2C and 1.5C with low overshoot, in line with Paris Agreement long-term temperature goals. Climate uncertainty alone is responsible for a factor of five variation (5-95% range) in the social cost of carbon in the 1.5C scenario. CO2 emissions trajectories resulting from the optimal level of emissions abatement in all pathways are also sensitive to climate uncertainty, with 2050 emissions ranging from -12 to +14 GtCO2/yr in the 1.5C scenario. Equilibrium climate sensitivity and the strength of present-day aerosol effective radiative forcing are strong determinants of social cost of carbon and mid-century CO2 emissions. This shows that narrowing climate uncertainty leads to more refined estimates for the social cost of carbon and provides more certainty about the optimal rate of emissions abatement. Including climate and climate uncertainty in integrated assessment model derived emissions scenarios would address a key missing feedback in scenario construction.

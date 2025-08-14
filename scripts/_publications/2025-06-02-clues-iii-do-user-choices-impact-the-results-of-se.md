@@ -1,0 +1,12 @@
+---
+title: "CLUES III: Do User Choices Impact The Results of SED Fitting? Tests of 'Off-The-Shelf' Stellar Population and Dust Extinction Models in the CLUES Sample"
+collection: publications
+permalink: /publication/2025-clues-iii-do-user-choices-impact-the-results-of-se
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2506.02123v1)'
+date: 2025-06-02
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2506.02123v1'
+citation: 'Andrew Mizener, Daniela Calzetti, Angela Adamo, Aida Wofford, Matthew J. Hayes, John Chisholm, Michele Fumagalli, Svea Hernandez, Matteo Maria Messa, Linda J. Smith, Arjan Bik, Kathryn Grasha, Mattia Sirressi (2025). \"CLUES III: Do User Choices Impact The Results of SED Fitting? Tests of 'Off-The-Shelf' Stellar Population and Dust Extinction Models in the CLUES Sample\". arXiv preprint.'
+---
+
+The simple stellar population models produced by stellar population and spectral synthesis (SPS) codes are used as spectral templates in a variety of astrophysical contexts. In this paper, we test the predictions of four commonly used stellar population synthesis codes (YGGDRASIL, BPASS, FSPS, and a modified form of GALAXEV which we call GALAXEVneb) by using them as spectral templates for photometric SED fitting with a sample of 18 young stellar clusters. All clusters have existing HST COS FUV spectroscopy that provide constraints on their ages as well as broadband photometry from HST ACS and WFC3. We use model spectra that account for both nebular and stellar emission, and additionally test four extinction curves at different values of $R_V$. We find that for individual clusters, choice of extinction curve and SPS model can introduce significant scatter into the results of SED fitting. Model choice can introduce scatter of 34.8 Myr in age, a factor of 9.5 in mass, and 0.40mag in extinction. Extinction curve choice can introduce scatter of up to a factor of 32.3 Myr in age, a factor of 10.4 in mass, and 0.41mag in extinction. We caution that because of this scatter, one-to-one comparisons between the properties of individual objects derived using different SED fitting setups may not be meaningful. However, our results also suggest that SPS model and extinction curve choice do not introduce major systematic differences into SED fitting results when the entire cluster population is considered. The distribution of cluster properties for a large enough sample is relatively robust to user choice of SPS code and extinction curve.

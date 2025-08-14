@@ -1,0 +1,12 @@
+---
+title: "FEAST: JWST uncovers the emerging timescales of young star clusters in M83"
+collection: publications
+permalink: /publication/2025-feast-jwst-uncovers-the-emerging-timescales-of-you
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2505.08874v1)'
+date: 2025-05-13
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2505.08874v1'
+citation: 'Alice Knutas, Angela Adamo, Alex Pedrini, Sean T. Linden, Varun Bajaj, Jenna E. Ryon, Benjamin Gregg, Ahmad A. Ali, Eric P. Andersson, Arjan Bik, Giacomo Bortolini, Anne S. M. Buckner, Daniela Calzetti, Ana Duarte-Cabral, Bruce G. Elmegreen, Helena Faustino Vieira, John S. Gallagher, Kathryn Grasha, Kelsey Johnson, Thomas S. -Y. Lai, Drew Lapeer, Matteo Messa, Göran Östlin, Elena Sabbi, Linda J. Smith, Monica Tosi (2025). \"FEAST: JWST uncovers the emerging timescales of young star clusters in M83\". arXiv preprint.'
+---
+
+We present JWST NIRCam observations of the emerging young star clusters (eYSCs) detected in the nearby spiral galaxy M83. The NIRcam mosaic encompasses the nuclear starburst, the bar, and the inner spiral arms. The eYSCs, detected in Pa$\alpha$ and Br$\alpha$ maps, have been largely missed in previous optical campaigns of young star clusters (YSCs). We distinguish between eYSCI, if they also have compact 3.3~$\mu$m PAH emission associated to them, and eYSCII, if they only appear as compact Pa$\alpha$ emitters. We find that the variations in the 3.3~$\mu$m PAH feature are consistent with an evolutionary sequence where eYSCI evolve into eYSCII and then optical YSCs. This sequence is clear in the F300M-F335M (tracing the excess in the \PAHlambda\ feature) and the F115W-F187N (tracing the excess in Pa$\alpha$) colors which become increasingly bluer as clusters emerge. The central starburst stands out as the region where the most massive eYSCs are currently forming in the galaxy. We estimate that only about 20~\% of the eYSCs will remain detectable as compact YSCs. Combining eYSCs and YSCs ($\leq$10 Myr) we recover an average clearing timescale of 6~Myr in which clusters transition from embedded to fully exposed. We see evidence of shorter emergence timescales ($\sim$5~Myr) for more massive ($>5\times10^3$ \msun) clusters, while star clusters of $\sim 10^3$ \msun\ about 7~Myr. We estimate that eYSCs remain associated to the \PAHlambda\ emission 3--4~Myr. Larger samples of eYSC and YSC populations will provide stronger statistics to further test environmental and cluster mass dependencies on the emergence timescale.

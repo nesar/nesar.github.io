@@ -1,0 +1,12 @@
+---
+title: "Performance of Cross-Validated Targeted Maximum Likelihood Estimation"
+collection: publications
+permalink: /publication/2024-performance-of-cross-validated-targeted-maximum-li
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2409.11265v2)'
+date: 2024-09-17
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2409.11265v2'
+citation: 'Matthew J. Smith, Rachael V. Phillips, Camille Maringe, Miguel Angel Luque-Fernandez (2024). \"Performance of Cross-Validated Targeted Maximum Likelihood Estimation\". arXiv preprint.'
+---
+
+Background: Advanced methods for causal inference, such as targeted maximum likelihood estimation (TMLE), require certain conditions for statistical inference. However, in situations where there is not differentiability due to data sparsity or near-positivity violations, the Donsker class condition is violated. In such situations, TMLE variance can suffer from inflation of the type I error and poor coverage, leading to conservative confidence intervals. Cross-validation of the TMLE algorithm (CVTMLE) has been suggested to improve on performance compared to TMLE in settings of positivity or Donsker class violations. We aim to investigate the performance of CVTMLE compared to TMLE in various settings. Methods: We utilised the data-generating mechanism as described in Leger et al. (2022) to run a Monte Carlo experiment under different Donsker class violations. Then, we evaluated the respective statistical performances of TMLE and CVTMLE with different super learner libraries, with and without regression tree methods. Results: We found that CVTMLE vastly improves confidence interval coverage without adversely affecting bias, particularly in settings with small sample sizes and near-positivity violations. Furthermore, incorporating regression trees using standard TMLE with ensemble super learner-based initial estimates increases bias and variance leading to invalid statistical inference. Conclusions: It has been shown that when using CVTMLE the Donsker class condition is no longer necessary to obtain valid statistical inference when using regression trees and under either data sparsity or near-positivity violations. We show through simulations that CVTMLE is much less sensitive to the choice of the super learner library and thereby provides better estimation and inference in cases where the super learner library uses more flexible candidates and is prone to overfitting.

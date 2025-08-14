@@ -1,32 +1,31 @@
 {
   "researcher": {
-    "name": "Jane Smith",
+    "name": "Azton Wells",
     "title": "Dr.",
     "search_terms": [
-      "au:\"Jane Smith\"",
-      "au:\"Smith, Jane\"", 
-      "au:\"J Smith\"",
-      "au:Smith AND au:Jane",
-      "au:\"Smith, J\"",
-      "au:\"J. Smith\"",
-      "au:\"Jane A Smith\"",
-      "au:\"Smith, Jane A\""
+      "au:\"Azton Wells\"",
+      "au:\"Wells, Azton\"", 
+      "au:\"Azton I Wells\"",
+      "au:\"Wells, Azton I\"",
+      "au:\"Azton I. Wells\"",
+      "au:\"Wells, Azton I.\""
     ],
     "author_patterns": [
-      "(Smith.*Jane)",
-      "(Smith.*J[\\s\\.])",
-      "(J\\.?\\s*A?\\.?\\s*Smith)"
+      "(Wells.*Azton)",
+      "(Azton.*Wells)",
+      "(Azton\\s+I\\.?\\s+Wells)",
+      "(Wells,\\s+Azton\\s+I\\.?)"
     ]
   },
   "website": {
     "base_dir": ".",
-    "publications_dir": "_publications",
-    "portfolio_dir": "_portfolio", 
-    "research_page": "_pages/research.html",
-    "figures_dir": "images/research/figures",
-    "papers_dir": "temp_papers"
+    "publications_dir": "_publications_test",
+    "portfolio_dir": "_portfolio_test", 
+    "research_page": "_pages/research_test.html",
+    "figures_dir": "images/research/figures_test",
+    "papers_dir": "temp_papers_test"
   },
-  "research_intro": "My research spans computational biology, machine learning applications in healthcare, and statistical methods for genomic data analysis. The work focuses on developing novel algorithms for biological sequence analysis, predictive modeling for disease outcomes, and high-throughput data processing pipelines.",
+  "research_intro": "My research focuses on computational astrophysics, particularly primordial star formation and early universe simulations. The work spans machine learning applications in astrophysics, high-resolution cosmological simulations, and the formation and feedback effects of the first stars in the universe.",
   "llm": {
     "api_key_env": "GEMINI_API_KEY",
     "model": "gemini-2.5-flash"

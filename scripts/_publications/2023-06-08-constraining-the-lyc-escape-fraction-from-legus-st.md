@@ -1,0 +1,12 @@
+---
+title: "Constraining the LyC escape fraction from LEGUS star clusters with SIGNALS HII region observations: A pilot study of NGC 628"
+collection: publications
+permalink: /publication/2023-constraining-the-lyc-escape-fraction-from-legus-st
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2306.05457v1)'
+date: 2023-06-08
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2306.05457v1'
+citation: 'J. W. Teh, K. Grasha, M. R. Krumholz, A. Battisti, D. Calzetti, L. Rousseau-Nepton, C. Rhea, A. Adamo, R. C. Kennicutt, E. K. Grebel, D. O. Cook, F. Combes, M. Messa, S. Linden, R. S. Klessen, J. M. Vilchez, M. Fumagalli, A. F. McLeod, L. J. Smith, L. Chemin, J. Wang, E. Sabbi, E. Sacchi, A. Petric, L. Della Bruna, A. Boselli (2023). \"Constraining the LyC escape fraction from LEGUS star clusters with SIGNALS HII region observations: A pilot study of NGC 628\". arXiv preprint.'
+---
+
+The ionising radiation of young and massive stars is a crucial form of stellar feedback. Most ionising (Lyman-continuum; LyC, $\lambda < 912A$) photons are absorbed close to the stars that produce them, forming compact HII regions, but some escape into the wider galaxy. Quantifying the fraction of LyC photons that escape is an open problem. In this work, we present a semi-novel method to estimate the escape fraction by combining broadband photometry of star clusters from the Legacy ExtraGalactic UV Survey (LEGUS) with HII regions observed by the Star formation, Ionized gas, and Nebular Abundances Legacy Survey (SIGNALS) in the nearby spiral galaxy NGC 628. We first assess the completeness of the combined catalogue, and find that 49\% of HII regions lack corresponding star clusters as a result of a difference in the sensitivities of the LEGUS and SIGNALS surveys. For HII regions that do have matching clusters, we infer the escape fraction from the difference between the ionising power required to produce the observed HII luminosity and the predicted ionising photon output of their host star clusters; the latter is computed using a combination of LEGUS photometric observations and a stochastic stellar population synthesis code SLUG (Stochastically Lighting Up Galaxies). Overall, we find an escape fraction of $f_{esc} = 0.09^{+0.06}_{-0.06}$ across our sample of 42 HII regions; in particular, we find HII regions with high $f_{esc}$ are predominantly regions with low H$\alpha$-luminosity. We also report possible correlation between $f_{esc}$ and the emission lines [O ii]/[N ii] and [O ii]/H$\beta$.

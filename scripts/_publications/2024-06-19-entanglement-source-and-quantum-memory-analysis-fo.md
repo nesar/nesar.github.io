@@ -1,0 +1,12 @@
+---
+title: "Entanglement source and quantum memory analysis for zero added-loss multiplexing"
+collection: publications
+permalink: /publication/2024-entanglement-source-and-quantum-memory-analysis-fo
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2406.13572v2)'
+date: 2024-06-19
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2406.13572v2'
+citation: 'Jeffrey H. Shapiro, Michael G. Raymer, Clark Embleton, Franco N. C. Wong, Brian J. Smith (2024). \"Entanglement source and quantum memory analysis for zero added-loss multiplexing\". arXiv preprint.'
+---
+
+High-rate, high-fidelity entanglement distribution is essential to the creation of a quantum internet, but recent achievements in fiber and satellite-based entanglement distribution fall far short of what is needed. Chen et al. [Phys. Rev. Appl. 19, 054209 (2023)] proposed a means for dramatically increasing entanglement-distribution rates via zero added-loss multiplexing (ZALM). ZALM's quantum transmitter employs a pair of Sagnac-configured spontaneous parametric downconverters (SPDCs), channelization via dense wavelength-division multiplexing (DWDM) filtering, and partial Bell-state measurements (BSMs) to realize a heralded source of frequency-multiplexed polarization-entangled biphotons. Each biphoton is transmitted to Alice and Bob with a classical message identifying its frequency channel and the heralded entangled state. Their quantum receivers use DWDM filtering and mode conversion to interface their received biphotons to intra-cavity color-center quantum memories. This paper delves deeply into ZALM's SPDCs, partial-BSMs, and loading of Alice and Bob's quantum memories. It derives the density operators for the SPDC sources and the quantum memories, allowing heralding probability, heralding efficiency, and fidelity to be evaluated for both the polarization-entangled biphotons and the loaded quantum memories, thus enabling exploration of the parameter space for optimizing ZALM performance. Even without optimization analysis, the paper already demonstrates two critical features of the ZALM architecture: the necessity of achieving a near-separable channelized biphoton wave function to ensure the biphoton sent to Alice and Bob is of high purity; and the premium placed on Alice and Bob's temporal-mode converters' enabling narrowband push-pull memory loading to ensure the arriving biphoton's state is faithfully transferred to the intra-cavity color centers.

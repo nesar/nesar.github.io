@@ -1,0 +1,12 @@
+---
+title: "Real-Time Prediction of Gas Flow Dynamics in Diesel Engines using a Deep Neural Operator Framework"
+collection: publications
+permalink: /publication/2023-real-time-prediction-of-gas-flow-dynamics-in-diese
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2304.00567v2)'
+date: 2023-04-02
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2304.00567v2'
+citation: 'Varun Kumar, Somdatta Goswami, Daniel J. Smith, George Em Karniadakis (2023). \"Real-Time Prediction of Gas Flow Dynamics in Diesel Engines using a Deep Neural Operator Framework\". arXiv preprint.'
+---
+
+We develop a data-driven deep neural operator framework to approximate multiple output states for a diesel engine and generate real-time predictions with reasonable accuracy. As emission norms become more stringent, the need for fast and accurate models that enable analysis of system behavior have become an essential requirement for system development. The fast transient processes involved in the operation of a combustion engine make it difficult to develop accurate physics-based models for such systems. As an alternative to physics based models, we develop an operator-based regression model (DeepONet) to learn the relevant output states for a mean-value gas flow engine model using the engine operating conditions as input variables. We have adopted a mean-value model as a benchmark for comparison, simulated using Simulink. The developed approach necessitates using the initial conditions of the output states to predict the accurate sequence over the temporal domain. To this end, a sequence-to-sequence approach is embedded into the proposed framework. The accuracy of the model is evaluated by comparing the prediction output to ground truth generated from Simulink model. The maximum $\mathcal L_2$ relative error observed was approximately $6.5\%$. The sensitivity of the DeepONet model is evaluated under simulated noise conditions and the model shows relatively low sensitivity to noise. The uncertainty in model prediction is further assessed by using a mean ensemble approach. The worst-case error at the $(\mu + 2\sigma)$ boundary was found to be $12\%$. The proposed framework provides the ability to predict output states in real-time and enables data-driven learning of complex input-output operator mapping. As a result, this model can be applied during initial development stages, where accurate models may not be available.

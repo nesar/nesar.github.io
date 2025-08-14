@@ -1,0 +1,12 @@
+---
+title: "Cellular Plasticity Model for Bottom-Up Robotic Design"
+collection: publications
+permalink: /publication/2024-cellular-plasticity-model-for-bottom-up-robotic-de
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2408.05604v1)'
+date: 2024-08-10
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2408.05604v1'
+citation: 'Trevor R. Smith, Thomas J. Smith, Nicholas S. Szczecinski, Sergiy Yakovenko, Yu Gu (2024). \"Cellular Plasticity Model for Bottom-Up Robotic Design\". arXiv preprint.'
+---
+
+Traditional top-down robotic design often lacks the adaptability needed to handle real-world complexities, prompting the need for more flexible approaches. Therefore, this study introduces a novel cellular plasticity model tailored for bottom-up robotic design. The proposed model utilizes an activator-inhibitor reaction, a common foundation of Turing patterns, which are fundamental in morphogenesis -- the emergence of form from simple interactions. Turing patterns describe how diffusion and interactions between two chemical substances-an activator and an inhibitor-can lead to complex patterns and structures, such as the formation of limbs and feathers. Our study extends this concept by modeling cellular plasticity as an activator-inhibitor reaction augmented with environmental stimuli, encapsulating the core phenomena observed across various cell types: stem cells, neurons, and muscle cells. In addition to demonstrating self-regulation and self-containment, this approach ensures that a robot's form and function are direct emergent responses to its environment without a comprehensive environmental model. In the proposed model, a factory acts as the activator, producing a product that serves as the inhibitor, which is then influenced by environmental stimuli through consumption. These components are regulated by cellular plasticity phenomena as feedback loops. We calculate the equilibrium points of the model and the stability criterion. Simulations examine how varying parameters affect the system's transient behavior and the impact of competing functions on its functional capacity. Results show the model converges to a single stable equilibrium tuned to the environmental stimulation. Such dynamic behavior underscores the model's utility for generating predictable responses within robotics and biological systems, showcasing its potential for navigating the complexities of adaptive systems.

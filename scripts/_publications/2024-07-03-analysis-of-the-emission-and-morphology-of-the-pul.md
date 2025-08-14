@@ -1,0 +1,12 @@
+---
+title: "Analysis of the Emission and Morphology of the Pulsar Wind Nebula Candidate HAWC J2031+415"
+collection: publications
+permalink: /publication/2024-analysis-of-the-emission-and-morphology-of-the-pul
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2407.02879v2)'
+date: 2024-07-03
+venue: 'arXiv preprint'
+paperurl: 'http://arxiv.org/abs/2407.02879v2'
+citation: 'R. Alfaro, C. Alvarez, J. C. Arteaga-Velázquez, D. Avila Rojas, H. A. Ayala Solares, R. Babu, E. Belmont-Moreno, K. S. Caballero-Mora, T. Capistrán, A. Carramiñana, S. Casanova, U. Cotti, J. Cotzomi, S. Coutiño de León, E. De la Fuente, C. de León, D. Depaoli, N. Di Lalla, R. Diaz Hernandez, B. L. Dingus, M. A. DuVernois, J. C. Díaz-Vélez, K. Engel, T. Ergin, C. Espinoza, K. L. Fan, N. Fraija, J. A. García-González, M. M. González, J. A. Goodman, S. Groetsch, J. P. Harding, S. Hernández-Cadena, I. Herzog, D. Huang, F. Hueyotl-Zahuantitla, P. Hüntemeyer, A. Iriarte, S. Kaufmann, J. Lee, H. León Vargas, A. L. Longinotti, G. Luis-Raya, K. Malone, J. Martínez-Castro, J. A. Matthews, P. Miranda-Romagnoli, . A. Montes, E. Moreno, M. Mostafá, L. Nellen, M. Newbold, M. U. Nisa, R. Noriega-Papaqui, Y. Pérez Araujo, E. G. Pérez-Pérez, C. D. Rho, D. Rosa-González, E. Ruiz-Velasco, H. Salazar, D. Salazar-Gallegos, A. Sandoval, M. Schneider, J. Serna-Franco, A. J. Smith, Y. Son, R. W. Springer, O. Tibolla, K. Tollefson, I. Torres, R. Torres-Escobedo, R. Turner, F. Ureña-Mena, E. Varela, L. Villaseñor, X. Wang, Zhen Wang, I. J. Watson, S. Yu, S. Yun-Cárcamo, H. Zhou (2024). \"Analysis of the Emission and Morphology of the Pulsar Wind Nebula Candidate HAWC J2031+415\". arXiv preprint.'
+---
+
+The first TeV gamma-ray source with no lower energy counterparts, TeV J2032+4130, was discovered by HEGRA. It appears in the third HAWC catalog as 3HWC J2031+415 and it is a bright TeV gamma-ray source whose emission has previously been resolved as 2 sources: HAWC J2031+415 and HAWC J2030+409. While HAWC J2030+409 has since been associated with the \emph{Fermi-LAT} Cygnus Cocoon, no such association for HAWC J2031+415 has yet been found. In this work, we investigate the spectrum and energy-dependent morphology of HAWC J2031+415. We associate HAWC J2031+415 with the pulsar PSR J2032+4127 and perform a combined multi-wavelength analysis using radio, X-ray, and $\gamma$-ray emission. We conclude that HAWC J2031+415 and, by extension, TeV J2032+4130 are most probably a pulsar wind nebula (PWN) powered by PSR J2032+4127.
