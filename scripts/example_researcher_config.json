@@ -19,11 +19,11 @@
   },
   "website": {
     "base_dir": "..",
-    "publications_dir": "_publications_test",
-    "portfolio_dir": "_portfolio_test", 
-    "research_page": "_pages/research_test.html",
-    "figures_dir": "images/research/figures_test",
-    "papers_dir": "temp_papers_test"
+    "publications_dir": "_publications",
+    "portfolio_dir": "_portfolio", 
+    "research_page": "_pages/research.html",
+    "figures_dir": "images/research/figures",
+    "papers_dir": "temp_papers"
   },
   "research_intro": "My research focuses on computational astrophysics, particularly primordial star formation and early universe simulations. The work spans machine learning applications in astrophysics, high-resolution cosmological simulations, and the formation and feedback effects of the first stars in the universe.",
   "llm": {
