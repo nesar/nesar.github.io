@@ -1204,13 +1204,63 @@ Write professionally about the research contributions and their significance."""
         print("🎉 RESEARCH & PORTFOLIO UPDATE COMPLETE!")
         print("=" * 50)
 
+    def full_cleanup(self):
+        """Complete cleanup - removes all generated files and starts fresh."""
+        print("🧹 Full cleanup - removing all generated content...")
+        
+        # Remove ALL publication files
+        if self.publications_dir.exists():
+            for file in self.publications_dir.glob("*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed publication: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Remove ALL portfolio files
+        if self.portfolio_dir.exists():
+            for file in self.portfolio_dir.glob("*.md"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed portfolio: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Remove ALL figures
+        if self.figures_dir.exists():
+            for file in self.figures_dir.glob("*.png"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed figure: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        # Remove research page
+        if self.research_page.exists():
+            try:
+                self.research_page.unlink()
+                print(f"   🗑️ Removed research page: {self.research_page.name}")
+            except Exception as e:
+                print(f"   ⚠️ Could not remove research page: {e}")
+        
+        # Remove ALL downloaded papers
+        if self.papers_dir.exists():
+            for file in self.papers_dir.glob("*.pdf"):
+                try:
+                    file.unlink()
+                    print(f"   🗑️ Removed paper: {file.name}")
+                except Exception as e:
+                    print(f"   ⚠️ Could not remove {file.name}: {e}")
+        
+        print("✅ Full cleanup completed - ready for fresh start")
+
     def run_full_update(self):
-        """Run complete website content update."""
+        """Run complete website content update with full cleanup."""
         print("🚀 Starting Full Website Content Update")
         print("=" * 60)
         
-        # Note: Cleanup is skipped to preserve existing publications
-        # Use --research-only if you want to clean portfolio/figures only
+        # Full cleanup - removes everything and starts fresh
+        self.full_cleanup()
         
         # Update publications
         self.update_publications()
