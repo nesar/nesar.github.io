@@ -18,7 +18,7 @@
     ]
   },
   "website": {
-    "base_dir": ".",
+    "base_dir": "..",
     "publications_dir": "_publications_test",
     "portfolio_dir": "_portfolio_test", 
     "research_page": "_pages/research_test.html",
