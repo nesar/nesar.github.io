@@ -170,22 +170,32 @@ class UniversalWebsiteContentManager:
                         if name_elem is not None:
                             authors.append(name_elem.text.strip())
                     
-                    # Check if configured researcher is an author using patterns
+                    # Check if configured researcher is an author 
                     is_author = False
-                    if author_patterns:
-                        # Use regex patterns if provided
+                    researcher_name = researcher_config['name']
+                    name_parts = researcher_name.lower().split()
+                    
+                    # Use simple string matching (more reliable than regex)
+                    for author in authors:
+                        author_lower = author.lower()
+                        # Check if author contains all name parts
+                        if all(part in author_lower for part in name_parts):
+                            is_author = True
+                            break
+                        # Also check for first name + last name combination
+                        elif len(name_parts) >= 2:
+                            first_name = name_parts[0]
+                            last_name = name_parts[-1] 
+                            if first_name in author_lower and last_name in author_lower:
+                                is_author = True
+                                break
+                    
+                    # Fallback: use the regex patterns if simple matching fails
+                    if not is_author and author_patterns:
                         for pattern in author_patterns:
                             if any(re.search(pattern, author, re.IGNORECASE) for author in authors):
                                 is_author = True
                                 break
-                    else:
-                        # Fallback to simple name matching
-                        researcher_name = researcher_config['name']
-                        name_parts = researcher_name.split()
-                        is_author = any(
-                            all(part.lower() in author.lower() for part in name_parts)
-                            for author in authors
-                        )
                     
                     if not is_author:
                         continue

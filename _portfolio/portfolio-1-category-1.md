@@ -1,21 +1,29 @@
 ---
-title: "Galaxy Cluster Cosmology and Surveys"
-excerpt: "Research in galaxy cluster cosmology and surveys"
+title: "Cosmology & Large-Scale Structure"
+excerpt: "Research in cosmology & large-scale structure"
 collection: portfolio
 ---
 
-Galaxy clusters, as the most massive gravitationally bound structures in the universe, serve as paramount probes for deciphering cosmic evolution and the fundamental parameters that govern our cosmos. Their formation and growth are exquisitely sensitive to the nature of dark energy, the distribution of dark matter, and the masses of neutrinos. Consequently, studying their abundance, spatial distribution, and intrinsic properties across cosmic time provides stringent tests for cosmological models, including the standard Lambda-CDM paradigm.
+The study of Cosmology and Large-Scale Structure (LSS) seeks to unravel the Universe's evolution, from its initial conditions to the formation of the complex cosmic web observed today. This field critically examines the distribution of matter and energy on vast scales, predominantly shaped by the elusive dark matter and dark energy. Understanding the formation and properties of structures like galaxy clusters, filaments, and voids provides crucial insights into the fundamental laws governing the Universe, including the nature of gravity, the composition of matter, and the origin of cosmic acceleration.
 
-Modern astronomy employs large-scale surveys across various wavelengths to detect and characterize these elusive structures. Among the most powerful techniques is the detection of the Sunyaev-Zel'dovich (SZ) effect, a subtle distortion of the Cosmic Microwave Background (CMB) radiation caused by inverse Compton scattering of CMB photons off the hot electron gas within galaxy clusters. SZ surveys, such as those conducted by the South Pole Telescope (SPT), offer a unique advantage due to the nearly redshift-independent nature of the SZ signal, enabling the discovery of clusters out to very high redshifts, which is crucial for tracking their evolution.
+Modern cosmological research relies on a synergy of theoretical modeling, high-resolution numerical simulations, and cutting-edge observational surveys. Techniques such as gravitational lensing, the Sunyaev-Zel'dovich effect, and spectroscopic surveys of galaxies and quasars are employed to map the distribution of matter, measure cosmic expansion, and probe the dynamics of large-scale structures. A significant challenge lies in disentangling standard cosmological models from potential deviations, such as modified theories of gravity, which could have profound implications for our understanding of the cosmos.
 
-My research significantly contributes to this field, particularly through my involvement in "The SPTpol Extended Cluster Survey." In this work, I have focused on leveraging the advanced capabilities of the SPTpol instrument to identify and characterize a new, expanded sample of galaxy clusters. This involved developing and refining sophisticated data analysis pipelines for extracting the subtle SZ signal from CMB maps, meticulously identifying cluster candidates, and determining their properties, such as SZ significance and inferred mass.
+My research has focused on developing a comprehensive understanding of the dark matter web and its observational signatures. I have extensively utilized simulations to characterize the intricate substructure of dark matter, exploring the "multi-stream portrait" of the cosmic web and dark matter haloes. This work investigates the dynamics and distribution of matter, revealing how caustics form and contribute to the "caustic design" of the dark matter web. Furthermore, I have elucidated the complex "topology and geometry" of these structures, providing a detailed framework for "tracing the cosmic web" and its underlying gravitational potential.
 
-A core aspect of my contribution has been the application of robust statistical methods to compile this extended cluster catalog, which substantially increases the number of high-quality, high-redshift clusters available for cosmological studies. The methodologies employed ensure high purity and completeness, critical for minimizing systematic uncertainties in subsequent cosmological analyses. The expanded catalog resulting from "The SPTpol Extended Cluster Survey" provides an enhanced statistical sample, allowing for tighter constraints on cosmological parameters, improved understanding of cluster formation and evolution, and refined tests of fundamental physics through cluster abundance measurements.
+In parallel, I have applied advanced analytical and computational methods to leverage observational data for cosmological insights. I have made significant contributions to constraining modified theories of gravity, specifically f(R) gravity, through a "k-cut cosmic shear analysis" of data from the Hyper Suprime-Cam First-Year survey. My work also includes refining observational techniques, such as "reducing model error using optimised galaxy selection" for more accurate weak lensing cluster mass estimation. Additionally, I have pioneered the use of "deep neural networks for peculiar velocity estimation from the Kinetic SZ Effect," offering a novel approach to measuring cosmic flows and contributing to large-scale surveys like "The SPTpol Extended Cluster Survey." These efforts collectively aim to enhance the precision of cosmological parameter measurements and probe the fundamental nature of gravity and dark matter.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/the-sptpol-extended-cluster-survey_plot_1_853c797c.png" alt="Figure from The SPTpol Extended Cluster Survey" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: The SPTpol Extended Cluster Survey</div>
+    <img src="/images/research/figures/the-caustic-design-of-the-dark-matter-web_plot_1_1a1bb482.png" alt="Figure from The Caustic Design of the Dark Matter Web" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: The Caustic Design of the Dark Matter Web</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/dark-matter-haloes-a-multistream-view_plot_1_bb77684a.png" alt="Figure from Dark matter haloes: a multistream view" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Dark matter haloes: a multistream view</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/topology-and-geometry-of-the-dark-matter-web-a-mul_plot_1_b9734473.png" alt="Figure from Topology and geometry of the dark matter web: a multistream view" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Topology and geometry of the dark matter web: a multistream view</div>
   </div>
 </div>
 
