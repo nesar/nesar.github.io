@@ -1,29 +1,21 @@
 ---
-title: "Domain-Specialized LLMs for Astronomy"
-excerpt: "Research in domain-specialized llms for astronomy"
+title: "Galaxy Cluster Cosmology and Surveys"
+excerpt: "Research in galaxy cluster cosmology and surveys"
 collection: portfolio
 ---
 
-The burgeoning volume of data in modern astronomy presents both immense opportunities and significant challenges. Traditional methods of knowledge retrieval and analysis struggle to keep pace with the influx of information from telescopes, simulations, and theoretical models. While general-purpose Large Language Models (LLMs) have demonstrated impressive capabilities across many domains, their application in highly specialized scientific fields like astronomy often falls short. These general models frequently exhibit limitations such as a propensity for hallucination, a lack of deep domain-specific understanding, and an inability to perform complex scientific reasoning, leading to inaccuracies or superficial responses.
+Galaxy clusters, as the most massive gravitationally bound structures in the universe, serve as paramount probes for deciphering cosmic evolution and the fundamental parameters that govern our cosmos. Their formation and growth are exquisitely sensitive to the nature of dark energy, the distribution of dark matter, and the masses of neutrinos. Consequently, studying their abundance, spatial distribution, and intrinsic properties across cosmic time provides stringent tests for cosmological models, including the standard Lambda-CDM paradigm.
 
-Addressing these shortcomings requires a targeted approach: the development of domain-specialized LLMs. Such models are meticulously trained on vast, curated datasets of scientific literature, observational data descriptions, theoretical frameworks, and expert Q&A in astronomy. This specialized training imbues them with a nuanced comprehension of astronomical concepts, terminology, and methodologies that general models cannot achieve. The goal is to create AI tools that not only retrieve facts but can also understand the intricate relationships between celestial phenomena, perform complex calculations, and even assist in the formulation of hypotheses, thereby truly augmenting human expertise and accelerating scientific discovery.
+Modern astronomy employs large-scale surveys across various wavelengths to detect and characterize these elusive structures. Among the most powerful techniques is the detection of the Sunyaev-Zel'dovich (SZ) effect, a subtle distortion of the Cosmic Microwave Background (CMB) radiation caused by inverse Compton scattering of CMB photons off the hot electron gas within galaxy clusters. SZ surveys, such as those conducted by the South Pole Telescope (SPT), offer a unique advantage due to the nearly redshift-independent nature of the SZ signal, enabling the discovery of clusters out to very high redshifts, which is crucial for tracking their evolution.
 
-My research directly addresses this critical need by developing advanced domain-specialized Large Language Models specifically tailored for the field of astronomy, encapsulated in the AstroMLab series. Through this work, I have focused on achieving high performance and efficiency, even with more compact models. For instance, AstroMLab 3 showcases a specialized 8-billion-parameter model that achieves performance levels comparable to general-purpose models like GPT-4o in astronomical contexts, demonstrating that expert-level accuracy can be attained without requiring the immense computational resources of much larger models. Early work, highlighted in AstroMLab 1, laid the groundwork by exploring the capabilities and limitations of existing models in astronomical knowledge retrieval, akin to a scientific "Jeopardy!" challenge.
+My research significantly contributes to this field, particularly through my involvement in "The SPTpol Extended Cluster Survey." In this work, I have focused on leveraging the advanced capabilities of the SPTpol instrument to identify and characterize a new, expanded sample of galaxy clusters. This involved developing and refining sophisticated data analysis pipelines for extracting the subtle SZ signal from CMB maps, meticulously identifying cluster candidates, and determining their properties, such as SZ significance and inferred mass.
 
-Building upon these foundations, my most recent work, AstroMLab 4, introduces a 70-billion-parameter domain-specialized reasoning model engineered for unparalleled performance in astronomy question-answering. This model represents a significant leap forward, not merely in knowledge recall but in its sophisticated reasoning capabilities, achieving benchmark-topping performance across complex astronomical queries. My contributions involve the development of novel fine-tuning methodologies, the creation of robust evaluation benchmarks, and the demonstration of these models' ability to process and synthesize highly technical astronomical information. This research significantly advances the state-of-the-art in AI for scientific discovery, making expert astronomical knowledge more accessible and efficient for researchers, educators, and the public alike, thereby accelerating the pace of astronomical inquiry.
+A core aspect of my contribution has been the application of robust statistical methods to compile this extended cluster catalog, which substantially increases the number of high-quality, high-redshift clusters available for cosmological studies. The methodologies employed ensure high purity and completeness, critical for minimizing systematic uncertainties in subsequent cosmological analyses. The expanded catalog resulting from "The SPTpol Extended Cluster Survey" provides an enhanced statistical sample, allowing for tighter constraints on cosmological parameters, improved understanding of cluster formation and evolution, and refined tests of fundamental physics through cluster abundance measurements.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 4: Benchmark-Topping Performance in Astronomy Q&A with a 70B-Parameter Domain-Specialized Reasoning Model</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 3: Achieving GPT-4o Level Performance in Astronomy with a Specialized 8B-Parameter Large Language Model</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/astromlab-1-who-wins-astronomy-jeopardy_plot_1_5c85b717.png" alt="Figure from AstroMLab 1: Who Wins Astronomy Jeopardy!?" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: AstroMLab 1: Who Wins Astronomy Jeopardy!?</div>
+    <img src="/images/research/figures/the-sptpol-extended-cluster-survey_plot_1_853c797c.png" alt="Figure from The SPTpol Extended Cluster Survey" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: The SPTpol Extended Cluster Survey</div>
   </div>
 </div>
 

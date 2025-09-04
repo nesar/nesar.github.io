@@ -76,7 +76,7 @@ class UniversalWebsiteContentManager:
     def setup_directories(self):
         """Setup directory paths from configuration."""
         website_config = self.config['website']
-        base_dir = Path(website_config.get('base_dir', '.'))
+        base_dir = Path(website_config.get('base_dir', '..'))
         
         # Make all paths relative to the base directory
         self.base_dir = base_dir if base_dir.is_absolute() else self.config_path.parent / base_dir

@@ -19,7 +19,7 @@
     ]
   },
   "website": {
-    "base_dir": ".",
+    "base_dir": "..",
     "publications_dir": "_publications",
     "portfolio_dir": "_portfolio", 
     "research_page": "_pages/research.html",
