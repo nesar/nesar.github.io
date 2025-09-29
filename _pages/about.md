@@ -10,19 +10,22 @@ redirect_from:
 
 # Nesar Ramachandra, PhD
 
-I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://anl.gov) working at the intersection of **machine learning** and **scientific computing**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
+I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://anl.gov) working at the intersection of **artificial intelligence** and **scientific research**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
 
 ## Current Position
 
 At the [Computational Sciences division](https://www.anl.gov/cps) at Argonne, I develop and apply machine learning techniques to address complex scientific challenges. My work involves:
 
-* Creating deep learning pipelines for gravitational lensing analysis
 * Developing uncertainty quantification methods for scientific models
 * Designing emulators for computationally expensive simulations
+* Implementing multi-modal foundation models on heteregenous scientific datasets
+* Developing Agent-led workflows for scientific problem solving.
+* Implementing Deep Learning pipelines for cluster cosmology, strong lensing analysis
+* Creating realistic synthetic extragalactic catalogs from exascale simulations. 
 
 ## Research Interests
 
-* **Machine Learning for Science**: Developing ML methods that incorporate physical constraints and domain knowledge
+* **Machine Learning for Science**: Developing AI methods that incorporate physical constraints and domain knowledge
 * **Cosmological Structure Formation**: Understanding the formation and evolution of the cosmic web
 * **Uncertainty Quantification**: Creating probabilistic models that provide reliable uncertainty estimates
 * **Dark Matter Physics**: Investigating the properties and distribution of dark matter in the universe
