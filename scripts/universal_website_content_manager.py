@@ -506,18 +506,63 @@ Instructions:
         except Exception:
             return False
     
+    def convert_to_first_person(self, text: str) -> str:
+        """Convert third-person references to first-person."""
+        researcher_name = self.config['researcher']['name']
+
+        # Common third-person patterns to replace
+        patterns = [
+            (rf"{re.escape(researcher_name)}'s research", "My research"),
+            (rf"{re.escape(researcher_name)}'s work", "My work"),
+            (rf"{re.escape(researcher_name)} has", "I have"),
+            (rf"{re.escape(researcher_name)} develops", "I develop"),
+            (rf"{re.escape(researcher_name)} focuses", "I focus"),
+            (rf"{re.escape(researcher_name)} investigates", "I investigate"),
+            (rf"{re.escape(researcher_name)} explores", "I explore"),
+            (rf"{re.escape(researcher_name)} studies", "I study"),
+            (rf"{re.escape(researcher_name)} analyzes", "I analyze"),
+            (rf"{re.escape(researcher_name)} examines", "I examine"),
+            (rf"{re.escape(researcher_name)} demonstrates", "I demonstrate"),
+            (rf"{re.escape(researcher_name)} shows", "I show"),
+            (rf"{re.escape(researcher_name)} presents", "I present"),
+            (rf"{re.escape(researcher_name)} proposes", "I propose"),
+            (rf"{re.escape(researcher_name)} introduces", "I introduce"),
+            (rf"{re.escape(researcher_name)} applies", "I apply"),
+            (rf"{re.escape(researcher_name)} utilizes", "I utilize"),
+            (rf"{re.escape(researcher_name)} employs", "I employ"),
+            (rf"{re.escape(researcher_name)} leverages", "I leverage"),
+            (rf"{re.escape(researcher_name)}", "My"),
+        ]
+
+        for pattern, replacement in patterns:
+            text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+
+        return text
+
     def generate_category_summary_with_llm(self, category_name: str, papers: List[str]) -> str:
         """Generate research category summary using LLM."""
         paper_list = "\n".join([f"- {paper}" for paper in papers])
         researcher_name = self.config['researcher']['name']
-        
-        prompt = f"""Write a 100-word summary for {category_name} research based on these papers by {researcher_name}:
+
+        prompt = f"""Write a 100-word summary for {category_name} research based on these papers:
 
 {paper_list}
 
-Focus on key methods and impact. Academic tone, no markdown."""
-        
-        return self.llm_generate(prompt)
+Requirements:
+1. Write in FIRST PERSON perspective (use "I", "my", "we", "our")
+2. Do NOT use third person (avoid "{researcher_name}'s research", "the research", etc.)
+3. Focus on key methods and impact
+4. Academic tone, no markdown
+5. Start with phrases like "My research focuses on...", "I develop...", "My work investigates...", etc.
+
+Example opening: "My research focuses on..." or "I develop methods for..." or "My work explores..."
+"""
+
+        # Generate content and convert to first person
+        summary = self.llm_generate(prompt)
+        summary = self.convert_to_first_person(summary)
+
+        return summary
     
     def cleanup_existing_files(self):
         """Clean up existing files to prevent duplications."""
