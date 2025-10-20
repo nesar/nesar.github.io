@@ -506,6 +506,43 @@ Instructions:
         except Exception:
             return False
     
+    def is_researcher_in_top_n_authors(self, paper: Dict, top_n: int = 3) -> bool:
+        """Check if the researcher is in the top N authors of a paper."""
+        authors = paper.get('authors', [])
+        if not authors or len(authors) < 1:
+            return False
+
+        # Get researcher name and patterns
+        researcher_config = self.config['researcher']
+        researcher_name = researcher_config['name']
+        author_patterns = researcher_config.get('author_patterns', [])
+
+        # Get name parts for matching
+        name_parts = researcher_name.lower().split()
+
+        # Check only the first top_n authors
+        for i, author in enumerate(authors[:top_n]):
+            author_lower = author.lower()
+
+            # Check if author contains all name parts
+            if all(part in author_lower for part in name_parts):
+                return True
+
+            # Also check for first name + last name combination
+            if len(name_parts) >= 2:
+                first_name = name_parts[0]
+                last_name = name_parts[-1]
+                if first_name in author_lower and last_name in author_lower:
+                    return True
+
+            # Fallback: use the regex patterns if simple matching fails
+            if author_patterns:
+                for pattern in author_patterns:
+                    if re.search(pattern, author, re.IGNORECASE):
+                        return True
+
+        return False
+
     def convert_to_first_person(self, text: str) -> str:
         """Convert third-person references to first-person."""
         researcher_name = self.config['researcher']['name']
@@ -752,13 +789,23 @@ citation: '{self.clean_text(citation)}'
     def update_research_page(self):
         """Update research page with LLM-generated content."""
         print("🔬 Updating research page...")
-        
+
         # Get publications and classify them
         papers = self.fetch_publications_from_arxiv()
         if not papers:
             print("❌ No papers found from arXiv")
             return
-        
+
+        # Filter to only include papers where researcher is in top 3 authors
+        total_papers = len(papers)
+        papers = [p for p in papers if self.is_researcher_in_top_n_authors(p, top_n=3)]
+        filtered_count = len(papers)
+        print(f"   🔍 Filtered to {filtered_count} papers where researcher is in top 3 authors (from {total_papers} total)")
+
+        if not papers:
+            print("❌ No papers found with researcher in top 3 authors")
+            return
+
         # Download papers for plot extraction
         self.download_papers(papers)
         
@@ -1088,10 +1135,21 @@ author_profile: true
     def update_portfolio_pages(self, categories: Dict = None):
         """Update portfolio pages with LLM-generated content."""
         print("📁 Updating portfolio pages...")
-        
+
         if not categories:
             # Get categories from research page update
             papers = self.fetch_publications_from_arxiv()
+
+            # Filter to only include papers where researcher is in top 3 authors
+            total_papers = len(papers)
+            papers = [p for p in papers if self.is_researcher_in_top_n_authors(p, top_n=3)]
+            filtered_count = len(papers)
+            print(f"   🔍 Filtered to {filtered_count} papers where researcher is in top 3 authors (from {total_papers} total)")
+
+            if not papers:
+                print("❌ No papers found with researcher in top 3 authors")
+                return
+
             categories = self.classify_papers_with_llm(papers)
         
         # Create portfolio pages
