@@ -1,33 +1,33 @@
 ---
-title: "Advanced Data Science & Scientific Computation"
-excerpt: "Research in advanced data science & scientific computation"
+title: "Scientific Machine Learning for Complex Physics"
+excerpt: "Research in scientific machine learning for complex physics"
 collection: portfolio
 ---
 
-The field of Advanced Data Science and Scientific Computation plays a pivotal role in accelerating scientific discovery and engineering innovation by tackling complex challenges across diverse domains. It encompasses the development and application of sophisticated computational and statistical techniques to extract meaningful insights from vast, often high-dimensional and noisy datasets, and to build robust predictive models for intricate physical phenomena. Key areas include the creation of efficient surrogate models, the reconstruction of global fields from sparse observations, and the enhancement of model interpretability and reliability through uncertainty quantification.
+Scientific Machine Learning (SciML) has emerged as a transformative paradigm for understanding, predicting, and controlling complex physical systems, ranging from turbulent fluid flows to high-dimensional stress fields. Traditional simulation methods, such as Computational Fluid Dynamics (CFD) and Finite Element Analysis (FEA), are often computationally intensive, making real-time predictions, extensive parameter studies, and uncertainty quantification prohibitively expensive. SciML addresses these limitations by leveraging data-driven approaches, often infused with physics knowledge, to create efficient and accurate models capable of learning intricate relationships and dynamics within physical phenomena.
 
-Researchers in this domain are dedicated to advancing methodologies for addressing the inherent complexities of scientific data, such as non-linearity, sparsity, and the need for statistically sound inference. This involves developing novel machine learning architectures, probabilistic modeling frameworks, and optimization strategies tailored to specific scientific problems, ranging from astrophysical surveys to complex fluid dynamics simulations. The overarching goal is to transform raw data into actionable knowledge, enabling more accurate predictions, deeper understanding, and optimized design and operational processes.
+A primary focus within SciML is the development of reduced-order models (ROMs) and surrogate models, which aim to capture the essential dynamics of high-dimensional systems in a significantly lower-dimensional space, thereby drastically reducing computational costs. Furthermore, the ability to reconstruct complete physical fields from sparse sensor measurements is critical for experimental validation and practical deployment. Integrating probabilistic frameworks into these models is crucial for quantifying prediction uncertainty, a non-negotiable aspect for robust decision-making and safety-critical applications in engineering and scientific discovery.
 
-My research significantly contributes to this landscape by developing and applying cutting-edge data science and machine learning techniques to solve complex problems in both fundamental science and engineering. I have focused on enhancing model interpretability and robustness, for instance, by developing methods for generating statistically disentangled latent spaces guided by generative factors in scientific datasets, thereby making complex generative models more transparent and reliable. A core aspect of my work involves probabilistic modeling, where I have designed and applied probabilistic neural networks and Gaussian process emulation to create efficient reduced-order surrogates for fluid flows, enabling robust predictions and data recovery even with limited information. Furthermore, I have explored automated machine learning frameworks for high-dimensional stress field analysis, drastically improving efficiency and accuracy in computational mechanics.
+My research focuses on developing advanced Scientific Machine Learning methodologies to tackle critical challenges in complex physics, with a particular emphasis on fluid dynamics and high-dimensional stress analysis. I have extensively developed probabilistic modeling techniques, including Probabilistic Neural Networks (PNNs), to construct robust reduced-order surrogates for fluid flows, enabling efficient prediction and crucial data recovery capabilities while quantifying the inherent uncertainties in predictions. This work extends to modeling the latent-space time evolution of non-intrusive reduced-order models using Gaussian Process emulation, providing a powerful framework for capturing complex dynamic behaviors with uncertainty estimates.
 
-Beyond methodology development, my work directly impacts critical scientific and engineering applications. In astrophysics, I constructed a comprehensive photometric sample of 2.6 million Red Clump stars, pushing the boundaries of our understanding of the Milky Way's inner to outer structure. I also devised optimized galaxy selection techniques to reduce model error in weak lensing cluster mass estimation, crucial for cosmological studies. For real-world engineering challenges, I developed Voronoi tessellation-assisted deep learning approaches for global field reconstruction from sparse sensors, providing efficient and accurate ways to monitor and understand distributed physical phenomena. These contributions highlight my expertise in transforming theoretical advancements into practical tools that accelerate scientific discovery and improve engineering design and analysis.
+In parallel, I have developed techniques for global field reconstruction from sparse sensor data, utilizing a novel Voronoi tessellation-assisted deep learning approach to accurately infer full fields from limited measurements. This is complemented by my work on applying automated machine learning (AutoML) frameworks coupled with probabilistic modeling for efficiently handling high-dimensional stress fields, streamlining the model development process. My contributions aim to provide computationally efficient, accurate, and uncertainty-aware machine learning solutions that significantly advance our capability to model, predict, and control complex physical systems under various conditions.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/from-the-inner-to-outer-milky-way-a-photometric-sa_plot_1_2e56b6d6.png" alt="Figure from From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/enhancing-interpretability-in-generative-modeling-_plot_1_fb007588.png" alt="Figure from Enhancing Interpretability in Generative Modeling: Statistically Disentangled Latent Spaces Guided by Generative Factors in Scientific Datasets" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Enhancing Interpretability in Generative Modeling: Statistically Disentangled Latent Spaces Guided by Generative Factors in Scientific Datasets</div>
-  </div>
-  <div class="figure-item">
-    <img src="/images/research/figures/reducing-model-error-using-optimised-galaxy-select_plot_1_8b13e102.png" alt="Figure from Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation</div>
-  </div>
-  <div class="figure-item">
     <img src="/images/research/figures/application-of-probabilistic-modeling-and-automate_plot_1_8f87fb28.png" alt="Figure from Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field" onclick="openModal(this)" loading="lazy" />
     <div class="figure-caption">From: Application of probabilistic modeling and automated machine learning framework for high-dimensional stress field</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/global-field-reconstruction-from-sparse-sensors-wi_plot_1_93ef286c.png" alt="Figure from Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Global field reconstruction from sparse sensors with Voronoi tessellation-assisted deep learning</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/probabilistic-neural-network-based-reduced-order-s_plot_1_0ea468f8.png" alt="Figure from Probabilistic neural network-based reduced-order surrogate for fluid flows" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Probabilistic neural network-based reduced-order surrogate for fluid flows</div>
+  </div>
+  <div class="figure-item">
+    <img src="/images/research/figures/latent-space-time-evolution-of-non-intrusive-reduc_plot_1_662d841c.png" alt="Figure from Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Latent-space time evolution of non-intrusive reduced-order models using Gaussian process emulation</div>
   </div>
 </div>
 
