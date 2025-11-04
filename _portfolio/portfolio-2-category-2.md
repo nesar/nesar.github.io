@@ -1,33 +1,33 @@
 ---
-title: "AI/ML for Observational Astrophysics"
-excerpt: "Research in ai/ml for observational astrophysics"
+title: "AI for Cosmological Simulations"
+excerpt: "Research in ai for cosmological simulations"
 collection: portfolio
 ---
 
-Observational astrophysics is currently experiencing a transformative era, driven by the proliferation of increasingly large and complex datasets from cutting-edge telescopes and surveys. This unprecedented influx of information presents both immense opportunities for discovery and significant analytical challenges for traditional methods. Artificial Intelligence and Machine Learning (AI/ML) have emerged as indispensable tools to navigate this data-rich landscape, enabling automated analysis, enhanced precision, and deeper insights into the fundamental properties and evolution of cosmic phenomena. These advanced methodologies are fundamentally reshaping how astronomers process, interpret, and extract scientific value from observational data, from our own Milky Way to the distant reaches of the universe.
+Cosmological simulations are indispensable tools for unraveling the universe's evolution, from the formation of galaxies and the cosmic web to the distribution of dark matter. These simulations, often involving billions of particles and complex physical processes, are computationally intensive, requiring immense supercomputing resources and time. Traditional N-body and hydrodynamic simulations, while providing invaluable insights, often face limitations in terms of resolution, parameter space exploration, and the incorporation of intricate astrophysical feedback mechanisms. This computational bottleneck poses a significant challenge to fully leveraging upcoming large-scale astronomical survey data.
 
-The application of AI/ML extends across a broad spectrum of observational astrophysics, proving crucial for tasks such as the efficient identification and characterization of celestial objects in vast surveys, the precise estimation of cosmological parameters, and the detection of rare or anomalous events that might otherwise elude human inspection. Techniques spanning deep learning, generative models, and sophisticated statistical algorithms are being deployed to address challenges ranging from accurate redshift estimation and the comprehensive analysis of gravitational lensing to mapping stellar distributions and understanding the intricate dynamics of galaxy clusters through phenomena like the kinetic Sunyaev-Zel'dovich (kSZ) effect. These innovations are vital for pushing the boundaries of our understanding of galaxy evolution, the distribution of dark matter, and the overarching structure of the cosmos.
+The advent of Artificial Intelligence (AI) and Machine Learning (ML) offers a transformative paradigm shift in this domain. By developing intelligent algorithms, researchers can significantly accelerate simulation workflows, emulate complex physical processes that are prohibitively expensive to simulate directly, and generate vast quantities of synthetic cosmological data. This approach enables a more efficient exploration of cosmological parameter spaces, facilitates the robust interpretation of observational data, and ultimately pushes the boundaries of our understanding of cosmic structure formation.
 
-My research extensively utilizes and develops AI/ML techniques to tackle some of the most pressing challenges in observational astrophysics. I have employed data-driven approaches to characterize stellar populations, exemplified by the creation of a photometric sample of 2.6 million Red Clump stars across the Milky Way, providing a robust dataset for galactic structure studies. In the realm of cosmology, I have contributed to improving weak lensing cluster mass estimations by reducing model error through optimized galaxy selection strategies, thereby enhancing the precision of dark matter distribution measurements. Furthermore, I have developed machine learning models, including SYTH-Z, which generate synthetic spectra for probabilistic redshift estimation, significantly improving the accuracy and reliability of distance measurements for galaxies.
+My research focuses on leveraging cutting-edge AI techniques to address these critical challenges in cosmological simulations. I have developed multi-modal foundation models specifically designed to process and synthesize diverse types of cosmological simulation data, offering a unified framework for understanding complex cosmic phenomena. A key aspect of this work involves robustly benchmarking AI-evolved cosmological structure formation and conducting physical benchmarking for AI-generated cosmic web outputs, ensuring that our AI models not only generate data efficiently but also adhere to fundamental physical principles and statistical properties of the universe.
 
-My work also extends to applying advanced deep learning techniques for complex image analysis. I have pioneered the use of Generative Adversarial Networks (GANs) for anomaly detection in Hyper Suprime-Cam galaxy images, providing a powerful method to identify unusual astronomical objects that could represent new phenomena. Additionally, I developed deep neural networks for peculiar velocity estimation from the kinetic Sunyaev-Zel'dovich effect, offering new insights into the kinematics of galaxy clusters. Furthermore, I designed a modular deep learning pipeline for the detection and modeling of galaxy-scale strong gravitational lenses, automating this complex task and enabling efficient discovery. These contributions collectively advance our ability to extract detailed scientific insights from massive astronomical datasets, driving new discoveries and refining our understanding of the cosmos.
+Furthermore, my contributions include the development of SHAMNet, a novel framework for differentiable predictions of Large Scale Structure. This methodology allows for end-to-end differentiable forward modeling, which is crucial for inverse inference problems, enabling the robust and rapid estimation of cosmological parameters from observational data. By pioneering these advanced AI-driven methodologies, my work significantly accelerates the scientific discovery pipeline in cosmology, providing powerful new tools for interpreting data from current and future astronomical surveys and deepening our understanding of the universe's evolution.
 
 <div class="research-figures">
   <div class="figure-item">
-    <img src="/images/research/figures/from-the-inner-to-outer-milky-way-a-photometric-sa_plot_1_2e56b6d6.png" alt="Figure from From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: From the Inner to Outer Milky Way: A Photometric Sample of 2.6 Million Red Clump Stars</div>
+    <img src="/images/research/figures/multi-modal-foundation-model-for-cosmological-simu_plot_1_204705ca.png" alt="Figure from Multi-modal Foundation Model for Cosmological Simulation Data" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Multi-modal Foundation Model for Cosmological Simulation Data</div>
   </div>
   <div class="figure-item">
-    <img src="/images/research/figures/reducing-model-error-using-optimised-galaxy-select_plot_1_8b13e102.png" alt="Figure from Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Reducing Model Error Using Optimised Galaxy Selection: Weak Lensing Cluster Mass Estimation</div>
+    <img src="/images/research/figures/benchmarking-ai-evolved-cosmological-structure-for_plot_1_e309ff7d.png" alt="Figure from Benchmarking AI-evolved cosmological structure formation" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Benchmarking AI-evolved cosmological structure formation</div>
   </div>
   <div class="figure-item">
-    <img src="/images/research/figures/machine-learning-synthetic-spectra-for-probabilist_plot_1_e2025c80.png" alt="Figure from Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Machine learning synthetic spectra for probabilistic redshift estimation: SYTH-Z</div>
+    <img src="/images/research/figures/differentiable-predictions-for-large-scale-structu_plot_1_2e3e2c0b.png" alt="Figure from Differentiable Predictions for Large Scale Structure with SHAMNet" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Differentiable Predictions for Large Scale Structure with SHAMNet</div>
   </div>
   <div class="figure-item">
-    <img src="/images/research/figures/anomaly-detection-in-hyper-suprime-cam-galaxy-imag_plot_1_58355288.png" alt="Figure from Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks" onclick="openModal(this)" loading="lazy" />
-    <div class="figure-caption">From: Anomaly detection in Hyper Suprime-Cam galaxy images with generative adversarial networks</div>
+    <img src="/images/research/figures/physical-benchmarking-for-ai-generated-cosmic-web_plot_1_11f44910.png" alt="Figure from Physical Benchmarking for AI-Generated Cosmic Web" onclick="openModal(this)" loading="lazy" />
+    <div class="figure-caption">From: Physical Benchmarking for AI-Generated Cosmic Web</div>
   </div>
 </div>
 
