@@ -282,14 +282,141 @@ class WebsiteContentManager:
             }
         }
 
+    def review_classification_with_user(self, categories: Dict, papers: List[Dict]) -> Dict:
+        """Allow user to review and modify LLM classification."""
+        print("\n" + "=" * 70)
+        print("📋 CLASSIFICATION REVIEW - Human-in-the-Loop")
+        print("=" * 70)
+
+        # Display current classification
+        print("\n🤖 LLM has classified papers into the following categories:\n")
+
+        category_list = []
+        for i, (cat_key, cat_info) in enumerate(categories.items(), 1):
+            print(f"{i}. {cat_info['name']} ({len(cat_info['papers'])} papers)")
+            print(f"   Description: {cat_info['description']}")
+            category_list.append((cat_key, cat_info))
+
+            for j, paper_title in enumerate(cat_info['papers'], 1):
+                # Truncate long titles for display
+                display_title = paper_title if len(paper_title) <= 70 else paper_title[:67] + "..."
+                print(f"      {j}. {display_title}")
+            print()
+
+        # Ask user if they want to modify
+        print("\n" + "=" * 70)
+        while True:
+            response = input("Do you want to keep this classification? (yes/no): ").strip().lower()
+            if response in ['yes', 'y']:
+                print("✅ Keeping LLM classification")
+                return categories
+            elif response in ['no', 'n']:
+                break
+            else:
+                print("⚠️ Please enter 'yes' or 'no'")
+
+        # User wants to modify - allow reclassification
+        print("\n🔄 Entering reclassification mode...")
+        print("You can reassign papers to different categories.\n")
+
+        # Create a flat list of all papers with their current category
+        paper_assignments = {}
+        for cat_key, cat_info in categories.items():
+            for paper_title in cat_info['papers']:
+                paper_assignments[paper_title] = cat_key
+
+        all_paper_titles = list(paper_assignments.keys())
+
+        while True:
+            print("\n" + "-" * 70)
+            print("Options:")
+            print("  1. Reassign a specific paper")
+            print("  2. View current classification")
+            print("  3. Done - proceed with current classification")
+            print("-" * 70)
+
+            choice = input("Enter your choice (1-3): ").strip()
+
+            if choice == '1':
+                # Show papers with numbers
+                print("\n📄 Papers:")
+                for i, paper_title in enumerate(all_paper_titles, 1):
+                    current_cat = paper_assignments[paper_title]
+                    current_cat_name = categories[current_cat]['name']
+                    display_title = paper_title if len(paper_title) <= 60 else paper_title[:57] + "..."
+                    print(f"   {i}. [{current_cat_name}] {display_title}")
+
+                # Get paper selection
+                try:
+                    paper_num = int(input("\nEnter paper number to reassign (0 to cancel): ").strip())
+                    if paper_num == 0:
+                        continue
+                    if paper_num < 1 or paper_num > len(all_paper_titles):
+                        print("⚠️ Invalid paper number")
+                        continue
+
+                    selected_paper = all_paper_titles[paper_num - 1]
+
+                    # Show categories
+                    print("\n📂 Categories:")
+                    for i, (cat_key, cat_info) in enumerate(category_list, 1):
+                        print(f"   {i}. {cat_info['name']}")
+
+                    # Get category selection
+                    cat_num = int(input("\nEnter category number (0 to cancel): ").strip())
+                    if cat_num == 0:
+                        continue
+                    if cat_num < 1 or cat_num > len(category_list):
+                        print("⚠️ Invalid category number")
+                        continue
+
+                    new_cat_key = category_list[cat_num - 1][0]
+
+                    # Update assignment
+                    paper_assignments[selected_paper] = new_cat_key
+                    print(f"✅ Reassigned '{selected_paper[:50]}...' to '{categories[new_cat_key]['name']}'")
+
+                except ValueError:
+                    print("⚠️ Please enter a valid number")
+                except Exception as e:
+                    print(f"⚠️ Error: {e}")
+
+            elif choice == '2':
+                # Display current classification
+                print("\n📋 Current Classification:")
+                for i, (cat_key, cat_info) in enumerate(category_list, 1):
+                    papers_in_cat = [p for p, c in paper_assignments.items() if c == cat_key]
+                    print(f"\n{i}. {cat_info['name']} ({len(papers_in_cat)} papers)")
+                    for j, paper_title in enumerate(papers_in_cat, 1):
+                        display_title = paper_title if len(paper_title) <= 70 else paper_title[:67] + "..."
+                        print(f"      {j}. {display_title}")
+
+            elif choice == '3':
+                # User is done - rebuild categories
+                print("\n✅ Finalizing classification...")
+
+                # Rebuild categories dictionary with new assignments
+                final_categories = {}
+                for cat_key, cat_info in categories.items():
+                    final_categories[cat_key] = {
+                        'name': cat_info['name'],
+                        'description': cat_info['description'],
+                        'papers': [p for p, c in paper_assignments.items() if c == cat_key]
+                    }
+
+                return final_categories
+
+            else:
+                print("⚠️ Please enter 1, 2, or 3")
+
     def classify_papers_with_llm(self, papers: List[Dict]) -> Dict:
-        """Classify papers using LLM with dynamic figure extraction."""
+        """Classify papers using LLM with dynamic figure extraction and human review."""
         print("🎯 Classifying papers using LLM...")
-        
+
         # Create prompt for LLM classification
         paper_titles = [paper['title'] for paper in papers]
         paper_list = "\n".join([f"{i+1}. {title}" for i, title in enumerate(paper_titles)])
-        
+
         prompt = f"""Analyze these research papers and classify them into 4 research categories. Provide a JSON response with category keys, names, descriptions, and paper assignments:
 
 {paper_list}
@@ -302,13 +429,13 @@ Return JSON in this exact format:
     "papers": ["paper title 1", "paper title 2"]
   }},
   "machine-learning": {{
-    "name": "Machine Learning for Science", 
+    "name": "Machine Learning for Science",
     "description": "Brief description",
     "papers": ["paper title 3"]
   }},
   "dark-matter": {{
     "name": "Dark Matter & Cosmology",
-    "description": "Brief description", 
+    "description": "Brief description",
     "papers": ["paper title 4"]
   }},
   "emulation-inference": {{
@@ -319,7 +446,7 @@ Return JSON in this exact format:
 }}
 
 Assign each paper to the most appropriate category. Each paper should appear exactly once."""
-        
+
         try:
             response = self.llm_generate(prompt)
             # Extract JSON from response
@@ -330,6 +457,10 @@ Assign each paper to the most appropriate category. Each paper should appear exa
                 json_str = response[json_start:json_end]
                 categories = json.loads(json_str)
                 print(f"✅ LLM classified papers into {len(categories)} categories")
+
+                # Human-in-the-loop: review and potentially modify classification
+                categories = self.review_classification_with_user(categories, papers)
+
                 return categories
             else:
                 print("⚠️ Could not parse LLM response, using fallback classification")
