@@ -624,6 +624,37 @@ Assign each paper to the most appropriate category. Each paper should appear exa
         
         return extracted_plots
     
+    def is_top_author(self, authors: List[str], top_n: int = 3) -> bool:
+        """Check if Nesar Ramachandra is in the top N authors of a paper.
+
+        Args:
+            authors: List of author names in order
+            top_n: Number of top positions to check (default 3)
+
+        Returns:
+            True if Nesar Ramachandra is in the top N authors, False otherwise
+        """
+        if not authors:
+            return False
+
+        # Check only the top N authors
+        top_authors = authors[:top_n]
+
+        for author in top_authors:
+            # Check various name formats
+            if any([
+                "Ramachandra" in author and "Nesar" in author,
+                "Ramachandra" in author and "N." in author,
+                "Ramachandra" in author and author.startswith("N "),
+                "N. S. Ramachandra" in author,
+                "N.S. Ramachandra" in author,
+                "Nesar S Ramachandra" in author,
+                "Nesar S. Ramachandra" in author,
+            ]):
+                return True
+
+        return False
+
     def is_good_scientific_figure(self, image: Image.Image, file_size: int) -> bool:
         """Check if image is a good scientific figure."""
         width, height = image.size
@@ -791,14 +822,18 @@ citation: '{self.clean_text(citation)}'
         print(f"✅ Successfully created {successful} publication files")
     
     def update_research_page(self):
-        """Update research page with LLM-generated content."""
+        """Update research page with LLM-generated content.
+
+        Returns:
+            Tuple of (categories dict, papers list) for use by other methods
+        """
         print("🔬 Updating research page...")
-        
+
         # Get publications and classify them
         papers = self.fetch_publications_from_arxiv()
         if not papers:
             print("❌ No papers found from arXiv")
-            return
+            return None, None
         
         # Download papers for plot extraction
         self.download_papers(papers)
@@ -820,24 +855,36 @@ citation: '{self.clean_text(citation)}'
             print(f"   📊 Processing {cat_info['name']}...")
             
             # Extract plots dynamically from papers in this category (max 1 per paper)
+            # Only extract plots from papers where I am a top-3 author
             category_plots = []
             for paper_title in cat_info['papers']:
                 # Find corresponding paper object
                 paper_obj = paper_lookup.get(paper_title)
                 if not paper_obj or not paper_obj.get('local_path'):
                     continue
-                
+
+                # Only extract plots if I am in the top 3 authors
+                if not self.is_top_author(paper_obj.get('authors', [])):
+                    print(f"      ⏭️ Skipping plot extraction (not top-3 author): {paper_title[:50]}...")
+                    continue
+
                 # Extract only the best plot from this paper (limit enforced in extract_best_plots_from_paper)
                 plots = self.extract_best_plots_from_paper(paper_obj['local_path'], paper_title)
                 if plots:  # Only add if we found plots
                     category_plots.extend(plots)  # Will be max 1 plot per paper
             
             # If no plots extracted, try to find existing plots by name matching
+            # Still only use plots from papers where I am a top-3 author
             if not category_plots:
                 for paper_title in cat_info['papers']:
+                    # Check if I am a top-3 author before using existing plots
+                    paper_obj = paper_lookup.get(paper_title)
+                    if paper_obj and not self.is_top_author(paper_obj.get('authors', [])):
+                        continue
+
                     paper_slug = self.create_url_slug(paper_title)
                     matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
-                    
+
                     if not matching_figures:
                         title_words = paper_title.lower().split()[:3]
                         for word in title_words:
@@ -846,7 +893,7 @@ citation: '{self.clean_text(citation)}'
                                 if word_figures:
                                     matching_figures.extend(word_figures)
                                     break
-                    
+
                     if matching_figures:
                         fig_path = matching_figures[0]
                         plot_info = {
@@ -915,7 +962,7 @@ citation: '{self.clean_text(citation)}'
             f.write(html_content)
         
         print(f"✅ Research page updated with {len(categories)} categories")
-        return categories
+        return categories, papers
     
     def generate_research_html_template(self, sections_html: str) -> str:
         """Generate complete HTML template for research page."""
@@ -1122,33 +1169,46 @@ author_profile: true
 </style>
 """
     
-    def update_portfolio_pages(self, categories: Dict = None):
+    def update_portfolio_pages(self, categories: Dict = None, papers: List[Dict] = None):
         """Update portfolio pages with LLM-generated content."""
         print("📁 Updating portfolio pages...")
-        
+
         if not categories:
             # Get categories from research page update
             papers = self.fetch_publications_from_arxiv()
             categories = self.classify_papers_with_llm(papers)
-        
+
+        # Fetch papers if not provided (needed for author position check)
+        if not papers:
+            papers = self.fetch_publications_from_arxiv()
+
+        # Create paper lookup for author position checking
+        paper_lookup = {paper['title']: paper for paper in papers}
+
         # Create portfolio pages
         for i, (cat_key, cat_info) in enumerate(categories.items()):
             if not cat_info['papers']:
                 continue
-            
+
             print(f"   📝 Creating portfolio page for {cat_info['name']}...")
-            
+
             # Generate detailed research summary
             summary = self.generate_portfolio_summary_with_llm(cat_info['name'], cat_info['papers'])
-            
+
             # Get figures for this category by finding them dynamically
+            # Only include figures from papers where I am a top-3 author
             figure_files = []
             figure_papers = []
-            
+
             for paper_title in cat_info['papers'][:4]:  # Limit to 4 papers
+                # Check if I am a top-3 author before including figures
+                paper_obj = paper_lookup.get(paper_title)
+                if paper_obj and not self.is_top_author(paper_obj.get('authors', [])):
+                    continue
+
                 paper_slug = self.create_url_slug(paper_title)
                 matching_figures = list(self.figures_dir.glob(f"*{paper_slug}*_plot_*.png"))
-                
+
                 if not matching_figures:
                     title_words = paper_title.lower().split()[:3]
                     for word in title_words:
@@ -1157,11 +1217,11 @@ author_profile: true
                             if word_figures:
                                 matching_figures = [word_figures[0]]
                                 break
-                
+
                 if matching_figures:
                     figure_files.append(matching_figures[0])
                     figure_papers.append(paper_title)
-            
+
             figures_html = self.create_portfolio_figures_html(figure_files, figure_papers)
             
             # Create portfolio file
@@ -1321,15 +1381,15 @@ Write professionally about the research contributions and their significance."""
         """Update only research and portfolio pages (preserve publications)."""
         print("🚀 Starting Research & Portfolio Update")
         print("=" * 50)
-        
+
         # Use safe cleanup for research-only updates
         self.safe_cleanup_for_research_only()
-        
+
         # Update research page (includes classification and plot extraction)
-        categories = self.update_research_page()
-        
-        # Update portfolio pages
-        self.update_portfolio_pages(categories)
+        categories, papers = self.update_research_page()
+
+        # Update portfolio pages (pass papers for author position checking)
+        self.update_portfolio_pages(categories, papers)
         
         print("\n" + "=" * 50)
         print("🎉 RESEARCH & PORTFOLIO UPDATE COMPLETE!")
@@ -1397,11 +1457,11 @@ Write professionally about the research contributions and their significance."""
         self.update_publications()
         
         # Update research page (includes classification and plot extraction)
-        categories = self.update_research_page()
-        
-        # Update portfolio pages
-        self.update_portfolio_pages(categories)
-        
+        categories, papers = self.update_research_page()
+
+        # Update portfolio pages (pass papers for author position checking)
+        self.update_portfolio_pages(categories, papers)
+
         print("\n" + "=" * 60)
         print("🎉 FULL WEBSITE UPDATE COMPLETE!")
         print("=" * 60)
