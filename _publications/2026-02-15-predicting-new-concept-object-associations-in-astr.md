@@ -2,10 +2,10 @@
 title: "Predicting New Concept-Object Associations in Astronomy by Mining the Literature"
 collection: publications
 permalink: /publication/2026-predicting-new-concept-object-associations-in-astr
-excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2602.14335v1)'
+excerpt: '[<u><span style="color:blue">arXiv</span></u>](http://arxiv.org/abs/2602.14335v2)'
 date: 2026-02-15
 venue: 'arXiv preprint'
-paperurl: 'http://arxiv.org/abs/2602.14335v1'
+paperurl: 'http://arxiv.org/abs/2602.14335v2'
 citation: 'Jinchu Li, Yuan-Sen Ting, Alberto Accomazzi, Tirthankar Ghosal, Nesar Ramachandra (2026). \"Predicting New Concept-Object Associations in Astronomy by Mining the Literature\". arXiv preprint.'
 ---
 
