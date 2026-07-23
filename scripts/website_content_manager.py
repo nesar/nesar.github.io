@@ -58,6 +58,7 @@ class WebsiteContentManager:
         try:
             genai.configure(api_key=api_key)
             #self.model = genai.GenerativeModel('gemini-1.5-pro')
+            #self.model = genai.GenerativeModel('gemini-2.5-pro')  # requires paid tier
             self.model = genai.GenerativeModel('gemini-2.5-flash')
             print("✅ LLM configured successfully")
         except Exception as e:
@@ -94,39 +95,85 @@ class WebsiteContentManager:
         
         all_papers = []
         seen_arxiv_ids = set()
-        
-        for search_term in search_terms:
-            # URL encode the search term properly
-            from urllib.parse import quote
+
+        # arXiv API guidelines: identify yourself via User-Agent, and keep to
+        # ~1 request per 3 seconds. We add per-request retry with exponential
+        # backoff on 429, and always sleep between search terms (even on error)
+        # so a single 429 doesn't cascade into all subsequent terms failing.
+        headers = {
+            "User-Agent": "nesar-website-updater/1.0 (mailto:nayaknesar@gmail.com)"
+        }
+        inter_request_delay = 3.5  # seconds between search terms
+        max_retries_per_term = 4
+
+        from urllib.parse import quote
+
+        for term_idx, search_term in enumerate(search_terms):
+            # Space out requests across search terms, unconditionally.
+            if term_idx > 0:
+                time.sleep(inter_request_delay)
+
             encoded_search = quote(search_term)
-            url = f"http://export.arxiv.org/api/query?search_query={encoded_search}&sortBy=submittedDate&sortOrder=descending&max_results=200"
-            
+            url = (
+                f"http://export.arxiv.org/api/query?"
+                f"search_query={encoded_search}"
+                f"&sortBy=submittedDate&sortOrder=descending&max_results=200"
+            )
+
+            response = None
+            for attempt in range(max_retries_per_term):
+                try:
+                    response = requests.get(url, headers=headers, timeout=45)
+                    # Handle rate limiting explicitly with backoff.
+                    if response.status_code == 429:
+                        backoff = 15 * (2 ** attempt)  # 15, 30, 60, 120s
+                        print(
+                            f"   ⏳ 429 on '{search_term}' (attempt {attempt+1}/"
+                            f"{max_retries_per_term}); backing off {backoff}s"
+                        )
+                        time.sleep(backoff)
+                        response = None
+                        continue
+                    response.raise_for_status()
+                    break  # success
+                except requests.exceptions.RequestException as e:
+                    backoff = 10 * (2 ** attempt)  # 10, 20, 40, 80s
+                    print(
+                        f"   ⚠️ Request error on '{search_term}' "
+                        f"(attempt {attempt+1}/{max_retries_per_term}): {e}; "
+                        f"backing off {backoff}s"
+                    )
+                    time.sleep(backoff)
+                    response = None
+                    continue
+
+            if response is None:
+                print(f"⚠️ Giving up on search term '{search_term}' after retries")
+                continue
+
             try:
-                response = requests.get(url, timeout=30)
-                response.raise_for_status()
-                
                 root = ET.fromstring(response.content)
                 namespace = {'atom': 'http://www.w3.org/2005/Atom'}
-                
+
                 for entry in root.findall('.//atom:entry', namespace):
                     # Extract basic info
                     title = entry.find('./atom:title', namespace)
                     published = entry.find('./atom:published', namespace)
                     summary = entry.find('./atom:summary', namespace)
                     arxiv_id = entry.find('./atom:id', namespace)
-                    
-                    if not all([title is not None and title.text, 
-                               published is not None and published.text, 
+
+                    if not all([title is not None and title.text,
+                               published is not None and published.text,
                                arxiv_id is not None and arxiv_id.text]):
                         continue
-                    
+
                     # Get authors
                     authors = []
                     for author in entry.findall('./atom:author', namespace):
                         name_elem = author.find('./atom:name', namespace)
                         if name_elem is not None:
                             authors.append(name_elem.text.strip())
-                    
+
                     # Check if you're an author (more flexible matching)
                     is_author = any(
                         ("Ramachandra" in author and "Nesar" in author) or
@@ -136,19 +183,19 @@ class WebsiteContentManager:
                         ("N.S. Ramachandra" in author)
                         for author in authors
                     )
-                    
+
                     if not is_author:
                         continue
-                    
+
                     # Extract arXiv ID
                     arxiv_url = arxiv_id.text
                     arxiv_match = re.search(r'(\d+\.\d+)', arxiv_url)
                     arxiv_number = arxiv_match.group(1) if arxiv_match else ""
-                    
+
                     if arxiv_number in seen_arxiv_ids:
                         continue
                     seen_arxiv_ids.add(arxiv_number)
-                    
+
                     paper = {
                         'title': self.clean_text(title.text),
                         'authors': authors,
@@ -158,13 +205,11 @@ class WebsiteContentManager:
                         'arxiv_id': arxiv_number,
                         'venue': 'arXiv preprint'
                     }
-                    
+
                     all_papers.append(paper)
-                
-                time.sleep(2)  # Rate limiting
-                
-            except Exception as e:
-                print(f"⚠️ Error with search term '{search_term}': {e}")
+
+            except ET.ParseError as e:
+                print(f"⚠️ Failed to parse response for '{search_term}': {e}")
                 continue
         
         print(f"✅ Found {len(all_papers)} publications")
