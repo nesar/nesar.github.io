@@ -1,0 +1,147 @@
+# Projects, software, datasets & tutorials
+# ------------------------------------------------------------------
+# This file drives BOTH the "Featured work" cards on the homepage and
+# the full /projects/ page. To add a project, copy a block and edit it.
+#
+#   title     : card title
+#   category  : one of the keys in `groups` below
+#   blurb     : one or two sentences (keep it short — ~25 words)
+#   image     : path under /images/projects/ (optional; a gradient tile is used if omitted)
+#   fit       : "contain" (diagrams — no cropping) or "top" (screenshots — crop from the top) (optional)
+#   featured  : true → also shown on the homepage (keep to 4)
+#   date      : YYYY-MM — newest first within each group
+#   tags      : short keywords (optional)
+#   links     : list of {label, url}; the first link is where the card itself points
+#   compact   : true → rendered as a small text tile (used for the MCP servers)
+# ------------------------------------------------------------------
+
+groups:
+  - key: agents
+    title: "Ecosystem for trustworthy agentic AI"
+    kicker: "Agentic AI"
+    blurb: "Open MCP servers that wrap established physics codes as tools, so agents compute answers instead of guessing them, plus the client that runs them on laptops and supercomputers."
+    servers_title: "MCP servers"
+  - key: data
+    title: "Datasets & simulations"
+    blurb: "Synthetic skies for current and upcoming surveys."
+  - key: emulators
+    title: "Emulators"
+    blurb: "Fast, uncertainty-aware surrogates for expensive cosmological simulations."
+  - key: tutorials
+    title: "Tutorials"
+    blurb: "Hands-on material for building scientific agents."
+
+items:
+  - title: "HEP-Genesis Agent"
+    category: agents
+    featured: true
+    date: 2026-10
+    image: hep-genesis.jpg
+    fit: top
+    blurb: "A desktop and CLI research agent that drives science tools and runs compute locally or on ALCF and NERSC."
+    tags: [Agents, MCP, HPC]
+    links:
+      - { label: "Download", url: "https://hep-ke.github.io/hep-genesis-releases/" }
+      - { label: "Releases", url: "https://github.com/hep-ke/hep-genesis-releases" }
+
+  - title: "SuperMock 3D"
+    category: data
+    featured: true
+    date: 2026-10
+    image: supermock3d-zoom.jpg
+    blurb: "Fly through ~800K mock galaxies painted onto the HACC Last Journey simulation for SPHEREx."
+    tags: [SPHEREx, HACC, Mock catalogs]
+    links:
+      - { label: "Explore", url: "https://nesar.github.io/supermock3d/" }
+      - { label: "Slides", url: "https://nesar.github.io/supermock3d/slides/" }
+      - { label: "Code", url: "https://github.com/nesar/supermock3d" }
+
+  - title: "Building Scientific Agents"
+    category: tutorials
+    featured: true
+    date: 2026-09
+    image: agents-tutorial.jpg
+    fit: contain
+    blurb: "Build a LangGraph multi-agent client that calls science MCP servers to reproduce published figures."
+    tags: [Tutorial, LangGraph, MCP]
+    links:
+      - { label: "Tutorial", url: "https://hep-ke.github.io/multiagent-client-demo/" }
+      - { label: "Code", url: "https://github.com/hep-ke/multiagent-client-demo" }
+
+  - title: "Subgrid Emulator"
+    category: emulators
+    featured: true
+    date: 2026-08
+    image: subgrid.jpg
+    blurb: "Fast Gaussian-process emulators of CRK-HACC hydrodynamical summary statistics as a function of subgrid feedback physics."
+    tags: [Emulation, CRK-HACC, Baryons]
+    links:
+      - { label: "Docs", url: "https://nesar.github.io/subgrid_emu/" }
+      - { label: "Code", url: "https://github.com/nesar/subgrid_emu" }
+
+  - title: "Cubic Galileon Emulator"
+    category: emulators
+    date: 2026-07
+    image: galileon.jpg
+    blurb: "A GP emulator for the matter power-spectrum boost in cubic Galileon modified gravity."
+    tags: [Modified gravity, Emulation]
+    links:
+      - { label: "Docs", url: "https://nesar.github.io/CubicGalileonEmu/" }
+      - { label: "Code", url: "https://github.com/nesar/CubicGalileonEmu" }
+
+  # --- MCP servers (compact tiles inside the ecosystem group) ---
+  - title: "DESC"
+    category: agents
+    compact: true
+    date: 2026-10
+    blurb: "54 tools over the LSST DESC stack (CCL, Firecrown, TXPipe, NaMaster…), with optional HPC execution."
+    links:
+      - { label: "Code", url: "https://github.com/nesar/desc_mcp_server" }
+
+  - title: "Cosmic Emulators"
+    category: agents
+    compact: true
+    date: 2026-10
+    blurb: "~20 public cosmology emulators (nonlinear P(k), modified gravity, CMB, baryons) as agent tools."
+    links:
+      - { label: "Code", url: "https://github.com/hep-ke/cosmic_emulator_server" }
+
+  - title: "Spectra"
+    category: agents
+    compact: true
+    date: 2026-08
+    blurb: "CLASS matter power spectra compared against eBOSS Lyman-α forest data; Part 1 of the agents tutorial."
+    links:
+      - { label: "Code", url: "https://github.com/hep-ke/spectra-mcp-server" }
+
+  - title: "Gaia"
+    category: agents
+    compact: true
+    date: 2026-10
+    blurb: "Reproduces the Gaia DR2 Hertzsprung–Russell diagram of 212K stars within 100 pc, using the paper's own quality cuts."
+    links:
+      - { label: "Code", url: "https://github.com/hep-ke/gaia-mcp-server" }
+
+  - title: "Big Bang Nucleosynthesis"
+    category: agents
+    compact: true
+    date: 2026-10
+    blurb: "Primordial light-element abundances versus baryon density, ΔN_eff and the neutron lifetime."
+    links:
+      - { label: "Code", url: "https://github.com/nesar/bbn-mcp-server" }
+
+  - title: "Lattice QCD"
+    category: agents
+    compact: true
+    date: 2026-08
+    blurb: "The QCD equation of state from lattice results versus the hadron resonance gas, i.e. deconfinement."
+    links:
+      - { label: "Code", url: "https://github.com/nesar/lattice-mcp-server" }
+
+  - title: "Starter kit"
+    category: agents
+    compact: true
+    date: 2026-09
+    blurb: "Template for wrapping your own science code as an MCP server."
+    links:
+      - { label: "Code", url: "https://github.com/hep-ke/science-mcp-server-starter" }

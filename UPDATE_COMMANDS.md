@@ -172,3 +172,16 @@ If you encounter issues:
 1. Check this file for relevant commands
 2. Run `python3 scripts/cleanup_and_organize.py` to fix most problems
 3. Check the console output for specific error messages
+## Projects & Homepage (manual, not touched by the automation)
+
+The homepage (`_pages/about.md`, layout `_layouts/home.html`) and the
+Projects page (`/projects/`) are driven by **`_data/projects.yml`**.
+
+- **Add a project:** copy a block in `_data/projects.yml`, drop a ~900px-wide
+  thumbnail in `images/projects/`, and set `image:` to its filename.
+- **Feature it on the homepage:** add `featured: true` (keep it to 4).
+- **Edit the bio / links / background timeline:** front matter + body of `_pages/about.md`.
+
+The homepage's "Research areas" tiles and "Recent papers" list are read from
+`_portfolio/` and `_publications/`, so they update automatically whenever the
+research/publication automation runs.

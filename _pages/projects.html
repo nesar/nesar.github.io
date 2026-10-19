@@ -1,0 +1,51 @@
+---
+layout: archive
+title: "Projects"
+permalink: /projects/
+author_profile: true
+---
+{% include base_path %}
+{% comment %} Content lives in _data/projects.yml — edit that file to add or change projects. {% endcomment %}
+
+<p class="page-lede">Software, datasets, agents and tutorials from my group and collaborations. Most are open source, so pick one up and try it.</p>
+
+<nav class="chipnav" aria-label="Project categories">
+  {% for g in site.data.projects.groups %}
+    <a href="#{{ g.key }}">{{ g.title }}</a>
+  {% endfor %}
+</nav>
+
+{% for g in site.data.projects.groups %}
+  {% assign in_group = site.data.projects.items | where: "category", g.key | sort: "date" | reverse %}
+  {% assign lead = in_group | where: "featured", true %}
+  {% assign rest = in_group | where_exp: "p", "p.featured != true" | where_exp: "p", "p.compact != true" %}
+  {% assign items = lead | concat: rest %}
+  {% assign tiles = site.data.projects.items | where: "category", g.key | where: "compact", true %}{% comment %} tiles keep file order {% endcomment %}
+  {% if in_group.size > 0 %}
+  <section class="pgroup" id="{{ g.key }}">
+    <header class="pgroup__head">
+      <h2>{{ g.title }}</h2>
+      <p>{{ g.blurb }}</p>
+    </header>
+    {% if items.size > 0 %}
+    <div class="pgrid{% if items.size == 1 %} pgrid--single{% endif %}">
+      {% for project in items %}
+        {% include project-card.html project=project %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if tiles.size > 0 %}
+    {% if g.servers_title %}<h3 class="pgroup__sub">{{ g.servers_title }}</h3>{% endif %}
+    <div class="sgrid">
+      {% for t in tiles %}
+        {% assign tl = t.links | first %}
+        <a class="scard" href="{{ tl.url }}" target="_blank" rel="noopener">
+          <span class="scard__title">{{ t.title }}<span aria-hidden="true"> ↗</span></span>
+          <span class="scard__blurb">{{ t.blurb }}</span>
+        </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+{% endfor %}

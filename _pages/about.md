@@ -1,39 +1,27 @@
 ---
 permalink: /
-title: "About me"
-excerpt: "About me"
-author_profile: true
-redirect_from: 
+layout: home
+title: "Nesar Ramachandra"
+excerpt: "Computational Scientist at Argonne National Laboratory — AI for cosmology and astrophysics."
+eyebrow: "Computational Scientist · Argonne National Laboratory"
+recent_papers: 5
+redirect_from:
   - /about/
   - /about.html
+
+hero_links:
+  - { label: "Projects",       url: "/projects/" }
+  - { label: "Publications",   url: "/publications/" }
+  - { label: "CV",             url: "/cv/" }
+  - { label: "Scholar",        url: "https://scholar.google.com/citations?user=dCe3MK0AAAAJ", icon: "ai ai-google-scholar" }
+  - { label: "GitHub",         url: "https://github.com/nesar", icon: "fa fa-github" }
+  - { label: "Email",          url: "mailto:nramachandra@anl.gov", icon: "fa fa-envelope" }
+
+background:
+  - { when: "Now",       what: "Computational Scientist, [Computational Science division](https://www.anl.gov/cps), Argonne National Laboratory" }
+  - { when: "Postdoc",   what: "Postdoctoral Fellow, [High Energy Physics division](https://cpac.hep.anl.gov/), Argonne · [KICP](https://kavlicosmo.uchicago.edu/) Associate Fellow, University of Chicago" }
+  - { when: "PhD",       what: "Physics & Astronomy, [University of Kansas](http://physics.ku.edu/), with [Sergei Shandarin](https://scholar.google.com/citations?user=RYZe8AsAAAAJ&hl=en)" }
+  - { when: "M.Sc.",     what: "Integrated Masters in Physics, [BITS Pilani](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics) · thesis at the [Indian Institute of Astrophysics](https://www.iiap.res.in/)" }
 ---
 
-# Nesar Ramachandra, PhD
-
-I am a **Computational Scientist** at [Argonne National Laboratory, Chicago](https://anl.gov) working at the intersection of **artificial intelligence** and **scientific research**. My work focuses on developing innovative computational methods for scientific analyses, particularly in the fields of cosmology and astrophysics.
-
-## Current Position
-
-At the [Computational Sciences division](https://www.anl.gov/cps) at Argonne, I develop and apply machine learning techniques to address complex scientific challenges. My work involves:
-
-* Developing uncertainty quantification methods for scientific models
-* Designing emulators for computationally expensive simulations
-* Implementing multi-modal foundation models on heteregenous scientific datasets
-* Developing Agent-led workflows for scientific problem solving.
-* Implementing Deep Learning pipelines for cluster cosmology, strong lensing analysis
-* Creating realistic synthetic extragalactic catalogs from exascale simulations. 
-
-## Research Interests
-
-* **Machine Learning for Science**: Developing AI methods that incorporate physical constraints and domain knowledge
-* **Cosmological Structure Formation**: Understanding the formation and evolution of the cosmic web
-* **Uncertainty Quantification**: Creating probabilistic models that provide reliable uncertainty estimates
-* **Dark Matter Physics**: Investigating the properties and distribution of dark matter in the universe
-
-## Background
-
-Before joining Argonne as a research scientist, I was a Postdoctoral Fellow at the [High Energy Physics Division](https://cpac.hep.anl.gov/) at Argonne and a [KICP Associate fellow](https://kavlicosmo.uchicago.edu/) at the University of Chicago.
-
-I completed my PhD in Physics and Astronomy at the [University of Kansas](http://physics.ku.edu/) under the supervision of [Professor Sergei Shandarin](https://scholar.google.com/citations?user=RYZe8AsAAAAJ&hl=en), focusing on computational and physical cosmology.
-
-My academic journey began at [BITS Pilani, India](http://www.bits-pilani.ac.in/goa/physics/DepartmentofPhysics), where I earned my Integrated Masters in Physics with an honors thesis from the [Indian Institute of Astrophysics, Bangalore](https://www.iiap.res.in/).
+I build AI methods for scientific discovery: **foundation models** and **agentic workflows** for science, **emulators** with calibrated **uncertainty quantification** for expensive simulations, and **synthetic sky catalogs** from exascale cosmological simulations. My work is aimed at cosmology and astrophysics, from Rubin LSST and SPHEREx to the physics of dark matter.

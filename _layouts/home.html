@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{% include base_path %}
+{% assign author = site.author %}
+
+<div id="main" role="main" class="home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <img class="hero__avatar" src="{{ base_path }}/images/{{ author.avatar }}" alt="{{ author.name }}">
+    <div class="hero__text">
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+      <h1 class="hero__name">{{ author.name }}</h1>
+      <div class="hero__bio">{{ content }}</div>
+      <ul class="hero__links">
+        {% for l in page.hero_links %}
+          <li><a class="btn-pill{% if forloop.first %} btn-pill--solid{% endif %}" href="{{ l.url }}"{% if l.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{% if l.icon %}<i class="{{ l.icon }}" aria-hidden="true"></i> {% endif %}{{ l.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Featured work (from _data/projects.yml, featured: true) -->
+  <section class="home-section">
+    <header class="section-head">
+      <h2>Featured work</h2>
+      <a class="section-more" href="{{ base_path }}/projects/">All projects →</a>
+    </header>
+    {% assign featured = site.data.projects.items | where: "featured", true %}
+    <div class="pgrid pgrid--featured">
+      {% for project in featured %}
+        {% include project-card.html project=project %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Research areas (from the auto-updated _portfolio collection) -->
+  <section class="home-section">
+    <header class="section-head">
+      <h2>Research areas</h2>
+      <a class="section-more" href="{{ base_path }}/research/">Research overview →</a>
+    </header>
+    <div class="areas">
+      {% assign areas = site.portfolio | sort: "path" %}
+      {% for area in areas %}
+        {% assign img_parts = area.content | split: '<img src="' %}
+        {% assign area_img = nil %}
+        {% if img_parts.size > 1 %}{% assign area_img = img_parts[1] | split: '"' | first %}{% endif %}
+        <a class="area" href="{{ base_path }}{{ area.url }}">
+          {% if area_img %}<img class="area__img" src="{{ area_img }}" alt="" loading="lazy">{% endif %}
+          <span class="area__title">{{ area.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Recent publications (from the auto-updated _publications collection) -->
+  <section class="home-section">
+    <header class="section-head">
+      <h2>Recent papers</h2>
+      <a class="section-more" href="{{ base_path }}/publications/">All publications →</a>
+    </header>
+    {% assign recent = site.publications | sort: "date" | reverse %}
+    <ol class="recent-pubs">
+      {% for pub in recent limit: page.recent_papers %}
+        <li>
+          <span class="recent-pubs__year">{{ pub.date | date: "%b %Y" }}</span>
+          {% if pub.paperurl %}<a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}<a href="{{ base_path }}{{ pub.url }}">{{ pub.title }}</a>{% endif %}
+          {% if pub.venue %}<span class="recent-pubs__venue">{{ pub.venue }}</span>{% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- Background -->
+  {% if page.background %}
+  <section class="home-section">
+    <header class="section-head"><h2>Background</h2></header>
+    <ul class="timeline">
+      {% for b in page.background %}
+        <li><span class="timeline__when">{{ b.when }}</span><span class="timeline__what">{{ b.what | markdownify | remove: '<p>' | remove: '</p>' }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+</div>
