@@ -1,0 +1,5 @@
+<ul class="timeline">
+  {% for b in include.items %}
+    <li><span class="timeline__when">{{ b.when }}</span><span class="timeline__what">{{ b.what | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
+  {% endfor %}
+</ul>

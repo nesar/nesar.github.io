@@ -24,8 +24,8 @@ layout: default
   <!-- Featured work (from _data/projects.yml, featured: true) -->
   <section class="home-section">
     <header class="section-head">
-      <h2>Featured work</h2>
-      <a class="section-more" href="{{ base_path }}/projects/">All projects →</a>
+      <h2>Recent highlights</h2>
+      <a class="section-more" href="{{ base_path }}/highlights/">All highlights →</a>
     </header>
     {% assign featured = site.data.projects.items | where: "featured", true %}
     <div class="pgrid pgrid--featured">
@@ -54,35 +54,5 @@ layout: default
       {% endfor %}
     </div>
   </section>
-
-  <!-- Recent publications (from the auto-updated _publications collection) -->
-  <section class="home-section">
-    <header class="section-head">
-      <h2>Recent papers</h2>
-      <a class="section-more" href="{{ base_path }}/publications/">All publications →</a>
-    </header>
-    {% assign recent = site.publications | sort: "date" | reverse %}
-    <ol class="recent-pubs">
-      {% for pub in recent limit: page.recent_papers %}
-        <li>
-          <span class="recent-pubs__year">{{ pub.date | date: "%b %Y" }}</span>
-          {% if pub.paperurl %}<a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}<a href="{{ base_path }}{{ pub.url }}">{{ pub.title }}</a>{% endif %}
-          {% if pub.venue %}<span class="recent-pubs__venue">{{ pub.venue }}</span>{% endif %}
-        </li>
-      {% endfor %}
-    </ol>
-  </section>
-
-  <!-- Background -->
-  {% if page.background %}
-  <section class="home-section">
-    <header class="section-head"><h2>Background</h2></header>
-    <ul class="timeline">
-      {% for b in page.background %}
-        <li><span class="timeline__when">{{ b.when }}</span><span class="timeline__what">{{ b.what | markdownify | remove: '<p>' | remove: '</p>' }}</span></li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
 
 </div>

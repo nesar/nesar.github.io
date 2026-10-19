@@ -1,7 +1,7 @@
-# Projects, software, datasets & tutorials
+# Highlights: software, datasets, agents & tutorials
 # ------------------------------------------------------------------
-# This file drives BOTH the "Featured work" cards on the homepage and
-# the full /projects/ page. To add a project, copy a block and edit it.
+# This file drives BOTH the "Recent highlights" cards on the homepage and
+# the full /highlights/ page. To add a project, copy a block and edit it.
 #
 #   title     : card title
 #   category  : one of the keys in `groups` below
@@ -54,7 +54,6 @@ items:
     links:
       - { label: "Explore", url: "https://nesar.github.io/supermock3d/" }
       - { label: "Slides", url: "https://nesar.github.io/supermock3d/slides/" }
-      - { label: "Code", url: "https://github.com/nesar/supermock3d" }
 
   - title: "Building Scientific Agents"
     category: tutorials
@@ -129,14 +128,6 @@ items:
     blurb: "Primordial light-element abundances versus baryon density, ΔN_eff and the neutron lifetime."
     links:
       - { label: "Code", url: "https://github.com/nesar/bbn-mcp-server" }
-
-  - title: "Lattice QCD"
-    category: agents
-    compact: true
-    date: 2026-08
-    blurb: "The QCD equation of state from lattice results versus the hadron resonance gas, i.e. deconfinement."
-    links:
-      - { label: "Code", url: "https://github.com/nesar/lattice-mcp-server" }
 
   - title: "Starter kit"
     category: agents

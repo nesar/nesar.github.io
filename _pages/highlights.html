@@ -1,15 +1,17 @@
 ---
 layout: archive
-title: "Projects"
-permalink: /projects/
+title: "Highlights"
+permalink: /highlights/
+redirect_from:
+  - /projects/
 author_profile: true
 ---
 {% include base_path %}
 {% comment %} Content lives in _data/projects.yml — edit that file to add or change projects. {% endcomment %}
 
-<p class="page-lede">Software, datasets, agents and tutorials from my group and collaborations. Most are open source, so pick one up and try it.</p>
+<p class="page-lede">Recent software, datasets, agents and tutorials from my group and collaborations. Most are open source, so pick one up and try it.</p>
 
-<nav class="chipnav" aria-label="Project categories">
+<nav class="chipnav" aria-label="Highlight categories">
   {% for g in site.data.projects.groups %}
     <a href="#{{ g.key }}">{{ g.title }}</a>
   {% endfor %}
