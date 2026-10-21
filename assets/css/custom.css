@@ -712,3 +712,10 @@ h1, h2, h3, h4, .page__title, .masthead, .greedy-nav, .btn { font-family: var(--
   .pgrid--single .pcard__body { justify-content: center; padding: 1.5rem 1.6rem; }
   .pgrid--single .pcard__blurb { flex: 0 0 auto; font-size: 0.95rem; }
 }
+
+/* Sidebar/footer icons: one neutral tone (theme brand colours like
+   $github-color are near-black and vanish on the dark background) */
+.social-icons .fa,
+.social-icons .ai { color: var(--muted) !important; }
+.social-icons a:hover .fa,
+.social-icons a:hover .ai { color: #fff !important; }

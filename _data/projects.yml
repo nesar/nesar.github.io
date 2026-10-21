@@ -88,6 +88,16 @@ items:
       - { label: "Docs", url: "https://nesar.github.io/CubicGalileonEmu/" }
       - { label: "Code", url: "https://github.com/nesar/CubicGalileonEmu" }
 
+  - title: "f(R) Hu–Sawicki Emulator"
+    category: emulators
+    date: 2021-06
+    image: mgemu.jpg
+    blurb: "A Gaussian-process emulator for the matter power-spectrum boost over ΛCDM in f(R) Hu–Sawicki modified gravity, built for LSST DESC."
+    tags: [Modified gravity, Emulation, LSST DESC]
+    links:
+      - { label: "Paper", url: "https://arxiv.org/abs/2010.00596" }
+      - { label: "Code", url: "https://github.com/LSSTDESC/mgemu" }
+
   # --- MCP servers (compact tiles inside the ecosystem group) ---
   - title: "DESC"
     category: agents
